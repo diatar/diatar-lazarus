@@ -1,0 +1,1069 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <General>
+      <Flags>
+        <LRSInOutputDirectory Value="False"/>
+      </Flags>
+      <MainUnit Value="0"/>
+      <Title Value="Diatár Editor"/>
+      <UseAppBundle Value="False"/>
+      <Icon Value="0"/>
+    </General>
+    <BuildModes Count="3" Active="Debug">
+      <Item1 Name="default" Default="True"/>
+      <Item2 Name="Debug">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="./DiaEditor"/>
+          </Target>
+          <SearchPaths>
+            <OtherUnitFiles Value="D:\Lazarus\Lib\;..\Lib"/>
+            <UnitOutputDirectory Value="objWindowsEd"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+              <IncludeAssertionCode Value="True"/>
+              <UseAnsiStrings Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+            <VerifyObjMethodCallValidity Value="True"/>
+            <TargetCPU Value="i386"/>
+            <TargetOS Value="win32"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <UseHeaptrc Value="True"/>
+              <TrashVariables Value="True"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dDiaEditor
+-dDEBUG"/>
+          </Other>
+        </CompilerOptions>
+      </Item2>
+      <Item3 Name="Release">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="./DiaEditor"/>
+          </Target>
+          <SearchPaths>
+            <OtherUnitFiles Value="D:\Lazarus\Lib\;..\Lib"/>
+            <UnitOutputDirectory Value="objWindowsEd"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+              <UseAnsiStrings Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <TargetCPU Value="i386"/>
+            <TargetOS Value="win32"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dDiaEditor"/>
+          </Other>
+        </CompilerOptions>
+      </Item3>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T 'Lazarus Run Output' -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
+        <WorkingDirectory Value="C:\Users\Hozé\Downloads\diatar_12.5.3_win"/>
+      </local>
+      <FormatVersion Value="2"/>
+      <Modes Count="1">
+        <Mode0 Name="default">
+          <local>
+            <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T 'Lazarus Run Output' -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
+            <WorkingDirectory Value="C:\Users\Hozé\Downloads\diatar_12.5.3_win"/>
+          </local>
+        </Mode0>
+      </Modes>
+    </RunParams>
+    <RequiredPackages Count="1">
+      <Item1>
+        <PackageName Value="LCL"/>
+      </Item1>
+    </RequiredPackages>
+    <Units Count="109">
+      <Unit0>
+        <Filename Value="DiaEditor.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <CursorPos X="45" Y="8"/>
+        <UsageCount Value="98"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="uedmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MainForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uEdMain"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="236"/>
+        <CursorPos Y="253"/>
+        <UsageCount Value="98"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="utxtar.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uTxTar"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="1587"/>
+        <CursorPos Y="1595"/>
+        <UsageCount Value="97"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="uglobals.pas"/>
+        <UnitName Value="uGlobals"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="662"/>
+        <CursorPos Y="685"/>
+        <UsageCount Value="19"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="umain.pas"/>
+        <ComponentName Value="MainForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uMain"/>
+        <TopLine Value="289"/>
+        <CursorPos Y="291"/>
+        <UsageCount Value="9"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="C:\lazarus\fpc\2.2.2\source\packages\fcl-base\src\contnrs.pp"/>
+        <TopLine Value="61"/>
+        <CursorPos X="27" Y="72"/>
+        <UsageCount Value="9"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="uedkotetprop.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="EdKPropForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uEdKotetProp"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="202"/>
+        <CursorPos X="38" Y="217"/>
+        <UsageCount Value="96"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="..\Lib\uRoutines.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="106"/>
+        <CursorPos X="10" Y="123"/>
+        <UsageCount Value="51"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="C:\lazarus\lcl\stdctrls.pp"/>
+        <UnitName Value="StdCtrls"/>
+        <TopLine Value="852"/>
+        <CursorPos X="3" Y="873"/>
+        <UsageCount Value="8"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="C:\lazarus\lcl\fileutil.pas"/>
+        <UnitName Value="FileUtil"/>
+        <TopLine Value="183"/>
+        <CursorPos X="10" Y="204"/>
+        <UsageCount Value="8"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="C:\lazarus\lcl\include\fileutil.inc"/>
+        <TopLine Value="186"/>
+        <CursorPos X="3" Y="188"/>
+        <UsageCount Value="8"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\objpas\sysutils\sysutilh.inc"/>
+        <TopLine Value="182"/>
+        <CursorPos X="37" Y="203"/>
+        <UsageCount Value="8"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\win32\system.pp"/>
+        <UnitName Value="System"/>
+        <TopLine Value="88"/>
+        <CursorPos X="2" Y="37"/>
+        <UsageCount Value="8"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\objpas\sysutils\filutilh.inc"/>
+        <TopLine Value="60"/>
+        <CursorPos X="10" Y="94"/>
+        <UsageCount Value="8"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\win\sysutils.pp"/>
+        <TopLine Value="22"/>
+        <UsageCount Value="9"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="C:\lazarus\lcl\lcltype.pp"/>
+        <UnitName Value="LCLType"/>
+        <TopLine Value="2726"/>
+        <CursorPos X="3" Y="2728"/>
+        <UsageCount Value="9"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\objpas\sysutils\finah.inc"/>
+        <CursorPos X="10" Y="23"/>
+        <UsageCount Value="9"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\objpas\sysutils\fina.inc"/>
+        <TopLine Value="52"/>
+        <CursorPos X="3" Y="57"/>
+        <UsageCount Value="8"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="C:\lazarus\lcl\forms.pp"/>
+        <UnitName Value="Forms"/>
+        <TopLine Value="1309"/>
+        <CursorPos X="15" Y="1327"/>
+        <UsageCount Value="9"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="C:\lazarus\lcl\include\application.inc"/>
+        <TopLine Value="346"/>
+        <CursorPos X="3" Y="351"/>
+        <UsageCount Value="9"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="C:\lazarus\lcl\lclintf.pas"/>
+        <UnitName Value="LCLIntf"/>
+        <TopLine Value="151"/>
+        <CursorPos X="12" Y="167"/>
+        <UsageCount Value="9"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="C:\lazarus\lcl\include\winapi.inc"/>
+        <TopLine Value="150"/>
+        <CursorPos X="24" Y="171"/>
+        <UsageCount Value="9"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="upaintresizedtext.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uPaintResizedText"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="835"/>
+        <CursorPos X="32" Y="850"/>
+        <UsageCount Value="80"/>
+        <Loaded Value="True"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="uedversprop.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="EdVPropForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uEdVersProp"/>
+        <CursorPos Y="21"/>
+        <UsageCount Value="79"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="uedvsprop.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="EdVSPropForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uEdVSProp"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="28" Y="29"/>
+        <UsageCount Value="73"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="ueditorform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="EditorForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uEditorForm"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="2314"/>
+        <CursorPos X="42" Y="2325"/>
+        <UsageCount Value="72"/>
+        <Loaded Value="True"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="urtf.pas"/>
+        <UnitName Value="uRTF"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="12"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\objpas\classes\classesh.inc"/>
+        <TopLine Value="167"/>
+        <CursorPos X="15" Y="192"/>
+        <UsageCount Value="9"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\objpas\classes\streams.inc"/>
+        <TopLine Value="348"/>
+        <CursorPos X="5" Y="354"/>
+        <UsageCount Value="9"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="uclipbrd.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uClipBrd"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="263"/>
+        <CursorPos X="17" Y="286"/>
+        <UsageCount Value="67"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\objpas\classes\lists.inc"/>
+        <TopLine Value="100"/>
+        <CursorPos X="3" Y="102"/>
+        <UsageCount Value="9"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="C:\lazarus\lcl\include\customform.inc"/>
+        <TopLine Value="254"/>
+        <CursorPos X="29" Y="276"/>
+        <UsageCount Value="9"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="usymbolform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="SymbolForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uSymbolForm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="358"/>
+        <CursorPos X="11" Y="374"/>
+        <UsageCount Value="59"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="C:\lazarus\lcl\lclproc.pas"/>
+        <UnitName Value="LCLProc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="320"/>
+        <CursorPos X="10" Y="338"/>
+        <UsageCount Value="9"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="C:\lazarus\lcl\graphics.pp"/>
+        <UnitName Value="Graphics"/>
+        <TopLine Value="1243"/>
+        <CursorPos X="29" Y="1251"/>
+        <UsageCount Value="9"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\objpas\types.pp"/>
+        <UsageCount Value="9"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="C:\lazarus\lcl\include\font.inc"/>
+        <TopLine Value="49"/>
+        <CursorPos X="37" Y="69"/>
+        <UsageCount Value="9"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="C:\lazarus\lcl\include\custombitmap.inc"/>
+        <TopLine Value="42"/>
+        <CursorPos X="3" Y="44"/>
+        <UsageCount Value="9"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="C:\lazarus\lcl\include\canvas.inc"/>
+        <TopLine Value="81"/>
+        <CursorPos X="39" Y="109"/>
+        <UsageCount Value="9"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\objpas\objpas.pp"/>
+        <TopLine Value="47"/>
+        <CursorPos X="71" Y="68"/>
+        <UsageCount Value="9"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="usound.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uSound"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="380"/>
+        <CursorPos X="50" Y="397"/>
+        <UsageCount Value="50"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="todo.txt"/>
+        <CursorPos X="23" Y="3"/>
+        <UsageCount Value="18"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="uedmain.lfm"/>
+        <TopLine Value="58"/>
+        <CursorPos X="32" Y="78"/>
+        <UsageCount Value="9"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="fileformats.txt"/>
+        <IsPartOfProject Value="True"/>
+        <TopLine Value="54"/>
+        <CursorPos Y="31"/>
+        <UsageCount Value="49"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit43>
+      <Unit44>
+        <Filename Value="uakkord.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uAkkord"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="271"/>
+        <CursorPos X="18" Y="297"/>
+        <UsageCount Value="48"/>
+      </Unit44>
+      <Unit45>
+        <Filename Value="uakkordform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="AkkordForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uAkkordForm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="36"/>
+        <CursorPos X="30" Y="53"/>
+        <UsageCount Value="48"/>
+      </Unit45>
+      <Unit46>
+        <Filename Value="unetbase.pas"/>
+        <UnitName Value="uNetBase"/>
+        <TopLine Value="16"/>
+        <CursorPos X="22" Y="34"/>
+        <UsageCount Value="11"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="..\Lib\uCaret.pas"/>
+        <TopLine Value="144"/>
+        <CursorPos X="63" Y="167"/>
+        <UsageCount Value="9"/>
+      </Unit47>
+      <Unit48>
+        <Filename Value="C:\lazarus\lcl\controls.pp"/>
+        <UnitName Value="Controls"/>
+        <TopLine Value="1878"/>
+        <CursorPos X="16" Y="1899"/>
+        <UsageCount Value="9"/>
+      </Unit48>
+      <Unit49>
+        <Filename Value="C:\lazarus\lcl\dialogs.pp"/>
+        <UnitName Value="Dialogs"/>
+        <TopLine Value="489"/>
+        <CursorPos X="11" Y="510"/>
+        <UsageCount Value="9"/>
+      </Unit49>
+      <Unit50>
+        <Filename Value="ukottaeditor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="KottaForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uKottaEditor"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="144"/>
+        <CursorPos X="7" Y="161"/>
+        <UsageCount Value="40"/>
+      </Unit50>
+      <Unit51>
+        <Filename Value="ukottazo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uKottazo"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="1364"/>
+        <CursorPos X="9" Y="1371"/>
+        <UsageCount Value="40"/>
+        <Loaded Value="True"/>
+      </Unit51>
+      <Unit52>
+        <Filename Value="ukottakepek.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uKottaKepek"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="40"/>
+      </Unit52>
+      <Unit53>
+        <Filename Value="C:\lazarus\fpc\2.4.2\source\packages\fcl-image\src\fpcanvas.pp"/>
+        <UnitName Value="FPCanvas"/>
+        <TopLine Value="140"/>
+        <CursorPos X="53" Y="142"/>
+        <UsageCount Value="9"/>
+      </Unit53>
+      <Unit54>
+        <Filename Value="C:\lazarus\Asio\Lazarus\AVDDSPLaz.pas"/>
+        <UsageCount Value="9"/>
+      </Unit54>
+      <Unit55>
+        <Filename Value="dialst.pas"/>
+        <UsageCount Value="9"/>
+      </Unit55>
+      <Unit56>
+        <Filename Value="ioroutine.pas"/>
+        <UsageCount Value="9"/>
+      </Unit56>
+      <Unit57>
+        <Filename Value="kottakepek.inc"/>
+        <UsageCount Value="9"/>
+      </Unit57>
+      <Unit58>
+        <Filename Value="lDiaEditor64.pas"/>
+        <UnitName Value="lDiaEditor"/>
+        <UsageCount Value="9"/>
+      </Unit58>
+      <Unit59>
+        <Filename Value="uadd.pas"/>
+        <UnitName Value="uAdd"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit59>
+      <Unit60>
+        <Filename Value="uaddone.pas"/>
+        <UnitName Value="uAddOne"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit60>
+      <Unit61>
+        <Filename Value="ucommbtns.pas"/>
+        <UnitName Value="uCommBtns"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit61>
+      <Unit62>
+        <Filename Value="uconfig.pas"/>
+        <UnitName Value="uConfig"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit62>
+      <Unit63>
+        <Filename Value="udialst.pas"/>
+        <UnitName Value="uDiaLst"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit63>
+      <Unit64>
+        <Filename Value="udtxflagslist.pas"/>
+        <UnitName Value="uDtxFlagsList"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit64>
+      <Unit65>
+        <Filename Value="udtxlst.pas"/>
+        <UnitName Value="uDtxLst"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit65>
+      <Unit66>
+        <Filename Value="ueditorform.lfm"/>
+        <UsageCount Value="9"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit66>
+      <Unit67>
+        <Filename Value="ufotoform.pas"/>
+        <UnitName Value="uFotoForm"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit67>
+      <Unit68>
+        <Filename Value="ugetpsw.pas"/>
+        <UnitName Value="uGetPsw"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit68>
+      <Unit69>
+        <Filename Value="uhintform.pas"/>
+        <UnitName Value="uHintForm"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit69>
+      <Unit70>
+        <Filename Value="uhowtosaveform.pas"/>
+        <UnitName Value="uHowToSaveForm"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit70>
+      <Unit71>
+        <Filename Value="ukeyinputform.pas"/>
+        <UnitName Value="uKeyInputForm"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit71>
+      <Unit72>
+        <Filename Value="ukeys.pas"/>
+        <UnitName Value="uKeys"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit72>
+      <Unit73>
+        <Filename Value="ulinuxaltkey.pas"/>
+        <UnitName Value="uLinuxAltKey"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit73>
+      <Unit74>
+        <Filename Value="umonitors.pas"/>
+        <UnitName Value="uMonitors"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit74>
+      <Unit75>
+        <Filename Value="unetoffdlg.pas"/>
+        <UnitName Value="uNetOffDlg"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit75>
+      <Unit76>
+        <Filename Value="unetqueue.pas"/>
+        <UnitName Value="uNetQueue"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit76>
+      <Unit77>
+        <Filename Value="unetwork.pas"/>
+        <UnitName Value="uNetwork"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit77>
+      <Unit78>
+        <Filename Value="uprojektedform.pas"/>
+        <UnitName Value="uProjektedForm"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit78>
+      <Unit79>
+        <Filename Value="upropedit.pas"/>
+        <UnitName Value="uPropEdit"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit79>
+      <Unit80>
+        <Filename Value="urotatebmp.pas"/>
+        <UnitName Value="uRotateBmp"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit80>
+      <Unit81>
+        <Filename Value="usearchform.pas"/>
+        <UnitName Value="uSearchForm"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit81>
+      <Unit82>
+        <Filename Value="uselectprofil.pas"/>
+        <UnitName Value="uSelectProfil"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit82>
+      <Unit83>
+        <Filename Value="userialio.pas"/>
+        <UnitName Value="uSerialIO"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit83>
+      <Unit84>
+        <Filename Value="userialioform.pas"/>
+        <UnitName Value="uSerialIOForm"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit84>
+      <Unit85>
+        <Filename Value="usetupdtx.pas"/>
+        <UnitName Value="uSetupDtx"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit85>
+      <Unit86>
+        <Filename Value="usetupprofil.pas"/>
+        <UnitName Value="uSetupProfil"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit86>
+      <Unit87>
+        <Filename Value="ushutdown.pas"/>
+        <UnitName Value="uShutdown"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit87>
+      <Unit88>
+        <Filename Value="usndedit.pas"/>
+        <UnitName Value="uSndEdit"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit88>
+      <Unit89>
+        <Filename Value="utextbox.pas"/>
+        <UnitName Value="uTextBox"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit89>
+      <Unit90>
+        <Filename Value="utxlist.pas"/>
+        <UnitName Value="uTxList"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="9"/>
+      </Unit90>
+      <Unit91>
+        <Filename Value="uedsetup.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="EdSetupForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uEdSetup"/>
+        <CursorPos Y="22"/>
+        <UsageCount Value="36"/>
+      </Unit91>
+      <Unit92>
+        <Filename Value="C:\lazarus\fpc\2.4.2\source\packages\fcl-registry\src\registry.pp"/>
+        <CursorPos X="3"/>
+        <UsageCount Value="10"/>
+      </Unit92>
+      <Unit93>
+        <Filename Value="uappform.pas"/>
+        <UnitName Value="uAppForm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="73"/>
+        <CursorPos X="32" Y="86"/>
+        <UsageCount Value="10"/>
+      </Unit93>
+      <Unit94>
+        <Filename Value="udiatariniloader.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uDiatarIniLoader"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="42"/>
+        <CursorPos Y="58"/>
+        <UsageCount Value="33"/>
+        <Loaded Value="True"/>
+      </Unit94>
+      <Unit95>
+        <Filename Value="C:\lazarus\components\lazutils\lazfileutils.pas"/>
+        <UnitName Value="LazFileUtils"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="34"/>
+        <CursorPos X="10" Y="51"/>
+        <UsageCount Value="10"/>
+      </Unit95>
+      <Unit96>
+        <Filename Value="C:\lazarus\components\lazutils\winlazfileutils.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1049"/>
+        <CursorPos X="3" Y="1051"/>
+        <UsageCount Value="10"/>
+      </Unit96>
+      <Unit97>
+        <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\objpas\sysutils\filutilh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="127"/>
+        <CursorPos X="10" Y="144"/>
+        <UsageCount Value="9"/>
+      </Unit97>
+      <Unit98>
+        <Filename Value="C:\lazarus\lcl\interfaces\win32\win32object.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="753"/>
+        <CursorPos Y="781"/>
+        <UsageCount Value="9"/>
+      </Unit98>
+      <Unit99>
+        <Filename Value="udialoadsave.pas"/>
+        <UnitName Value="uDiaLoadSave"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="18"/>
+        <CursorPos Y="18"/>
+        <UsageCount Value="9"/>
+      </Unit99>
+      <Unit100>
+        <Filename Value="C:\lazarus\components\lazutils\lazfilecache.pas"/>
+        <UnitName Value="LazFileCache"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="59"/>
+        <CursorPos X="65" Y="76"/>
+        <UsageCount Value="9"/>
+      </Unit100>
+      <Unit101>
+        <Filename Value="C:\lazarus\components\lazutils\winfileutil.inc"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="13" Y="21"/>
+        <UsageCount Value="9"/>
+      </Unit101>
+      <Unit102>
+        <Filename Value="C:\lazarus\components\lazutils\lazutf8sysutils.pas"/>
+        <UnitName Value="LazUTF8SysUtils"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="15"/>
+        <CursorPos X="35" Y="32"/>
+        <UsageCount Value="9"/>
+      </Unit102>
+      <Unit103>
+        <Filename Value="C:\lazarus\components\lazutils\lazutf8.pas"/>
+        <UnitName Value="LazUTF8"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="62"/>
+        <CursorPos X="10" Y="79"/>
+        <UsageCount Value="9"/>
+      </Unit103>
+      <Unit104>
+        <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\objpas\sysutils\finah.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="6"/>
+        <CursorPos X="10" Y="23"/>
+        <UsageCount Value="10"/>
+      </Unit104>
+      <Unit105>
+        <Filename Value="C:\lazarus\components\lazutils\fileutil.pas"/>
+        <UnitName Value="FileUtil"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="102"/>
+        <CursorPos Y="131"/>
+        <UsageCount Value="9"/>
+      </Unit105>
+      <Unit106>
+        <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\objpas\sysutils\fina.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="305"/>
+        <CursorPos X="3" Y="318"/>
+        <UsageCount Value="10"/>
+      </Unit106>
+      <Unit107>
+        <Filename Value="C:\lazarus\fpc\3.0.4\source\rtl\objpas\types.pp"/>
+        <UnitName Value="Types"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="67"/>
+        <CursorPos X="24" Y="83"/>
+        <UsageCount Value="10"/>
+      </Unit107>
+      <Unit108>
+        <Filename Value="C:\lazarus\fpc\3.0.4\source\rtl\inc\typshrdh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="85"/>
+        <CursorPos X="3" Y="101"/>
+        <UsageCount Value="10"/>
+      </Unit108>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="udiatariniloader.pas"/>
+        <Caret Line="76" TopLine="58"/>
+      </Position1>
+      <Position2>
+        <Filename Value="udiatariniloader.pas"/>
+        <Caret Line="93" TopLine="78"/>
+      </Position2>
+      <Position3>
+        <Filename Value="udiatariniloader.pas"/>
+        <Caret Line="94" TopLine="78"/>
+      </Position3>
+      <Position4>
+        <Filename Value="udiatariniloader.pas"/>
+        <Caret Line="95" TopLine="78"/>
+      </Position4>
+      <Position5>
+        <Filename Value="udiatariniloader.pas"/>
+        <Caret Line="93" Column="3" TopLine="81"/>
+      </Position5>
+      <Position6>
+        <Filename Value="udiatariniloader.pas"/>
+        <Caret Line="99" TopLine="81"/>
+      </Position6>
+      <Position7>
+        <Filename Value="udiatariniloader.pas"/>
+        <Caret Line="100" TopLine="81"/>
+      </Position7>
+      <Position8>
+        <Filename Value="udiatariniloader.pas"/>
+        <Caret Line="114" TopLine="87"/>
+      </Position8>
+      <Position9>
+        <Filename Value="udiatariniloader.pas"/>
+        <Caret Line="58" TopLine="42"/>
+      </Position9>
+      <Position10>
+        <Filename Value="uedmain.pas"/>
+        <Caret Line="246" TopLine="229"/>
+      </Position10>
+      <Position11>
+        <Filename Value="uedmain.pas"/>
+        <Caret Line="247" TopLine="229"/>
+      </Position11>
+      <Position12>
+        <Filename Value="uedmain.pas"/>
+        <Caret Line="248" TopLine="229"/>
+      </Position12>
+      <Position13>
+        <Filename Value="uedmain.pas"/>
+        <Caret Line="249" TopLine="229"/>
+      </Position13>
+      <Position14>
+        <Filename Value="uedmain.pas"/>
+        <Caret Line="254" Column="56" TopLine="229"/>
+      </Position14>
+      <Position15>
+        <Filename Value="uedmain.pas"/>
+        <Caret Line="249" Column="37" TopLine="229"/>
+      </Position15>
+      <Position16>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="520" TopLine="505"/>
+      </Position16>
+      <Position17>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="518" TopLine="505"/>
+      </Position17>
+      <Position18>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="519" Column="36" TopLine="505"/>
+      </Position18>
+      <Position19>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="521" Column="32" TopLine="509"/>
+      </Position19>
+      <Position20>
+        <Filename Value="uedmain.pas"/>
+        <Caret Line="257" TopLine="236"/>
+      </Position20>
+      <Position21>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="689" TopLine="672"/>
+      </Position21>
+      <Position22>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="690" TopLine="672"/>
+      </Position22>
+      <Position23>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="691" TopLine="672"/>
+      </Position23>
+      <Position24>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="692" TopLine="672"/>
+      </Position24>
+      <Position25>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="693" TopLine="672"/>
+      </Position25>
+      <Position26>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="694" TopLine="672"/>
+      </Position26>
+      <Position27>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="695" TopLine="672"/>
+      </Position27>
+      <Position28>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="696" TopLine="672"/>
+      </Position28>
+      <Position29>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="698" TopLine="679"/>
+      </Position29>
+      <Position30>
+        <Filename Value="uedmain.pas"/>
+        <Caret Line="257" TopLine="236"/>
+      </Position30>
+    </JumpHistory>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="./DiaEditor"/>
+    </Target>
+    <SearchPaths>
+      <OtherUnitFiles Value="D:\Lazarus\Lib\;..\Lib"/>
+      <UnitOutputDirectory Value="objWindowsEd"/>
+    </SearchPaths>
+    <Parsing>
+      <SyntaxOptions>
+        <CStyleOperator Value="False"/>
+        <UseAnsiStrings Value="False"/>
+      </SyntaxOptions>
+    </Parsing>
+    <CodeGeneration>
+      <TargetCPU Value="i386"/>
+      <TargetOS Value="win32"/>
+    </CodeGeneration>
+    <Linking>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+    <Other>
+      <CustomOptions Value="-dDiaEditor"/>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <BreakPoints Count="1">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="uclipbrd.pas"/>
+        <Line Value="174"/>
+      </Item1>
+    </BreakPoints>
+    <Exceptions Count="2">
+      <Item1>
+        <Name Value="ECodetoolError"/>
+      </Item1>
+      <Item2>
+        <Name Value="EFOpenError"/>
+      </Item2>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

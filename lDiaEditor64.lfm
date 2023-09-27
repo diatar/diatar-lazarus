@@ -1,0 +1,336 @@
+object MainForm: TMainForm
+  Left = 292
+  Height = 460
+  Top = 149
+  Width = 800
+  HorzScrollBar.Page = 799
+  HorzScrollBar.Range = 636
+  VertScrollBar.Page = 459
+  VertScrollBar.Range = 456
+  ActiveControl = GroupBox1
+  AutoScroll = False
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Diatár szerkesztő'
+  ClientHeight = 460
+  ClientWidth = 800
+  Icon.Data = {
+    360400000000010002002020100000000000E802000026000000101010000000
+    0000280100000E03000028000000200000004000000001000400000000008002
+    0000000000000000000000000000000000000000000000008000008000000080
+    800080000000800080008080000080808000C0C0C0000000FF0000FF000000FF
+    FF00FF000000FF00FF00FFFF0000FFFFFF000000000000000000000000000770
+    0000000F77FFFFFFFFFFFFFFFFFF7377F00000FAA777FFFFFFFFFFFFFFF73337
+    7F007FFFAAA77FFFFFFFFFFFFF73343377F07F77FAAAFFFFFFFFFFFFF7334333
+    37707AA7FAA7FFFFFFFFFFFF7334333433F07FAAAAA77FFFFFFFFFFF33433343
+    3FF07FAAAAAA77FFFFFFFFFFF3333433FFF07FFAFFAAA77FFFFFFFFFF793433F
+    FFF07FFFFFFAAA77FFFFFFFF799333FFFFF07FFFFFF0AAA77BBBBBB799BB3FFF
+    FFF07FFFFFF06AAA776666799666BFFFFFF07FFFFFF066AAA77667996666BFFF
+    FFF07FFFFFF0666AAA7779966666BFFFFFF07FFFFFF06666AAA799666666BFFF
+    FFF07FFFFFF066666A7997666666BFFFFFF07FFFFFF066666799A7766766BFFF
+    FFF07FFFFFF06666799AAA77A776BFFFFFF07FFFFFF066779966AAAAAA76BFFF
+    FFF07FFFFFF0679996666AAAAA77BFFFFFF07FFFFFF0799996666AA76AA6BFFF
+    FFF07FFFFFF099990000AAA770000FFFFFF07FFFFFFF999FFFFFFAAA7FFFFFFF
+    FFF07FFFFFFFF9FFFFFFFFFAFFFFFFFFFFF07FFFF000FF00FFF00FF0FFFF000F
+    FFF07FFFFF0FF0FF0FFFF0F0FFFFF0FFFFF07FFFFF0FF0FF0FF000FF0FFFF0FF
+    FFF07FFFF00FF0FF0F0FF0FFF0FF00FFFFF07FFFFF0FFF00FFF00FFFF0FFF0FF
+    FFF007FFFFFFFFFFFFFFFFFFFFFFFFFFFF00077FFFFFFFFFFFFFFFFFFFFFFFFF
+    F00000077777777777777777777777777000E000000780000001800000010000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000008000000180000001E00000072800000010000000200000000100
+    040000000000C000000000000000000000000000000000000000000000000000
+    8000008000000080800080000000800080008080000080808000C0C0C0000000
+    FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00000700000000
+    70008FA7FFFFFFF737F087A7FFFFFF733370AAAF7FFFFF3333308FFAF7FFFF73
+    33F08FF8A87887983FF08FF06A6779668FF08FF066A796668FF08FF067796777
+    8FF08FF07996AAA68FF08FF09990A7008FF08FFFF9FFAFFFFFF08FFF0F00FF0F
+    FFF08FFF0F00F00FFFF08FFFFFFFFFFFFFF00888888888888880800100000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000080010000
+  }
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  Position = poScreenCenter
+  LCLVersion = '0.9.26.2'
+  object ProjBox: TPaintBox
+    Left = 528
+    Height = 256
+    Top = 8
+    Width = 256
+    Color = clBlack
+    Font.Color = clWhite
+    ParentColor = False
+    ParentFont = False
+    OnPaint = ProjBoxPaint
+  end
+  object CloseBtn: TButton
+    Left = 612
+    Height = 25
+    Top = 431
+    Width = 80
+    Caption = 'Be&zár'
+    OnClick = CloseBtnClick
+    TabOrder = 0
+  end
+  object ModBtn: TButton
+    Left = 688
+    Height = 25
+    Top = 268
+    Width = 80
+    Caption = '&Módosít'
+    OnClick = ModBtnClick
+    TabOrder = 1
+  end
+  object OrigCk: TCheckBox
+    Left = 552
+    Height = 22
+    Top = 270
+    Width = 69
+    Caption = 'Eredeti'
+    OnClick = OrigCkClick
+    TabOrder = 2
+  end
+  object GroupBox1: TPanel
+    Left = 4
+    Height = 452
+    Top = 4
+    Width = 168
+    Caption = '&Diatárak:'
+    ClientHeight = 452
+    ClientWidth = 168
+    TabOrder = 3
+    object Label1: TLabel
+      Left = 4
+      Height = 17
+      Width = 53
+      Caption = '&Diatárak:'
+      FocusControl = KLst
+      ParentColor = False
+    end
+    object KLst: TListBox
+      Left = 2
+      Height = 372
+      Top = 20
+      Width = 160
+      MultiSelect = True
+      OnDrawItem = KLstDrawItem
+      OnSelectionChange = KLstSelectionChange
+      Style = lbOwnerDrawFixed
+      TabOrder = 0
+      TopIndex = -1
+    end
+    object KNewBtn: TButton
+      Left = 2
+      Height = 25
+      Top = 396
+      Width = 80
+      Caption = 'Ú&j diatár'
+      OnClick = KNewBtnClick
+      TabOrder = 1
+    end
+    object KPropBtn: TButton
+      Left = 2
+      Height = 25
+      Top = 423
+      Width = 80
+      Caption = 'T&ulajdonságok'
+      OnClick = KPropBtnClick
+      TabOrder = 3
+    end
+    object KDelBtn: TButton
+      Left = 82
+      Height = 25
+      Top = 396
+      Width = 80
+      Caption = '&Töröl'
+      OnClick = KDelBtnClick
+      TabOrder = 2
+    end
+    object KRestBtn: TButton
+      Left = 82
+      Height = 25
+      Top = 423
+      Width = 80
+      Caption = 'V&isszaállít'
+      OnClick = KRestBtnClick
+      TabOrder = 4
+    end
+  end
+  object GroupBox2: TPanel
+    Left = 176
+    Height = 452
+    Top = 4
+    Width = 168
+    Caption = '&Versek:'
+    ClientHeight = 452
+    ClientWidth = 168
+    TabOrder = 4
+    object Label2: TLabel
+      Left = 4
+      Height = 17
+      Width = 45
+      Caption = '&Versek:'
+      FocusControl = VLst
+      ParentColor = False
+    end
+    object VLst: TListBox
+      Left = 4
+      Height = 372
+      Top = 20
+      Width = 120
+      MultiSelect = True
+      OnDrawItem = VLstDrawItem
+      OnSelectionChange = VLstSelectionChange
+      Style = lbOwnerDrawFixed
+      TabOrder = 0
+      TopIndex = -1
+    end
+    object VNewBtn: TButton
+      Left = 4
+      Height = 25
+      Top = 396
+      Width = 80
+      Caption = 'Új v&ers'
+      OnClick = VNewBtnClick
+      TabOrder = 1
+    end
+    object VPropBtn: TButton
+      Left = 4
+      Height = 25
+      Top = 423
+      Width = 80
+      Caption = 'Tulajd&onságok'
+      OnClick = VPropBtnClick
+      TabOrder = 3
+    end
+    object VDelBtn: TButton
+      Left = 84
+      Height = 25
+      Top = 396
+      Width = 80
+      Caption = 'Tö&röl'
+      OnClick = VDelBtnClick
+      TabOrder = 2
+    end
+    object VUpBtn: TButton
+      Left = 128
+      Height = 25
+      Top = 20
+      Width = 34
+      Caption = 'Fel'
+      OnClick = VUpBtnClick
+      TabOrder = 4
+    end
+    object VDnBtn: TButton
+      Left = 128
+      Height = 25
+      Top = 48
+      Width = 34
+      Caption = 'Le'
+      OnClick = VDnBtnClick
+      TabOrder = 5
+    end
+    object VRestBtn: TButton
+      Left = 84
+      Height = 25
+      Top = 423
+      Width = 80
+      Caption = 'Vi&sszaállít'
+      OnClick = VRestBtnClick
+      TabOrder = 6
+    end
+  end
+  object GroupBox3: TPanel
+    Left = 348
+    Height = 452
+    Top = 4
+    Width = 168
+    Caption = 'Verssza&kok:'
+    ClientHeight = 452
+    ClientWidth = 168
+    TabOrder = 5
+    object Label3: TLabel
+      Left = 4
+      Height = 17
+      Width = 70
+      Caption = 'Verssza&kok:'
+      FocusControl = VSLst
+      ParentColor = False
+    end
+    object VSLst: TListBox
+      Left = 2
+      Height = 372
+      Top = 20
+      Width = 120
+      MultiSelect = True
+      OnDrawItem = VSLstDrawItem
+      OnSelectionChange = VSLstSelectionChange
+      Style = lbOwnerDrawFixed
+      TabOrder = 0
+      TopIndex = -1
+    end
+    object VSNewBtn: TButton
+      Left = 2
+      Height = 25
+      Top = 396
+      Width = 80
+      Caption = 'Új verssz&ak'
+      OnClick = VSNewBtnClick
+      TabOrder = 1
+    end
+    object VSPropBtn: TButton
+      Left = 2
+      Height = 25
+      Top = 423
+      Width = 80
+      Caption = 'Tulajdonsá&gok'
+      OnClick = VSPropBtnClick
+      TabOrder = 3
+    end
+    object VSDelBtn: TButton
+      Left = 82
+      Height = 25
+      Top = 396
+      Width = 80
+      Caption = 'Törö&l'
+      OnClick = VSDelBtnClick
+      TabOrder = 2
+    end
+    object VSDnBtn: TButton
+      Left = 126
+      Height = 25
+      Top = 48
+      Width = 34
+      Caption = 'Le'
+      OnClick = VSDnBtnClick
+      TabOrder = 4
+    end
+    object VSUpBtn: TButton
+      Left = 126
+      Height = 25
+      Top = 20
+      Width = 34
+      Caption = 'Fel'
+      OnClick = VSUpBtnClick
+      TabOrder = 5
+    end
+    object VSRestBtn: TButton
+      Left = 82
+      Height = 25
+      Top = 423
+      Width = 80
+      Caption = 'Visszaá&llít'
+      OnClick = VSRestBtnClick
+      TabOrder = 6
+    end
+  end
+  object SaveTmr: TTimer
+    Enabled = False
+    Interval = 2000
+    OnTimer = SaveTmrTimer
+    left = 736
+    top = 426
+  end
+end

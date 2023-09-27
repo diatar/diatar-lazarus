@@ -1,0 +1,8 @@
+dialstnext.bmp
+dialstprev.bmp
+dialstclose.bmp
+dialstsearch.bmp
+kapocs.cur
+sound.cur
+soundforward.cur
+skip.cur

@@ -1,0 +1,98 @@
+DTX formatum:
+-------------
+
+sor elso karaktere
+  ;    megjegyzes
+  N    nev
+  R    rovid nev
+  P    privat
+  S    sorrend
+  C    csoportnev
+  >    vers
+  /    versszak
+  #    azonosito (id)
+(szokoz) szovegsor
+  +    folytatosor
+
+szovegsoron beluli specialis elemek:
+  \B \b   bold
+  \I \i   dolt
+  \U \u   alahuzott
+  \\      \ jel
+  \(szokoz) nemtorheto szokoz
+  \-      felteteles kotojel
+  \_      nemtorheto kotojel
+  \.      sortores javaslat
+  \Gaaa;  gitarakkord, az "aaa" az akkord leiroja (ld. akkord.txt)
+  \Kaaaa; kotta, az "aaaa" mindig paros szamu karakter, a kottakep leiroja (ld. kotta.txt)
+  \?G..; vagy \?K..; gitarakkord vagy kotta uj (mint a fenti ketto, de ez altalanosabb)
+
+
+DTZ formatum:
+-------------
+
+  B <konyvtar>    bazis konyvtar
+  Z <id> <fajl>   vershez tartozo zene
+  z <id> <fajl>   versszakhoz tartozo zene
+  i <id> <msec>   idozitett tovabbitas
+
+
+DIA formatum:
+-------------
+
+"sima" .INI formatum!
+
+[main]
+diaszam=<n>
+utf8=1
+bkcolor=<szin>
+txcolor=<szin>
+offcolor=<szin>
+fontname=<nev>
+fontsize=<meret>
+titlesize=<meret>
+indent=<bekezdes+1>    +1!!!!
+spacing=<szam>
+fontbold=<1 vagy 2>    tBool3 tipus!!!
+hcenter=<1 vagy 2>
+vcenter=<1 vagy 2>
+
+[1]                 1..diaszam ilyen resz van
+
+kep=<fajl>
+                      vagy
+text=<fajl>
+                      vagy
+separator=<szoveg>
+                      vagy
+caption=<cim>
+lines=<sorok szama>
+line1=...
+line2=...
+                      vagy
+id=<hexa id>
+versszak=<nev>
+enek=<nev>
+kotet=<nev>
+                      vagy
+goto=<separator>
+repeat=0
+                      utana:
+dbldia=true
+skipped=true
+soundfile=<fajl>
+sound=true
+soundforward=true
+forwardmsec=<szam>
+bkcolor=<szin>
+txcolor=<szin>
+fontname=<nev>
+fontsize=<meret>
+titlesize=<meret>
+indent=<bekezdes+1>         +1!!!
+spacing=<szam>
+fontbold=<1 vagy 2>    tBool3 tipus!!!
+hcenter=<1 vagy 2>
+vcenter=<1 vagy 2>
+
+

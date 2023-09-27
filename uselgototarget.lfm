@@ -1,0 +1,89 @@
+object SelGotoTargetFrm: TSelGotoTargetFrm
+  Left = 246
+  Height = 159
+  Top = 153
+  Width = 304
+  BorderStyle = bsDialog
+  Caption = 'Ugrási cél kiválasztása'
+  ClientHeight = 159
+  ClientWidth = 304
+  ParentFont = True
+  Position = poOwnerFormCenter
+  LCLVersion = '1.6.2.0'
+  object Label1: TLabel
+    Left = 8
+    Height = 13
+    Top = 8
+    Width = 207
+    Caption = 'Ugrani egy létező elválasztóra lehet.'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 8
+    Height = 13
+    Top = 40
+    Width = 52
+    Caption = '&Elválasztó:'
+    ParentColor = False
+    ParentFont = False
+  end
+  object SeparLst: TComboBox
+    Left = 64
+    Height = 26
+    Top = 34
+    Width = 224
+    ItemHeight = 18
+    Style = csDropDownList
+    TabOrder = 0
+  end
+  object Label3: TLabel
+    Left = 8
+    Height = 13
+    Top = 80
+    Width = 76
+    Caption = '&Ugrások száma:'
+    ParentColor = False
+    ParentFont = False
+  end
+  object CntEd: TSpinEdit
+    Left = 88
+    Height = 26
+    Top = 74
+    Width = 64
+    MaxValue = 99
+    TabOrder = 1
+  end
+  object Label4: TLabel
+    Left = 160
+    Height = 13
+    Top = 80
+    Width = 78
+    Caption = '(0=mindig ugrik)'
+    ParentColor = False
+    ParentFont = False
+  end
+  object OkBtn: TBitBtn
+    Left = 32
+    Height = 30
+    Top = 111
+    Width = 107
+    Default = True
+    DefaultCaption = True
+    Kind = bkOK
+    ModalResult = 1
+    TabOrder = 2
+  end
+  object CancelBtn: TBitBtn
+    Left = 176
+    Height = 30
+    Top = 110
+    Width = 107
+    Cancel = True
+    DefaultCaption = True
+    Kind = bkCancel
+    ModalResult = 2
+    TabOrder = 3
+  end
+end

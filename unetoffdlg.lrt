@@ -1,0 +1,8 @@
+TNETOFFDLG.NETOFFDLG.CAPTION=Távoli (vetítő) gép leállítása
+TNETOFFDLG.LABEL1.CAPTION=A program leállításakor a vetítő gépet is leállíthatja.
+Választhat az alábbi opciók közül:
+TNETOFFDLG.PCOFFCK.CAPTION=Vetítő számító&gép kikapcsolása
+TNETOFFDLG.PROGOFFCK.CAPTION=Vetítő &programból kilépés
+TNETOFFDLG.PROJOFFCK.CAPTION=&Vetítő projektor kikapcsolása
+TNETOFFDLG.OKBTN.CAPTION=&OK
+TNETOFFDLG.CANCELBTN.CAPTION=Még&sem
