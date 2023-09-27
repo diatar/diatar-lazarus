@@ -1,0 +1,4 @@
+ftp adatok:
+host name: diatar.net46.net
+user name: a7217856
+password: jancsI3101

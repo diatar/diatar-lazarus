@@ -1,0 +1,36 @@
+minden kotta-objektumot ket karakter ir le, az elso a tipus, a masodik a parametere
+
+kG              violin-kulcs
+kF              basszus-kulcs
+k1..k5          C-kulcs az 1-5. vonalon
+ka..ki          Do-kulcs 1.vonalon, 1-2.vonalkozben, 2.vonalon stb.
+e1..e7          bes elojegyzesek
+E1..E7          keresztes elojegyzesek
+u2,u3,u4,u5,u6  utemjelek (2/4, 3/4, 4/4, 5/4, 6/4)
+U2,U3,U6,U8     spec.utemjelek (2/2, 3/2, 6/8, 3/8)
+|1,||,|.,|',|!  utemvonalak (szimpla, dupla, zaro, rovid cezura, hosszu cezura)
+|>,|:,|<        ismetlojelek (nyito, ketiranyu, zaro)
+m0,mk,mK,mb,mB  modositojel a kov. hang elott - csak a kov.hangra vonatkozik
+                   (feloldojel, kereszt, kettoskereszt, be, bebe)
+s1,s2,s4,s8,s6  szunet (egesz, fel, negyed, nyolcad, tizenhatod)
+S1,S2,S4,S8,S6  pontozott szunet
+rl,rb,rs        ritmus a kov. hangokra (longa, brevis, semi-brevis)
+r1,r2,r4,r8,r6  ritmus (egesz, fel, negyed, nyolcad, tizenhatod)
+R1,R2,R4,R8,R6  pontozott ritmus
+Rt,rt           tomor kottazas kezdete/vege
+1g,1a,1h,1c,1d,1e,1f
+2g,2a,2h,2c,2d,2e,2f
+3g,3a,3h,3c,3d,
+1G,1A,1H..3D    hangok - fuggetlenul a kulcstol a legalso az 1g
+                   (masodik potvonal alatti hang)
+                   a nagybetus parameter azt jelenti, hogy lefele legyen a szaara
+                   a hang hosszat a korabbi 'r' vagy 'R' ritmus hatarozta meg
+                   egy elozo m? parancs hatasara a hang ele modositojelet is ir
+[?,]?           gerenda kezdodik/vegeter a kov./elozo hangon
+[0,[1           nincs/van szaar
+[3,[5,]3,]5     triola kezdodik/vegeter a kov./elozo hangon
+a-,a.,a>,a^     agogika jel - csak a kovetkezo hangra vonatkozik
+aK,am,aM,at,aT     (tenuto, staccato, marcato1, 2, korona, mordent1, 2, trilla1, 2)
+(f,(a,)f,)a     felso/also kotoiv kezdodik a kov.hangon, vegeter
+-1,-2,..,-5     vonalak szama (default:5), csak legelso parancs lehet!
+

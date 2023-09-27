@@ -1,0 +1,47 @@
+object HintForm: THintForm
+  Left = 292
+  Height = 93
+  Top = 149
+  Width = 177
+  BorderIcons = []
+  BorderStyle = bsNone
+  Caption = 'HintForm'
+  ClientHeight = 93
+  ClientWidth = 177
+  Font.CharSet = 4
+  FormStyle = fsStayOnTop
+  LCLVersion = '0.9.28.2'
+  object HintPanel: TPanel
+    Left = 0
+    Height = 93
+    Top = 0
+    Width = 177
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 93
+    ClientWidth = 177
+    Color = 12648447
+    ParentColor = False
+    TabOrder = 0
+    object HintLbl: TLabel
+      Left = 0
+      Height = 93
+      Top = 0
+      Width = 177
+      Align = alClient
+      AutoSize = False
+      Color = 12648447
+      ParentColor = False
+      Transparent = False
+      WordWrap = True
+      OptimalFill = True
+    end
+    object HintPic: TImage
+      Left = 40
+      Height = 58
+      Top = 16
+      Width = 90
+      Stretch = True
+    end
+  end
+end

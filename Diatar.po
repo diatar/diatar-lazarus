@@ -1,0 +1,1420 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: taddform.addbtn.caption
+msgid ">"
+msgstr ""
+
+#: taddform.addbtn.hint
+msgid "Hozzáad"
+msgstr ""
+
+#: taddform.addpicbtn.caption
+msgid "+&Képfájl"
+msgstr ""
+
+#: taddform.addstrbtn.caption
+msgid "+S&zöveg"
+msgstr ""
+
+#: taddform.addtxtbtn.caption
+msgid "+&Textfájl"
+msgstr ""
+
+#: taddform.allbtn.caption
+msgid "=>"
+msgstr ""
+
+#: taddform.allbtn.hint
+msgid "Minden versszakot betesz"
+msgstr ""
+
+#: taddform.cancelbtn.caption
+msgctxt "TADDFORM.CANCELBTN.CAPTION"
+msgid "Még&sem"
+msgstr ""
+
+#: taddform.caption
+msgid "Énekrend módosítása"
+msgstr ""
+
+#: taddform.clrbtn.caption
+msgid "<<"
+msgstr ""
+
+#: taddform.clrbtn.hint
+msgid "Mindent elvesz"
+msgstr ""
+
+#: taddform.dnbtn.caption
+msgid "v"
+msgstr ""
+
+#: taddform.dnbtn.hint
+msgid "Lejjebb"
+msgstr ""
+
+#: taddform.modstrbtn.caption
+msgid "&Javít"
+msgstr ""
+
+#: taddform.nonebtn.caption
+msgid "<="
+msgstr ""
+
+#: taddform.nonebtn.hint
+msgid "Minden versszakot elvesz"
+msgstr ""
+
+#: taddform.okbtn.caption
+msgctxt "TADDFORM.OKBTN.CAPTION"
+msgid "&OK"
+msgstr ""
+
+#: taddform.propedbtn.caption
+msgid "T&ulajdonságok"
+msgstr ""
+
+#: taddform.propedbtn.hint
+msgid "dupla dia"
+msgstr ""
+
+#: taddform.separbtn.caption
+msgctxt "taddform.separbtn.caption"
+msgid "&Elválasztó"
+msgstr ""
+
+#: taddform.subbtn.caption
+msgid "<"
+msgstr ""
+
+#: taddform.subbtn.hint
+msgid "Elvesz"
+msgstr ""
+
+#: taddform.upbtn.caption
+msgid "^"
+msgstr ""
+
+#: taddform.upbtn.hint
+msgid "Feljebb"
+msgstr ""
+
+#: taddoneform.addpicbtn.caption
+msgid "+ &Képfájl"
+msgstr ""
+
+#: taddoneform.addstrbtn.caption
+msgid "+ S&zöveg"
+msgstr ""
+
+#: taddoneform.addtxtbtn.caption
+msgid "+ &Textfájl"
+msgstr ""
+
+#: taddoneform.cancelbtn.caption
+msgctxt "TADDONEFORM.CANCELBTN.CAPTION"
+msgid "Még&sem"
+msgstr ""
+
+#: taddoneform.caption
+msgid "Dia kiválasztása"
+msgstr ""
+
+#: taddoneform.delbtn.caption
+msgid "Tö&röl"
+msgstr ""
+
+#: taddoneform.fixbtn.caption
+msgctxt "TADDONEFORM.FIXBTN.CAPTION"
+msgid "&OK"
+msgstr ""
+
+#: taddoneform.separbtn.caption
+msgctxt "TADDONEFORM.SEPARBTN.CAPTION"
+msgid "&Elválasztó"
+msgstr ""
+
+#: teditorform.akkordbtn.hint
+msgid "Gitárakkordok (Ctrl+G)"
+msgstr ""
+
+#: teditorform.boldbtn.hint
+msgid "Félkövér (Ctrl+B)"
+msgstr ""
+
+#: teditorform.cancelbtn.caption
+msgctxt "TEDITORFORM.CANCELBTN.CAPTION"
+msgid "Még&sem"
+msgstr ""
+
+#: teditorform.chyphbtn.hint
+msgid "Feltételes kötőjel (Ctrl+ – )"
+msgstr ""
+
+#: teditorform.copybtn.hint
+msgid "Másol (Ctrl+C)"
+msgstr ""
+
+#: teditorform.cutbtn.hint
+msgid "Kivág (Ctrl+X)"
+msgstr ""
+
+#: teditorform.editorform.caption
+msgid "Énekszöveg szerkesztése"
+msgstr ""
+
+#: teditorform.italbtn.hint
+msgid "Dőlt (Ctrl+I)"
+msgstr ""
+
+#: teditorform.kottabtn.hint
+msgid "Kotta (Ctrl+K)"
+msgstr ""
+
+#: teditorform.namlbl.caption
+msgid "Ének &neve:"
+msgstr ""
+
+#: teditorform.nbhyphbtn.hint
+msgid "Nem-törhető kötőjel (Ctrl+Shift+ – )"
+msgstr ""
+
+#: teditorform.okbtn.caption
+msgctxt "TEDITORFORM.OKBTN.CAPTION"
+msgid "&OK"
+msgstr ""
+
+#: teditorform.pastebtn.hint
+msgid "Beilleszt (Ctrl+V)"
+msgstr ""
+
+#: teditorform.priorbtn.hint
+msgid "Sortörési javaslat (Ctrl+ ENTER)"
+msgstr ""
+
+#: teditorform.redobtn.hint
+msgid "Mégis (Ctrl+R)"
+msgstr ""
+
+#: teditorform.spacebtn.hint
+msgid "Nem-törhető szóköz (Ctrl+space)"
+msgstr ""
+
+#: teditorform.symbbtn.hint
+msgid "Szimbólumok (Ctrl+S) vagy Ctrl+1..9"
+msgstr ""
+
+#: teditorform.ulbtn.hint
+msgid "Aláhúzott (Ctrl+U)"
+msgstr ""
+
+#: teditorform.undobtn.hint
+msgid "Vissza (Ctrl+Z)"
+msgstr ""
+
+#: teditorform.vsnamed.text
+msgctxt "TEDITORFORM.VSNAMED.TEXT"
+msgid "Edit1"
+msgstr ""
+
+#: teditorform.vsnamlbl.caption
+msgid "&Versszak neve:"
+msgstr ""
+
+#: tfotoform.fotoform.caption
+msgid "Diatár fotó ablak"
+msgstr ""
+
+#: tmainform.adhocbtn.caption
+msgid "+1 Di&a"
+msgstr ""
+
+#: tmainform.caption
+msgctxt "TMAINFORM.CAPTION"
+msgid "Diatár"
+msgstr ""
+
+#: tmainform.edbtn.caption
+msgid "&Módosít"
+msgstr ""
+
+#: tmainform.endbtn.caption
+msgid "&Vége"
+msgstr ""
+
+#: tmainform.fotobtn.hint
+msgid "Fotó ablak"
+msgstr ""
+
+#: tmainform.label1.caption
+msgctxt "TMAINFORM.LABEL1.CAPTION"
+msgid "Ve&títés"
+msgstr ""
+
+#: tmainform.loaddiabtn.caption
+msgctxt "TMAINFORM.LOADDIABTN.CAPTION"
+msgid "Betölté&s"
+msgstr ""
+
+#: tmainform.lockedimg.hint
+msgid "Rögzítve"
+msgstr ""
+
+#: tmainform.lockimage.hint
+msgctxt "TMAINFORM.LOCKIMAGE.HINT"
+msgid "Rögzítés"
+msgstr ""
+
+#: tmainform.lstbtn.caption
+msgid "teljes &Listák"
+msgstr ""
+
+#: tmainform.nextbtn.hint
+msgid "Következő dia"
+msgstr ""
+
+#: tmainform.nextsongbtn.hint
+msgid "Következő ének"
+msgstr ""
+
+#: tmainform.nosoundbtn.hint
+msgid "Hang tiltás"
+msgstr ""
+
+#: tmainform.picbtn.caption
+msgid "Háttérké&p"
+msgstr ""
+
+#: tmainform.prevbtn.hint
+msgctxt "tmainform.prevbtn.hint"
+msgid "Előző dia"
+msgstr ""
+
+#: tmainform.prevsongbtn.hint
+msgid "Előző ének"
+msgstr ""
+
+#: tmainform.savediabtn.caption
+msgid "Me&ntés"
+msgstr ""
+
+#: tmainform.setupbtn.caption
+msgid "&Beállít"
+msgstr ""
+
+#: tmainform.songlstbtn.caption
+msgid "Ének&rend"
+msgstr ""
+
+#: tmainform.songlstbtn.hint
+msgid "Énekrend kilistázása"
+msgstr ""
+
+#: tmainform.unlocked25img.hint
+msgctxt "TMAINFORM.UNLOCKED25IMG.HINT"
+msgid "asdf"
+msgstr ""
+
+#: tmainform.unlockedimg.hint
+msgctxt "TMAINFORM.UNLOCKEDIMG.HINT"
+msgid "Rögzítés"
+msgstr ""
+
+#: tnetoffdlg.cancelbtn.caption
+msgctxt "TNETOFFDLG.CANCELBTN.CAPTION"
+msgid "Még&sem"
+msgstr ""
+
+#: tnetoffdlg.label1.caption
+msgid "A program leállításakor a vetítő gépet is leállíthatja."
+msgstr ""
+
+#: tnetoffdlg.netoffdlg.caption
+msgid "Távoli (vetítő) gép leállítása"
+msgstr ""
+
+#: tnetoffdlg.okbtn.caption
+msgctxt "TNETOFFDLG.OKBTN.CAPTION"
+msgid "&OK"
+msgstr ""
+
+#: tnetoffdlg.pcoffck.caption
+msgid "Vetítő számító&gép kikapcsolása"
+msgstr ""
+
+#: tnetoffdlg.progoffck.caption
+msgid "Vetítő &programból kilépés"
+msgstr ""
+
+#: tnetoffdlg.projoffck.caption
+msgid "&Vetítő projektor kikapcsolása"
+msgstr ""
+
+#: tprojektedform.menu25img.hint
+msgctxt "TPROJEKTEDFORM.MENU25IMG.HINT"
+msgid "asdf"
+msgstr ""
+
+#: tprojektedform.menu75img.hint
+msgctxt "TPROJEKTEDFORM.MENU75IMG.HINT"
+msgid "asdf"
+msgstr ""
+
+#: tprojektedform.menuimage.hint
+msgctxt "TPROJEKTEDFORM.MENUIMAGE.HINT"
+msgid "Rögzítés"
+msgstr ""
+
+#: TPROJEKTEDFORM.MENUITEM1.CAPTION
+msgid "Köv.dia"
+msgstr ""
+
+#: TPROJEKTEDFORM.MENUITEM2.CAPTION
+msgctxt "TPROJEKTEDFORM.MENUITEM2.CAPTION"
+msgid "Előző dia"
+msgstr ""
+
+#: TPROJEKTEDFORM.MENUITEM3.CAPTION
+msgctxt "TPROJEKTEDFORM.MENUITEM3.CAPTION"
+msgid "Vetítés"
+msgstr ""
+
+#: tprojektedform.projektedform.caption
+msgid "Diatár vetítés"
+msgstr ""
+
+#: tpropeditform.allbkcolorck.caption
+msgctxt "TPROPEDITFORM.ALLBKCOLORCK.CAPTION"
+msgid "Háttér:"
+msgstr ""
+
+#: tpropeditform.allboldck.caption
+msgctxt "TPROPEDITFORM.ALLBOLDCK.CAPTION"
+msgid "Félkövér"
+msgstr ""
+
+#: tpropeditform.allcsizeck.caption
+msgctxt "TPROPEDITFORM.ALLCSIZECK.CAPTION"
+msgid "Címsor:"
+msgstr ""
+
+#: tpropeditform.allfontck.caption
+msgctxt "TPROPEDITFORM.ALLFONTCK.CAPTION"
+msgid "Betűtípus:"
+msgstr ""
+
+#: tpropeditform.allfsizeck.caption
+msgctxt "TPROPEDITFORM.ALLFSIZECK.CAPTION"
+msgid "Betűméret:"
+msgstr ""
+
+#: tpropeditform.allhcenterck.caption
+msgctxt "TPROPEDITFORM.ALLHCENTERCK.CAPTION"
+msgid "Sorközépre"
+msgstr ""
+
+#: tpropeditform.allhicolorck.caption
+msgctxt "TPROPEDITFORM.ALLHICOLORCK.CAPTION"
+msgid "Kiemelt:"
+msgstr ""
+
+#: tpropeditform.allindentck.caption
+msgctxt "TPROPEDITFORM.ALLINDENTCK.CAPTION"
+msgid "Behúzás:"
+msgstr ""
+
+#: tpropeditform.alloffcolorck.caption
+msgctxt "TPROPEDITFORM.ALLOFFCOLORCK.CAPTION"
+msgid "Kikapcsolt:"
+msgstr ""
+
+#: tpropeditform.allpg.caption
+msgid "&Közös"
+msgstr ""
+
+#: tpropeditform.allspacingck.caption
+msgctxt "TPROPEDITFORM.ALLSPACINGCK.CAPTION"
+msgid "Sorköz:"
+msgstr ""
+
+#: tpropeditform.alltxcolorck.caption
+msgctxt "TPROPEDITFORM.ALLTXCOLORCK.CAPTION"
+msgid "Betű:"
+msgstr ""
+
+#: tpropeditform.allvcenterck.caption
+msgctxt "TPROPEDITFORM.ALLVCENTERCK.CAPTION"
+msgid "Lapközépre"
+msgstr ""
+
+#: tpropeditform.cancelbtn.caption
+msgctxt "TPROPEDITFORM.CANCELBTN.CAPTION"
+msgid "Még&sem"
+msgstr ""
+
+#: tpropeditform.colordlg.title
+msgid "Szín választása"
+msgstr ""
+
+#: tpropeditform.dbldiack.caption
+msgid "Összekapcsolva a következő diával"
+msgstr ""
+
+#: tpropeditform.diabkcolorck.caption
+msgctxt "TPROPEDITFORM.DIABKCOLORCK.CAPTION"
+msgid "Háttér:"
+msgstr ""
+
+#: tpropeditform.diaboldck.caption
+msgctxt "TPROPEDITFORM.DIABOLDCK.CAPTION"
+msgid "Félkövér"
+msgstr ""
+
+#: tpropeditform.diacsizeck.caption
+msgctxt "TPROPEDITFORM.DIACSIZECK.CAPTION"
+msgid "Címsor:"
+msgstr ""
+
+#: tpropeditform.diafontck.caption
+msgctxt "TPROPEDITFORM.DIAFONTCK.CAPTION"
+msgid "Betűtípus:"
+msgstr ""
+
+#: tpropeditform.diafsizeck.caption
+msgctxt "TPROPEDITFORM.DIAFSIZECK.CAPTION"
+msgid "Betűméret:"
+msgstr ""
+
+#: tpropeditform.diahcenterck.caption
+msgctxt "TPROPEDITFORM.DIAHCENTERCK.CAPTION"
+msgid "Sorközépre"
+msgstr ""
+
+#: tpropeditform.diahicolorck.caption
+msgctxt "TPROPEDITFORM.DIAHICOLORCK.CAPTION"
+msgid "Kiemelt:"
+msgstr ""
+
+#: tpropeditform.diaindentck.caption
+msgctxt "TPROPEDITFORM.DIAINDENTCK.CAPTION"
+msgid "Behúzás:"
+msgstr ""
+
+#: tpropeditform.dialbl.caption
+msgid "Diatár:"
+msgstr ""
+
+#: tpropeditform.diapg.caption
+msgid "Eg&yedi"
+msgstr ""
+
+#: tpropeditform.diaspacingck.caption
+msgctxt "TPROPEDITFORM.DIASPACINGCK.CAPTION"
+msgid "Sorköz:"
+msgstr ""
+
+#: tpropeditform.diatxcolorck.caption
+msgctxt "TPROPEDITFORM.DIATXCOLORCK.CAPTION"
+msgid "Betű:"
+msgstr ""
+
+#: tpropeditform.diavcenterck.caption
+msgctxt "TPROPEDITFORM.DIAVCENTERCK.CAPTION"
+msgid "Lapközépre"
+msgstr ""
+
+#: tpropeditform.fotobtn.caption
+msgctxt "TPROPEDITFORM.FOTOBTN.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tpropeditform.fotofilelbl.caption
+msgctxt "TPROPEDITFORM.FOTOFILELBL.CAPTION"
+msgid "fájnév..."
+msgstr ""
+
+#: tpropeditform.fotoorigrb.caption
+msgid "Eredeti &fotó"
+msgstr ""
+
+#: tpropeditform.fotoprivrb.caption
+msgid "Egyedi f&otó"
+msgstr ""
+
+#: tpropeditform.givemesoundlbl.caption
+msgid "Ehhez a diához nincs eredeti hangfájl rendelve."
+msgstr ""
+
+#: tpropeditform.groupbox1.caption
+msgctxt "TPROPEDITFORM.GROUPBOX1.CAPTION"
+msgid " Színek: "
+msgstr ""
+
+#: tpropeditform.groupbox2.caption
+msgctxt "TPROPEDITFORM.GROUPBOX2.CAPTION"
+msgid " Színek: "
+msgstr ""
+
+#: tpropeditform.label1.caption
+msgid "Időzített továbbítás (mperc):"
+msgstr ""
+
+#: tpropeditform.label2.caption
+msgid "Erre a diára vonatkozó egyedi tulajdonságok:"
+msgstr ""
+
+#: tpropeditform.label3.caption
+msgid "Az egész énekrendre vonatkozó közös tulajdonságok:"
+msgstr ""
+
+#: tpropeditform.label4.caption
+msgctxt "TPROPEDITFORM.LABEL4.CAPTION"
+msgid "Stílus:"
+msgstr ""
+
+#: tpropeditform.label5.caption
+msgctxt "TPROPEDITFORM.LABEL5.CAPTION"
+msgid "Stílus:"
+msgstr ""
+
+#: tpropeditform.okbtn.caption
+msgctxt "TPROPEDITFORM.OKBTN.CAPTION"
+msgid "&OK"
+msgstr ""
+
+#: tpropeditform.picbtn.caption
+msgctxt "TPROPEDITFORM.PICBTN.CAPTION"
+msgid "..."
+msgstr ""
+
+#: TPROPEDITFORM.PROPEDITFORM.CAPTION
+msgctxt "TPROPEDITFORM.PROPEDITFORM.CAPTION"
+msgid "Tulajdonságok"
+msgstr ""
+
+#: tpropeditform.sndbtn.caption
+msgctxt "TPROPEDITFORM.SNDBTN.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tpropeditform.sndfilelbl.caption
+msgctxt "TPROPEDITFORM.SNDFILELBL.CAPTION"
+msgid "fájnév..."
+msgstr ""
+
+#: tpropeditform.sndorigrb.caption
+msgid "E&redeti hang"
+msgstr ""
+
+#: tpropeditform.sndpg.caption
+msgid "&Hang és fotó"
+msgstr ""
+
+#: tpropeditform.sndprivrb.caption
+msgid "E&gyedi hang"
+msgstr ""
+
+#: tpropeditform.soundck.caption
+msgid "H&ang lejátszása engedélyezve"
+msgstr ""
+
+#: tpropeditform.soundfwck.caption
+msgid "Lejátszás &után következő diára"
+msgstr ""
+
+#: tpropeditform.txtbtn.caption
+msgctxt "TPROPEDITFORM.TXTBTN.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tpropeditform.typdiarb.caption
+msgid "Diatár-beli ének"
+msgstr ""
+
+#: tpropeditform.typlitrb.caption
+msgid "Begépelt ének"
+msgstr ""
+
+#: tpropeditform.typpg.caption
+msgid "&Típus"
+msgstr ""
+
+#: tpropeditform.typpicrb.caption
+msgid "Kép-fájl"
+msgstr ""
+
+#: tpropeditform.typseprb.caption
+msgid "Elválasztó"
+msgstr ""
+
+#: tpropeditform.typtxtrb.caption
+msgid "Szöveg-fájl"
+msgstr ""
+
+#: tpropeditform.viewpg.caption
+msgid "&Előnézet"
+msgstr ""
+
+#: tsetupform.akkordck.caption
+msgid "/AKKORD = akkordok a helyi (vezérlő) gépen"
+msgstr ""
+
+#: tsetupform.askprofilbtn.caption
+msgid "Rákérdez a profilra"
+msgstr ""
+
+#: tsetupform.autoloaddiack.caption
+msgid "Adott naphoz mentett énekrend betöltése indításkor"
+msgstr ""
+
+#: tsetupform.autosndfwdck.caption
+msgid "Utána automatikus továbbítás"
+msgstr ""
+
+#: tsetupform.bkpicbtn.caption
+msgctxt "TSETUPFORM.BKPICBTN.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tsetupform.bkpiced.text
+msgid "BkPicEd"
+msgstr ""
+
+#: tsetupform.boldck.caption
+msgctxt "TSETUPFORM.BOLDCK.CAPTION"
+msgid "Félkövér"
+msgstr ""
+
+#: tsetupform.cancelbtn.caption
+msgid "Mégsem"
+msgstr ""
+
+#: tsetupform.caption
+msgctxt "TSETUPFORM.CAPTION"
+msgid "Beállítások"
+msgstr ""
+
+#: tsetupform.dbldiack.caption
+msgid "Dupla diák lehetősége (két versszak egy képre)"
+msgstr ""
+
+#: tsetupform.delprofilbtn.caption
+msgid "Töröl"
+msgstr ""
+
+#: tsetupform.diadir2btn.caption
+msgctxt "TSETUPFORM.DIADIR2BTN.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tsetupform.diadir2ed.text
+msgctxt "TSETUPFORM.DIADIR2ED.TEXT"
+msgid "Edit1"
+msgstr ""
+
+#: tsetupform.diadirbtn.caption
+msgctxt "TSETUPFORM.DIADIRBTN.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tsetupform.diadired.text
+msgctxt "TSETUPFORM.DIADIRED.TEXT"
+msgid "Edit1"
+msgstr ""
+
+#: tsetupform.diatarlbl1.caption
+msgid "Megjelenítendő"
+msgstr ""
+
+#: tsetupform.diatarlbl2.caption
+msgid "Énekrend-listába"
+msgstr ""
+
+#: tsetupform.dired.text
+msgid "DirEd"
+msgstr ""
+
+#: tsetupform.dirselbtn.caption
+msgctxt "TSETUPFORM.DIRSELBTN.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tsetupform.dualoncontrolck.caption
+msgid "/DUAL = a VEZERLO gépen is legyen vetítő képernyő"
+msgstr ""
+
+#: tsetupform.endprojck.caption
+msgid "Kilépéskor a vetítő program leállítása"
+msgstr ""
+
+#: tsetupform.enekrendbtn1.caption
+msgctxt "TSETUPFORM.ENEKRENDBTN1.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tsetupform.enekrendbtn2.caption
+msgctxt "TSETUPFORM.ENEKRENDBTN2.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tsetupform.enekrendbtn3.caption
+msgctxt "TSETUPFORM.ENEKRENDBTN3.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tsetupform.enekrendbtn4.caption
+msgctxt "TSETUPFORM.ENEKRENDBTN4.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tsetupform.enekrendbtn5.caption
+msgctxt "TSETUPFORM.ENEKRENDBTN5.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tsetupform.enekrendbtn6.caption
+msgctxt "TSETUPFORM.ENEKRENDBTN6.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tsetupform.enekrendbtn7.caption
+msgctxt "TSETUPFORM.ENEKRENDBTN7.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tsetupform.enekrendbtn8.caption
+msgctxt "TSETUPFORM.ENEKRENDBTN8.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tsetupform.enekrendbtn9.caption
+msgctxt "TSETUPFORM.ENEKRENDBTN9.CAPTION"
+msgid "..."
+msgstr ""
+
+#: tsetupform.enekrendck1.caption
+msgctxt "TSETUPFORM.ENEKRENDCK1.CAPTION"
+msgid "1."
+msgstr ""
+
+#: tsetupform.enekrendck2.caption
+msgctxt "TSETUPFORM.ENEKRENDCK2.CAPTION"
+msgid "2."
+msgstr ""
+
+#: tsetupform.enekrendck3.caption
+msgid "3."
+msgstr ""
+
+#: tsetupform.enekrendck4.caption
+msgid "4."
+msgstr ""
+
+#: tsetupform.enekrendck5.caption
+msgid "5."
+msgstr ""
+
+#: tsetupform.enekrendck6.caption
+msgid "6."
+msgstr ""
+
+#: tsetupform.enekrendck7.caption
+msgid "7."
+msgstr ""
+
+#: tsetupform.enekrendck8.caption
+msgid "8."
+msgstr ""
+
+#: tsetupform.enekrendck9.caption
+msgid "9."
+msgstr ""
+
+#: tsetupform.enekrended1.text
+msgid "(mindig ez a fő énekrend)"
+msgstr ""
+
+#: tsetupform.epask1ck.caption
+msgctxt "TSETUPFORM.EPASK1CK.CAPTION"
+msgid "Rákérdez"
+msgstr ""
+
+#: tsetupform.epask2ck.caption
+msgctxt "TSETUPFORM.EPASK2CK.CAPTION"
+msgid "Rákérdez"
+msgstr ""
+
+#: tsetupform.fxbtn.caption
+msgctxt "TSETUPFORM.FXBTN.CAPTION"
+msgid "Módosít"
+msgstr ""
+
+#: tsetupform.fxck.caption
+msgid "Funkcióbillentyűk használata"
+msgstr ""
+
+#: tsetupform.fxkotetbtn.caption
+msgid "Egész kötet"
+msgstr ""
+
+#: tsetupform.groupbox1.caption
+msgid "Margók"
+msgstr ""
+
+#: tsetupform.groupbox2.caption
+msgctxt "TSETUPFORM.GROUPBOX2.CAPTION"
+msgid " Színek: "
+msgstr ""
+
+#: tsetupform.hcenterck.caption
+msgctxt "TSETUPFORM.HCENTERCK.CAPTION"
+msgid "Sorközépre"
+msgstr ""
+
+#: tsetupform.hidecursorck.caption
+msgid "Egér kizárása a vetítési területről"
+msgstr ""
+
+#: tsetupform.hidefxxck.caption
+msgid "Funkcióbillentyűk elrejtése"
+msgstr ""
+
+#: tsetupform.hidetitleck.caption
+msgid "Címsor elrejtése"
+msgstr ""
+
+#: tsetupform.hintck.caption
+msgid "Kis előkép:"
+msgstr ""
+
+#: tsetupform.indentedlstck.caption
+msgid "Bal behúzás az énekrend-listákban"
+msgstr ""
+
+#: tsetupform.inverzkottack.caption
+msgid "Inverz kottaszínek"
+msgstr ""
+
+#: tsetupform.ipnumed.text
+msgid "IpNumEd"
+msgstr ""
+
+#: tsetupform.ipported.text
+msgid "IpPortEd"
+msgstr ""
+
+#: tsetupform.kbaltlbl.caption
+msgid "Alt"
+msgstr ""
+
+#: tsetupform.kbctllbl.caption
+msgid "Ctrl"
+msgstr ""
+
+#: tsetupform.kbfunclbl.caption
+msgid "Funkció"
+msgstr ""
+
+#: tsetupform.kbkeylbl.caption
+msgid "Billentyű"
+msgstr ""
+
+#: tsetupform.kbnomodbtn.caption
+msgid "Módosítás előtti vissza"
+msgstr ""
+
+#: tsetupform.kbresetbtn.caption
+msgid "Alapértelmezett vissza"
+msgstr ""
+
+#: tsetupform.kbshlbl.caption
+msgid "Shift"
+msgstr ""
+
+#: tsetupform.korusck.caption
+msgid "/KORUS = kar a távoli (vetítő) gép körül"
+msgstr ""
+
+#: tsetupform.kottack.caption
+msgid "/KOTTA = kotta a helyi (vezérlő) gépen"
+msgstr ""
+
+#: tsetupform.label1.caption
+msgid "&Aktuális profil:"
+msgstr ""
+
+#: tsetupform.label10.caption
+msgctxt "TSETUPFORM.LABEL10.CAPTION"
+msgid "Sorköz:"
+msgstr ""
+
+#: tsetupform.label11.caption
+msgid "Háttérkép (amikor nincs vetítés):"
+msgstr ""
+
+#: tsetupform.label12.caption
+msgid "Megjelenés (msec):"
+msgstr ""
+
+#: tsetupform.label13.caption
+msgid "Látható (msec):"
+msgstr ""
+
+#: tsetupform.label14.caption
+msgid "Dia-mentési/betöltési könyvtár:"
+msgstr ""
+
+#: tsetupform.label15.caption
+msgctxt "TSETUPFORM.LABEL15.CAPTION"
+msgid "Betűméret:"
+msgstr ""
+
+#: tsetupform.label17.caption
+msgid "Speciális jelek: \\\\ = '\\' jel; \\xHH = hexa (ahol HH lehet 00, 01, .. fe, ff)"
+msgstr ""
+
+#: tsetupform.label18.caption
+msgctxt "TSETUPFORM.LABEL18.CAPTION"
+msgid "Port:"
+msgstr ""
+
+#: tsetupform.label19.caption
+msgid "Ismétlés:"
+msgstr ""
+
+#: tsetupform.label2.caption
+msgctxt "TSETUPFORM.LABEL2.CAPTION"
+msgid "Háttér:"
+msgstr ""
+
+#: tsetupform.label20.caption
+msgid "Első ism:"
+msgstr ""
+
+#: tsetupform.label21.caption
+msgid "1. gomb:"
+msgstr ""
+
+#: tsetupform.label22.caption
+msgid "2. gomb:"
+msgstr ""
+
+#: tsetupform.label23.caption
+msgid "3. gomb:"
+msgstr ""
+
+#: tsetupform.label24.caption
+msgid "4. gomb:"
+msgstr ""
+
+#: tsetupform.label25.caption
+msgid "5. gomb:"
+msgstr ""
+
+#: tsetupform.label26.caption
+msgid "6. gomb:"
+msgstr ""
+
+#: tsetupform.label27.caption
+msgid "7. gomb:"
+msgstr ""
+
+#: tsetupform.label28.caption
+msgid "8. gomb:"
+msgstr ""
+
+#: tsetupform.label29.caption
+msgid "1. szignál:"
+msgstr ""
+
+#: tsetupform.label3.caption
+msgid "Szöveg:"
+msgstr ""
+
+#: tsetupform.label30.caption
+msgid "2. szignál:"
+msgstr ""
+
+#: tsetupform.label31.caption
+msgid "Vezérlő képernyő:"
+msgstr ""
+
+#: tsetupform.label32.caption
+msgid "Vetítő képernyő:"
+msgstr ""
+
+#: tsetupform.label33.caption
+msgctxt "TSETUPFORM.LABEL33.CAPTION"
+msgid "Port:"
+msgstr ""
+
+#: tsetupform.label34.caption
+msgid "Bal:"
+msgstr ""
+
+#: tsetupform.label35.caption
+msgid "Jobb:"
+msgstr ""
+
+#: tsetupform.label36.caption
+msgid "Felső:"
+msgstr ""
+
+#: tsetupform.label37.caption
+msgid "Alsó:"
+msgstr ""
+
+#: tsetupform.label38.caption
+msgctxt "TSETUPFORM.LABEL38.CAPTION"
+msgid "Betűtípus:"
+msgstr ""
+
+#: tsetupform.label39.caption
+msgid "Döntés:"
+msgstr ""
+
+#: tsetupform.label4.caption
+msgctxt "TSETUPFORM.LABEL4.CAPTION"
+msgid "Kikapcsolt:"
+msgstr ""
+
+#: tsetupform.label40.caption
+msgid " Az LPT port kezelése nem használható!"
+msgstr ""
+
+#: tsetupform.label41.caption
+msgctxt "TSETUPFORM.LABEL41.CAPTION"
+msgid "Port:"
+msgstr ""
+
+#: tsetupform.label42.caption
+msgid "Sebesség:"
+msgstr ""
+
+#: tsetupform.label43.caption
+msgid "ezredmp"
+msgstr ""
+
+#: tsetupform.label44.caption
+msgid "Fotó képernyő:"
+msgstr ""
+
+#: tsetupform.label45.caption
+msgctxt "TSETUPFORM.LABEL45.CAPTION"
+msgid "1."
+msgstr ""
+
+#: tsetupform.label46.caption
+msgctxt "TSETUPFORM.LABEL46.CAPTION"
+msgid "2."
+msgstr ""
+
+#: tsetupform.label47.caption
+msgid "Az itt beállított üzemmód NEM kerül rögzítésre, a programot indítsa /VEZERLO illetve /VETITO parancssorral!"
+msgstr ""
+
+#: tsetupform.label48.caption
+msgctxt "TSETUPFORM.LABEL48.CAPTION"
+msgid "Kiemelt:"
+msgstr ""
+
+#: tsetupform.label49.caption
+msgid "Betöltési hibák:"
+msgstr ""
+
+#: tsetupform.label5.caption
+msgctxt "TSETUPFORM.LABEL5.CAPTION"
+msgid "Betűtípus:"
+msgstr ""
+
+#: tsetupform.label50.caption
+msgid "Egynél több énekrend engedélyezése esetén előre betölthetünk rendszeresen szükséges énekrendeket (pl. litánia, rózsafűzér):"
+msgstr ""
+
+#: tsetupform.label51.caption
+msgid "Fotó ablak:"
+msgstr ""
+
+#: tsetupform.label6.caption
+msgctxt "TSETUPFORM.LABEL6.CAPTION"
+msgid "Betűméret:"
+msgstr ""
+
+#: tsetupform.label7.caption
+msgid "Címsor betűméret:"
+msgstr ""
+
+#: tsetupform.label8.caption
+msgid "Globális stílus:"
+msgstr ""
+
+#: tsetupform.label9.caption
+msgid "Behúzás (karakter):"
+msgstr ""
+
+#: tsetupform.lstlimck1.caption
+msgid "Lista görgetése középtájra (egyéni beállítás szerint)"
+msgstr ""
+
+#: tsetupform.lstlimck2.caption
+msgid "Beállítás engedélyezése (nyilak a lista jobb szélén)"
+msgstr ""
+
+#: tsetupform.lstsearchck.caption
+msgid "Ének-kereső funkció"
+msgstr ""
+
+#: tsetupform.mirrorck.caption
+msgid "Tükrözött"
+msgstr ""
+
+#: tsetupform.modebtn.caption
+msgid "Üzemmód"
+msgstr ""
+
+#: tsetupform.modprofilbtn.caption
+msgctxt "TSETUPFORM.MODPROFILBTN.CAPTION"
+msgid "Módosít"
+msgstr ""
+
+#: tsetupform.netdirbtn.caption
+msgid "Hálózati könyvtár:"
+msgstr ""
+
+#: tsetupform.netipbtn.caption
+msgid "IP cím:"
+msgstr ""
+
+#: tsetupform.newprofilbtn.caption
+msgid "Új"
+msgstr ""
+
+#: tsetupform.noqueryck.caption
+msgid "Ne figyelmeztessen énekrend mentésére"
+msgstr ""
+
+#: tsetupform.notxttitleck.caption
+msgid "TXT fájlok nevét ne írja címsorba"
+msgstr ""
+
+#: tsetupform.okbtn.caption
+msgctxt "TSETUPFORM.OKBTN.CAPTION"
+msgid "&OK"
+msgstr ""
+
+#: tsetupform.pgdia.caption
+msgid "PgDia"
+msgstr ""
+
+#: tsetupform.pgdtx.caption
+msgid "PgDtx"
+msgstr ""
+
+#: tsetupform.pgfxx.caption
+msgid "PgFxx"
+msgstr ""
+
+#: tsetupform.pgkeys.caption
+msgid "PgKeys"
+msgstr ""
+
+#: tsetupform.pglst.caption
+msgid "PgLst"
+msgstr ""
+
+#: tsetupform.pgmode.caption
+msgid "PgMode"
+msgstr ""
+
+#: tsetupform.pgnet.caption
+msgid "PgNet"
+msgstr ""
+
+#: tsetupform.pgport.caption
+msgid "PgPort"
+msgstr ""
+
+#: tsetupform.pgprofil.caption
+msgid "PgProfil"
+msgstr ""
+
+#: tsetupform.pgproj.caption
+msgid "PgProj"
+msgstr ""
+
+#: tsetupform.pgrot.caption
+msgid "PgRot"
+msgstr ""
+
+#: tsetupform.pgser.caption
+msgid "PgSer"
+msgstr ""
+
+#: tsetupform.pgshow.caption
+msgid "PgShow"
+msgstr ""
+
+#: tsetupform.pgsign.caption
+msgid "PgSign"
+msgstr ""
+
+#: tsetupform.porttype.caption
+msgid "Típus"
+msgstr ""
+
+#: tsetupform.pressingck.caption
+msgid "Lenyomás az aktív állapot"
+msgstr ""
+
+#: tsetupform.projsyncck.caption
+msgid "Projektor szinkronizáció segítése"
+msgstr ""
+
+#: tsetupform.resizeck.caption
+msgid "Automatikus kicsinyítés"
+msgstr ""
+
+#: tsetupform.rot0ck.caption
+msgid "0°"
+msgstr ""
+
+#: tsetupform.rot180ck.caption
+msgid "180°"
+msgstr ""
+
+#: tsetupform.rot270ck.caption
+msgid "270°"
+msgstr ""
+
+#: tsetupform.rot90ck.caption
+msgid "90°"
+msgstr ""
+
+#: tsetupform.scholack.caption
+msgid "/SCHOLA = kar a helyi gép körül"
+msgstr ""
+
+#: tsetupform.scrolllockck.caption
+msgid "Scroll Lock elrejti a főablakot"
+msgstr ""
+
+#: tsetupform.serialaskoffck.caption
+msgctxt "TSETUPFORM.SERIALASKOFFCK.CAPTION"
+msgid "Rákérdez"
+msgstr ""
+
+#: tsetupform.serialaskonck.caption
+msgctxt "TSETUPFORM.SERIALASKONCK.CAPTION"
+msgid "Rákérdez"
+msgstr ""
+
+#: tsetupform.serialflowck.caption
+msgid "Vezérlő vezetékek bekapcsolása"
+msgstr ""
+
+#: tsetupform.serialnetaskoffck.caption
+msgctxt "TSETUPFORM.SERIALNETASKOFFCK.CAPTION"
+msgid "Rákérdez"
+msgstr ""
+
+#: tsetupform.serialnetaskonck.caption
+msgctxt "TSETUPFORM.SERIALNETASKONCK.CAPTION"
+msgid "Rákérdez"
+msgstr ""
+
+#: tsetupform.serialoffprojck.caption
+msgctxt "TSETUPFORM.SERIALOFFPROJCK.CAPTION"
+msgid "Kilépéskor a vetítő projektor leállítása"
+msgstr ""
+
+#: tsetupform.serialonprojck.caption
+msgid "Induláskor a vetítő projektor elindítása"
+msgstr ""
+
+#: tsetupform.sertestbtn.caption
+msgid "&Teszt"
+msgstr ""
+
+#: tsetupform.shutdownck.caption
+msgid "Kilépéskor a vetítő számítógép leállítása"
+msgstr ""
+
+#: tsetupform.songlstck.caption
+msgid "\"Énekrend\" lista gomb (főablakban alul)"
+msgstr ""
+
+#: tsetupform.soundck.caption
+msgid "Hang-fájlok lejátszása"
+msgstr ""
+
+#: tsetupform.startprofilgrp.caption
+msgid "Induláskor..."
+msgstr ""
+
+#: tsetupform.strikeprojck.caption
+msgid "feltűnő \"VETÍTÉS\" jelzések"
+msgstr ""
+
+#: tsetupform.switchbtn.caption
+msgid "&Átvált"
+msgstr ""
+
+#: tsetupform.tabsheet1.caption
+msgid "Bekapcsolás"
+msgstr ""
+
+#: tsetupform.tabsheet2.caption
+msgid "Kikapcsolás"
+msgstr ""
+
+#: tsetupform.tabsheet3.caption
+msgctxt "tsetupform.tabsheet3.caption"
+msgid "Vetítés"
+msgstr ""
+
+#: tsetupform.tabsheet4.caption
+msgid "Leoltás"
+msgstr ""
+
+#: tsetupform.tabsheet5.caption
+msgid "PgScr"
+msgstr ""
+
+#: tsetupform.tavakkordck.caption
+msgid "akkordok a távoli (vetítő) gépen"
+msgstr ""
+
+#: tsetupform.tavkottack.caption
+msgid "kotta a távoli (vetítő) gépen"
+msgstr ""
+
+#: tsetupform.thisprofilbtn.caption
+msgid "Mindig ezzel indít:"
+msgstr ""
+
+#: tsetupform.transck.caption
+msgid "Áttűnés:"
+msgstr ""
+
+#: tsetupform.usetxhiback.caption
+msgid "listába szürkével"
+msgstr ""
+
+#: tsetupform.usetxhibamsgck.caption
+msgid "hibaüzenet"
+msgstr ""
+
+#: tsetupform.vcenterck.caption
+msgctxt "TSETUPFORM.VCENTERCK.CAPTION"
+msgid "Lapközépre"
+msgstr ""
+
+#: \n 
+msgid " újsor (\\x0A); \\r = kocsivissza (\\x0D); \\b = backspace (\\x08);"
+msgstr ""
+
+#: \t 
+msgid " tab (\\x09); \\wHH = várakozás (HH hexa tizedmásodpercig)"
+msgstr ""
+
