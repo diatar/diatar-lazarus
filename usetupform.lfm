@@ -2490,7 +2490,7 @@ object SetupForm: TSetupForm
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.2.6.0'
   object Label1: TLabel
     Left = 212
     Height = 35
@@ -2593,8 +2593,8 @@ object SetupForm: TSetupForm
     Height = 388
     Top = 32
     Width = 481
-    ActivePage = PgRot
-    TabIndex = 13
+    ActivePage = PgShow
+    TabIndex = 0
     TabOrder = 5
     object PgShow: TTabSheet
       Caption = 'PgShow'
@@ -2662,8 +2662,8 @@ object SetupForm: TSetupForm
       object NoTxtTitleCk: TCheckBox
         Left = 82
         Height = 19
-        Top = 156
-        Width = 192
+        Top = 184
+        Width = 190
         Caption = 'TXT fájlok nevét ne írja címsorba'
         TabOrder = 6
       end
@@ -2679,7 +2679,7 @@ object SetupForm: TSetupForm
       object SongLstCk: TCheckBox
         Left = 82
         Height = 19
-        Top = 185
+        Top = 213
         Width = 230
         Caption = '"Énekrend" lista gomb (főablakban alul)'
         TabOrder = 7
@@ -2720,18 +2720,26 @@ object SetupForm: TSetupForm
       object StrikeProjCk: TCheckBox
         Left = 82
         Height = 19
-        Top = 212
-        Width = 158
+        Top = 240
+        Width = 156
         Caption = 'Feltűnő "VETÍTÉS" jelzések'
         TabOrder = 10
       end
       object LargeBtnsCk: TCheckBox
         Left = 82
         Height = 19
-        Top = 239
+        Top = 267
         Width = 198
         Caption = 'Nagy gombok érintőképernyőhöz'
         TabOrder = 11
+      end
+      object AutoSave: TCheckBox
+        Left = 82
+        Height = 19
+        Top = 156
+        Width = 182
+        Caption = 'Automatikus énekrend mentés'
+        TabOrder = 12
       end
     end
     object PgProj: TTabSheet
@@ -4104,7 +4112,7 @@ object SetupForm: TSetupForm
         Left = 8
         Height = 19
         Top = 230
-        Width = 225
+        Width = 223
         Caption = '/KOTTA = kotta a helyi (vezérlő) gépen'
         TabOrder = 6
       end
@@ -4604,13 +4612,13 @@ object SetupForm: TSetupForm
         end
         object TabSheet2: TTabSheet
           Caption = 'Kikapcsolás'
-          ClientHeight = 196
-          ClientWidth = 468
+          ClientHeight = 172
+          ClientWidth = 464
           object SerialAskOffCk: TCheckBox
             Left = 4
-            Height = 24
+            Height = 19
             Top = 2
-            Width = 89
+            Width = 67
             Caption = 'Rákérdez'
             TabOrder = 0
           end
@@ -4625,8 +4633,8 @@ object SetupForm: TSetupForm
         end
         object TabSheet3: TTabSheet
           Caption = 'Vetítés'
-          ClientHeight = 196
-          ClientWidth = 468
+          ClientHeight = 172
+          ClientWidth = 464
           object SerProjEd: TMemo
             Left = 0
             Height = 146
@@ -4638,8 +4646,8 @@ object SetupForm: TSetupForm
         end
         object TabSheet4: TTabSheet
           Caption = 'Leoltás'
-          ClientHeight = 196
-          ClientWidth = 468
+          ClientHeight = 172
+          ClientWidth = 464
           object SerBlankEd: TMemo
             Left = 0
             Height = 146
@@ -4687,7 +4695,7 @@ object SetupForm: TSetupForm
         Left = 5
         Height = 19
         Top = 5
-        Width = 71
+        Width = 70
         Caption = 'Tükrözött'
         OnChange = XBorderEdChange
         TabOrder = 0
@@ -4970,7 +4978,7 @@ object SetupForm: TSetupForm
       'ColorS=F0FBFF'
       'ColorT=A4A0A0'
     )
-    left = 564
-    top = 416
+    Left = 564
+    Top = 416
   end
 end

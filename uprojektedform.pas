@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2022 József Rieth
+Copyright 2005-2023 József Rieth
 
     This file is part of Diatar.
 
@@ -836,6 +836,7 @@ begin
   Dest.Font.Color:=CP.TxColor;
   Dest.Font.Size:=CP.TitleSize;
   Dest.Pen.Color:=CP.TxColor;
+  Dest.Brush.Color:=CP.BkColor;
 
   y0:=0;
   if not Globals.HideTitle then begin
@@ -866,8 +867,8 @@ begin
   Painter.DefFS:=dfs;
   Painter.HCenter:=(CP.HCenter=b3TRUE);
   Painter.VCenter:=(CP.VCenter=b3TRUE);
-  Painter.UseAkkord:=Globals.UseAkkord or Globals.CmdLineAkkord;
-  Painter.UseKotta:=Globals.UseKotta or Globals.CmdLineKotta;
+  Painter.UseAkkord:=Globals.HelyiAkkord or Globals.CmdLineAkkord;
+  Painter.UseKotta:=(Globals.HelyiKotta or Globals.CmdLineKotta) and Globals.UseKotta;
   Painter.InverzKotta:=Globals.InverzKotta;
   sch:=(Globals.ScholaMode or Globals.CmdLineSchola);
   Painter.UseAkkordLines:=sch;

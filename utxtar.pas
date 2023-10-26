@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2022 József Rieth
+Copyright 2005-2023 József Rieth
 
     This file is part of Diatar.
 
@@ -1412,7 +1412,7 @@ var
   tmpname : string;
   f : TextFile;
   sl : tStringList;
-  s,sb,fb : string;
+  s,fn,sb,fb : string;
 
 {$ifdef linux}
   procedure RenameSavedFile(const oldname,newname : string);
@@ -1495,21 +1495,21 @@ begin
 
 //hangok kiirasa
   k:=0; //kiirasok szama
-  s:=ChangeFileExt(FileName,'.dtz'); sb:=s; fb:=s;
+  fn:=ChangeFileExt(FileName,'.dtz'); sb:=fn; fb:=fn;
   DeleteFileUTF8(tmpname);
   AssignFile(f,UTF8ToSys(tmpname));
   Rewrite(f);
   try
     if SoundFileBase>'' then begin
-      writeln(f,'B'+IncludeTrailingPathDelimiter(
-        ExtractRelativePath(ExtractFilePath(s),SoundFileBase)));
-      sb:=SoundFileBase+'xxx'; //nem a fajlnevhez, hanem a bazis konyvtarhoz lesz relativ
+      s:=IncludeTrailingPathDelimiter(ExtractRelativePath(ExtractFilePath(fn),SoundFileBase));
+      writeln(f,'B'+s);
+      sb:=CreateAbsolutePath(SoundFileBase,ExtractFilePath(fn))+'xxx.tmp';
       inc(k);
     end;
     if FotoFileBase>'' then begin
-      writeln(f,'b'+IncludeTrailingPathDelimiter(
-        ExtractRelativePath(ExtractFilePath(s),FotoFileBase)));
-      fb:=FotoFileBase+'xxx'; //nem a fajlnevhez, hanem a bazis konyvtarhoz lesz relativ
+      s:=IncludeTrailingPathDelimiter(ExtractRelativePath(ExtractFilePath(fn),FotoFileBase));
+      writeln(f,'b'+s);
+      fb:=CreateAbsolutePath(FotoFileBase,ExtractFilePath(fn))+'xxx.tmp';
       inc(k);
     end;
     for i:=0 to fVers.Count-1 do begin
@@ -1542,7 +1542,7 @@ begin
     CloseFile(f);
   end;
 
-  if k>0 then RenameSavedFile(ChangeFileExt(s,'.zbk'),s);
+  if k>0 then RenameSavedFile(ChangeFileExt(fn,'.zbk'),fn);
   DeleteFileUTF8(tmpname);
 
   Modified:=false;

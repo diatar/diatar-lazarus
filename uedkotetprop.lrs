@@ -4008,7 +4008,7 @@ LazarusResources.Add('TEdKPropForm','FORMDATA',[
   +#152',.'#0'{'#3#0#0#0#0#0#0#0#0#0#0#172'A'#0#0#172'A'#0#0#172'A'#0#0#172'A'#0
   +#0#172'A'#0#0#172'A'#0#0#172'A'#0#0#172'A'#0#0#172'A'#0#0#172'A'#0#0#172'A'#0
   +#0#172'A'#0#0#172'A'#0#1#172'A'#0#1#172'A'#0#3#172'A'#8'ShowHint'#9#10'LCLVe'
-  +'rsion'#6#7'2.0.2.0'#0#6'TLabel'#6'Label1'#4'Left'#2#5#6'Height'#2#17#3'Top'
+  +'rsion'#6#7'2.2.6.0'#0#6'TLabel'#6'Label1'#4'Left'#2#5#6'Height'#2#17#3'Top'
   +#2#10#5'Width'#2'Z'#9'Alignment'#7#14'taRightJustify'#8'AutoSize'#8#7'Captio'
   +'n'#6#13'&Teljes n'#195#169'v:'#12'FocusControl'#7#9'FullNamEd'#11'ParentCol'
   +'or'#8#0#0#6'TLabel'#6'Label2'#4'Left'#2#5#6'Height'#2#17#3'Top'#2'('#5'Widt'
@@ -4085,5 +4085,5 @@ LazarusResources.Add('TEdKPropForm','FORMDATA',[
   +'Box'#8'GroupLst'#4'Left'#2'd'#6'Height'#2#23#3'Top'#2'F'#5'Width'#3'T'#1#10
   +'ItemHeight'#2#15#8'TabOrder'#2#12#0#0#22'TSelectDirectoryDialog'#6'SelDir'#5
   +'Title'#6#31'Hang-f'#195#161'jlok b'#195#161'zis k'#195#182'nyvt'#195#161'ra'
-  +#4'left'#3#152#1#3'top'#2'h'#0#0#0
+  +#4'Left'#3#152#1#3'Top'#2'h'#0#0#0
 ]);

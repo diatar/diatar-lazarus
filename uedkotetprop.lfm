@@ -3008,7 +3008,7 @@ object EdKPropForm: TEdKPropForm
     410000AC410001AC410001AC410003AC41
   }
   ShowHint = True
-  LCLVersion = '2.0.2.0'
+  LCLVersion = '2.2.6.0'
   object Label1: TLabel
     Left = 5
     Height = 17
@@ -3215,7 +3215,7 @@ object EdKPropForm: TEdKPropForm
   end
   object SelDir: TSelectDirectoryDialog
     Title = 'Hang-fájlok bázis könyvtára'
-    left = 408
-    top = 104
+    Left = 408
+    Top = 104
   end
 end

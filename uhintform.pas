@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2022 József Rieth
+Copyright 2005-2023 József Rieth
 
     This file is part of Diatar.
 
@@ -46,6 +46,7 @@ type
 
 var
   HintForm: THintForm;
+  BeforeHintForm : tForm = nil;
 
 procedure ShowHintForm(X,Y : integer; O : tTxBase);
 procedure HideHintForm;
@@ -122,10 +123,10 @@ begin
   if ok then begin
     Top:=Y;
     Left:=X;
-    af:=Screen.ActiveForm;
+    BeforeHintForm:=Screen.ActiveForm;
 //    FormStyle:=fsStayOnTop;
     Visible:=true;
-    af.SetFocus;
+    BeforeHintForm.SetFocus;
   end else begin
     HideMe;
   end;
@@ -134,6 +135,7 @@ end;
 procedure tHintForm.HideMe;
 begin
   Visible:=false;
+  BeforeHintForm:=nil;
 end;
 
 initialization

@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2022 József Rieth
+Copyright 2005-2023 József Rieth
 
     This file is part of Diatar.
 
@@ -196,6 +196,7 @@ type
     AkkordPerc : integer;                //akkord meretarany
     BackTransPerc : integer;             //hatter atlatszosag
     BlankTransPerc : integer;            //kikapcsolt atlatszosag
+    AutoSave : boolean;                  //automatikus mentes
   end;
   tProfiles = array of tProfil;
 
@@ -256,11 +257,12 @@ type
     // /KORUS mod (tavoli szolgalattevok)
     fCmdLineSchola: boolean;                          //parancssori /SCHOLA
     fCmdLineKorus: boolean;                           //parancssori /KORUS
-    fUseAkkord: boolean;                              //akkordok kiirasa (/AKKORD)
+    fHelyiAkkord: boolean;                              //akkordok kiirasa (/AKKORD)
     fTavAkkord: boolean;                              //akkordok a tavoli gepre
     fCmdLineAkkord: boolean;                          //parancssori /AKKORD
-    fUseKotta : boolean;                              //kotta kiirasa (/KOTTA)
+    fHelyiKotta : boolean;                              //kotta helyi gepen (/KOTTA)
     fTavKotta : boolean;                              //kotta a tavoli gepen
+    fUseKotta : boolean;
     fCmdLineKotta : boolean;                          //parancssori /KOTTA
     FotoFormUsage : tFotoFormUsage;      //FotoForm hasznalati modja
     fLargeBtns : boolean;                             //duplamagas nyomogombok
@@ -409,10 +411,11 @@ type
     procedure SetSerialNetAskOff(NewValue: boolean);
     procedure SetSerialNetAskOn(NewValue: boolean);
     procedure SetSerialFlowControl(NewValue : boolean);
-    procedure SetUseAkkord(NewValue: boolean);
+    procedure SetHelyiAkkord(NewValue: boolean);
     procedure SetTavAkkord(NewValue: boolean);
-    procedure SetUseKotta(NewValue: boolean);
+    procedure SetHelyiKotta(NewValue: boolean);
     procedure SetTavKotta(NewValue: boolean);
+    procedure SetUseKotta(NewValue: boolean);
     procedure SetHideFxx(NewValue: boolean);
     procedure SetUseTxHiba(NewValue: boolean);
     procedure SetUseTxHibaMsg(NewValue: boolean);
@@ -441,6 +444,7 @@ type
     procedure SetAkkordPerc(NewValue : integer);
     procedure SetBackTransPerc(NewValue : integer);
     procedure SetBlankTransPerc(NewValue : integer);
+    procedure SetAutoSave(NewValue : boolean);
   public
     property ProgDir : string read fProgDir;
     property DtxDir : string read fDtxDir;
@@ -542,11 +546,12 @@ type
     property CmdLineSchola: boolean read fV.fCmdLineSchola write fV.fCmdLineSchola;
     property CmdLineKorus: boolean read fV.fCmdLineKorus write fV.fCmdLineKorus;
     property UseSongLst: boolean read fActProfil.UseSongLst write SetUseSongLst;
-    property UseAkkord: boolean read fV.fUseAkkord write SetUseAkkord;
+    property HelyiAkkord: boolean read fV.fHelyiAkkord write SetHelyiAkkord;
     property TavAkkord: boolean read fV.fTavAkkord write SetTavAkkord;
     property CmdLineAkkord : boolean read fV.fCmdLineAkkord write fV.fCmdLineAkkord;
-    property UseKotta : boolean read fV.fUseKotta write SetUseKotta;
+    property HelyiKotta : boolean read fV.fHelyiKotta write SetHelyiKotta;
     property TavKotta : boolean read fV.fTavKotta write SetTavKotta;
+    property UseKotta : boolean read fV.fUseKotta write SetUseKotta;
     property CmdLineKotta : boolean read fV.fCmdLineKotta write fV.fCmdLineKotta;
     property HideFxx: boolean read fActProfil.HideFxx write SetHideFxx;
     property UseTxHiba: boolean read fActProfil.UseTxHiba write SetUseTxHiba;
@@ -575,6 +580,7 @@ type
     property AkkordPerc : integer read fActProfil.AkkordPerc write SetAkkordPerc;
     property BackTransPerc : integer read fActProfil.BackTransPerc write SetBackTransPerc;
     property BlankTransPerc : integer read fActProfil.BlankTransPerc write SetBlankTransPerc;
+    property AutoSave : boolean read fActProfil.AutoSave write SetAutoSave;
 
     property DtxFlags[Index: integer]: tDtxFlags read GetDtxFlags write SetDtxFlags;
     property DtxVisible[Index: integer]: boolean
@@ -1621,11 +1627,11 @@ begin
   GlobalVarModified;
 end;
 
-procedure tGlobals.SetUseAkkord(NewValue: boolean);
+procedure tGlobals.SetHelyiAkkord(NewValue: boolean);
 begin
-  if NewValue = fV.fUseAkkord then
+  if NewValue = fV.fHelyiAkkord then
     exit;
-  fV.fUseAkkord := NewValue;
+  fV.fHelyiAkkord := NewValue;
   GlobalVarModified;
 end;
 
@@ -1637,10 +1643,10 @@ begin
   GlobalVarModified;
 end;
 
-procedure tGlobals.SetUseKotta(NewValue: boolean);
+procedure tGlobals.SetHelyiKotta(NewValue: boolean);
 begin
-  if NewValue = fV.fUseKotta then exit;
-  fV.fUseKotta := NewValue;
+  if NewValue = fV.fHelyiKotta then exit;
+  fV.fHelyiKotta := NewValue;
   GlobalVarModified;
 end;
 
@@ -1669,6 +1675,13 @@ procedure tGlobals.SetTavKotta(NewValue: boolean);
 begin
   if NewValue = fV.fTavKotta then exit;
   fV.fTavKotta := NewValue;
+  GlobalVarModified;
+end;
+
+procedure tGlobals.SetUseKotta(NewValue: boolean);
+begin
+  if NewValue = fV.fUseKotta then exit;
+  fV.fUseKotta := NewValue;              //a trukk: ezt nem mentjuk, nem olvassuk!
   GlobalVarModified;
 end;
 
@@ -1816,6 +1829,13 @@ begin
   GlobalVarModified;
 end;
 
+procedure tGlobals.SetAutoSave(NewValue : boolean);
+begin
+  if NewValue=fActProfil.AutoSave then exit;
+  fActProfil.AutoSave:=NewValue;
+  GlobalVarModified;
+end;
+
 {***** modify events ********************************}
 procedure tGlobals.ModEvent;
 begin
@@ -1893,11 +1913,12 @@ begin
   fV.fKorusMode := False;
   fV.fCmdLineSchola := False;
   fV.fCmdLineKorus := False;
-  fV.fUseAkkord := False;
+  fV.fHelyiAkkord := False;
   fV.fTavAkkord := False;
   fV.fCmdLineAkkord := False;
-  fV.fUseKotta:=false;
-  fV.fTavKotta:=false;
+  fV.fHelyiKotta:=true;
+  fV.fTavKotta:=true;
+  fV.fUseKotta:=true;         //default: vetitsunk kottat, ha van
   fV.fCmdLineKotta:=false;
   fV.fLargeBtns:=false;
   fV.fSaveCnt:=0;
@@ -1976,6 +1997,7 @@ begin
   Profil.AkkordPerc:=100;
   Profil.BackTransPerc:=0;
   Profil.BlankTransPerc:=0;
+  Profil.AutoSave:=false;
 
   ResetFixSymbols(Profil.FixSymbols);
   for i := 1 to MAXFXX do
@@ -2089,6 +2111,7 @@ begin
   AkkordPerc:=Source.AkkordPerc;
   BackTransPerc:=Source.BackTransPerc;
   BlankTransPerc:=Source.BlankTransPerc;
+  AutoSave:=Source.AutoSave;
 
   for i := 1 to MAXFXX do
   begin
@@ -2289,6 +2312,8 @@ var
          Profil.BackTransPerc:=Reg.ReadInteger('BackTransPerc');
       if Reg.GetDataType('BlankTransPerc')=rdInteger then
          Profil.BlankTransPerc:=Reg.ReadInteger('BlankTransPerc');
+      if Reg.ValueExists('AutoSave') then
+         Profil.AutoSave:=Reg.ReadBool('AutoSave');
 
       for i := Low(Profil.FixSymbols) to High(Profil.FixSymbols) do
       begin
@@ -2585,13 +2610,14 @@ var
     if Reg.ValueExists('SerialFlowControl') then
       SerialFlowControl:=Reg.ReadBool('SerialFlowControl');
     if Reg.ValueExists('UseAkkord') then
-      UseAkkord := Reg.ReadBool('UseAkkord');
+      HelyiAkkord := Reg.ReadBool('UseAkkord');
     if Reg.ValueExists('TavAkkord') then
       TavAkkord := Reg.ReadBool('TavAkkord');
     if Reg.ValueExists('UseKotta') then
-      UseKotta:=Reg.ReadBool('UseKotta');
+      HelyiKotta:=Reg.ReadBool('UseKotta');
     if Reg.ValueExists('TavKotta') then
       TavKotta:=Reg.ReadBool('TavKotta');
+    UseKotta:=HelyiKotta or TavKotta;
     i := 0;
     SerialOnTxt.Clear;
     while Reg.ValueExists('SerialOn' + IntToStr(i)) do begin
@@ -2830,6 +2856,7 @@ var
       Reg.WriteInteger('AkkordPerc', Profil.AkkordPerc);
       Reg.WriteInteger('BackTransPerc', Profil.BackTransPerc);
       Reg.WriteInteger('BlankTransPerc', Profil.BlankTransPerc);
+      Reg.WriteBool('AutoSave',Profil.AutoSave);
 
       for i := Low(Profil.FixSymbols) to High(Profil.FixSymbols) do
         Reg.WriteInteger('Symbol' + IntToStr(i), Profil.FixSymbols[i]);
@@ -3035,9 +3062,9 @@ begin
       Reg.WriteBool('SerialNetAsk',SerialNetAskOff);
       Reg.WriteBool('SerialNetAskOn',SerialNetAskOn);
       Reg.WriteBool('SerialFlowControl',SerialFlowControl);
-      Reg.WriteBool('UseAkkord', UseAkkord);
+      Reg.WriteBool('UseAkkord', HelyiAkkord);
       Reg.WriteBool('TavAkkord', TavAkkord);
-      Reg.WriteBool('UseKotta', UseKotta);
+      Reg.WriteBool('UseKotta', HelyiKotta);
       Reg.WriteBool('TavKotta', TavKotta);
       i := 0;
       while Reg.ValueExists('SerialOn' + IntToStr(i)) do begin

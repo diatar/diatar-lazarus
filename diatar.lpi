@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="11"/>
+    <Version Value="12"/>
     <PathDelim Value="\"/>
     <General>
       <Flags>
         <LRSInOutputDirectory Value="False"/>
+        <CompatibilityMode Value="True"/>
       </Flags>
-      <MainUnit Value="0"/>
       <AutoCreateForms Value="False"/>
       <Title Value="Diatár"/>
       <UseAppBundle Value="False"/>
@@ -28,11 +28,14 @@
       <Version Value="2"/>
     </PublishOptions>
     <RunParams>
+      <local>
+        <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
+      </local>
       <FormatVersion Value="2"/>
       <Modes Count="1">
         <Mode0 Name="default">
           <local>
-            <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T 'Lazarus Run Output' -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
+            <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
           </local>
         </Mode0>
       </Modes>
@@ -49,7 +52,7 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="219">
+    <Units Count="221">
       <Unit0>
         <Filename Value="Diatar.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -66,12 +69,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAppForm"/>
-        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="74"/>
-        <CursorPos X="22" Y="102"/>
+        <CursorPos X="41" Y="77"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="utextbox.pas"/>
@@ -108,12 +109,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uProjektedForm"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="606"/>
-        <CursorPos X="30" Y="629"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="826"/>
+        <CursorPos X="31" Y="839"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="utxtar.pas"/>
@@ -203,23 +202,22 @@
         <Filename Value="udialst.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uDiaLst"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit19>
       <Unit20>
         <Filename Value="upaintresizedtext.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uPaintResizedText"/>
         <EditorIndex Value="-1"/>
-        <CursorPos Y="5"/>
+        <TopLine Value="156"/>
+        <CursorPos X="15" Y="922"/>
         <UsageCount Value="200"/>
       </Unit20>
       <Unit21>
         <Filename Value="udtxlst.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uDtxLst"/>
-        <EditorIndex Value="6"/>
         <TopLine Value="647"/>
         <CursorPos X="78" Y="661"/>
         <UsageCount Value="200"/>
@@ -232,9 +230,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAddOne"/>
-        <EditorIndex Value="-1"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
         <CursorPos Y="5"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit22>
       <Unit23>
         <Filename Value="uadd.pas"/>
@@ -343,11 +344,10 @@
         <Filename Value="unetwork.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uNetwork"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="408"/>
         <CursorPos X="55" Y="424"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit34>
       <Unit35>
         <Filename Value="C:\lazarus\fpc\2.2.2\source\packages\fcl-process\src\simpleipc.pp"/>
@@ -1103,12 +1103,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uFotoForm"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="28"/>
         <CursorPos Y="44"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit146>
       <Unit147>
         <Filename Value="C:\lazarus\lcl\include\customcombobox.inc"/>
@@ -1175,12 +1173,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="2389"/>
-        <CursorPos X="25" Y="2407"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="320"/>
+        <CursorPos X="15" Y="336"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit156>
       <Unit157>
         <Filename Value="udialoadsave.pas"/>
@@ -1361,7 +1358,7 @@
         <UnitName Value="uDiatarIniLoader"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="5"/>
-        <UsageCount Value="135"/>
+        <UsageCount Value="136"/>
       </Unit181>
       <Unit182>
         <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\objpas\classes\classesh.inc"/>
@@ -1390,7 +1387,7 @@
         <UnitName Value="WinUser"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="23"/>
-        <UsageCount Value="115"/>
+        <UsageCount Value="116"/>
       </Unit185>
       <Unit186>
         <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\win\wininc\base.inc"/>
@@ -1629,127 +1626,40 @@
         <CursorPos X="15" Y="578"/>
         <UsageCount Value="10"/>
       </Unit218>
+      <Unit219>
+        <Filename Value="C:\lazarus\fpc\3.0.4\source\packages\fcl-web\src\base\fphttpclient.pp"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="333"/>
+        <CursorPos X="8" Y="339"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit219>
+      <Unit220>
+        <Filename Value="C:\lazarus\fpc\3.0.4\source\packages\fcl-net\src\sslsockets.pp"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit220>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="5" HistoryIndex="4">
       <Position1>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="1951" Column="54" TopLine="1937"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2401" Column="37" TopLine="2389"/>
       </Position1>
       <Position2>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="217" Column="50" TopLine="217"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="337" Column="7" TopLine="317"/>
       </Position2>
       <Position3>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="1953" Column="3" TopLine="1949"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="336" Column="15" TopLine="320"/>
       </Position3>
       <Position4>
-        <Filename Value="umain.pas"/>
-        <Caret Line="646" Column="31" TopLine="630"/>
+        <Filename Value="C:\lazarus\fpc\3.0.4\source\packages\fcl-web\src\base\fphttpclient.pp"/>
       </Position4>
       <Position5>
-        <Filename Value="umain.pas"/>
-        <Caret Line="643" Column="21" TopLine="635"/>
+        <Filename Value="C:\lazarus\fpc\3.0.4\source\packages\fcl-web\src\base\fphttpclient.pp"/>
+        <Caret Line="357" Column="11" TopLine="331"/>
       </Position5>
-      <Position6>
-        <Filename Value="umain.pas"/>
-        <Caret Line="146" TopLine="131"/>
-      </Position6>
-      <Position7>
-        <Filename Value="ufotoform.pas"/>
-        <Caret Line="129" TopLine="108"/>
-      </Position7>
-      <Position8>
-        <Filename Value="ufotoform.pas"/>
-        <Caret Line="127" TopLine="108"/>
-      </Position8>
-      <Position9>
-        <Filename Value="ufotoform.pas"/>
-        <Caret Line="44" TopLine="28"/>
-      </Position9>
-      <Position10>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="1953" Column="24" TopLine="1937"/>
-      </Position10>
-      <Position11>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="268" Column="20" TopLine="252"/>
-      </Position11>
-      <Position12>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="269" Column="39" TopLine="253"/>
-      </Position12>
-      <Position13>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="306" Column="40" TopLine="288"/>
-      </Position13>
-      <Position14>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="53" TopLine="46"/>
-      </Position14>
-      <Position15>
-        <Filename Value="umain.pas"/>
-        <Caret Line="224" Column="20" TopLine="216"/>
-      </Position15>
-      <Position16>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2123" Column="6" TopLine="2099"/>
-      </Position16>
-      <Position17>
-        <Filename Value="umain.pas"/>
-        <Caret Line="288" Column="15" TopLine="274"/>
-      </Position17>
-      <Position18>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="142" Column="26" TopLine="137"/>
-      </Position18>
-      <Position19>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="816" Column="52" TopLine="807"/>
-      </Position19>
-      <Position20>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="141" Column="21" TopLine="133"/>
-      </Position20>
-      <Position21>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="907" Column="36" TopLine="892"/>
-      </Position21>
-      <Position22>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="120" Column="15" TopLine="106"/>
-      </Position22>
-      <Position23>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="486" Column="5" TopLine="473"/>
-      </Position23>
-      <Position24>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="124" Column="15" TopLine="110"/>
-      </Position24>
-      <Position25>
-        <Filename Value="uprojektedform.pas"/>
-      </Position25>
-      <Position26>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="197" Column="43" TopLine="171"/>
-      </Position26>
-      <Position27>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="337" Column="12" TopLine="311"/>
-      </Position27>
-      <Position28>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="338" Column="12" TopLine="312"/>
-      </Position28>
-      <Position29>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="583" Column="74" TopLine="557"/>
-      </Position29>
-      <Position30>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="1953" Column="24" TopLine="1937"/>
-      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

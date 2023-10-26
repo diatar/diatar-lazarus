@@ -2499,7 +2499,7 @@ object MainForm: TMainForm
   OnResize = FormResize
   OnUTF8KeyPress = FormUTF8KeyPress
   OnWindowStateChange = FormWindowStateChange
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.0.12.0'
   object FxxPanel: TPanel
     Left = 0
     Height = 82
@@ -3430,7 +3430,7 @@ object MainForm: TMainForm
     Enabled = False
     Interval = 10
     OnTimer = HintTmrTimer
-    left = 711
-    top = 524
+    Left = 711
+    Top = 524
   end
 end

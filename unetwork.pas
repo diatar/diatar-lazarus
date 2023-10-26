@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2022 József Rieth
+Copyright 2005-2023 József Rieth
 
     This file is part of Diatar.
 
@@ -246,7 +246,7 @@ begin
     Globals.HKey := StateRec.HKey;
     if not Globals.UseBorderRect then Globals.BorderRect:=StateRec.BorderRect;
     Globals.ScholaMode:=StateRec.ScholaMode;
-    Globals.UseAkkord:=StateRec.UseAkkord;
+    Globals.HelyiAkkord:=StateRec.UseAkkord;
     Globals.UseKotta:=StateRec.UseKotta;
     Globals.UseTransitions:=StateRec.UseTransitions;
     Globals.InverzKotta:=StateRec.InverzKotta;
@@ -411,7 +411,7 @@ begin
   buf.VCenter  := ProjektedForm.CurrentProperties^.VCenter = b3TRUE; //Globals.VCenter;
   buf.ScholaMode:=Globals.KorusMode or Globals.CmdLineKorus;
   buf.UseAkkord:=Globals.TavAkkord;
-  buf.UseKotta:=Globals.TavKotta;
+  buf.UseKotta:=Globals.TavKotta and Globals.UseKotta;
   buf.UseTransitions:=Globals.UseTransitions;
   buf.HideTitle:=Globals.HideTitle;
   buf.InverzKotta:=Globals.InverzKotta;
