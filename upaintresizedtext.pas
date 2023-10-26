@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2022 József Rieth
+Copyright 2005-2023 József Rieth
 
     This file is part of Diatar.
 
@@ -745,7 +745,7 @@ begin
         inword := True;
       end;
       esc := (ch = '\');
-      wordstart:=not esc and (prevch = ' ') and (ch <> ' ');
+      wordstart:=(not esc or ((i < len) and (Txt[i + 1] in ['G', 'K', '?']))) and (prevch = ' ') and (ch <> ' ');
       if (not esc or ((i < len) and (Txt[i + 1] in ['G', 'K', '?']))) and
         wordstart then begin //uj szo kezdet
         OutTheWord(False, i);

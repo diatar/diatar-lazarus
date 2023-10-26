@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2022 József Rieth
+Copyright 2005-2023 József Rieth
 
     This file is part of Diatar.
 
@@ -30,7 +30,7 @@ uses
 
 procedure StreamWriteLn(ST : tStream; const Line : string);
 
-procedure StreamWriteDia(ST : tStream; DiaLst : tDiaLst; Index : integer; const BaseFname : string);
+procedure StreamWriteDia(ST : tStream; DiaLst : tDiaLst; Index : integer; const BaseFname : string; exporting : boolean);
 
 implementation
 
@@ -45,7 +45,7 @@ begin
   ST.Write(le[1],Length(le));
 end;
 
-procedure StreamWriteDia(ST : tStream; DiaLst : tDiaLst; Index : integer; const BaseFname : string);
+procedure StreamWriteDia(ST : tStream; DiaLst : tDiaLst; Index : integer; const BaseFname : string; exporting : boolean);
   var
     i,n,vi : integer;
     Dia : tTxBase;
@@ -68,10 +68,17 @@ begin
     StreamWriteLn(ST,'goto='+Dia.Name);
     StreamWriteLn(ST,'repeat='+IntToStr((Dia as tTxGoto).Count));
   end else if Dia is tVersszak then begin
-    StreamWriteLn(ST,'id='+IntToHex(vszak.ID,8));
-    StreamWriteLn(ST,'versszak='+vszak.Name);
-    StreamWriteLn(ST,'enek='+vszak.Parent.Name);
-    StreamWriteLn(ST,'kotet='+vszak.Parent.Parent.Name);
+    if exporting then begin
+      StreamWriteLn(ST,'caption='+(Dia as tVersszak).Caption+' ');
+      StreamWriteLn(ST,'lines='+IntToStr((Dia as tVersszak).Lines.Count));
+      for i:=0 to (Dia as tVersszak).Lines.Count-1 do
+        StreamWriteLn(ST,'line'+IntToStr(i)+'='+(Dia as tVersszak).Lines[i]+' ');
+    end else begin
+      StreamWriteLn(ST,'id='+IntToHex(vszak.ID,8));
+      StreamWriteLn(ST,'versszak='+vszak.Name);
+      StreamWriteLn(ST,'enek='+vszak.Parent.Name);
+      StreamWriteLn(ST,'kotet='+vszak.Parent.Parent.Name);
+    end;
   end else if Dia is tLiteral then begin
     StreamWriteLn(ST,'caption='+(Dia as tLiteral).Caption+' ');
     StreamWriteLn(ST,'lines='+IntToStr((Dia as tLiteral).Lines.Count));

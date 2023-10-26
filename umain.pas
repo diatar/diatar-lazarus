@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2022 József Rieth
+Copyright 2005-2023 József Rieth
 
     This file is part of Diatar.
 
@@ -214,9 +214,10 @@ type
 
     function ReadDia(f : tIniFile; const sect : string; IsUTF8 : boolean) : tTxBase;
     function QuerySave(Index : integer = 0) : boolean;
-    function SaveDiaLst(overwrite : boolean = false) : boolean;
+    function SaveDiaLst(overwrite : boolean = false; exporting : boolean = false) : boolean;
     procedure LoadDiaLst;
     procedure LoadThisDiaLst(const fname : string; Index : integer = 0);
+    procedure AdjustLastDiaLst(const fname : string);
     procedure AdjustDiaLst;
     procedure ActDLPut;
     procedure ActDLGet;
@@ -333,6 +334,7 @@ uses uProjektedForm, uAddOne, uAdd, uSetupForm, uNetwork,
      uKottazo, uKottaKepek, Contnrs, uAppForm, uShutdown,
      {uSelectProfil,} uMonitors, uSerialIO, uDiaLoadSave
      {$IFDEF Windows},Win32WSDialogs{$ENDIF}
+//     ,fphttpclient, opensslsockets
      ;
 
 // from kd.h
@@ -354,6 +356,8 @@ const
   dbmFILE1      = 11;  // 11..19 last files
   dbmSAVE       = 101;
   dbmOVERWR     = 102;
+  dbmEXPORT     = 103;
+  dbmAUTOSAVE   = 104;
   dbmBGND       = 201;
   dbmUNDERLINE  = 202;
   dbmKOTTA      = 203;
@@ -1879,18 +1883,26 @@ begin
     ActDLGet;
     ShowDia(0);
   end;
+  AdjustLastDiaLst(fname);
+  ShowPercent();
+end;
+
+procedure tMainForm.AdjustLastDiaLst(const fname : string);
+var
+  ix,i : integer;
+  s,fn : string;
+begin
   ix:=1; s:=fname;
   for i:=1 to 9 do begin
-    sect:=Globals.LastFile[i];
+    fn:=Globals.LastFile[i];
     if s>'' then begin Globals.LastFile[ix]:=s; inc(ix); end;
     s:='';
-    if sect<>fname then s:=sect;
+    if fn<>fname then s:=fn;
   end;
   while ix<=9 do begin
     Globals.LastFile[i]:=s; s:='';
     inc(ix);
   end;
-  ShowPercent();
 end;
 
 function tMainForm.ReadDia(f : tIniFile; const sect : string; IsUTF8 : boolean) : tTxBase;
@@ -1985,7 +1997,7 @@ begin
   end;
 end;
 
-function tMainForm.SaveDiaLst(overwrite : boolean = false) : boolean;
+function tMainForm.SaveDiaLst(overwrite : boolean = false; exporting : boolean = false) : boolean;
 var
   ST : tFileStream;
   i,n,vi : integer;
@@ -2068,18 +2080,19 @@ begin
       for i:=1 to n do begin
         ShowPercent((i*100) div n);
         StreamWriteLn(ST,''); StreamWriteLn(ST,'['+IntToStr(i)+']');
-        StreamWriteDia(ST,DiaLst,i-1,fname);
+        StreamWriteDia(ST,DiaLst,i-1,fname, exporting);
       end;
     finally
       //f.Free;
       ST.Free;
       ShowPercent();
     end;
-    DiasorFName:=fname;
+    if not Exporting or (DiasorFName='') then DiasorFName:=fname;
     Modified:=false;
+    AdjustLastDiaLst(DiasorFName);
     ActDLPut;
     if (fActDLIndex>0) and (fActDLIndex<DiaTab.Tabs.Count) then
-      DiaTab.Tabs[fActDLIndex-1]:=IndexToTab(fActDLIndex)+ExtractDiasorTitle(fname);
+      DiaTab.Tabs[fActDLIndex-1]:=IndexToTab(fActDLIndex)+ExtractDiasorTitle(DiasorFName);
     Result:=true;
   finally
     Dlg.Free;
@@ -2569,6 +2582,7 @@ begin
       fCommonProps:=Addform.CommonProps;
       ShowDiaLst; Application.ProcessMessages;
       ShowDia(DiaLst.ItemIndex);
+      SaveDiaLst(true);
     end else begin
       for i:=0 to AddForm.ShowLst.Objects.Count-1 do
         FreeTxObj(AddForm.ShowLst.Objects[i]);
@@ -2595,6 +2609,7 @@ begin
         DiaLst.Objects.Properties[iy+i]:=AddOneForm.ResultLst.Properties[i];
       end;
       ShowDia(iy);
+      SaveDiaLst(true);
     end;
   finally
     FreeAndNil(AddOneForm);
@@ -2674,13 +2689,17 @@ begin
   fHintCounter:=10;           // 10 x 10 msec ido
 
   af:=Screen.ActiveForm; if not Assigned(af) or not af.Visible then exit;
-  if not Application.Active or (af.Handle<>GetForegroundWindow()) then begin
+  if not Application.Active {or (af.Handle<>GetForegroundWindow())} then begin
     if HintItem>=0 then begin
       HintItem:=-1;
       HideHintForm;
       HintBeforeCount:=Globals.HintStart;
     end;
     exit;
+  end;
+  if (af=HintForm) and Assigned(BeforeHintForm) then begin
+     af:=BeforeHintForm;
+     af.SetFocus;
   end;
   P:=af.ScreenToClient(Mouse.CursorPos);
   if not Application.Active then fx:=0
@@ -2736,6 +2755,7 @@ begin
     o:=lb.Objects[ix];
 //    if fx<>2 then o:=(lb.Parent.Parent as tDiaListBox).Objects[ix];
     ShowHintForm(P.X,P.Y,o);
+    af.SetFocus;
     HintAfterCount:=Globals.HintStop;
     exit;
   end;
@@ -2791,7 +2811,7 @@ begin
   PicBtn.Caption:=GetDownMenuName(n);
   InPicBtnClick:=true;
   if n=dbmKOTTA then begin
-    PicBtn.Checked:=Globals.UseKotta or Globals.TavKotta;
+    PicBtn.Checked:=Globals.UseKotta;
   end else if n=dbmBGND then begin
     PicBtn.Checked:=Globals.ShowBlankPic;
   end else if n=dbmHANG then begin
@@ -2808,6 +2828,8 @@ begin
     dbmLOAD:   Result:='Betölté&s';
     dbmSAVE:   Result:='Me&ntés';
     dbmOVERWR: Result:='&Felülírás';
+    dbmEXPORT: Result:='Export';
+    dbmAUTOSAVE: Result:='&Automatikus mentés';
     dbmBGND:   Result:='Háttér';
     dbmUNDERLINE: Result:='&Aláhúzás';
     dbmKOTTA:  Result:='Kotta';
@@ -2848,11 +2870,14 @@ begin
   end else if Sender=SaveDownBtn then begin
     DownBtnAdd(dbmOVERWR);
     DownBtnAdd(dbmSAVE);
+    DownBtnAdd(dbmEXPORT);
+    fDownMenu.Items.AddSeparator;
+    DownBtnAdd(dbmAUTOSAVE);
     btn:=SaveDiaBtn;
   end else if Sender=PicDownBtn then begin
     DownBtnAdd(dbmBGND).Checked:=ProjektedForm.UseBlankPic;
     //DownBtnAdd(dbmUNDERLINE);
-    DownBtnAdd(dbmKOTTA).Checked:=Globals.UseKotta or Globals.TavKotta;
+    DownBtnAdd(dbmKOTTA).Checked:=Globals.UseKotta;
     DownBtnAdd(dbmHANG).Checked:=Globals.UseSound;
     btn:=PicBtn;
   end else
@@ -2866,6 +2891,7 @@ begin
   Result:=tMenuItem.Create(fDownMenu);
   Result.Caption:=GetDownMenuName(id); Result.Tag:=id;
   Result.OnClick:=@DownBtnMenu;
+  if id=dbmAUTOSAVE then Result.Checked:=Globals.AutoSave;
   fDownMenu.Items.Add(Result);
 end;
 
@@ -2898,14 +2924,28 @@ begin
         SaveDiaLst(false);
         FocusLst;
       end;
+    dbmEXPORT : begin
+      SaveDiaLst(false, true);
+      FocusLst;
+    end;
+    dbmAUTOSAVE : begin
+      Globals.AutoSave:=not Globals.AutoSave;
+      FocusLst;
+    end;
     dbmBGND : begin
         PictureEvent(not Globals.ShowBlankPic);
         //ProjektedForm.UseBlankPic:=not ProjektedForm.UseBlankPic;
         //PicBtn.Checked:=not ProjektedForm.UseBlankPic;
       end;
     dbmKOTTA : begin
-        Globals.UseKotta:=not (Globals.UseKotta or Globals.TavKotta);
-        Globals.TavKotta:=Globals.UseKotta;
+        if not Globals.HelyiKotta and not Globals.TavKotta and not Globals.CmdLineKotta
+          //and (QuestBox('A kottamegjelenítés nincs bekapcsolva. Bekapcsoljuk?',mbYN)=idYes)
+        then begin
+          Globals.HelyiKotta:=true;
+          Globals.TavKotta:=true;
+          Globals.SaveSetup;
+        end;
+        Globals.UseKotta:=not Globals.UseKotta;
       end;
     dbmHANG : begin
         SoundEvent(not Globals.UseSound);

@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2022 József Rieth
+Copyright 2005-2023 József Rieth
 
     This file is part of Diatar.
 
@@ -46,6 +46,7 @@ type
     AkkordCk: TCheckBox;
     BgModeLst: TComboBox;
     AlwaysDiaTabCk: TCheckBox;
+    AutoSave: TCheckBox;
     UseBRectCk: TCheckBox;
     DiatarLbl3: TLabel;
     DiaLstSetBtn: TButton;
@@ -602,6 +603,7 @@ begin
     DiaLst.Items[i]:=IntToStr(i+1)+'. '+p^.DiaListFiles[i];
   AlwaysDiaTabCk.Checked:=p^.AlwaysDiaTabs;
   BgModeLst.ItemIndex:=Ord(p^.BgMode);
+  AutoSave.Checked:=p^.AutoSave;
 
   FxLst.Clear;
   for i:=1 to MAXFXX do begin
@@ -684,6 +686,7 @@ begin
   for i:=1 to p^.NDiaLists-1 do
     p^.DiaListFiles[i]:=copy(DiaLst.Items[i],iif(i>9,5,4),99999999);
   p^.BgMode:=tBackgroundMode(BgModeLst.ItemIndex);
+  p^.AutoSave:=AutoSave.Checked;
 
   for i:=1 to MAXFXX do begin
     p^.FxxObject[i]:=FxObjs[i];
@@ -2022,9 +2025,9 @@ begin
   Globals.SerialProjTxt.ToMemo(SerProjEd);
   ScholaCk.Checked:=Globals.ScholaMode;
   KorusCk.Checked:=Globals.KorusMode;
-  AkkordCk.Checked:=Globals.UseAkkord;
+  AkkordCk.Checked:=Globals.HelyiAkkord;
   TavAkkordCk.Checked:=Globals.TavAkkord;
-  KottaCk.Checked:=Globals.UseKotta;
+  KottaCk.Checked:=Globals.HelyiKotta;
   TavKottaCk.Checked:=Globals.TavKotta;
   FotoModeLst.ItemIndex:=ord(Globals.FotoFormUsage);
   LargeBtnsCk.Checked:=Globals.LargeBtns;
@@ -2121,9 +2124,9 @@ begin
       Globals.SerialFlowControl:=SerialFlowCk.Checked;
       Globals.ScholaMode:=ScholaCk.Checked;
       Globals.KorusMode:=KorusCk.Checked;
-      Globals.UseAkkord:=AkkordCk.Checked;
+      Globals.HelyiAkkord:=AkkordCk.Checked;
       Globals.TavAkkord:=TavAkkordCk.Checked;
-      Globals.UseKotta:=KottaCk.Checked;
+      Globals.HelyiKotta:=KottaCk.Checked;
       Globals.TavKotta:=TavKottaCk.Checked;
       Globals.FotoFormUsage:=tFotoFormUsage(FotoModeLst.ItemIndex);
       Globals.LargeBtns:=LargeBtnsCk.Checked;

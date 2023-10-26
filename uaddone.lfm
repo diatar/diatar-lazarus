@@ -2490,7 +2490,7 @@ object AddOneForm: TAddOneForm
   OnHide = FormHide
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '1.6.2.0'
+  LCLVersion = '2.2.6.0'
   object AddPicBtn: TBitBtn
     Left = 2
     Height = 28
@@ -2580,6 +2580,7 @@ object AddOneForm: TAddOneForm
     Height = 28
     Top = 280
     Width = 72
+    Anchors = [akLeft, akBottom]
     Caption = '+ &Ugrás'
     OnClick = GotoBtnClick
     TabOrder = 8

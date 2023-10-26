@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="11"/>
+    <Version Value="12"/>
     <PathDelim Value="\"/>
     <General>
       <Flags>
         <LRSInOutputDirectory Value="False"/>
+        <CompatibilityMode Value="True"/>
       </Flags>
-      <MainUnit Value="0"/>
       <Title Value="Diatár Editor 64"/>
       <UseAppBundle Value="False"/>
       <Icon Value="0"/>
@@ -130,23 +130,19 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEdMain"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="232"/>
         <CursorPos Y="253"/>
         <UsageCount Value="143"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="utxtar.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTxTar"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="1278"/>
-        <CursorPos X="5" Y="1294"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1500"/>
+        <CursorPos Y="1518"/>
         <UsageCount Value="142"/>
-        <Loaded Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="uglobals.pas"/>
@@ -188,11 +184,10 @@
       <Unit7>
         <Filename Value="..\Lib\uRoutines.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="812"/>
         <CursorPos Y="827"/>
         <UsageCount Value="96"/>
-        <Loaded Value="True"/>
       </Unit7>
       <Unit8>
         <Filename Value="C:\lazarus\lcl\stdctrls.pp"/>
@@ -286,10 +281,12 @@
         <Filename Value="upaintresizedtext.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uPaintResizedText"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="878"/>
-        <CursorPos X="29" Y="910"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="731"/>
+        <CursorPos X="78" Y="748"/>
         <UsageCount Value="125"/>
+        <Loaded Value="True"/>
       </Unit22>
       <Unit23>
         <Filename Value="uedversprop.pas"/>
@@ -318,12 +315,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEditorForm"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="2398"/>
         <CursorPos Y="2429"/>
         <UsageCount Value="117"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit25>
       <Unit26>
         <Filename Value="urtf.pas"/>
@@ -774,11 +769,10 @@
         <Filename Value="udiatariniloader.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uDiatarIniLoader"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="86"/>
         <CursorPos X="3" Y="31"/>
         <UsageCount Value="78"/>
-        <Loaded Value="True"/>
       </Unit94>
       <Unit95>
         <Filename Value="C:\lazarus\components\lazutils\lazfileutils.pas"/>
@@ -966,124 +960,7 @@
         <UsageCount Value="10"/>
       </Unit119>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
-      <Position1>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="1632" Column="31" TopLine="1622"/>
-      </Position1>
-      <Position2>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="88" Column="9" TopLine="73"/>
-      </Position2>
-      <Position3>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="120" Column="19" TopLine="95"/>
-      </Position3>
-      <Position4>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="456" Column="3" TopLine="453"/>
-      </Position4>
-      <Position5>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="195" Column="15" TopLine="181"/>
-      </Position5>
-      <Position6>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="442" Column="3" TopLine="438"/>
-      </Position6>
-      <Position7>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="1060" Column="22" TopLine="1044"/>
-      </Position7>
-      <Position8>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="143" Column="15" TopLine="128"/>
-      </Position8>
-      <Position9>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="1060" Column="12" TopLine="1043"/>
-      </Position9>
-      <Position10>
-        <Filename Value="..\Lib\uRoutines.pas"/>
-        <Caret Line="101" Column="10" TopLine="73"/>
-      </Position10>
-      <Position11>
-        <Filename Value="..\Lib\uRoutines.pas"/>
-        <Caret Line="826" Column="33" TopLine="824"/>
-      </Position11>
-      <Position12>
-        <Filename Value="..\Lib\uRoutines.pas"/>
-        <Caret Line="176" Column="15" TopLine="152"/>
-      </Position12>
-      <Position13>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="1068" Column="11" TopLine="1052"/>
-      </Position13>
-      <Position14>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="143" Column="15" TopLine="128"/>
-      </Position14>
-      <Position15>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="1068" Column="10" TopLine="1043"/>
-      </Position15>
-      <Position16>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="278" Column="15" TopLine="264"/>
-      </Position16>
-      <Position17>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1444" Column="5" TopLine="1231"/>
-      </Position17>
-      <Position18>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="250" Column="50" TopLine="240"/>
-      </Position18>
-      <Position19>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="1057" Column="30" TopLine="1043"/>
-      </Position19>
-      <Position20>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="255" Column="14" TopLine="240"/>
-      </Position20>
-      <Position21>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="294" Column="10" TopLine="279"/>
-      </Position21>
-      <Position22>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="245" Column="19" TopLine="240"/>
-      </Position22>
-      <Position23>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="1068" Column="11" TopLine="1056"/>
-      </Position23>
-      <Position24>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="278" Column="15" TopLine="264"/>
-      </Position24>
-      <Position25>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="1067" Column="13" TopLine="1056"/>
-      </Position25>
-      <Position26>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="255" Column="13" TopLine="232"/>
-      </Position26>
-      <Position27>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="294" Column="10" TopLine="278"/>
-      </Position27>
-      <Position28>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="694" Column="19" TopLine="677"/>
-      </Position28>
-      <Position29>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="277" Column="15" TopLine="263"/>
-      </Position29>
-    </JumpHistory>
+    <JumpHistory HistoryIndex="-1"/>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>

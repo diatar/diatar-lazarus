@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2022 József Rieth
+Copyright 2005-2023 József Rieth
 
     This file is part of Diatar.
 
@@ -549,10 +549,10 @@ begin
   SetCurPos(fSelStart,false);
   s:=LineAtY(fSelStart.Y);
 {$IFNDEF DiaEditor}
-  if not Globals.UseKotta and not Globals.CmdLineKotta and
+  if not Globals.HelyiKotta and not Globals.CmdLineKotta and
     (QuestBox('A kottamegjelenítés nincs bekapcsolva. Bekapcsoljuk?',mbYN)=idYes)
   then begin
-    Globals.UseKotta:=true;
+    Globals.HelyiKotta:=true;
     Globals.TavKotta:=true;
     Globals.SaveSetup;
   end;
@@ -998,8 +998,8 @@ begin
   txt:=LineAtY(Y);
   len:=Length(txt);
   if X<0 then X:=0;                        //karakterpoz. behatarolasa
-  if X>len then
-    X:=len
+  if X>=len then
+    X:=len-1
   else                                     //utf8 karakter elejere
     while (X>0) and ((byte(txt[X+1]) and $C0)=$80) do dec(X);
 //szelekcio kezelese

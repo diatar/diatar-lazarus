@@ -33,12 +33,14 @@ interface
 
 uses SysUtils, Classes, Forms, Controls, ExtCtrls, Graphics, LCLIntf, LCLType;
 
+{$IFDEF windows}
 {$DEFINE UseSysCaret}
+{$ENDIF}
 
 type
   tCaret = class
   private
-    fControl : tWinControl;
+    fControl : tControl;
     fVisible : boolean;
     fCaptured : boolean;
     fX,fY,fWidth,fHeight : integer;
@@ -162,8 +164,8 @@ begin
   if fCaptured=NewValue then exit;
   if NewValue then begin
 {$IFDEF UseSysCaret}
-    if not Assigned(fControl) then exit;
-    fHandle:=fControl.Handle;
+    if not Assigned(fControl) or not (fControl is tWinControl) then exit;
+    fHandle:=(fControl as tWinControl).Handle;
     if fHandle=0 then exit;
     CreateCaret(fHandle,0,fWidth,fHeight);
     fCaptured:=true;

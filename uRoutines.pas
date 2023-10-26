@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-    Copyright 2005,2006,2007,2008,2009,2010,2011 József Rieth
+    Copyright 2005-2023 József Rieth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ interface
 
 uses StdCtrls, Forms, SysUtils, Classes, Registry, FileUtil, Controls,
      {$IFDEF UseSysMsgBox} LCLIntf, {$ENDIF}
-     LCLProc, LCLType, LMessages;
+     LCLProc, LCLType, LazUTF8, LazFileUtils;
 
 const   {character codes }
   SPACE         = #32;
@@ -45,6 +45,8 @@ const   { DCB serial port flags }
   DCB_fOutxCtsFlow      = $00000004;
   DCB_fOutxDsrFlow      = $00000008;
   DCB_fDtrControl       = $00000030;
+    DCB_fDtrEnable        = $00000010;
+    DCB_fDtrHandshake     = $00000030;
   DCB_fDsrSensitivity   = $00000040;
   DCB_fTXContinueOnXoff = $00000080;
   DCB_fOutX             = $00000100;
@@ -52,6 +54,9 @@ const   { DCB serial port flags }
   DCB_fErrorChar        = $00000400;
   DCB_fNull             = $00000800;
   DCB_fRtsControl       = $00003000;
+    DCB_fRtsEnable        = $00001000;
+    DCB_fRtsHandshake     = $00002000;
+    DCB_fRtsToggle        = $00003000;
   DCB_fAbortOnError     = $00004000;
   DCB_fDummy2           = $FFFF8000;
 
@@ -84,8 +89,12 @@ function CmpPts(const P1,P2 : tPoint) : integer; inline;
 function iif(Test : boolean; TrueInt,FalseInt : integer) : integer; overload; inline;
 function iif(Test : boolean; const TrueStr,FalseStr : string) : string; overload; inline;
 function iif(Test : boolean; TrueBool,FalseBool : boolean) : boolean; overload; inline;
+function iif(Test : boolean; TrueChar,FalseChar : char) : char; overload; inline;
+function iif(Test : boolean; TrueDbl,FalseDbl : Double) : Double; overload; inline;
 
 function HexToInt(const Hex : string) : integer;
+function HexToDWord(const Hex : string) : LongWord;
+function HexToQWord(const Hex : string) : QWord;
 
 function RegKeyDelete(Root : HKEY; const Base,Key : string) : boolean;
 
@@ -413,8 +422,46 @@ begin
   if Test then Result:=TrueBool else Result:=FalseBool;
 end;
 
+function iif(Test : boolean; TrueChar,FalseChar : char) : char; overload; inline;
+begin
+  if Test then Result:=TrueChar else Result:=FalseChar;
+end;
+
+function iif(Test : boolean; TrueDbl,FalseDbl : Double) : Double; overload; inline;
+begin
+  if Test then Result:=TrueDbl else Result:=FalseDbl;
+end;
+
 {----- hexadecimal conversion --------------------------------------}
 function HexToInt(const Hex : string) : integer;
+var
+  i : integer;
+  c : char;
+
+begin
+  Result:=0;
+  for i:=1 to Length(Hex) do begin
+    c:=UpCase(Hex[i]);
+    if c in ['0'..'9'] then Result:=(Result shl 4)+(ord(c)-ord('0')) else
+    if c in ['A'..'F'] then Result:=(Result shl 4)+(ord(c)-ord('A')+10);
+  end;
+end;
+
+function HexToDWord(const Hex : string) : LongWord;
+var
+  i : integer;
+  c : char;
+
+begin
+  Result:=0;
+  for i:=1 to Length(Hex) do begin
+    c:=UpCase(Hex[i]);
+    if c in ['0'..'9'] then Result:=(Result shl 4)+(ord(c)-ord('0')) else
+    if c in ['A'..'F'] then Result:=(Result shl 4)+(ord(c)-ord('A')+10);
+  end;
+end;
+
+function HexToQWord(const Hex : string) : QWord;
 var
   i : integer;
   c : char;
@@ -776,6 +823,10 @@ begin
 end;
 
 function MyFileExists(const FName : string) : boolean;
+begin
+  Result:=FileExistsUTF8(FName);
+end;
+(*
 var
   f : tHandle;
 begin
@@ -783,6 +834,7 @@ begin
   Result:=(f<>feInvalidHandle);
   if Result then FileClose(f);
 end;
+*)
 
 procedure DebugOut(const Txt : string);
 var

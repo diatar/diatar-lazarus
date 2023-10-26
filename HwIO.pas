@@ -20,6 +20,8 @@
 
 unit HwIO;
 
+{$mode objfpc}{$H+}
+
 {based on the free source code of InpOut32.dll created by Logix4u --> http://www.logix4u.net}
 
 { $DEFINE CREATEINC} {define to create the include file}
@@ -157,7 +159,7 @@ begin
       Ser:=OpenService(Mgr,'hwinterface',GENERIC_EXECUTE);
       if Ser<>0 then begin
         // we have permission to start the service
-        if not StartService(Ser,0,pc) then begin
+        if not StartService(Ser,0,nil) then begin
           CloseServiceHandle(Ser);
           HWError:=hweServOpenNotStart;
           exit; //4 we could open the service but unable to start
@@ -167,7 +169,7 @@ begin
   end else begin // successfully opened Service Manager with full access
     Ser:=OpenService(Mgr,'hwinterface',GENERIC_EXECUTE);
     if Ser<>0 then begin
-      if not StartService(Ser,0,pc) then begin
+      if not StartService(Ser,0,nil) then begin
         CloseServiceHandle(Ser);
         HWError:=hweServFullNotStart;
         exit; //3 opened the Service handle with full access permission, but unable to start

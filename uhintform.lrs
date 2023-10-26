@@ -4,12 +4,13 @@ LazarusResources.Add('THintForm','FORMDATA',[
   'TPF0'#9'THintForm'#8'HintForm'#4'Left'#3'$'#1#6'Height'#2']'#3'Top'#3#149#0#5
   +'Width'#3#177#0#11'BorderIcons'#11#0#11'BorderStyle'#7#6'bsNone'#7'Caption'#6
   +#8'HintForm'#12'ClientHeight'#2']'#11'ClientWidth'#3#177#0#12'Font.CharSet'#2
-  +#4#9'FormStyle'#7#11'fsStayOnTop'#10'LCLVersion'#6#8'0.9.28.2'#0#6'TPanel'#9
-  +'HintPanel'#4'Left'#2#0#6'Height'#2']'#3'Top'#2#0#5'Width'#3#177#0#5'Align'#7
-  +#8'alClient'#10'BevelOuter'#7#6'bvNone'#12'ClientHeight'#2']'#11'ClientWidth'
-  +#3#177#0#5'Color'#4#255#255#192#0#11'ParentColor'#8#8'TabOrder'#2#0#0#6'TLab'
-  +'el'#7'HintLbl'#4'Left'#2#0#6'Height'#2']'#3'Top'#2#0#5'Width'#3#177#0#5'Ali'
-  +'gn'#7#8'alClient'#8'AutoSize'#8#5'Color'#4#255#255#192#0#11'ParentColor'#8
-  +#11'Transparent'#8#8'WordWrap'#9#11'OptimalFill'#9#0#0#6'TImage'#7'HintPic'#4
-  +'Left'#2'('#6'Height'#2':'#3'Top'#2#16#5'Width'#2'Z'#7'Stretch'#9#0#0#0#0
+  +#4#9'FormStyle'#7#11'fsStayOnTop'#13'ShowInTaskBar'#7#7'stNever'#10'LCLVersi'
+  +'on'#6#8'2.0.12.0'#0#6'TPanel'#9'HintPanel'#4'Left'#2#0#6'Height'#2']'#3'Top'
+  +#2#0#5'Width'#3#177#0#5'Align'#7#8'alClient'#10'BevelOuter'#7#6'bvNone'#12'C'
+  +'lientHeight'#2']'#11'ClientWidth'#3#177#0#5'Color'#4#255#255#192#0#11'Paren'
+  +'tColor'#8#8'TabOrder'#2#0#0#6'TLabel'#7'HintLbl'#4'Left'#2#0#6'Height'#2']'
+  +#3'Top'#2#0#5'Width'#3#177#0#5'Align'#7#8'alClient'#8'AutoSize'#8#5'Color'#4
+  +#255#255#192#0#11'ParentColor'#8#11'Transparent'#8#8'WordWrap'#9#11'OptimalF'
+  +'ill'#9#0#0#6'TImage'#7'HintPic'#4'Left'#2'('#6'Height'#2':'#3'Top'#2#16#5'W'
+  +'idth'#2'Z'#7'Stretch'#9#0#0#0#0
 ]);

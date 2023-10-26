@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2022 József Rieth
+Copyright 2005-2023 József Rieth
 
     This file is part of Diatar.
 
@@ -66,6 +66,8 @@ function MonitorName(Index : integer) : string;
 procedure MonitorsInit;
 
 implementation
+
+uses Windows;
 
 {$ifdef WINDOWSx}
 uses WinUser;
@@ -189,7 +191,8 @@ var
   R : tRect;
 begin
   R:=Screen.Monitors[Index].WorkareaRect;
-  Result:=Point(R.Right-R.Left,R.Bottom-R.Top);
+  Result.X:=R.Right-R.Left;
+  Result.Y:=R.Bottom-R.Top;
 end;
 
 function MonitorUsable(Index : integer) : tRect;
@@ -205,12 +208,38 @@ end;
 function MonitorName(Index : integer) : string;
 var
   R : tRect;
+
+  function GetSysName() : string;
+  {$IFDEF windows}
+  type
+    TGetMonitorInfo = function(hMonitor: HMONITOR; lpmi: PMonitorInfo): BOOL; stdcall;
+  var
+    MonInfo : TMonitorInfoExW;
+    hUser32: HMODULE;
+    g_pfnGetMonitorInfo: TGetMonitorInfo;
+
+  begin
+    MonInfo.cbSize:=SizeOf(MonInfo);
+    GetMonitorInfo(Screen.Monitors[Index].Handle, @MonInfo);
+    hUser32:=GetModuleHandle('USER32');
+    Pointer(g_pfnGetMonitorInfo):=GetProcAddress(hUser32, 'GetMonitorInfoW');
+    if (hUser32<>0) and Assigned(g_pfnGetMonitorInfo) then
+      g_pfnGetMonitorInfo(Screen.Monitors[Index].Handle, @MonInfo);
+
+    Result:=StrPas(MonInfo.szDevice);
+  end;
+  {$ELSE}
+  begin
+    Result:='';
+  end;
+  {$ENDIF}
+
 begin
   if (Index<0) or (Index>=MonitorCount) then
     Result:='Monitor #'+IntToStr(Index)
   else begin
     R:=Screen.Monitors[Index].BoundsRect;
-    Result:='#'+IntToStr(Index)+' ( '+
+    Result:='#'+IntToStr(Index+1)+' "'+GetSysName()+'" ( '+
         IntToStr(R.Left)+' ; '+IntToStr(R.Top)+' ) / ( '+
         IntToStr(R.Right-R.Left)+' x '+
           IntToStr(R.Bottom-R.Top)+' )';
