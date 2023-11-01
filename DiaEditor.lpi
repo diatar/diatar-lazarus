@@ -327,10 +327,11 @@
         <UnitName Value="uEditorForm"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="988"/>
-        <CursorPos X="11" Y="1001"/>
+        <TopLine Value="32"/>
+        <CursorPos X="8" Y="48"/>
         <UsageCount Value="73"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit25>
       <Unit26>
         <Filename Value="urtf.pas"/>
@@ -899,123 +900,122 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1518" TopLine="1501"/>
+        <Caret Line="76" Column="10" TopLine="60"/>
       </Position1>
       <Position2>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1506" Column="39" TopLine="1500"/>
+        <Caret Line="90" Column="50" TopLine="64"/>
       </Position2>
       <Position3>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1507" TopLine="1500"/>
+        <Caret Line="129" Column="54" TopLine="103"/>
       </Position3>
       <Position4>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1509" TopLine="1500"/>
+        <Caret Line="307" Column="37" TopLine="281"/>
       </Position4>
       <Position5>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1515" TopLine="1500"/>
+        <Caret Line="1508" Column="5" TopLine="1478"/>
       </Position5>
       <Position6>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1516" TopLine="1500"/>
+        <Caret Line="1505" TopLine="1480"/>
       </Position6>
       <Position7>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1517" TopLine="1500"/>
+        <Caret Line="1506" TopLine="1481"/>
       </Position7>
       <Position8>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1521" TopLine="1500"/>
+        <Caret Line="1507" TopLine="1482"/>
       </Position8>
       <Position9>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1506" TopLine="1500"/>
+        <Caret Line="1505" TopLine="1482"/>
       </Position9>
       <Position10>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1518" TopLine="1500"/>
+        <Caret Line="1513" Column="14" TopLine="1500"/>
       </Position10>
       <Position11>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1087" TopLine="1071"/>
-      </Position11>
-      <Position12>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1088" TopLine="1071"/>
-      </Position12>
-      <Position13>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1089" TopLine="1071"/>
-      </Position13>
-      <Position14>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1505" Column="21" TopLine="1498"/>
-      </Position14>
-      <Position15>
-        <Filename Value="upaintresizedtext.pas"/>
-        <Caret Line="850" Column="32" TopLine="835"/>
-      </Position15>
-      <Position16>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1505" TopLine="1492"/>
-      </Position16>
-      <Position17>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1409" Column="58" TopLine="1382"/>
-      </Position17>
-      <Position18>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1506" Column="62" TopLine="1481"/>
-      </Position18>
-      <Position19>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="76" Column="10" TopLine="60"/>
-      </Position19>
-      <Position20>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="90" Column="50" TopLine="64"/>
-      </Position20>
-      <Position21>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="129" Column="54" TopLine="103"/>
-      </Position21>
-      <Position22>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="307" Column="37" TopLine="281"/>
-      </Position22>
-      <Position23>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1508" Column="5" TopLine="1478"/>
-      </Position23>
-      <Position24>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1505" TopLine="1480"/>
-      </Position24>
-      <Position25>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1506" TopLine="1481"/>
-      </Position25>
-      <Position26>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1507" TopLine="1482"/>
-      </Position26>
-      <Position27>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1505" TopLine="1482"/>
-      </Position27>
-      <Position28>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1513" Column="14" TopLine="1500"/>
-      </Position28>
-      <Position29>
         <Filename Value="uedmain.pas"/>
         <Caret Line="245" Column="37" TopLine="236"/>
-      </Position29>
-      <Position30>
+      </Position11>
+      <Position12>
         <Filename Value="uedmain.pas"/>
         <Caret Line="50" TopLine="33"/>
+      </Position12>
+      <Position13>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1001" Column="82" TopLine="988"/>
+      </Position13>
+      <Position14>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="127" TopLine="127"/>
+      </Position14>
+      <Position15>
+        <Filename Value="ueditorform.pas"/>
+      </Position15>
+      <Position16>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="48" Column="8" TopLine="22"/>
+      </Position16>
+      <Position17>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="274" Column="49" TopLine="248"/>
+      </Position17>
+      <Position18>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="846" Column="32" TopLine="821"/>
+      </Position18>
+      <Position19>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="900" Column="12" TopLine="884"/>
+      </Position19>
+      <Position20>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="979" Column="12" TopLine="953"/>
+      </Position20>
+      <Position21>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1145" Column="14" TopLine="1120"/>
+      </Position21>
+      <Position22>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1360" Column="40" TopLine="1335"/>
+      </Position22>
+      <Position23>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1408" Column="38" TopLine="1383"/>
+      </Position23>
+      <Position24>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1461" Column="39" TopLine="1435"/>
+      </Position24>
+      <Position25>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1462" Column="39" TopLine="1436"/>
+      </Position25>
+      <Position26>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1544" Column="34" TopLine="1519"/>
+      </Position26>
+      <Position27>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1676" Column="12" TopLine="1651"/>
+      </Position27>
+      <Position28>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1795" Column="46" TopLine="1778"/>
+      </Position28>
+      <Position29>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="2046" Column="38" TopLine="2020"/>
+      </Position29>
+      <Position30>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="2065" Column="33" TopLine="2040"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>

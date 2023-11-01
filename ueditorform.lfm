@@ -2491,7 +2491,7 @@ object EditorForm: TEditorForm
   OnDestroy = FormDestroy
   OnShow = FormShow
   ShowHint = True
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.2.6.0'
   object NamLbl: TLabel
     Left = 4
     Height = 17
@@ -2573,7 +2573,7 @@ object EditorForm: TEditorForm
     OnClick = UlBtnClick
   end
   object UndoBtn: TSpeedButton
-    Left = 224
+    Left = 248
     Height = 22
     Hint = 'Vissza (Ctrl+Z)'
     Top = 36
@@ -2597,7 +2597,7 @@ object EditorForm: TEditorForm
     OnClick = UndoBtnClick
   end
   object RedoBtn: TSpeedButton
-    Left = 248
+    Left = 272
     Height = 22
     Hint = 'Mégis (Ctrl+R)'
     Top = 36
@@ -2621,7 +2621,7 @@ object EditorForm: TEditorForm
     OnClick = RedoBtnClick
   end
   object CutBtn: TSpeedButton
-    Left = 289
+    Left = 313
     Height = 22
     Hint = 'Kivág (Ctrl+X)'
     Top = 36
@@ -2644,7 +2644,7 @@ object EditorForm: TEditorForm
     OnClick = CutBtnClick
   end
   object CopyBtn: TSpeedButton
-    Left = 313
+    Left = 337
     Height = 22
     Hint = 'Másol (Ctrl+C)'
     Top = 36
@@ -2667,7 +2667,7 @@ object EditorForm: TEditorForm
     OnClick = CopyBtnClick
   end
   object PasteBtn: TSpeedButton
-    Left = 337
+    Left = 361
     Height = 22
     Hint = 'Beilleszt (Ctrl+V)'
     Top = 36
@@ -2690,7 +2690,7 @@ object EditorForm: TEditorForm
     OnClick = PasteBtnClick
   end
   object SpaceBtn: TSpeedButton
-    Left = 120
+    Left = 144
     Height = 22
     Hint = 'Nem-törhető szóköz (Ctrl+space)'
     Top = 36
@@ -2709,7 +2709,7 @@ object EditorForm: TEditorForm
     OnClick = SpaceBtnClick
   end
   object SymbBtn: TSpeedButton
-    Left = 376
+    Left = 400
     Height = 22
     Hint = 'Szimbólumok (Ctrl+S) vagy Ctrl+1..9'
     Top = 36
@@ -2728,7 +2728,7 @@ object EditorForm: TEditorForm
     ParentFont = False
   end
   object NBHyphBtn: TSpeedButton
-    Left = 144
+    Left = 168
     Height = 22
     Hint = 'Nem-törhető kötőjel (Ctrl+Shift+ – )'
     Top = 36
@@ -2747,7 +2747,7 @@ object EditorForm: TEditorForm
     OnClick = NBHyphBtnClick
   end
   object CHyphBtn: TSpeedButton
-    Left = 168
+    Left = 192
     Height = 22
     Hint = 'Feltételes kötőjel (Ctrl+ – )'
     Top = 36
@@ -2766,7 +2766,7 @@ object EditorForm: TEditorForm
     OnClick = CHyphBtnClick
   end
   object AkkordBtn: TSpeedButton
-    Left = 400
+    Left = 424
     Height = 22
     Hint = 'Gitárakkordok (Ctrl+G)'
     Top = 36
@@ -2861,7 +2861,7 @@ object EditorForm: TEditorForm
     TabOrder = 4
   end
   object KottaBtn: TSpeedButton
-    Left = 424
+    Left = 448
     Height = 22
     Hint = 'Kotta (Ctrl+K)'
     Top = 36
@@ -2898,7 +2898,7 @@ object EditorForm: TEditorForm
     ParentFont = False
   end
   object PriorBtn: TSpeedButton
-    Left = 192
+    Left = 216
     Height = 22
     Hint = 'Sortörési javaslat (Ctrl+ ENTER)'
     Top = 36
@@ -2925,7 +2925,7 @@ object EditorForm: TEditorForm
     OnClick = PriorBtnClick
   end
   object ArcBtn: TSpeedButton
-    Left = 80
+    Left = 104
     Height = 22
     Hint = 'Kötőív (Ctrl+T)'
     Top = 36
@@ -2956,11 +2956,49 @@ object EditorForm: TEditorForm
     GroupIndex = 3
     OnClick = ArcBtnClick
   end
+  object SoBtn: TSpeedButton
+    Left = 80
+    Height = 22
+    Hint = 'Áthúzott (Ctrl+H)'
+    Top = 36
+    Width = 23
+    AllowAllUp = True
+    Glyph.Data = {
+      36030000424D3603000000000000360000002800000010000000100000000100
+      1800000000000003000064000000640000000000000000000000FFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF808080FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFF808080FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000808080FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000808080FFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000808080FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFF000000808080FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      8080800000008080808080808080808080808080808080800000008080808080
+      80808080808080FFFFFFFFFFFF00000000000000000000000000000000000000
+      0000000000000000000000000000000000000000808080FFFFFFFFFFFF000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000080808080808080808080
+      8080808080808080000000808080FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000000000000000000000000000000000000000000000808080FFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000808080FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFF000000808080FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000808080FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000808080FFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000808080FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFF000000808080FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000808080FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000808080FFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000808080FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFF000000808080FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+    }
+    GroupIndex = 3
+    OnClick = SoBtnClick
+  end
   object StyleTmr: TTimer
     Enabled = False
     Interval = 100
     OnTimer = StyleTmrTimer
-    left = 452
-    top = 32
+    Left = 488
+    Top = 32
   end
 end

@@ -65,7 +65,7 @@ type
   end;
 
 type
-  tRTFFontStyle = (rfsBold,rfsItalic,rfsUnderline,rfsArc);
+  tRTFFontStyle = (rfsBold,rfsItalic,rfsUnderline,rfsStrikeout,rfsArc);
   tRTFFontStyles = set of tRTFFontStyle;
 
 type
@@ -168,8 +168,10 @@ begin
         'i' : AddStrToBuf('\i0'#13);
         'U' : AddStrToBuf('\ul1'#13);
         'u' : AddStrToBuf('\ul0'#13);
-        '(' : AddStrToBuf('\strike1'#13);
-        ')' : AddStrToBuf('\strike0'#13);
+        'S' : AddStrToBuf('\strike1'#13);
+        's' : AddStrToBuf('\strike0'#13);
+        '(' : AddStrToBuf('\outl1'#13);
+        ')' : AddStrToBuf('\outl0'#13);
         ' ' : AddStrToBuf('\~');
         '-' : AddStrToBuf('\-');
         '_' : AddStrToBuf('\_');
@@ -207,7 +209,7 @@ end;
 
 procedure tRTFOutput.AddPar(const Line : string);
 begin
-  AddStrToBuf('\b0\i0\ul0\strike0');
+  AddStrToBuf('\b0\i0\ul0\strike0\outl0');
   AddTxt(Line);
   AddStrToBuf('\par'#13);
 end;
@@ -286,6 +288,8 @@ begin
     Emit(iif(rfsItalic in NewStyles,'\I','\i'));
   if (rfsUnderline in fFS)<>(rfsUnderline in NewStyles) then
     Emit(iif(rfsUnderline in NewStyles,'\U','\u'));
+  if (rfsStrikeout in fFS)<>(rfsStrikeout in NewStyles) then
+    Emit(iif(rfsStrikeout in NewStyles,'\S','\s'));
   if (rfsArc in fFS)<>(rfsArc in NewStyles) then
     Emit(iif(rfsArc in NewStyles,'\(','\)'));
   fFS:=NewStyles;
@@ -350,11 +354,12 @@ begin
       UnGetChar;
       //control word;
       s:=GetControlWord();
-      if (s='\b') or (s='\i') or (s='\ul') or (s='\strike') then begin
+      if (s='\b') or (s='\i') or (s='\ul') or (s='\strike') or (s='\outl') then begin
         if s='\b' then fs:=rfsBold else
         if s='\i' then fs:=rfsItalic else
         if s='\ul' then fs:=rfsUnderline else
-        if s='\strike' then fs:=rfsArc;
+        if s='\strike' then fs:=rfsStrikeout;
+        if s='\outl' then fs:=rfsArc;
         b:=(GetControlNum(1)<>0);
         oldfs:=fFS; if b then Include(oldfs,fs) else Exclude(oldfs,fs);
         SetStyles(oldfs);
@@ -473,6 +478,7 @@ begin
     fLineBuf:=iif(rfsBold in fFS,'\B','')+
             iif(rfsItalic in fFS,'\I','')+
             iif(rfsUnderline in fFS,'\U','')+
+            iif(rfsStrikeout in fFS,'\S','')+
             iif(rfsArc in fFS,'\(','');
   fLineBuf:=fLineBuf+Txt;
 end;
