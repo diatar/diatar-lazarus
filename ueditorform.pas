@@ -55,11 +55,13 @@ const
   escV0      = #$0C;  //iv ki
   // #$0D = soremeles!!!
   escV1      = #$0E;  //iv be
+  escS0      = #$0F;  //strikeout ki
+  escS1      = #$10;  //strikeout be
 
   //ez ugyanaz, mint a tFontStyle, de hosszabb resz kijelolesenel jelzi, ha kevert stilus van
   type
-    tMixedFontStyle = (msBold,msItalic,msUnderline,msArc,
-      msMixBold,msMixItalic,msMixUnderline,msMixArc);    //utobbiak ha igenis-nemis
+    tMixedFontStyle = (msBold,msItalic,msUnderline,msArc,msStrikeout,
+      msMixBold,msMixItalic,msMixUnderline,msMixArc,msMixStrikeout);    //utobbiak ha igenis-nemis
     tMixedFontStyles = set of tMixedFontStyle;
 
 const
@@ -97,6 +99,7 @@ type
     SymbBtn: TSpeedButton;
     AkkordBtn: TSpeedButton;
     ArcBtn: TSpeedButton;
+    SoBtn: TSpeedButton;
     VScrollBar: TScrollBar;
     StyleTmr: TTimer;
     SpaceBtn: TSpeedButton;
@@ -131,6 +134,7 @@ type
     procedure SymbBtnClick(Sender: TObject);
     procedure StyleTmrTimer(Sender: TObject);
     procedure UlBtnClick(Sender: TObject);
+    procedure SoBtnClick(Sender: TObject);
     procedure EditBoxPaint(Sender: tObject);
     procedure EditBoxEnter(Sender: tObject);
     procedure EditBoxExit(Sender: tObject);
@@ -267,7 +271,7 @@ implementation
 uses uRTF, uKottaEditor;
 
 const
-  FORMATS = [escB0,escB1,escI0,escI1,escU0,escU1,escV0,escV1];
+  FORMATS = [escB0,escB1,escI0,escI1,escU0,escU1,escV0,escV1,escS0,escS1];
 
 //aszinkron gombnyomasok kodjai ld. AsyncBtn()
 const
@@ -441,6 +445,13 @@ begin
   StyleTmr.Enabled:=false; StyleTmr.Enabled:=true; //stilus kijelzese kesleltetve
 end;
 
+//Strikeout gomb
+procedure tEditorForm.SoBtnClick(Sender: TObject);
+begin
+  SetSelectionStyle(msStrikeout,{not} SoBtn.Down);
+  StyleTmr.Enabled:=false; StyleTmr.Enabled:=true; //stilus kijelzese kesleltetve
+end;
+
 //Arc gomb
 procedure tEditorForm.ArcBtnClick(Sender: TObject);
 begin
@@ -593,11 +604,13 @@ begin
   StyleTmr.Enabled:=false;
   ms:=GetSelectionStyle;
   BoldBtn.Flat:=(msMixBold in ms);
-  BoldBtn.Down:=(msBold in ms);// and not BoldBtn.Flat;
+  BoldBtn.Down:=(msBold in ms);
   ItalBtn.Flat:=(msMixItalic in ms);
-  ItalBtn.Down:=(msItalic in ms);// and not ItalBtn.Flat;
+  ItalBtn.Down:=(msItalic in ms);
   UlBtn.Flat:=(msMixUnderline in ms);
-  UlBtn.Down:=(msUnderline in ms);// and not UlBtn.Flat;
+  UlBtn.Down:=(msUnderline in ms);
+  SoBtn.Flat:=(msMixStrikeout in ms);
+  SoBtn.Down:=(msStrikeout in ms);
   ArcBtn.Flat:=(msMixArc in ms);
   ArcBtn.Down:=(msArc in ms);
   UndoBtn.Enabled:=Assigned(fCurrUndoRec);
@@ -832,6 +845,8 @@ begin
         'i' : Result[p2]:=escI0;
         'U' : Result[p2]:=escU1;
         'u' : Result[p2]:=escU0;
+        'S' : Result[p2]:=escS1;
+        's' : Result[p2]:=escS0;
         '(' : Result[p2]:=escV1;
         ')' : Result[p2]:=escV0;
         '-' : Result[p2]:=escHYPHEN;
@@ -884,6 +899,8 @@ begin
       escI0 : InsertEscape('i');
       escU1 : InsertEscape('U');
       escU0 : InsertEscape('u');
+      escS1 : InsertEscape('S');
+      escS0 : InsertEscape('s');
       escV1 : InsertEscape('(');
       escV0 : InsertEscape(')');
       escSPACE : InsertEscape(' ');
@@ -961,6 +978,8 @@ begin
       escI0 : Exclude(Result,msItalic);
       escU1 : Include(Result,msUnderline);
       escU0 : Exclude(Result,msUnderline);
+      escS1 : Include(Result,msStrikeout);
+      escS0 : Exclude(Result,msStrikeout);
       escV1 : Include(Result,msArc);
       escV0 : Exclude(Result,msArc);
     end;
@@ -1125,6 +1144,8 @@ var
         escI0 : Exclude(fs,fsItalic);
         escU1 : Include(fs,fsUnderline);
         escU0 : Exclude(fs,fsUnderline);
+        escS1 : Include(fs,fsStrikeOut);
+        escS0 : Exclude(fs,fsStrikeOut);
         escV1 : arcx:=x;
         escV0 : DoArc();
         else esc:=false;              //nem formazo volt
@@ -1337,6 +1358,8 @@ begin
     s2:=s2+iif(msItalic in fs2,escI1,escI0);
   if (msUnderline in fs1)<>(msUnderline in fs2) then
     s2:=s2+iif(msUnderline in fs2,escU1,escU0);
+  if (msStrikeout in fs1)<>(msStrikeout in fs2) then
+    s2:=s2+iif(msStrikeout in fs2,escS1,escS0);
   if (msArc in fs1)<>(msArc in fs2) then
     s2:=s2+iif(msArc in fs2,escV1,escV0);
   if (s2>'') and (sx<Length(s1)) then begin      //sor vegen nem erdekes
@@ -1383,6 +1406,7 @@ begin
       s1:=iif(msBold in fs,escB1,'')+
           iif(msItalic in fs,escI1,'')+
           iif(msUnderline in fs,escU1,'')+
+          iif(msStrikeout in fs,escS1,'')+
           iif(msArc in fs,escV1,'');
     end;
     fLines[cy]:=copy(s,1,cx);
@@ -1436,6 +1460,10 @@ begin
   if (msMixUnderline in ms) and ((msUnderline in ms)<>(msUnderline in fs)) then begin
     f1:=f1+iif(msUnderline in ms,escU1,escU0);
     f2:=f2+iif(msUnderline in fs,escU1,escU0);
+  end;
+  if (msMixStrikeout in ms) and ((msStrikeout in ms)<>(msStrikeout in fs)) then begin
+    f1:=f1+iif(msStrikeout in ms,escS1,escS0);
+    f2:=f2+iif(msStrikeout in fs,escS1,escS0);
   end;
   if (msMixArc in ms) and ((msArc in ms)<>(msArc in fs)) then begin
     f1:=f1+iif(msArc in ms,escV1,escV0);
@@ -1498,6 +1526,10 @@ begin
           Include(fNextStyle,msMixUnderline);
           if switchon then Include(fNextStyle,msUnderline) else Exclude(fNextStyle,msUnderline);
         end;
+      msStrikeout : begin
+          Include(fNextStyle,msMixStrikeout);
+          if switchon then Include(fNextStyle,msStrikeout) else Exclude(fNextStyle,msStrikeout);
+        end;
       msArc       : begin
           Include(fNextStyle,msMixArc);
           if switchon then Include(fNextStyle,msArc) else Exclude(fNextStyle,msArc);
@@ -1510,6 +1542,7 @@ begin
     msBold      : begin c1:=escB1; c2:=escB0; end;
     msItalic    : begin c1:=escI1; c2:=escI0; end;
     msUnderline : begin c1:=escU1; c2:=escU0; end;
+    msStrikeout : begin c1:=escS1; c2:=escS0; end;
     msArc       : begin c1:=escV1; c2:=escV0; end;
     else exit; //ez nem lehet, de...
   end;
@@ -1614,6 +1647,11 @@ begin
     end else begin
       if msUnderline in fson then Include(Result,msUnderline);
     end;
+    if msMixStrikeout in fNextStyle then begin
+      if msStrikeout in fNextStyle then Include(Result,msStrikeout);
+    end else begin
+      if msStrikeout in fson then Include(Result,msStrikeout);
+    end;
     if msMixArc in fNextStyle then begin
       if msArc in fNextStyle then Include(Result,msArc);
     end else begin
@@ -1637,6 +1675,8 @@ begin
       escI0 : Include(fsoff,msItalic);
       escU1 : Include(fson,msUnderline);
       escU0 : Include(fsoff,msUnderline);
+      escS1 : Include(fson,msStrikeout);
+      escS0 : Include(fsoff,msStrikeout);
       escV1 : Include(fson,msArc);
       escV0 : Include(fsoff,msArc);
     end;
@@ -1647,17 +1687,19 @@ begin
   if msBold in fson then Include(Result,msBold);
   if msItalic in fson then Include(Result,msItalic);
   if msUnderline in fson then Include(Result,msUnderline);
+  if msStrikeout in fson then Include(Result,msStrikeout);
   if msArc in fson then Include(Result,msArc);
   if msBold in fsoff then Include(Result,msMixBold);
   if msItalic in fsoff then Include(Result,msMixItalic);
   if msUnderline in fsoff then Include(Result,msMixUnderline);
+  if msStrikeout in fsoff then Include(Result,msMixStrikeout);
   if msArc in fsoff then Include(Result,msMixArc);
 end;
 
 //felesleges formazasok torlese
 procedure tEditorForm.CleanupStyles(Y : integer);
 var
-  i,len,bpos,ipos,upos,vpos : integer;
+  i,len,bpos,ipos,upos,spos,vpos : integer;
   s : string;
   fs : tMixedFontStyles;
   //torli az ix-edik karaktert
@@ -1672,7 +1714,7 @@ var
 begin
   if Y>=fLines.Count then exit;  //ha tul vagyunk az utolso soron, semmi
   s:=fLines[Y]; fs:=[];
-  bpos:=0; ipos:=0; upos:=0; vpos:=0;     //utolso formazasi poziciok
+  bpos:=0; ipos:=0; upos:=0; spos:=0; vpos:=0;     //utolso formazasi poziciok
   i:=0; len:=Length(s);
   while i<len do begin           //karakterenkent
     inc(i);
@@ -1713,6 +1755,18 @@ begin
                 upos:=i;
                 continue;
               end;
+      escS1 : if not (msStrikeout in fs) then begin
+                Include(fs,msStrikeout);
+                if spos>0 then DelChar(spos);
+                spos:=i;
+                continue;
+              end;
+      escS0 : if (msStrikeout in fs) then begin
+                Exclude(fs,msStrikeout);
+                if spos>0 then DelChar(spos);
+                spos:=i;
+                continue;
+              end;
       escV1 : if not (msArc in fs) then begin
                 Include(fs,msArc);
                 if vpos>0 then DelChar(vpos);
@@ -1726,7 +1780,7 @@ begin
                 continue;
               end;
       else begin                                  //ha barmi kiirhato karakter
-          bpos:=0; ipos:=0; upos:=0; vpos:=0;
+          bpos:=0; ipos:=0; upos:=0; spos:=0; vpos:=0;
           continue;
         end;
     end;
@@ -1989,7 +2043,7 @@ var
     while i<len do begin
       inc(i);
       case Txt[i] of
-        escB1,escB0,escI1,escI0,escU1,escU0,escV1,escV0 : continue; //formazas nelkul
+        escB1,escB0,escI1,escI0,escU1,escU0,escS1,escS0,escV1,escV0 : continue; //formazas nelkul
         escSPACE : MS.WriteAnsiString(' ');             //nemtorheto szokoz
         escPRIORITY : MS.WriteAnsiString(' ');          //sortores prioritas
         escHYPHEN : continue;                           //felteteles kotojel nincs
@@ -2008,7 +2062,8 @@ begin
   fs:=StyleAtXY(sx,sy);                               //elejen a stilus
   while (sx>0) and (s[sx] in FORMATS) do dec(sx);     //formazas ele
   s:=iif(msBold in fs,escB1,escB0)+iif(msItalic in fs,escI1,escI0)+
-     iif(msUnderline in fs,escU1,escU0)+iif(msArc in fs,escV1,escV0)+
+     iif(msUnderline in fs,escU1,escU0)+iif(msStrikeout in fs,escS1,escS0)+
+     iif(msArc in fs,escV1,escV0)+
      copy(s,sx+1,len); //kezdo formazas
   len:=Length(s);                                         // +a sor tovabbi resze
   if sy=ey then dec(ex,sx-4); //ha ez a zarosor, ex igazitasa (negyfele formazast illesztettunk be)
@@ -2279,6 +2334,12 @@ begin
     end;
     if Key=ord('U') then begin  //Ctrl+U  (alahuzott)
       ToggleOneStyle(msUnderline);
+      StyleTmr.Enabled:=false; StyleTmr.Enabled:=true; //stilus kijelzese kesleltetve
+      Key:=0;
+      exit;
+    end;
+    if Key=ord('H') then begin  //Ctrl+H  (athuzott)
+      ToggleOneStyle(msStrikeout);
       StyleTmr.Enabled:=false; StyleTmr.Enabled:=true; //stilus kijelzese kesleltetve
       Key:=0;
       exit;

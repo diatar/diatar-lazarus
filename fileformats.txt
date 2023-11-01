@@ -18,6 +18,7 @@ szovegsoron beluli specialis elemek:
   \B \b   bold
   \I \i   dolt
   \U \u   alahuzott
+  \S \s   athuzott
   \\      \ jel
   \(szokoz) nemtorheto szokoz
   \-      felteteles kotojel

@@ -522,6 +522,8 @@ begin
           'u': Exclude(fFS, fsUnderline);
           'I': Include(fFS, fsItalic);
           'i': Exclude(fFS, fsItalic);
+          'S': Include(fFS, fsStrikeOut);
+          's': Exclude(fFS, fsStrikeOut);
           '(': fArcX:=fX+1;
           ')': DrawArc(true);
           '-': ; //felteteles kotojel nem jatszik
