@@ -2487,7 +2487,7 @@ object SearchForm: TSearchForm
     410001AC418003AC41
   }
   OnCreate = FormCreate
-  LCLVersion = '0.9.30'
+  LCLVersion = '2.2.0.4'
   object LeftPanel: TPanel
     Left = 4
     Height = 416
@@ -2500,12 +2500,11 @@ object SearchForm: TSearchForm
     OnEnter = LeftPanelEnter
     object Label1: TLabel
       Left = 8
-      Height = 14
+      Height = 15
       Top = 8
-      Width = 93
+      Width = 96
       Caption = 'Keresési &feltételek:'
       FocusControl = Search1Ed
-      ParentColor = False
     end
     object Search12Panel: TPanel
       Left = 4
@@ -2518,7 +2517,7 @@ object SearchForm: TSearchForm
       TabOrder = 0
       object Search1Ed: TEdit
         Left = 4
-        Height = 21
+        Height = 23
         Top = 5
         Width = 256
         OnEnter = LeftPanelEnter
@@ -2526,9 +2525,9 @@ object SearchForm: TSearchForm
       end
       object And1Btn: TRadioButton
         Left = 4
-        Height = 17
+        Height = 19
         Top = 64
-        Width = 29
+        Width = 31
         Caption = 'és'
         Checked = True
         OnClick = AndOr1Click
@@ -2538,9 +2537,9 @@ object SearchForm: TSearchForm
       end
       object Or1Btn: TRadioButton
         Left = 42
-        Height = 17
+        Height = 19
         Top = 64
-        Width = 42
+        Width = 45
         Caption = 'vagy'
         OnClick = AndOr1Click
         OnEnter = LeftPanelEnter
@@ -2548,9 +2547,9 @@ object SearchForm: TSearchForm
       end
       object Between1Btn: TRadioButton
         Left = 100
-        Height = 17
+        Height = 19
         Top = 64
-        Width = 48
+        Width = 53
         Caption = 'között'
         OnClick = AndOr1Click
         OnEnter = LeftPanelEnter
@@ -2558,18 +2557,18 @@ object SearchForm: TSearchForm
       end
       object Word1Ck: TCheckBox
         Left = 4
-        Height = 17
+        Height = 19
         Top = 33
-        Width = 65
+        Width = 69
         Caption = 'Teljes szó'
         OnEnter = LeftPanelEnter
         TabOrder = 1
       end
       object Case1Ck: TCheckBox
         Left = 100
-        Height = 17
+        Height = 19
         Top = 33
-        Width = 109
+        Width = 123
         Caption = 'Kis/nagybetű külön'
         OnClick = Case1CkClick
         OnEnter = LeftPanelEnter
@@ -2577,7 +2576,7 @@ object SearchForm: TSearchForm
       end
       object Search2Ed: TEdit
         Left = 4
-        Height = 21
+        Height = 23
         Top = 88
         Width = 256
         OnEnter = LeftPanelEnter
@@ -2585,18 +2584,18 @@ object SearchForm: TSearchForm
       end
       object Word2Ck: TCheckBox
         Left = 4
-        Height = 17
+        Height = 19
         Top = 116
-        Width = 65
+        Width = 69
         Caption = 'Teljes szó'
         OnEnter = LeftPanelEnter
         TabOrder = 7
       end
       object Case2Ck: TCheckBox
         Left = 100
-        Height = 17
+        Height = 19
         Top = 116
-        Width = 109
+        Width = 123
         Caption = 'Kis/nagybetű külön'
         OnEnter = LeftPanelEnter
         TabOrder = 8
@@ -2614,18 +2613,18 @@ object SearchForm: TSearchForm
     end
     object And2Btn: TRadioButton
       Left = 31
-      Height = 17
+      Height = 19
       Top = 176
-      Width = 29
+      Width = 31
       Caption = 'és'
       OnEnter = LeftPanelEnter
       TabOrder = 1
     end
     object Or2Btn: TRadioButton
       Left = 86
-      Height = 17
+      Height = 19
       Top = 176
-      Width = 42
+      Width = 45
       Caption = 'vagy'
       Checked = True
       OnEnter = LeftPanelEnter
@@ -2643,7 +2642,7 @@ object SearchForm: TSearchForm
       TabOrder = 3
       object Search3Ed: TEdit
         Left = 4
-        Height = 21
+        Height = 23
         Top = 5
         Width = 256
         OnEnter = LeftPanelEnter
@@ -2651,9 +2650,9 @@ object SearchForm: TSearchForm
       end
       object And3Btn: TRadioButton
         Left = 4
-        Height = 17
+        Height = 19
         Top = 64
-        Width = 29
+        Width = 31
         Caption = 'és'
         Checked = True
         OnClick = AndOr3Click
@@ -2663,9 +2662,9 @@ object SearchForm: TSearchForm
       end
       object Or3Btn: TRadioButton
         Left = 42
-        Height = 17
+        Height = 19
         Top = 64
-        Width = 42
+        Width = 45
         Caption = 'vagy'
         OnClick = AndOr3Click
         OnEnter = LeftPanelEnter
@@ -2673,9 +2672,9 @@ object SearchForm: TSearchForm
       end
       object Between3Btn: TRadioButton
         Left = 100
-        Height = 17
+        Height = 19
         Top = 64
-        Width = 48
+        Width = 53
         Caption = 'között'
         OnClick = AndOr3Click
         OnEnter = LeftPanelEnter
@@ -2683,18 +2682,18 @@ object SearchForm: TSearchForm
       end
       object Word3Ck: TCheckBox
         Left = 4
-        Height = 17
+        Height = 19
         Top = 33
-        Width = 65
+        Width = 69
         Caption = 'Teljes szó'
         OnEnter = LeftPanelEnter
         TabOrder = 1
       end
       object Case3Ck: TCheckBox
         Left = 100
-        Height = 17
+        Height = 19
         Top = 33
-        Width = 109
+        Width = 123
         Caption = 'Kis/nagybetű külön'
         OnClick = Case3CkClick
         OnEnter = LeftPanelEnter
@@ -2702,7 +2701,7 @@ object SearchForm: TSearchForm
       end
       object Search4Ed: TEdit
         Left = 4
-        Height = 21
+        Height = 23
         Top = 88
         Width = 256
         OnEnter = LeftPanelEnter
@@ -2710,18 +2709,18 @@ object SearchForm: TSearchForm
       end
       object Word4Ck: TCheckBox
         Left = 4
-        Height = 17
+        Height = 19
         Top = 116
-        Width = 65
+        Width = 69
         Caption = 'Teljes szó'
         OnEnter = LeftPanelEnter
         TabOrder = 7
       end
       object Case4Ck: TCheckBox
         Left = 100
-        Height = 17
+        Height = 19
         Top = 116
-        Width = 109
+        Width = 123
         Caption = 'Kis/nagybetű külön'
         OnEnter = LeftPanelEnter
         TabOrder = 8
@@ -2782,7 +2781,7 @@ object SearchForm: TSearchForm
       Left = 151
       Height = 26
       Top = 388
-      Width = 84
+      Width = 92
       AutoSize = True
       Cancel = True
       Caption = 'Még&sem'
@@ -2803,27 +2802,25 @@ object SearchForm: TSearchForm
     OnEnter = RightPanelEnter
     object Label2: TLabel
       Left = 8
-      Height = 14
+      Height = 15
       Top = 8
-      Width = 48
+      Width = 49
       Caption = '&Találatok:'
       FocusControl = FindPanel
-      ParentColor = False
     end
     object PercentLbl: TLabel
       Left = 72
-      Height = 14
+      Height = 15
       Top = 8
-      Width = 51
+      Width = 56
       Caption = 'PercentLbl'
-      ParentColor = False
     end
     object FindPanel: TPanel
       Left = 1
       Height = 317
       Top = 32
       Width = 272
-      TabOrder = 3
+      TabOrder = 0
       OnEnter = RightPanelEnter
     end
     object ShowBtn: TBitBtn
@@ -2833,7 +2830,7 @@ object SearchForm: TSearchForm
       Width = 112
       Caption = '&Megjelenítés'
       ModalResult = 6
-      TabOrder = 0
+      TabOrder = 1
     end
     object ListBtn: TBitBtn
       Left = 156
@@ -2842,7 +2839,7 @@ object SearchForm: TSearchForm
       Width = 112
       Caption = '&Listába'
       ModalResult = 10
-      TabOrder = 1
+      TabOrder = 2
     end
     object DelLstBtn: TBitBtn
       Left = 72
@@ -2853,7 +2850,7 @@ object SearchForm: TSearchForm
       Enabled = False
       Kind = bkNoToAll
       ModalResult = 9
-      TabOrder = 2
+      TabOrder = 3
     end
   end
 end

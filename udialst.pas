@@ -820,14 +820,14 @@ end;
 procedure tDiaLst.LstEnter(Sender : tObject);
 begin
   fList.SetFocus;
-  fCaret.Capture;
+  if fCanSearch then fCaret.Capture;
   fSearchBox.Invalidate;
 //  inherited;
 end;
 
 procedure tDiaLst.LstExit(Sender : tObject);
 begin
-  fCaret.Release;
+  if fCanSearch then fCaret.Release;
   fSearchBox.Invalidate;
 //  inherited;
 end;
