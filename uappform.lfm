@@ -2493,5 +2493,5 @@ object AppForm: TAppForm
   OnWindowStateChange = FormWindowStateChange
   Position = poDefault
   ShowInTaskBar = stNever
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '2.2.0.4'
 end

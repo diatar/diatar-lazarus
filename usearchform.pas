@@ -413,9 +413,9 @@ procedure tSearchForm.StartSearch;
     end;
   end;
 begin
+  CancelBtn.Enabled:=true;
   DisableControls(Self);
   Searching:=true;
-  CancelBtn.Enabled:=true;
 end;
 
 procedure tSearchForm.StopSearch;

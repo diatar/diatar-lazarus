@@ -207,6 +207,7 @@ type
     fProgressPercent : integer;
     fOrigBtnPanelHeight : integer;
     fOrigBtnHeight : integer;
+    fOrigSongBtnWidth : integer;
     fDownMenu : tPopupMenu;
     fGotoRepeat : integer;        //szamlalja az egymas utani goto-kat
     fGotoTmr : integer;           //timerhez
@@ -443,6 +444,7 @@ begin
 
   fOrigBtnPanelHeight:=BtnPanel.Height;
   fOrigBtnHeight:=LoadDiaBtn.Height;
+  fOrigSongBtnWidth:=NextSongBtn.Width;
   ResizeBtns(false);
   SetupLoadSaveBtn(dbmNOTHING);
 
@@ -1698,7 +1700,7 @@ end;
 
 procedure tMainForm.ResizeBtns(IsLarge : boolean);
 var
-  gap,h : integer;
+  gap,h,w : integer;
 begin
   BtnPanel.Height:=iif(IsLarge,fOrigBtnPanelHeight*2,fOrigBtnPanelHeight);
   ProjLbl.Left:=(ProjBtn.Width-ProjLbl.Width) div 2;
@@ -1707,11 +1709,23 @@ begin
   h:=iif(IsLarge,fOrigBtnHeight*2,fOrigBtnHeight);
   LoadDiaBtn.Height:=h; SaveDiaBtn.Height:=h; LstBtn.Height:=h;
   LoadDownBtn.Height:=h; SaveDownBtn.Height:=h;
+  PicDownBtn.Height:=PicBtn.Height;
   LstBtn.Top:=LoadDiaBtn.Top+h+gap;
   DiaTab.Top:=LstBtn.Top+LstBtn.Height;
-//  DiaTab.Height:=iif(IsLarge,48,24);
   DiaLst.Top:=DiaTab.Top+iif(Globals.AlwaysDiaTabs or (DiaTab.Tabs.Count>2),DiaTab.Height+LoadDiaBtn.Top,0);
   DtxLst.Top:=LstBtn.Top+LstBtn.Height+LoadDiaBtn.Top;
+
+  gap:=PrevSongBtn.Left;
+  w:=iif(IsLarge,fOrigSongBtnWidth*2,fOrigSongBtnWidth);
+  PrevSongBtn.Width:=w; PrevBtn.Width:=w; NextBtn.Width:=w; NextSongBtn.Width:=w;
+  PrevBtn.Left:=PrevSongBtn.Left+w;
+  NextBtn.Left:=PrevBtn.Left+w;
+  NextSongBtn.Left:=NextBtn.Left+w;
+  EdBtn.Left:=NextSongBtn.Left+w+gap;
+  AdHocBtn.Left:=EdBtn.Left+EdBtn.Width;
+  LeftBtnsPanel.Width:=AdHocBtn.Left+AdHocBtn.Width+gap;
+
+  LeftBtnsPanel.Height:=BtnPanel.Height-2*LeftBtnsPanel.Top;
 end;
 
 procedure tMainForm.LoadDiaLst;
