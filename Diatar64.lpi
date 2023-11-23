@@ -82,11 +82,10 @@
       <Unit4>
         <Filename Value="C:\lazarus\lcl\forms.pp"/>
         <UnitName Value="Forms"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="146"/>
         <CursorPos X="57" Y="174"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="C:\lazarus\lcl\lcltype.pp"/>
@@ -175,12 +174,10 @@
         <Filename Value="udialst.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uDiaLst"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="806"/>
         <CursorPos X="21" Y="830"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit15>
       <Unit16>
         <Filename Value="upaintresizedtext.pas"/>
@@ -195,11 +192,10 @@
         <Filename Value="udtxlst.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uDtxLst"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="415"/>
         <CursorPos X="3" Y="421"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit17>
       <Unit18>
         <Filename Value="uaddone.pas"/>
@@ -230,10 +226,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEditorForm"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2040"/>
-        <CursorPos X="6" Y="2066"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="1005"/>
+        <CursorPos X="11" Y="1021"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit20>
       <Unit21>
         <Filename Value="..\Lib\uCaret.pas"/>
@@ -349,7 +347,7 @@
         <UnitName Value="LCLIntf"/>
         <TopLine Value="60"/>
         <CursorPos X="10" Y="78"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit33>
       <Unit34>
         <Filename Value="umonitors.pas"/>
@@ -386,7 +384,7 @@
         <UnitName Value="lNet"/>
         <TopLine Value="1501"/>
         <CursorPos X="3" Y="1503"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit38>
       <Unit39>
         <Filename Value="C:\lazarus\lcl\include\customcheckbox.inc"/>
@@ -404,7 +402,7 @@
         <Filename Value="C:\lazarus\lcl\include\fpimagebitmap.inc"/>
         <TopLine Value="125"/>
         <CursorPos Y="146"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit41>
       <Unit42>
         <Filename Value="..\Lib\HwIO.pas"/>
@@ -415,7 +413,7 @@
         <Filename Value="..\Lib\uLPT.pas"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="20" Y="6"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit43>
       <Unit44>
         <Filename Value="ukeys.pas"/>
@@ -507,7 +505,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="88" Y="28"/>
-        <UsageCount Value="143"/>
+        <UsageCount Value="144"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit53>
       <Unit54>
@@ -598,12 +596,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uSearchForm"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="245"/>
         <CursorPos Y="279"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit65>
       <Unit66>
         <Filename Value="C:\lazarus\fpc\2.2.4\source\packages\fcl-base\src\contnrs.pp"/>
@@ -688,30 +684,30 @@
         <Filename Value="C:\lazarus\fpc\2.4.2\source\rtl\objpas\classes\streams.inc"/>
         <TopLine Value="699"/>
         <CursorPos X="3" Y="702"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit77>
       <Unit78>
         <Filename Value="C:\lazarus\fpc\2.4.2\source\rtl\win\wininc\defines.inc"/>
         <TopLine Value="1243"/>
         <CursorPos X="18" Y="1259"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit78>
       <Unit79>
         <Filename Value="C:\lazarus\fpc\2.4.2\source\packages\fcl-image\src\fpimage.pp"/>
         <UnitName Value="FPimage"/>
         <TopLine Value="43"/>
         <CursorPos X="3" Y="61"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit79>
       <Unit80>
         <Filename Value="usetupform.lrs"/>
         <TopLine Value="776"/>
         <CursorPos X="4" Y="817"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit80>
       <Unit81>
         <Filename Value="usetupform.lfm"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit81>
       <Unit82>
@@ -739,12 +735,12 @@
       <Unit84>
         <Filename Value="kottajelek\ukottakepek.pas"/>
         <UnitName Value="uKottaKepek"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit84>
       <Unit85>
         <Filename Value="kottajelek\ukottazo.pas"/>
         <UnitName Value="uKottazo"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit85>
       <Unit86>
         <Filename Value="C:\lazarus\fpc\2.4.2\source\packages\fcl-image\src\fpcanvas.pp"/>
@@ -813,7 +809,7 @@
         <Filename Value="C:\lazarus\lcl\include\customcombobox.inc"/>
         <TopLine Value="908"/>
         <CursorPos Y="930"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit94>
       <Unit95>
         <Filename Value="C:\lazarus\lcl\include\finddialog.inc"/>
@@ -1009,7 +1005,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="95"/>
         <CursorPos X="10" Y="112"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit120>
       <Unit121>
         <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\objpas\sysutils\finah.inc"/>
@@ -1256,7 +1252,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="311"/>
         <CursorPos Y="327"/>
-        <UsageCount Value="144"/>
+        <UsageCount Value="145"/>
       </Unit154>
       <Unit155>
         <Filename Value="C:\lazarus\lcl\stdctrls.pp"/>
@@ -1476,11 +1472,10 @@
       </Unit184>
       <Unit185>
         <Filename Value="uRoutines.pas"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="147"/>
         <CursorPos X="3" Y="164"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit185>
       <Unit186>
         <Filename Value="C:\lazarus\lcl\lmessages.pp"/>
@@ -1493,124 +1488,124 @@
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="usearchform.pas"/>
-        <Caret Line="197" Column="5" TopLine="244"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1020" TopLine="994"/>
       </Position1>
       <Position2>
-        <Filename Value="usearchform.pas"/>
-        <Caret Line="99" Column="15" TopLine="83"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1021" TopLine="994"/>
       </Position2>
       <Position3>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="167" Column="34" TopLine="144"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1025" TopLine="1006"/>
       </Position3>
       <Position4>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="276" TopLine="415"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1034" TopLine="1016"/>
       </Position4>
       <Position5>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="322" Column="9" TopLine="306"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1035" TopLine="1016"/>
       </Position5>
       <Position6>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="323" Column="23" TopLine="306"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1036" TopLine="1016"/>
       </Position6>
       <Position7>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="324" Column="26" TopLine="306"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1038" TopLine="1016"/>
       </Position7>
       <Position8>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="337" Column="9" TopLine="309"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1041" TopLine="1016"/>
       </Position8>
       <Position9>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="595" Column="9" TopLine="567"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1042" TopLine="1016"/>
       </Position9>
       <Position10>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="823" Column="9" TopLine="807"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1043" TopLine="1016"/>
       </Position10>
       <Position11>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="830" Column="9" TopLine="807"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1044" TopLine="1016"/>
       </Position11>
       <Position12>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="1796" Column="9" TopLine="1768"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1045" TopLine="1026"/>
       </Position12>
       <Position13>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="1812" Column="9" TopLine="1785"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1049" TopLine="1038"/>
       </Position13>
       <Position14>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="1813" Column="9" TopLine="1785"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1053" TopLine="1038"/>
       </Position14>
       <Position15>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="1812" Column="3" TopLine="1785"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1057" TopLine="1038"/>
       </Position15>
       <Position16>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="1796" Column="3" TopLine="1785"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1059" TopLine="1038"/>
       </Position16>
       <Position17>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="823" Column="3" TopLine="810"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1060" TopLine="1038"/>
       </Position17>
       <Position18>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="328" TopLine="327"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1061" TopLine="1038"/>
       </Position18>
       <Position19>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="68" TopLine="68"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1062" TopLine="1038"/>
       </Position19>
       <Position20>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="50" TopLine="35"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1063" TopLine="1038"/>
       </Position20>
       <Position21>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="126" Column="22" TopLine="99"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1067" TopLine="1048"/>
       </Position21>
       <Position22>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="610" Column="3" TopLine="606"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1071" TopLine="1054"/>
       </Position22>
       <Position23>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="126" Column="15" TopLine="111"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1075" TopLine="1054"/>
       </Position23>
       <Position24>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="890" TopLine="856"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1012" TopLine="994"/>
       </Position24>
       <Position25>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="1796" Column="9" TopLine="1768"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1076" TopLine="1060"/>
       </Position25>
       <Position26>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="1812" Column="9" TopLine="1785"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1501" TopLine="1484"/>
       </Position26>
       <Position27>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="1813" Column="9" TopLine="1785"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1500" Column="11" TopLine="1484"/>
       </Position27>
       <Position28>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="1812" Column="3" TopLine="1785"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="218" Column="15" TopLine="202"/>
       </Position28>
       <Position29>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="1796" Column="3" TopLine="1785"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="1500" Column="3" TopLine="1469"/>
       </Position29>
       <Position30>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="823" Column="19" TopLine="813"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="189" Column="15" TopLine="173"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
