@@ -86,7 +86,7 @@ begin
   else
     fDtxDir:='';
   if not FileExistsUTF8(fname) then begin
-    if FileExistsUTF8('/usr/local/etc/diatar.ini') then fname:='/usr/local/etc/diatar.ini';
+    if FileExistsUTF8('/etc/opt/diatar/diatar.ini') then fname:='/etc/opt/diatar/diatar.ini';
   end;
   fDiaDir:='';
 {$else}
