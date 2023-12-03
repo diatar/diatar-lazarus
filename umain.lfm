@@ -2499,7 +2499,7 @@ object MainForm: TMainForm
   OnResize = FormResize
   OnUTF8KeyPress = FormUTF8KeyPress
   OnWindowStateChange = FormWindowStateChange
-  LCLVersion = '2.2.0.4'
+  LCLVersion = '2.2.6.0'
   object FxxPanel: TPanel
     Left = 0
     Height = 82
@@ -2526,6 +2526,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 84
         Align = alClient
+        ParentColor = False
         WordWrap = True
         OnClick = FxxBtnClick
       end
@@ -2545,6 +2546,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 84
         Align = alClient
+        ParentColor = False
         WordWrap = True
         OnClick = FxxBtnClick
       end
@@ -2564,6 +2566,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 84
         Align = alClient
+        ParentColor = False
         WordWrap = True
         OnClick = FxxBtnClick
       end
@@ -2583,6 +2586,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 84
         Align = alClient
+        ParentColor = False
         WordWrap = True
         OnClick = FxxBtnClick
       end
@@ -2602,6 +2606,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 84
         Align = alClient
+        ParentColor = False
         WordWrap = True
         OnClick = FxxBtnClick
       end
@@ -2621,6 +2626,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 84
         Align = alClient
+        ParentColor = False
         WordWrap = True
         OnClick = FxxBtnClick
       end
@@ -2640,6 +2646,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 84
         Align = alClient
+        ParentColor = False
         WordWrap = True
         OnClick = FxxBtnClick
       end
@@ -2659,6 +2666,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 84
         Align = alClient
+        ParentColor = False
         WordWrap = True
         OnClick = FxxBtnClick
       end
@@ -2678,6 +2686,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 84
         Align = alClient
+        ParentColor = False
         WordWrap = True
         OnClick = FxxBtnClick
       end
@@ -2697,6 +2706,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 84
         Align = alClient
+        ParentColor = False
         WordWrap = True
         OnClick = FxxBtnClick
       end
@@ -2716,6 +2726,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 84
         Align = alClient
+        ParentColor = False
         WordWrap = True
         OnClick = FxxBtnClick
       end
@@ -2735,6 +2746,7 @@ object MainForm: TMainForm
         Top = 1
         Width = 84
         Align = alClient
+        ParentColor = False
         WordWrap = True
         OnClick = FxxBtnClick
       end
@@ -2822,6 +2834,7 @@ object MainForm: TMainForm
           Font.CharSet = 4
           Font.Height = -13
           Font.Name = 'Sans'
+          ParentColor = False
           ParentFont = False
           OnClick = ProjBtnClick
         end
@@ -3413,10 +3426,10 @@ object MainForm: TMainForm
     Top = 0
     Width = 5
   end
-  object HintTmr: TTimer
+  object Tmr: TTimer
     Enabled = False
     Interval = 10
-    OnTimer = HintTmrTimer
+    OnTimer = TmrTimer
     Left = 711
     Top = 524
   end

@@ -67,7 +67,9 @@ procedure MonitorsInit;
 
 implementation
 
+{$ifdef WINDOWS}
 uses Windows;
+{$endif}
 
 {$ifdef WINDOWSx}
 uses WinUser;
