@@ -126,7 +126,7 @@ type
     ProjektPanel: TPanel;
     SetupBtn: TSpeedButton;
     EndBtn: TSpeedButton;
-    HintTmr: TTimer;
+    Tmr: TTimer;
     SongLstBtn: TSpeedButton;
     Locked25Img: TImage;
     LockedImg: TImage;
@@ -150,7 +150,7 @@ type
     procedure FxxBtnClick(Sender: TObject);
     procedure FxxPanelResize(Sender: TObject);
     procedure HideBtnClick(Sender: TObject);
-    procedure HintTmrTimer(Sender: TObject);
+    procedure TmrTimer(Sender: TObject);
     procedure LoadDiaBtnClick(Sender: TObject);
     procedure DownBtnClick(Sender: TObject);
     procedure LockImageClick(Sender: TObject);
@@ -180,7 +180,7 @@ type
     fDiasorFName : string;
     PrevWinState : tWindowState;
     HintItem,HintBeforeCount,HintAfterCount : integer;
-    fHintCounter : integer; //mivel a HintTmr 1 msec, de a rutinnak csak 100 kellene
+    fHintCounter : integer; //mivel a Tmr 1 msec, de a rutinnak csak 100 kellene
     fForwardMSec : dword; //ha >0, GetTickCount()-hoz hasonlitva leptet
     fSoundOffset : integer;  //dbldia eseten lehet 1 (egyebkent 0)
     fStrikeProjCnt : integer;   //szamlalo a villogo VETITES gombhoz
@@ -212,6 +212,7 @@ type
     fGotoRepeat : integer;        //szamlalja az egymas utani goto-kat
     fGotoTmr : integer;           //timerhez
     fGotoTarget : integer;        //ide ugrunk
+    fErrorTmr : integer;          //error kikapcs ideje
 
     function ReadDia(f : tIniFile; const sect : string; IsUTF8 : boolean) : tTxBase;
     function QuerySave(Index : integer = 0) : boolean;
@@ -451,7 +452,7 @@ begin
   GlobalsChanged;
   RefreshCaption;
   HintItem:=-1; HintBeforeCount:=Globals.HintStart;
-  HintTmr.Enabled:=true;
+  Tmr.Enabled:=true;
   r:=Globals.MainRect;
   if r.Bottom=0 then
      Self.Position:=poScreenCenter
@@ -1005,7 +1006,7 @@ begin
     ix:=L.ItemIndex;
     fForwardMSec:=L.ForwardMSec[ix];
     if fForwardMSec>0 then inc(fForwardMSec,GetTickCount());
-    if L.UseSound then begin
+    if Globals.UseSound and L.UseSound then begin
       if L.SoundState[ix]=ssSound then DiaSound.Start;
     end;
   end else begin
@@ -1385,6 +1386,7 @@ procedure tMainForm.ShowError(const txt : string);
 begin
   ErrorPanel.Caption:=txt;
   ErrorPanel.Visible:=(txt>'');
+  fErrorTmr:=iif(ErrorPanel.Visible, 10000 div Tmr.Interval, 0);    // 10mp utan leolt
 end;
 
 procedure tMainForm.ShowPercent(const txt : string);
@@ -2654,7 +2656,7 @@ begin
   if Globals.HideOnScrollLock then HideEvent(true);
 end;
 
-procedure TMainForm.HintTmrTimer(Sender: TObject);
+procedure TMainForm.TmrTimer(Sender: TObject);
 var
   P : tPoint;
   ix,fx,x,y : integer;
@@ -2675,6 +2677,11 @@ begin
     if fGotoTmr<=0 then begin
       ShowDia(fGotoTarget);
     end;
+  end;
+
+  if fErrorTmr>0 then begin
+    dec(fErrorTmr);
+    if fErrorTmr<=0 then ShowError('');
   end;
 
   if Globals.StrikeProjektSignal then begin

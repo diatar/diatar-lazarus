@@ -423,7 +423,7 @@ function RemoveEscape(const Line : string) : string;
       c:=Result[i];
       if esc then begin
         case c of
-          'B','U','I','b','u','i' : Delete(Result,i,1);
+          'B','U','I','b','u','i','S','s','(',')' : Delete(Result,i,1);
           '.' : begin Result[i]:=' '; inc(i); end;     //sortores javaslat
           '_' : begin Result[i]:='-'; inc(i); end;     //nemtorheto kotojel
           'G','K','?' : begin   //akkordok, kotta, kiterjesztett

@@ -279,6 +279,9 @@ const
   abAkkord    = 1;
   abKotta     = 2;
 
+var
+  FormPos : TPoint;
+
 function EditorFormExecute(Lit : tLiteralBase; const aFontName : string) : boolean;
 begin
   Application.CreateForm(tEditorForm,EditorForm);
@@ -288,7 +291,12 @@ begin
 //      CharSet:=UNICODE;
       Size:=20;
     end;
+    if (FormPos.X > 0) and (FormPos.Y > 0) then begin
+      EditorForm.Left:=FormPos.X;
+      EditorForm.Top:=FormPos.Y;
+    end;
     Result:=EditorForm.Execute(Lit);
+    FormPos.X:=EditorForm.Left; FormPos.Y:=EditorForm.Top;
   finally
     FreeAndNil(EditorForm);
   end;
