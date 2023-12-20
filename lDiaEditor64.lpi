@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="11"/>
+    <Version Value="12"/>
     <General>
       <Flags>
         <LRSInOutputDirectory Value="False"/>
+        <CompatibilityMode Value="True"/>
       </Flags>
-      <MainUnit Value="0"/>
       <UseXPManifest Value="True"/>
       <Icon Value="0"/>
     </General>
@@ -25,13 +25,13 @@
     </PublishOptions>
     <RunParams>
       <local>
-        <LaunchingApplication PathPlusParams="/usr/X11R6/bin/xterm -T 'Lazarus Run Output' -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
+        <LaunchingApplication PathPlusParams="/usr/X11R6/bin/xterm -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
       </local>
       <FormatVersion Value="2"/>
       <Modes Count="1">
         <Mode0 Name="default">
           <local>
-            <LaunchingApplication PathPlusParams="/usr/X11R6/bin/xterm -T 'Lazarus Run Output' -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
+            <LaunchingApplication PathPlusParams="/usr/X11R6/bin/xterm -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
           </local>
         </Mode0>
       </Modes>
@@ -41,7 +41,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="55">
+    <Units Count="57">
       <Unit0>
         <Filename Value="lDiaEditor.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -63,7 +63,7 @@
         <UnitName Value="uEdMain"/>
         <IsVisibleTab Value="True"/>
         <TopLine Value="54"/>
-        <CursorPos X="25" Y="68"/>
+        <CursorPos X="20" Y="68"/>
         <UsageCount Value="53"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -281,9 +281,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
-        <TopLine Value="73"/>
-        <CursorPos X="9" Y="83"/>
-        <UsageCount Value="9"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="9"/>
+        <UsageCount Value="10"/>
       </Unit31>
       <Unit32>
         <Filename Value="Diatar.lpr"/>
@@ -430,11 +430,25 @@
       <Unit54>
         <Filename Value="uoslib/uos_flat.pas"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="393"/>
-        <CursorPos X="11" Y="407"/>
+        <TopLine Value="383"/>
+        <CursorPos X="11" Y="383"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit54>
+      <Unit55>
+        <Filename Value="uappform.lfm"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit55>
+      <Unit56>
+        <Filename Value="uappform.pas"/>
+        <UnitName Value="uAppForm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="78"/>
+        <CursorPos Y="101"/>
+        <UsageCount Value="10"/>
+      </Unit56>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
@@ -581,6 +595,9 @@
       <TargetOS Value="linux"/>
     </CodeGeneration>
     <Linking>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf3"/>
+      </Debugging>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>

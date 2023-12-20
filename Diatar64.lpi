@@ -109,7 +109,6 @@
         <Filename Value="utxtar.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTxTar"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <TopLine Value="411"/>
         <CursorPos X="50" Y="426"/>
@@ -505,7 +504,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="88" Y="28"/>
-        <UsageCount Value="148"/>
+        <UsageCount Value="149"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit53>
       <Unit54>
@@ -658,10 +657,12 @@
         <Filename Value="ukottazo.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uKottazo"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1392"/>
-        <CursorPos X="95" Y="1410"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="847"/>
+        <CursorPos X="74" Y="854"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit74>
       <Unit75>
         <Filename Value="kottakepek.inc"/>
@@ -675,10 +676,11 @@
         <Filename Value="ukottakepek.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uKottaKepek"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="121"/>
-        <CursorPos X="21" Y="141"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="256"/>
+        <CursorPos X="49" Y="135"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit76>
       <Unit77>
         <Filename Value="C:\lazarus\fpc\2.4.2\source\rtl\objpas\classes\streams.inc"/>
@@ -719,7 +721,7 @@
         <UnitName Value="uKottaEditor"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="438"/>
-        <CursorPos X="13" Y="441"/>
+        <CursorPos X="39" Y="448"/>
         <UsageCount Value="200"/>
       </Unit82>
       <Unit83>
@@ -1253,7 +1255,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="311"/>
         <CursorPos Y="327"/>
-        <UsageCount Value="149"/>
+        <UsageCount Value="150"/>
       </Unit154>
       <Unit155>
         <Filename Value="C:\lazarus\lcl\stdctrls.pp"/>
@@ -1490,122 +1492,121 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="umain.pas"/>
-        <Caret Line="183" Column="42" TopLine="158"/>
+        <Caret Line="1127" Column="3" TopLine="1112"/>
       </Position1>
       <Position2>
         <Filename Value="umain.pas"/>
-        <Caret Line="215" Column="56" TopLine="189"/>
+        <Caret Line="230" Column="34" TopLine="223"/>
       </Position2>
       <Position3>
         <Filename Value="umain.pas"/>
-        <Caret Line="292" Column="22" TopLine="267"/>
+        <Caret Line="2778" Column="13" TopLine="2753"/>
       </Position3>
       <Position4>
         <Filename Value="umain.pas"/>
-        <Caret Line="1389" Column="14" TopLine="1384"/>
+        <Caret Line="153" Column="15" TopLine="138"/>
       </Position4>
       <Position5>
         <Filename Value="umain.pas"/>
-        <Caret Line="43" TopLine="17"/>
+        <Caret Line="2667" Column="3" TopLine="2658"/>
       </Position5>
       <Position6>
         <Filename Value="umain.pas"/>
-        <Caret Line="292" Column="22" TopLine="267"/>
+        <Caret Line="2778" Column="13" TopLine="2753"/>
       </Position6>
       <Position7>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1389" Column="80" TopLine="1384"/>
-      </Position7>
-      <Position8>
-        <Filename Value="umain.pas"/>
-      </Position8>
-      <Position9>
-        <Filename Value="umain.pas"/>
-        <Caret Line="153" Column="19" TopLine="128"/>
-      </Position9>
-      <Position10>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2684" Column="8" TopLine="2669"/>
-      </Position10>
-      <Position11>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2506" TopLine="2490"/>
-      </Position11>
-      <Position12>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2684" Column="27" TopLine="2664"/>
-      </Position12>
-      <Position13>
-        <Filename Value="umain.pas"/>
-        <Caret Line="292" Column="15" TopLine="278"/>
-      </Position13>
-      <Position14>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1389" Column="3" TopLine="1383"/>
-      </Position14>
-      <Position15>
-        <Filename Value="umain.pas"/>
-        <Caret Line="677" TopLine="656"/>
-      </Position15>
-      <Position16>
-        <Filename Value="umain.pas"/>
-        <Caret Line="349" Column="3" TopLine="333"/>
-      </Position16>
-      <Position17>
-        <Filename Value="umain.pas"/>
-        <Caret Line="350" Column="3" TopLine="334"/>
-      </Position17>
-      <Position18>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1175" Column="12" TopLine="1160"/>
-      </Position18>
-      <Position19>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1127" Column="3" TopLine="1112"/>
-      </Position19>
-      <Position20>
-        <Filename Value="umain.pas"/>
-        <Caret Line="230" Column="34" TopLine="223"/>
-      </Position20>
-      <Position21>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2778" Column="13" TopLine="2753"/>
-      </Position21>
-      <Position22>
-        <Filename Value="umain.pas"/>
-        <Caret Line="153" Column="15" TopLine="138"/>
-      </Position22>
-      <Position23>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2667" Column="3" TopLine="2658"/>
-      </Position23>
-      <Position24>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2778" Column="13" TopLine="2753"/>
-      </Position24>
-      <Position25>
         <Filename Value="uhintform.pas"/>
         <Caret Line="51" Column="11" TopLine="36"/>
-      </Position25>
-      <Position26>
+      </Position7>
+      <Position8>
         <Filename Value="uhintform.pas"/>
         <Caret Line="62" Column="16" TopLine="36"/>
-      </Position26>
-      <Position27>
+      </Position8>
+      <Position9>
         <Filename Value="uhintform.pas"/>
         <Caret Line="43" Column="15" TopLine="37"/>
-      </Position27>
-      <Position28>
+      </Position9>
+      <Position10>
         <Filename Value="uhintform.pas"/>
         <Caret Line="84" Column="36" TopLine="69"/>
-      </Position28>
-      <Position29>
+      </Position10>
+      <Position11>
         <Filename Value="utxtar.pas"/>
         <Caret Line="147" Column="15" TopLine="127"/>
-      </Position29>
-      <Position30>
+      </Position11>
+      <Position12>
         <Filename Value="utxtar.pas"/>
         <Caret Line="963" Column="18" TopLine="961"/>
+      </Position12>
+      <Position13>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="1403" Column="72" TopLine="1392"/>
+      </Position13>
+      <Position14>
+        <Filename Value="ukottazo.pas"/>
+      </Position14>
+      <Position15>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="51" Column="21" TopLine="25"/>
+      </Position15>
+      <Position16>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="54" Column="21" TopLine="28"/>
+      </Position16>
+      <Position17>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="100" Column="15" TopLine="74"/>
+      </Position17>
+      <Position18>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="133" Column="24" TopLine="108"/>
+      </Position18>
+      <Position19>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="833" Column="14" TopLine="825"/>
+      </Position19>
+      <Position20>
+        <Filename Value="ukottazo.pas"/>
+      </Position20>
+      <Position21>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="141" Column="24" TopLine="117"/>
+      </Position21>
+      <Position22>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="833" Column="14" TopLine="808"/>
+      </Position22>
+      <Position23>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="1145" Column="14" TopLine="1138"/>
+      </Position23>
+      <Position24>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="141" Column="24" TopLine="127"/>
+      </Position24>
+      <Position25>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="833" Column="14" TopLine="808"/>
+      </Position25>
+      <Position26>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="1128" Column="29" TopLine="1102"/>
+      </Position26>
+      <Position27>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="141" Column="24" TopLine="127"/>
+      </Position27>
+      <Position28>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="833" Column="14" TopLine="823"/>
+      </Position28>
+      <Position29>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="1135" Column="3" TopLine="1004"/>
+      </Position29>
+      <Position30>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="141" Column="24" TopLine="127"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
