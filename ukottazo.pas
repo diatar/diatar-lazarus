@@ -605,8 +605,8 @@ begin
           end;
         end;
       '!' : begin          //hosszu cezura
-          dec(y1,(fVonalY[1]-fVonalY[2]) div 2); if fVonalSzam<=2 then dec(y1,(fVonalY[1]-fVonalY[2]));
-          y2:=y1+(fVonalY[1]-fVonalY[2]);
+          dec(y1,(fVonalY[1]-fVonalY[2]) div 2); //if fVonalSzam<=2 then dec(y1,(fVonalY[1]-fVonalY[2]));
+          y2:=y1+(fVonalY[1]-fVonalY[3]);
           for v:=1 to fVonalVast do begin
             Dest.Line(xm,y1,xm,y2);
             inc(xm);
@@ -700,7 +700,7 @@ begin
     Dest.StretchDraw(R,Src.Graphic);
     if Pontozott then begin
       R.Left:=R.Right+(fMinWidth div 2);
-      a2:=(fVonalY[1]-fVonalY[5])/(4*PontVonalTav);
+      a2:=(fVonalY[1]-fVonalY[5])/(3*PontVonalTav);
       R.Right:=R.Left+round(PontWIDTH*a2);
       R.Top:=((fVonalY[3]+fVonalY[4]) div 2)-round(PontHEIGHT*a2/2);
       R.Bottom:=R.Top+round(PontHEIGHT*a2);
@@ -851,7 +851,7 @@ begin
     case F.Agogika of
       '-' : begin
           Src3:=TenutoBMP;
-          y1:=-1; y2a:=TenutoVonalTav div 2; y2f:=y2a-TenutoVonalTav;
+          y1:=-1; y2a:=TenutoVonalTav div 2; y2f:=y2a-((2*TenutoVonalTav) div 3);
         end;
       '.' : begin
           Src3:=PontBMP;
@@ -1126,9 +1126,14 @@ begin
 end;
 
 procedure tKottazo.KotoivPoz(const R : tRect; Lefele : boolean);
+var
+  x,y : integer;
 begin
+  x:=(R.Right+R.Left) div 2; y:=(R.Bottom+R.Top) div 2;
+  if F.Agogika<>' ' then y:=iif(Lefele,R.Top,R.Bottom);
+
   if F.KotoivTipus in ['a','f'] then begin  //kotoiven belul
-    F.KotoivEnd.x:=(R.Right+R.Left) div 2; F.KotoivEnd.y:=(R.Bottom+R.Top) div 2;
+    F.KotoivEnd.x:=x; F.KotoivEnd.y:=y;
     if F.KotoivTipus='a' then begin
       if F.KotoivEnd.y>F.KotoivMaxY then F.KotoivMaxY:=F.KotoivEnd.y;
     end else begin
@@ -1137,7 +1142,7 @@ begin
       if F.KotoivMaxY<0 then F.KotoivMaxY:=0;
     end;
   end else begin    //kotoiven kivul
-    F.KotoivStart.x:=(R.Right+R.Left) div 2; F.KotoivStart.y:=(R.Bottom+R.Top) div 2;
+    F.KotoivStart.x:=x; F.KotoivStart.y:=y;
     F.KotoivMaxY:=F.KotoivStart.y;
   end;
 end;

@@ -315,12 +315,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEditorForm"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="277"/>
         <CursorPos X="59" Y="299"/>
         <UsageCount Value="117"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit25>
       <Unit26>
         <Filename Value="urtf.pas"/>
@@ -506,18 +506,20 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uKottaEditor"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="262"/>
-        <CursorPos X="12" Y="277"/>
+        <TopLine Value="671"/>
+        <CursorPos X="24" Y="677"/>
         <UsageCount Value="85"/>
       </Unit50>
       <Unit51>
         <Filename Value="ukottazo.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uKottazo"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="981"/>
-        <CursorPos X="62" Y="984"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="581"/>
+        <CursorPos X="52" Y="608"/>
         <UsageCount Value="85"/>
+        <Loaded Value="True"/>
       </Unit51>
       <Unit52>
         <Filename Value="ukottakepek.pas"/>
@@ -962,31 +964,38 @@
         <UsageCount Value="10"/>
       </Unit119>
     </Units>
-    <JumpHistory Count="6" HistoryIndex="5">
+    <JumpHistory Count="8" HistoryIndex="7">
       <Position1>
         <Filename Value="uedmain.pas"/>
         <Caret Line="253" TopLine="225"/>
       </Position1>
       <Position2>
         <Filename Value="uedmain.pas"/>
-        <Caret Line="35" TopLine="152"/>
+        <Caret Line="1639" Column="57" TopLine="1621"/>
       </Position2>
       <Position3>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="1639" Column="57" TopLine="1621"/>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="264" Column="10" TopLine="246"/>
       </Position3>
       <Position4>
         <Filename Value="ueditorform.pas"/>
-        <Caret Line="264" Column="10" TopLine="246"/>
+        <Caret Line="291" TopLine="279"/>
       </Position4>
       <Position5>
         <Filename Value="ueditorform.pas"/>
-        <Caret Line="291" TopLine="279"/>
+        <Caret Line="296" Column="23" TopLine="277"/>
       </Position5>
       <Position6>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="296" Column="23" TopLine="277"/>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="992" Column="59" TopLine="980"/>
       </Position6>
+      <Position7>
+        <Filename Value="ukottazo.pas"/>
+      </Position7>
+      <Position8>
+        <Filename Value="ukottazo.pas"/>
+        <Caret Line="46" Column="76" TopLine="18"/>
+      </Position8>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
