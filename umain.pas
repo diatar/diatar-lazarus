@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2023 József Rieth
+Copyright 2005-2024 József Rieth
 
     This file is part of Diatar.
 
@@ -35,7 +35,7 @@ uses
   uGlobals, uRoutines, uTxTar, uDiaLst, uDtxLst, uHintForm, uCommBtns, HwIO,
   uKeys, uSound, uAkkord, uPropEdit, uNetOffDlg, uTxList, uFotoForm,
   uSearchForm, uEditorForm, uSymbolForm, uSerialIOForm, uMyFileDlgs,
-  uTxtAtom,
+  uTxtAtom, uZsolozsmaForm,
   StdCtrls, ExtCtrls, Buttons, IniFiles, LCLIntf, ComCtrls, Menus, LazLogger;
 
 const
@@ -254,6 +254,7 @@ type
     function GetKottaFunction : integer;  // dbmBGND vagy dbmKOTTA
     function GetDownMenuName(id : integer) : string;  // dbmXXXX felirata
     procedure SetupLoadSaveBtn(id : integer);   // aktualizalja a gombfeliratot (id=utolso muvelet)
+    procedure ProcessZsolozsma;
 
     procedure PlayCurrSound;
     procedure DiaSoundEnd(Sender : tObject);
@@ -336,7 +337,6 @@ uses uProjektedForm, uAddOne, uAdd, uSetupForm, uNetwork,
      uKottazo, uKottaKepek, Contnrs, uAppForm, uShutdown,
      {uSelectProfil,} uMonitors, uSerialIO, uDiaLoadSave
      {$IFDEF Windows},Win32WSDialogs{$ENDIF}
-//     ,fphttpclient, opensslsockets
      ;
 
 // from kd.h
@@ -355,6 +355,7 @@ const
   dbmLOAD       = 1;
   dbmNEWED      = 2;
   dbmNEW        = 3;
+  dbmBREVIAR    = 4;
   dbmFILE1      = 11;  // 11..19 last files
   dbmSAVE       = 101;
   dbmOVERWR     = 102;
@@ -2598,7 +2599,7 @@ begin
       fCommonProps:=Addform.CommonProps;
       ShowDiaLst; Application.ProcessMessages;
       ShowDia(DiaLst.ItemIndex);
-      SaveDiaLst(true);
+      if Globals.AutoSave and (DiasorFName>'') then SaveDiaLst(true);
     end else begin
       for i:=0 to AddForm.ShowLst.Objects.Count-1 do
         FreeTxObj(AddForm.ShowLst.Objects[i]);
@@ -2847,9 +2848,10 @@ begin
     dbmNEWED:  Result:='Ú&j összeállítás';
     dbmNEW:    Result:='Üres éne&krend';
     dbmLOAD:   Result:='Betölté&s';
+    dbmBREVIAR:Result:='&Zsolozsma';
     dbmSAVE:   Result:='Me&ntés';
     dbmOVERWR: Result:='&Felülírás';
-    dbmEXPORT: Result:='Export';
+    dbmEXPORT: Result:='E&xport';
     dbmAUTOSAVE: Result:='&Automatikus mentés';
     dbmBGND:   Result:='Háttér';
     dbmUNDERLINE: Result:='&Aláhúzás';
@@ -2871,8 +2873,10 @@ begin
   FreeAndNil(fDownMenu);
   fDownMenu:=tPopupMenu.Create(self);
   if Sender=LoadDownBtn then begin
+    DownBtnAdd(dbmLOAD);
     DownBtnAdd(dbmNEWED);
     DownBtnAdd(dbmNEW);
+    DownBtnAdd(dbmBREVIAR);
     b:=false;
     for i:=1 to 9 do begin
       s:=Globals.LastFile[i];
@@ -2924,6 +2928,7 @@ end;
 procedure tMainForm.DownBtnMenuAction(ID : integer);
 begin
   case ID of
+    dbmLOAD: LoadEvent;
     dbmNEWED,dbmNEW : begin
           ShowDiaLst;
           ActDLPut;
@@ -2935,6 +2940,7 @@ begin
           RefreshCaption;
           if ID=dbmNEWED then EdBtn.Click;
       end;
+    dbmBREVIAR: ProcessZsolozsma;
     dbmFILE1..dbmFILE1+9:
         LoadThisDiaLst(Globals.LastFile[1+(ID-dbmFILE1)]);
     dbmOVERWR : begin
@@ -3228,6 +3234,35 @@ end;
 function tMainForm.GetLockState : boolean;
 begin
   Result:=(Assigned(ProjektedForm) and ProjektedForm.Locked);
+end;
+
+procedure tMainForm.ProcessZsolozsma;
+var
+  R : pDLRec;
+  Lst : tTxList;
+  i : integer;
+begin
+  if Modified and not Globals.NoQuerySave and not QuerySave() then exit;
+  ZsolozsmaForm:=tZsolozsmaForm.Create(Self);
+  try
+    if ZsolozsmaForm.ShowModal<>mrOk then exit;
+
+    R:=@fDiaLists[fActDLIndex];
+    Lst:=R^.Lst;
+    FreeDiaList; FreeDiaList(fActDLIndex);
+    for i:=0 to Length(ZsolozsmaForm.Literals)-1 do begin
+      Lst.Add(ZsolozsmaForm.Literals[i]);
+      ZsolozsmaForm.Literals[i]:=nil;
+    end;
+    R^.Filename:='';
+    R^.Modified:=true;
+    R^.TopIndex:=0;
+    R^.ItemIndex:=0;
+    ActDLGet;
+    ShowDia(0);
+  finally
+    ZsolozsmaForm.Free;
+  end;
 end;
 
 initialization

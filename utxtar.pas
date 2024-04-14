@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2023 József Rieth
+Copyright 2005-2024 József Rieth
 
     This file is part of Diatar.
 
@@ -156,6 +156,7 @@ type
 type
   tLiteral = class(tLiteralBase)
   end;
+  tLiterals = array of tLiteral;
 
 type
   tVers = class;
