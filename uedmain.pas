@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2023 József Rieth
+Copyright 2005-2024 József Rieth
 
     This file is part of Diatar.
 
@@ -48,6 +48,7 @@ v12.3   2019/01/10  szebb kottaiv, kotet-csoportok
 v12.4   2020/03/22  RTF copy-paste tobb vers(szak)
 v12.5   2021/03/28  kotta/akkord arany, atlatszo hatter, triola
 v12.6   2022/01/09  9+ autoload, net:egyediek+margok, dkKotta
+v12.7   2023/03/19  export, autosave, zenereldir, linux hintform javitas, athuzott
 
 *************************************************************)
 
@@ -65,7 +66,7 @@ uses
   PairSplitter, ComCtrls, types, LazFileUtils, LazUTF8;
 
 const
-  VERSION = 'v12.7f';
+  VERSION = 'v12.7';
   VERSIONDATE = '2009-23';
   EDITORFONT = 'Arial';
 
