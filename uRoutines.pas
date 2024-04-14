@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-    Copyright 2005-2023 József Rieth
+    Copyright 2005-2024 József Rieth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
