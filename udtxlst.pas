@@ -901,6 +901,7 @@ var
   hasfavorite : boolean;
 begin
   //"minden index" lista a fa vegere
+  hasfavorite:=false;
   N:=0; SetLength(fDTXIndexes,fDTXs.Count);
   for i:=0 to fDTXs.Count-1 do begin
     if not Globals.DtxVisible[i] then continue;
