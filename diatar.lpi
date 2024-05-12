@@ -16,7 +16,7 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
-      <BuildNr Value="100"/>
+      <BuildNr Value="101"/>
       <Language Value="040E"/>
       <CharSet Value="04B0"/>
       <StringTable ProductVersion="0.0.0.2"/>
@@ -55,7 +55,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="227">
+    <Units Count="230">
       <Unit0>
         <Filename Value="Diatar.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -72,12 +72,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAppForm"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="74"/>
-        <CursorPos X="19" Y="104"/>
+        <EditorIndex Value="5"/>
+        <CursorPos X="24" Y="104"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="utextbox.pas"/>
@@ -114,10 +113,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uProjektedForm"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="826"/>
-        <CursorPos X="31" Y="839"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="341"/>
+        <CursorPos X="46" Y="357"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="utxtar.pas"/>
@@ -132,10 +132,11 @@
         <Filename Value="uglobals.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uGlobals"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="41"/>
-        <CursorPos X="12" Y="57"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="743"/>
+        <CursorPos X="11" Y="763"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit8>
       <Unit9>
         <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\objpas\classes\stringl.inc"/>
@@ -223,8 +224,8 @@
         <Filename Value="udtxlst.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uDtxLst"/>
-        <TopLine Value="647"/>
-        <CursorPos X="78" Y="661"/>
+        <TopLine Value="892"/>
+        <CursorPos X="22" Y="904"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit21>
@@ -1176,7 +1177,7 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
         <EditorIndex Value="1"/>
-        <CursorPos Y="21"/>
+        <TopLine Value="28"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -1358,9 +1359,11 @@
         <Filename Value="udiatariniloader.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uDiatarIniLoader"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos Y="5"/>
-        <UsageCount Value="145"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="76"/>
+        <CursorPos X="24" Y="98"/>
+        <UsageCount Value="151"/>
+        <Loaded Value="True"/>
       </Unit181>
       <Unit182>
         <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\objpas\classes\classesh.inc"/>
@@ -1389,7 +1392,7 @@
         <UnitName Value="WinUser"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="23"/>
-        <UsageCount Value="125"/>
+        <UsageCount Value="131"/>
       </Unit185>
       <Unit186>
         <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\win\wininc\base.inc"/>
@@ -1647,10 +1650,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uZsolozsmaForm"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="156"/>
-        <CursorPos X="47" Y="170"/>
-        <UsageCount Value="29"/>
+        <TopLine Value="224"/>
+        <CursorPos Y="243"/>
+        <UsageCount Value="35"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit221>
@@ -1676,138 +1680,161 @@
       <Unit225>
         <Filename Value="uHtml.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="8"/>
         <CursorPos Y="21"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
       </Unit225>
       <Unit226>
         <Filename Value="uDecodeBreviar.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="5"/>
-        <CursorPos X="37" Y="26"/>
-        <UsageCount Value="20"/>
+        <EditorIndex Value="9"/>
+        <TopLine Value="228"/>
+        <CursorPos X="46" Y="243"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
       </Unit226>
+      <Unit227>
+        <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="65"/>
+        <CursorPos X="25" Y="90"/>
+        <UsageCount Value="13"/>
+      </Unit227>
+      <Unit228>
+        <Filename Value="uRoutines.pas"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="586"/>
+        <CursorPos X="15" Y="599"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit228>
+      <Unit229>
+        <Filename Value="C:\lazarus64\lcl\lcltype.pp"/>
+        <UnitName Value="LCLType"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="888"/>
+        <CursorPos X="3" Y="904"/>
+        <UsageCount Value="10"/>
+      </Unit229>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="189" Column="3" TopLine="158"/>
+        <Caret Line="395" Column="27" TopLine="379"/>
       </Position1>
       <Position2>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="152" Column="32" TopLine="152"/>
+        <Caret Line="389" Column="16" TopLine="373"/>
       </Position2>
       <Position3>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="120" Column="15" TopLine="118"/>
+        <Caret Line="67" Column="15" TopLine="53"/>
       </Position3>
       <Position4>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="129" Column="9" TopLine="98"/>
+        <Caret Line="389" Column="16" TopLine="373"/>
       </Position4>
       <Position5>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="400" TopLine="385"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="473" Column="76" TopLine="448"/>
       </Position5>
       <Position6>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="415" Column="49" TopLine="388"/>
       </Position6>
       <Position7>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="251" Column="23" TopLine="241"/>
+        <Caret Line="390" Column="16" TopLine="379"/>
       </Position7>
       <Position8>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="342" Column="13" TopLine="309"/>
+        <Caret Line="67" Column="15" TopLine="53"/>
       </Position8>
       <Position9>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="102" TopLine="77"/>
+        <Caret Line="390" Column="6" TopLine="379"/>
       </Position9>
       <Position10>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="344" Column="56" TopLine="326"/>
+        <Caret Line="386" Column="35" TopLine="367"/>
       </Position10>
       <Position11>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="198" TopLine="181"/>
+        <Caret Line="361" Column="50" TopLine="353"/>
       </Position11>
       <Position12>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="94" TopLine="64"/>
+        <Caret Line="273" TopLine="246"/>
       </Position12>
       <Position13>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="138" TopLine="127"/>
       </Position13>
       <Position14>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="104" Column="19" TopLine="90"/>
+        <Caret Line="240" Column="36" TopLine="220"/>
       </Position14>
       <Position15>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2945" Column="7" TopLine="2916"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="400" Column="11" TopLine="374"/>
       </Position15>
       <Position16>
-        <Filename Value="uHtml.pas"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="60" Column="62" TopLine="49"/>
       </Position16>
       <Position17>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="292" Column="51" TopLine="275"/>
       </Position17>
       <Position18>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="288" TopLine="269"/>
+        <Caret Line="154" Column="15" TopLine="129"/>
       </Position18>
       <Position19>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="280" Column="48" TopLine="269"/>
+        <Caret Line="162" Column="15" TopLine="137"/>
       </Position19>
       <Position20>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="102" Column="14" TopLine="79"/>
+        <Caret Line="230" Column="13" TopLine="204"/>
       </Position20>
       <Position21>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="103" Column="10" TopLine="79"/>
+        <Caret Line="246" Column="19" TopLine="219"/>
       </Position21>
       <Position22>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="158" Column="18" TopLine="132"/>
+        <Caret Line="301" Column="11" TopLine="276"/>
       </Position22>
       <Position23>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="561" TopLine="530"/>
+        <Caret Line="321" Column="17" TopLine="295"/>
       </Position23>
       <Position24>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="289" Column="68" TopLine="276"/>
+        <Caret Line="328" Column="15" TopLine="302"/>
       </Position24>
       <Position25>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="137" TopLine="117"/>
+        <Caret Line="357" Column="15" TopLine="331"/>
       </Position25>
       <Position26>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="21"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="221" Column="21" TopLine="207"/>
       </Position26>
       <Position27>
-        <Filename Value="uDecodeBreviar.pas"/>
+        <Filename Value="uglobals.pas"/>
+        <Caret Line="423" Column="14" TopLine="408"/>
       </Position27>
       <Position28>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="317" TopLine="291"/>
+        <Filename Value="uglobals.pas"/>
+        <Caret Line="33" TopLine="33"/>
       </Position28>
       <Position29>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="166" Column="25" TopLine="163"/>
+        <Filename Value="uglobals.pas"/>
+        <Caret Line="302" Column="11" TopLine="276"/>
       </Position29>
       <Position30>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="177" Column="3" TopLine="169"/>
+        <Filename Value="uglobals.pas"/>
+        <Caret Line="454" Column="45" TopLine="429"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>

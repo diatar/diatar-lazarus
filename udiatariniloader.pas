@@ -34,6 +34,7 @@ type
     fDtxDir : string;
     fRegDir : string;
     fDiaDir : string;
+    fBreviarDir : string;
 
     procedure Load;
   public
@@ -43,6 +44,7 @@ type
     property DtxDir : string read fDtxDir;
     property RegDir : string read fRegDir;
     property DiaDir : string read fDiaDir;
+    property BreviarDir : string read fBreviarDir;
   end;
 
 implementation
@@ -93,6 +95,7 @@ begin
   fDtxDir:=fProgDir;
   fRegDir:='';
   fDiaDir:='';
+  fBreviarDir:=fDtxDir;
 {$endif}
 
   AssignFile(tf,fname);
@@ -105,6 +108,7 @@ begin
         if copy(s,1,7)='DtxDir=' then fDtxDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,8,9999)));
         if copy(s,1,7)='RegDir=' then fRegDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,8,9999)));
         if copy(s,1,7)='DiaDir=' then fDiaDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,8,9999)));
+        if copy(s,1,11)='BreviarDir=' then fBreviarDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,8,9999)));
       end;
       CloseFile(tf);
     finally

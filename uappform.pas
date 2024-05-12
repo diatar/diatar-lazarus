@@ -101,7 +101,7 @@ uses
   Forms, Controls, Graphics, Dialogs;
 
 const
-  VERSION = 'v13.0 - ß1';
+  VERSION = 'v13.0 - ß2';
   VERSIONDATE = '2005-24';
 
 type

@@ -298,7 +298,8 @@ type
     fProgDir : string;                                //program konyvtar
     fDtxDir : string;                                 //DTX fajlok konyvtara
     fRegDir : string;                                 //REG.XML konyvtara (linux)
-    fBaseDiaDir : string;                                 //DIA fajlok alap konyvtara
+    fBaseDiaDir : string;                             //DIA fajlok alap konyvtara
+    fBreviarDir : string;                             //zsolozsma letoltes konyvtara
 
     lGlobalVarModified: boolean;
     lModLocked: boolean;
@@ -450,6 +451,7 @@ type
     property DtxDir : string read fDtxDir;
     property RegDir : string read fRegDir;
     property BaseDiaDir : string read fBaseDiaDir;
+    property BreviarDir : string read fBreviarDir;
 
     property BkColor: tColor read fActProfil.BkColor write SetBkColor;
     property TxtColor: tColor read fActProfil.TxtColor write SetTxtColor;
@@ -764,6 +766,7 @@ begin
     fDtxDir:=dil.DtxDir;
     fRegDir:=dil.RegDir;
     fBaseDiaDir:=dil.DiaDir;
+    fBreviarDir:=dil.BreviarDir;
   finally
     dil.Free;
   end;
