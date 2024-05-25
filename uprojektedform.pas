@@ -233,7 +233,6 @@ end;
 
 procedure tProjektedForm.FormActivate(Sender: TObject);
 begin
-  DebugLn('ProjektedForm.OnActivate: '+iif(MainForm.WindowState=wsMinimized,'mainmini','mainnorm'));
   SendToBack;
   if not Assigned(MainForm) then exit;
   if Globals.HideMain then
