@@ -293,7 +293,7 @@ begin
     fModified:=true;
     if hts=htsTEXT then begin  //egyedi szoveg
       Lit:=tLiteral.Create;
-      Lit.Name:=VNameStr+iif(VSLit.Name>'','/','')+VSLit.Name;
+      Lit.Name:=v.Parent.ShortName+': '+VNameStr+iif(VSLit.Name>'','/','')+VSLit.Name;
       Lit.Lines.Assign(VSLit.Lines);
       ShowLst.Objects[iy]:=Lit;
       exit;

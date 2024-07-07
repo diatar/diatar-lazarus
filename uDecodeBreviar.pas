@@ -137,7 +137,8 @@ begin
     fFirstVszak:=false;
   end;
   fPsalmState:=ps;
-  if fFirstVszak then fCurrLit.Name:=fVersNev+'/'+txt else fCurrLit.Name:='    /'+txt;
+  //if fFirstVszak then fCurrLit.Name:=fVersNev+'/'+txt else fCurrLit.Name:='    /'+txt;
+  fCurrLit.Name:=fVersNev+'/'+txt;
   fFirstVszak:=false;
 end;
 
