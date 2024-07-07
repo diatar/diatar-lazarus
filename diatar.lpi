@@ -55,7 +55,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="230">
+    <Units Count="232">
       <Unit0>
         <Filename Value="Diatar.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -72,12 +72,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAppForm"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="64"/>
-        <CursorPos X="24" Y="104"/>
+        <EditorIndex Value="7"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="utextbox.pas"/>
@@ -123,21 +120,19 @@
         <Filename Value="utxtar.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTxTar"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="409"/>
-        <CursorPos X="28" Y="417"/>
+        <CursorPos X="19" Y="417"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit7>
       <Unit8>
         <Filename Value="uglobals.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uGlobals"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="743"/>
         <CursorPos X="11" Y="763"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit8>
       <Unit9>
         <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\objpas\classes\stringl.inc"/>
@@ -209,11 +204,10 @@
         <Filename Value="udialst.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uDiaLst"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="1524"/>
         <CursorPos X="35" Y="1547"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit19>
       <Unit20>
         <Filename Value="upaintresizedtext.pas"/>
@@ -345,7 +339,7 @@
         <EditorIndex Value="-1"/>
         <CursorPos X="2" Y="24"/>
         <UsageCount Value="200"/>
-        <DefaultSyntaxHighlighter Value="None"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
       </Unit33>
       <Unit34>
         <Filename Value="unetwork.pas"/>
@@ -697,9 +691,11 @@
         <Filename Value="usound.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uSound"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos Y="5"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="16"/>
+        <CursorPos X="36" Y="32"/>
         <UsageCount Value="202"/>
+        <Loaded Value="True"/>
       </Unit87>
       <Unit88>
         <Filename Value="upropedit.pas"/>
@@ -744,7 +740,7 @@
         <TopLine Value="58"/>
         <CursorPos Y="92"/>
         <UsageCount Value="8"/>
-        <DefaultSyntaxHighlighter Value="None"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
       </Unit92>
       <Unit93>
         <Filename Value="unetbase.pas"/>
@@ -1319,7 +1315,7 @@
         <EditorIndex Value="-1"/>
         <CursorPos Y="7"/>
         <UsageCount Value="7"/>
-        <DefaultSyntaxHighlighter Value="None"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
       </Unit174>
       <Unit175>
         <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\objpas\sysutils\sysstrh.inc"/>
@@ -1366,7 +1362,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="76"/>
         <CursorPos X="24" Y="98"/>
-        <UsageCount Value="159"/>
+        <UsageCount Value="160"/>
       </Unit181>
       <Unit182>
         <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\objpas\classes\classesh.inc"/>
@@ -1391,11 +1387,13 @@
       </Unit184>
       <Unit185>
         <Filename Value="winuser.pas"/>
-        <IsPartOfProject Value="True"/>
         <UnitName Value="WinUser"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos Y="23"/>
-        <UsageCount Value="139"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="18"/>
+        <CursorPos Y="32"/>
+        <UsageCount Value="140"/>
+        <Loaded Value="True"/>
       </Unit185>
       <Unit186>
         <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\win\wininc\base.inc"/>
@@ -1656,7 +1654,7 @@
         <EditorIndex Value="1"/>
         <TopLine Value="15"/>
         <CursorPos X="16" Y="31"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="44"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit221>
@@ -1683,23 +1681,20 @@
       <Unit225>
         <Filename Value="uHtml.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <CursorPos Y="21"/>
-        <UsageCount Value="34"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="35"/>
       </Unit225>
       <Unit226>
         <Filename Value="uDecodeBreviar.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="228"/>
-        <CursorPos X="46" Y="243"/>
-        <UsageCount Value="34"/>
-        <Loaded Value="True"/>
+        <CursorPos X="26" Y="243"/>
+        <UsageCount Value="35"/>
       </Unit226>
       <Unit227>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="5614"/>
         <CursorPos Y="5624"/>
@@ -1708,10 +1703,10 @@
       </Unit227>
       <Unit228>
         <Filename Value="uRoutines.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="586"/>
-        <CursorPos X="15" Y="599"/>
+        <EditorIndex Value="3"/>
+        <CursorPos Y="22"/>
         <UsageCount Value="16"/>
+        <Loaded Value="True"/>
       </Unit228>
       <Unit229>
         <Filename Value="C:\lazarus64\lcl\lcltype.pp"/>
@@ -1721,126 +1716,139 @@
         <CursorPos X="3" Y="904"/>
         <UsageCount Value="9"/>
       </Unit229>
+      <Unit230>
+        <Filename Value="HwIO.pas"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="17"/>
+        <CursorPos Y="33"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit230>
+      <Unit231>
+        <Filename Value="C:\lazarus64\fpc\3.2.2\source\rtl\unix\unix.pp"/>
+        <UnitName Value="Unix"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit231>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="423" Column="14" TopLine="408"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="87" TopLine="76"/>
       </Position1>
       <Position2>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="33" TopLine="33"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="89" TopLine="76"/>
       </Position2>
       <Position3>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="302" Column="11" TopLine="276"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="87" TopLine="76"/>
       </Position3>
       <Position4>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="454" Column="45" TopLine="429"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="89" TopLine="76"/>
       </Position4>
       <Position5>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="181" Column="22" TopLine="171"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="87" TopLine="76"/>
       </Position5>
       <Position6>
-        <Filename Value="umain.pas"/>
-        <Caret Line="221" Column="24" TopLine="216"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="89" TopLine="76"/>
       </Position6>
       <Position7>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="83" Column="18" TopLine="69"/>
-      </Position7>
-      <Position8>
-        <Filename Value="udialst.pas"/>
-        <Caret Line="1547" Column="35" TopLine="1524"/>
-      </Position8>
-      <Position9>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="147" Column="15" TopLine="135"/>
-      </Position9>
-      <Position10>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="964" Column="18" TopLine="962"/>
-      </Position10>
-      <Position11>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="147" Column="14" TopLine="131"/>
-      </Position11>
-      <Position12>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="964" Column="18" TopLine="962"/>
-      </Position12>
-      <Position13>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="87" Column="23" TopLine="76"/>
-      </Position13>
-      <Position14>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="87" TopLine="76"/>
-      </Position14>
-      <Position15>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="89" TopLine="76"/>
-      </Position15>
-      <Position16>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="87" TopLine="76"/>
-      </Position16>
-      <Position17>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="89" TopLine="76"/>
-      </Position17>
-      <Position18>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="87" TopLine="76"/>
-      </Position18>
-      <Position19>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="89" TopLine="76"/>
-      </Position19>
-      <Position20>
         <Filename Value="uzsolozsmaform.pas"/>
         <Caret Line="31" Column="16" TopLine="15"/>
-      </Position20>
-      <Position21>
+      </Position7>
+      <Position8>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
-      </Position21>
-      <Position22>
+      </Position8>
+      <Position9>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
         <Caret Line="4759" Column="15" TopLine="4733"/>
-      </Position22>
-      <Position23>
+      </Position9>
+      <Position10>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
         <Caret Line="4767" Column="20" TopLine="4741"/>
-      </Position23>
-      <Position24>
+      </Position10>
+      <Position11>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
         <Caret Line="4769" Column="20" TopLine="4743"/>
-      </Position24>
-      <Position25>
+      </Position11>
+      <Position12>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
         <Caret Line="4779" Column="15" TopLine="4753"/>
-      </Position25>
-      <Position26>
+      </Position12>
+      <Position13>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
         <Caret Line="4782" Column="18" TopLine="4756"/>
-      </Position26>
-      <Position27>
+      </Position13>
+      <Position14>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
         <Caret Line="4785" Column="18" TopLine="4759"/>
-      </Position27>
-      <Position28>
+      </Position14>
+      <Position15>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
         <Caret Line="4787" Column="18" TopLine="4761"/>
-      </Position28>
-      <Position29>
+      </Position15>
+      <Position16>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
         <Caret Line="5206" Column="27" TopLine="5180"/>
-      </Position29>
-      <Position30>
+      </Position16>
+      <Position17>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
         <Caret Line="5600" Column="18" TopLine="5574"/>
+      </Position17>
+      <Position18>
+        <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
+        <Caret Line="5624" TopLine="5614"/>
+      </Position18>
+      <Position19>
+        <Filename Value="uRoutines.pas"/>
+        <Caret Line="178" TopLine="165"/>
+      </Position19>
+      <Position20>
+        <Filename Value="uRoutines.pas"/>
+        <Caret Line="328" TopLine="305"/>
+      </Position20>
+      <Position21>
+        <Filename Value="uRoutines.pas"/>
+        <Caret Line="907" Column="5" TopLine="876"/>
+      </Position21>
+      <Position22>
+        <Filename Value="uRoutines.pas"/>
+        <Caret Line="21" Column="12"/>
+      </Position22>
+      <Position23>
+        <Filename Value="HwIO.pas"/>
+        <Caret Line="32" Column="2" TopLine="17"/>
+      </Position23>
+      <Position24>
+        <Filename Value="HwIO.pas"/>
+        <Caret Line="286" TopLine="269"/>
+      </Position24>
+      <Position25>
+        <Filename Value="HwIO.pas"/>
+        <Caret Line="376" TopLine="345"/>
+      </Position25>
+      <Position26>
+        <Filename Value="usound.pas"/>
+        <Caret Line="32" Column="42" TopLine="16"/>
+      </Position26>
+      <Position27>
+        <Filename Value="winuser.pas"/>
+        <Caret Line="34" Column="3" TopLine="18"/>
+      </Position27>
+      <Position28>
+        <Filename Value="uappform.pas"/>
+        <Caret Line="116" Column="49" TopLine="102"/>
+      </Position28>
+      <Position29>
+        <Filename Value="uappform.pas"/>
+        <Caret Line="81" TopLine="81"/>
+      </Position29>
+      <Position30>
+        <Filename Value="uappform.pas"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
@@ -1852,7 +1860,7 @@
     </Target>
     <SearchPaths>
       <Libraries Value="..\LazRGBGraphics;..\lnet"/>
-      <OtherUnitFiles Value="..\lnet;..\lib;..\lnet\lazaruspackage"/>
+      <OtherUnitFiles Value="..\lnet;..\lib;..\lnet\lazaruspackage;uoslib"/>
       <UnitOutputDirectory Value="objWindows"/>
     </SearchPaths>
     <Parsing>
