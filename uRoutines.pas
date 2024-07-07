@@ -18,7 +18,10 @@
 
 unit uRoutines;
 
-{$ASMMODE intel}
+{$IFDEF CPUI386}
+  {$ASMMODE intel}
+{$ENDIF}
+
 {$MODE objfpc}{$H+}
 
 interface

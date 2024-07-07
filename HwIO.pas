@@ -30,7 +30,9 @@ unit HwIO;
 
 interface
 
-{$ASMMODE intel}
+{$IFDEF CPUI386}
+  {$ASMMODE intel}
+{$ENDIF}
 
 {$IFDEF windows}
 uses Windows{, WinSvc};
