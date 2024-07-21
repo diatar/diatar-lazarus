@@ -213,6 +213,7 @@ type
     fGotoTmr : integer;           //timerhez
     fGotoTarget : integer;        //ide ugrunk
     fErrorTmr : integer;          //error kikapcs ideje
+    fShowOrderTmr : integer;      //idonkent rendezzuk, hogy a foablak elol legyen
 
     function ReadDia(f : tIniFile; const sect : string; IsUTF8 : boolean) : tTxBase;
     function QuerySave(Index : integer = 0) : boolean;
@@ -2683,6 +2684,13 @@ begin
   if fErrorTmr>0 then begin
     dec(fErrorTmr);
     if fErrorTmr<=0 then ShowError('');
+  end;
+
+  dec(fShowOrderTmr);
+  if fShowOrderTmr<0 then begin
+    fShowOrderTmr:=200 div Tmr.Interval;
+    if not Globals.HideMain and not ScrollState and (WindowState<>wsMinimized) and not InResizing then
+      BringToFront;
   end;
 
   if Globals.StrikeProjektSignal then begin

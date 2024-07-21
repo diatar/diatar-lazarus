@@ -3,9 +3,9 @@ program diatar;
 {$mode objfpc}{$H+}
 
 uses
-  {$IFDEF UNIX}{$IFDEF UseCThreads}
-  cthreads,
-  {$ENDIF}{$ENDIF}
+  {$IFDEF UNIX}//{$IFDEF UseCThreads}
+  cthreads, cmem,
+  {$ENDIF}//{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, uAppForm, uProjektedForm, uTxTar, uGlobals, uDiaLst, uPaintResizedText,
   udtxlst, uAddOne, uAdd, uTxList, uEditorForm, uSetupForm, uCommBtns,
