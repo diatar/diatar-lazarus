@@ -20,8 +20,101 @@
       <CharSet Value="04B0"/>
       <StringTable ProductVersion="0.0.0.2"/>
     </VersionInfo>
-    <BuildModes Count="1">
+    <BuildModes Count="3" Active="Release">
       <Item1 Name="default" Default="True"/>
+      <Item2 Name="Debug">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value=".\rdiatar"/>
+          </Target>
+          <SearchPaths>
+            <Libraries Value="..\LazRGBGraphics;..\lnet"/>
+            <OtherUnitFiles Value="..\lnet;..\lib;..\lnet\lazaruspackage;uoslib"/>
+            <UnitOutputDirectory Value="objRaspberry"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+              <IncludeAssertionCode Value="True"/>
+              <UseAnsiStrings Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+            <VerifyObjMethodCallValidity Value="True"/>
+            <TargetCPU Value="aarch64"/>
+            <TargetOS Value="linux"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf3"/>
+              <UseHeaptrc Value="True"/>
+              <TrashVariables Value="True"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <WriteFPCLogo Value="False"/>
+            <CustomOptions Value="-dFPC_OS_UNICODE"/>
+          </Other>
+        </CompilerOptions>
+      </Item2>
+      <Item3 Name="Release">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value=".\rdiatar"/>
+          </Target>
+          <SearchPaths>
+            <Libraries Value="..\LazRGBGraphics;..\lnet"/>
+            <OtherUnitFiles Value="..\lnet;..\lib;..\lnet\lazaruspackage;uoslib"/>
+            <UnitOutputDirectory Value="objRaspberry"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+              <UseAnsiStrings Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <TargetCPU Value="aarch64"/>
+            <TargetOS Value="linux"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <StripSymbols Value="True"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <WriteFPCLogo Value="False"/>
+            <CustomOptions Value="-dFPC_OS_UNICODE"/>
+          </Other>
+        </CompilerOptions>
+      </Item3>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
@@ -54,14 +147,13 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="232">
+    <Units Count="233">
       <Unit0>
         <Filename Value="Diatar.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="diatar"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="3"/>
-        <CursorPos Y="33"/>
+        <CursorPos X="18" Y="7"/>
         <UsageCount Value="200"/>
       </Unit0>
       <Unit1>
@@ -71,9 +163,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAppForm"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="70"/>
+        <CursorPos X="28" Y="7"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="utextbox.pas"/>
@@ -110,19 +203,21 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uProjektedForm"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="341"/>
-        <CursorPos X="46" Y="357"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="233"/>
+        <CursorPos Y="243"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="utxtar.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTxTar"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="409"/>
-        <CursorPos X="19" Y="417"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="517"/>
+        <CursorPos X="22" Y="521"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit7>
       <Unit8>
         <Filename Value="uglobals.pas"/>
@@ -690,11 +785,10 @@
         <Filename Value="usound.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uSound"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="16"/>
         <CursorPos X="36" Y="32"/>
         <UsageCount Value="202"/>
-        <Loaded Value="True"/>
       </Unit87>
       <Unit88>
         <Filename Value="upropedit.pas"/>
@@ -763,8 +857,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uNetQueue"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="420"/>
-        <CursorPos X="37" Y="426"/>
+        <TopLine Value="16"/>
+        <CursorPos X="18" Y="29"/>
         <UsageCount Value="200"/>
       </Unit95>
       <Unit96>
@@ -1175,8 +1269,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
-        <TopLine Value="1810"/>
-        <CursorPos X="3" Y="1798"/>
+        <TopLine Value="2679"/>
+        <CursorPos X="21" Y="2691"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -1361,7 +1455,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="76"/>
         <CursorPos X="24" Y="98"/>
-        <UsageCount Value="160"/>
+        <UsageCount Value="162"/>
       </Unit181>
       <Unit182>
         <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\objpas\classes\classesh.inc"/>
@@ -1387,12 +1481,10 @@
       <Unit185>
         <Filename Value="winuser.pas"/>
         <UnitName Value="WinUser"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="18"/>
-        <CursorPos Y="32"/>
+        <CursorPos X="3" Y="34"/>
         <UsageCount Value="140"/>
-        <Loaded Value="True"/>
       </Unit185>
       <Unit186>
         <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\win\wininc\base.inc"/>
@@ -1651,11 +1743,10 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uZsolozsmaForm"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="15"/>
-        <CursorPos X="16" Y="31"/>
-        <UsageCount Value="44"/>
+        <TopLine Value="81"/>
+        <CursorPos X="19" Y="87"/>
+        <UsageCount Value="46"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit221>
       <Unit222>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\opensslsockets.pp"/>
@@ -1682,7 +1773,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="21"/>
-        <UsageCount Value="35"/>
+        <UsageCount Value="37"/>
       </Unit225>
       <Unit226>
         <Filename Value="uDecodeBreviar.pas"/>
@@ -1690,22 +1781,20 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="228"/>
         <CursorPos X="26" Y="243"/>
-        <UsageCount Value="35"/>
+        <UsageCount Value="37"/>
       </Unit226>
       <Unit227>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="5614"/>
         <CursorPos Y="5624"/>
         <UsageCount Value="17"/>
-        <Loaded Value="True"/>
       </Unit227>
       <Unit228>
         <Filename Value="uRoutines.pas"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <CursorPos Y="22"/>
-        <UsageCount Value="16"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="17"/>
       </Unit228>
       <Unit229>
         <Filename Value="C:\lazarus64\lcl\lcltype.pp"/>
@@ -1717,11 +1806,10 @@
       </Unit229>
       <Unit230>
         <Filename Value="HwIO.pas"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="17"/>
-        <CursorPos Y="33"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
+        <CursorPos X="9" Y="35"/>
+        <UsageCount Value="11"/>
       </Unit230>
       <Unit231>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\rtl\unix\unix.pp"/>
@@ -1729,126 +1817,69 @@
         <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
       </Unit231>
+      <Unit232>
+        <Filename Value="..\..\..\..\usr\share\fpcsrc\3.2.2\packages\openssl\src\openssl.pas"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="93"/>
+        <CursorPos X="3" Y="109"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit232>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="13" HistoryIndex="12">
       <Position1>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="87" TopLine="76"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="1798" Column="3" TopLine="55"/>
       </Position1>
       <Position2>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="89" TopLine="76"/>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="48" Column="23" TopLine="47"/>
       </Position2>
       <Position3>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="87" TopLine="76"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2669" Column="3" TopLine="2321"/>
       </Position3>
       <Position4>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="89" TopLine="76"/>
+        <Filename Value="umain.pas"/>
+        <Caret TopLine="79"/>
       </Position4>
       <Position5>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="87" TopLine="76"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2684" Column="18" TopLine="2673"/>
       </Position5>
       <Position6>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="89" TopLine="76"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="216" Column="55" TopLine="200"/>
       </Position6>
       <Position7>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="31" Column="16" TopLine="15"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2691" Column="31" TopLine="2677"/>
       </Position7>
       <Position8>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="39" Column="59" TopLine="23"/>
       </Position8>
       <Position9>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
-        <Caret Line="4759" Column="15" TopLine="4733"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="87" Column="19" TopLine="81"/>
       </Position9>
       <Position10>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
-        <Caret Line="4767" Column="20" TopLine="4741"/>
+        <Filename Value="..\..\..\..\usr\share\fpcsrc\3.2.2\packages\openssl\src\openssl.pas"/>
+        <Caret Line="1460" Column="10" TopLine="1444"/>
       </Position10>
       <Position11>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
-        <Caret Line="4769" Column="20" TopLine="4743"/>
+        <Filename Value="..\..\..\..\usr\share\fpcsrc\3.2.2\packages\openssl\src\openssl.pas"/>
+        <Caret Line="5646" Column="3" TopLine="5644"/>
       </Position11>
       <Position12>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
-        <Caret Line="4779" Column="15" TopLine="4753"/>
+        <Filename Value="..\..\..\..\usr\share\fpcsrc\3.2.2\packages\openssl\src\openssl.pas"/>
+        <Caret Line="5653" Column="21" TopLine="5644"/>
       </Position12>
       <Position13>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
-        <Caret Line="4782" Column="18" TopLine="4756"/>
+        <Filename Value="..\..\..\..\usr\share\fpcsrc\3.2.2\packages\openssl\src\openssl.pas"/>
+        <Caret Line="5624" Column="32" TopLine="5606"/>
       </Position13>
-      <Position14>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
-        <Caret Line="4785" Column="18" TopLine="4759"/>
-      </Position14>
-      <Position15>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
-        <Caret Line="4787" Column="18" TopLine="4761"/>
-      </Position15>
-      <Position16>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
-        <Caret Line="5206" Column="27" TopLine="5180"/>
-      </Position16>
-      <Position17>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
-        <Caret Line="5600" Column="18" TopLine="5574"/>
-      </Position17>
-      <Position18>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
-        <Caret Line="5624" TopLine="5614"/>
-      </Position18>
-      <Position19>
-        <Filename Value="uRoutines.pas"/>
-        <Caret Line="178" TopLine="165"/>
-      </Position19>
-      <Position20>
-        <Filename Value="uRoutines.pas"/>
-        <Caret Line="328" TopLine="305"/>
-      </Position20>
-      <Position21>
-        <Filename Value="uRoutines.pas"/>
-        <Caret Line="907" Column="5" TopLine="876"/>
-      </Position21>
-      <Position22>
-        <Filename Value="uRoutines.pas"/>
-        <Caret Line="21" Column="12"/>
-      </Position22>
-      <Position23>
-        <Filename Value="HwIO.pas"/>
-        <Caret Line="32" Column="2" TopLine="17"/>
-      </Position23>
-      <Position24>
-        <Filename Value="HwIO.pas"/>
-        <Caret Line="286" TopLine="269"/>
-      </Position24>
-      <Position25>
-        <Filename Value="HwIO.pas"/>
-        <Caret Line="376" TopLine="345"/>
-      </Position25>
-      <Position26>
-        <Filename Value="usound.pas"/>
-        <Caret Line="32" Column="42" TopLine="16"/>
-      </Position26>
-      <Position27>
-        <Filename Value="winuser.pas"/>
-        <Caret Line="34" Column="3" TopLine="18"/>
-      </Position27>
-      <Position28>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="116" Column="49" TopLine="102"/>
-      </Position28>
-      <Position29>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="81" TopLine="81"/>
-      </Position29>
-      <Position30>
-        <Filename Value="uappform.pas"/>
-      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -1860,7 +1891,7 @@
     <SearchPaths>
       <Libraries Value="..\LazRGBGraphics;..\lnet"/>
       <OtherUnitFiles Value="..\lnet;..\lib;..\lnet\lazaruspackage;uoslib"/>
-      <UnitOutputDirectory Value="objWindows"/>
+      <UnitOutputDirectory Value="objRaspberry"/>
     </SearchPaths>
     <Parsing>
       <SyntaxOptions>
@@ -1877,6 +1908,9 @@
       <TargetOS Value="linux"/>
     </CodeGeneration>
     <Linking>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf2Set"/>
+      </Debugging>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>
@@ -1889,6 +1923,15 @@
     </Other>
   </CompilerOptions>
   <Debugging>
+    <BreakPoints Count="1">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="uzsolozsmaform.pas"/>
+        <Line Value="87"/>
+      </Item1>
+    </BreakPoints>
     <Watches Count="4">
       <Item1>
         <Expression Value="NewValue"/>
@@ -1903,7 +1946,7 @@
         <Expression Value="mov"/>
       </Item4>
     </Watches>
-    <Exceptions Count="4">
+    <Exceptions Count="5">
       <Item1>
         <Name Value="ECodetoolError"/>
       </Item1>
@@ -1916,6 +1959,9 @@
       <Item4>
         <Name Value="EReadError"/>
       </Item4>
+      <Item5>
+        <Name Value="ERangeError"/>
+      </Item5>
     </Exceptions>
   </Debugging>
 </CONFIG>
