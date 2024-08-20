@@ -91,7 +91,6 @@
           </Parsing>
           <CodeGeneration>
             <SmartLinkUnit Value="True"/>
-            <TargetCPU Value="aarch64"/>
             <TargetOS Value="linux"/>
             <Optimizations>
               <OptimizationLevel Value="3"/>
@@ -213,6 +212,7 @@
         <Filename Value="utxtar.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTxTar"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <TopLine Value="517"/>
         <CursorPos X="22" Y="521"/>
@@ -433,7 +433,7 @@
         <EditorIndex Value="-1"/>
         <CursorPos X="2" Y="24"/>
         <UsageCount Value="200"/>
-        <DefaultSyntaxHighlighter Value="Text"/>
+        <DefaultSyntaxHighlighter Value="None"/>
       </Unit33>
       <Unit34>
         <Filename Value="unetwork.pas"/>
@@ -833,7 +833,7 @@
         <TopLine Value="58"/>
         <CursorPos Y="92"/>
         <UsageCount Value="8"/>
-        <DefaultSyntaxHighlighter Value="Text"/>
+        <DefaultSyntaxHighlighter Value="None"/>
       </Unit92>
       <Unit93>
         <Filename Value="unetbase.pas"/>
@@ -1408,7 +1408,7 @@
         <EditorIndex Value="-1"/>
         <CursorPos Y="7"/>
         <UsageCount Value="7"/>
-        <DefaultSyntaxHighlighter Value="Text"/>
+        <DefaultSyntaxHighlighter Value="None"/>
       </Unit174>
       <Unit175>
         <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\objpas\sysutils\sysstrh.inc"/>
@@ -1793,7 +1793,8 @@
       <Unit228>
         <Filename Value="uRoutines.pas"/>
         <EditorIndex Value="-1"/>
-        <CursorPos Y="22"/>
+        <TopLine Value="169"/>
+        <CursorPos Y="186"/>
         <UsageCount Value="17"/>
       </Unit228>
       <Unit229>
@@ -1819,7 +1820,6 @@
       </Unit231>
       <Unit232>
         <Filename Value="..\..\..\..\usr\share\fpcsrc\3.2.2\packages\openssl\src\openssl.pas"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="93"/>
         <CursorPos X="3" Y="109"/>
@@ -1842,43 +1842,43 @@
       </Position3>
       <Position4>
         <Filename Value="umain.pas"/>
-        <Caret TopLine="79"/>
+        <Caret Line="2684" Column="18" TopLine="2673"/>
       </Position4>
       <Position5>
         <Filename Value="umain.pas"/>
-        <Caret Line="2684" Column="18" TopLine="2673"/>
+        <Caret Line="216" Column="55" TopLine="200"/>
       </Position5>
       <Position6>
         <Filename Value="umain.pas"/>
-        <Caret Line="216" Column="55" TopLine="200"/>
+        <Caret Line="2691" Column="31" TopLine="2677"/>
       </Position6>
       <Position7>
         <Filename Value="umain.pas"/>
-        <Caret Line="2691" Column="31" TopLine="2677"/>
+        <Caret Line="39" Column="59" TopLine="23"/>
       </Position7>
       <Position8>
-        <Filename Value="umain.pas"/>
-        <Caret Line="39" Column="59" TopLine="23"/>
-      </Position8>
-      <Position9>
         <Filename Value="uzsolozsmaform.pas"/>
         <Caret Line="87" Column="19" TopLine="81"/>
+      </Position8>
+      <Position9>
+        <Filename Value="..\..\..\..\usr\share\fpcsrc\3.2.2\packages\openssl\src\openssl.pas"/>
+        <Caret Line="1460" Column="10" TopLine="1444"/>
       </Position9>
       <Position10>
         <Filename Value="..\..\..\..\usr\share\fpcsrc\3.2.2\packages\openssl\src\openssl.pas"/>
-        <Caret Line="1460" Column="10" TopLine="1444"/>
+        <Caret Line="5646" Column="3" TopLine="5644"/>
       </Position10>
       <Position11>
         <Filename Value="..\..\..\..\usr\share\fpcsrc\3.2.2\packages\openssl\src\openssl.pas"/>
-        <Caret Line="5646" Column="3" TopLine="5644"/>
+        <Caret Line="5653" Column="21" TopLine="5644"/>
       </Position11>
       <Position12>
         <Filename Value="..\..\..\..\usr\share\fpcsrc\3.2.2\packages\openssl\src\openssl.pas"/>
-        <Caret Line="5653" Column="21" TopLine="5644"/>
+        <Caret Line="5624" Column="32" TopLine="5606"/>
       </Position12>
       <Position13>
         <Filename Value="..\..\..\..\usr\share\fpcsrc\3.2.2\packages\openssl\src\openssl.pas"/>
-        <Caret Line="5624" Column="32" TopLine="5606"/>
+        <Caret Line="109" Column="3" TopLine="93"/>
       </Position13>
     </JumpHistory>
   </ProjectOptions>
