@@ -49,6 +49,7 @@ v12.4   2020/03/22  RTF copy-paste tobb vers(szak)
 v12.5   2021/03/28  kotta/akkord arany, atlatszo hatter, triola
 v12.6   2022/01/09  9+ autoload, net:egyediek+margok, dkKotta
 v12.7   2023/03/19  export, autosave, zenereldir, linux hintform javitas, athuzott
+v13.0   2024/04/13  zsolozsma, raspberry
 
 *************************************************************)
 
@@ -66,8 +67,8 @@ uses
   PairSplitter, ComCtrls, types, LazFileUtils, LazUTF8;
 
 const
-  VERSION = 'v12.7';
-  VERSIONDATE = '2009-23';
+  VERSION = 'v13.0 - ß2';
+  VERSIONDATE = '2005-24';
   EDITORFONT = 'Arial';
 
 type
