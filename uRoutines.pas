@@ -177,7 +177,7 @@ type
 implementation
 
 function Between(ThisValue,LowValue,HighValue : integer) : boolean;
-{$IFDEF cpu64}
+{$IFNDEF CPUI386}
 begin
   Result:=(ThisValue>=LowValue) and (ThisValue<=HighValue);
 end;
@@ -196,7 +196,7 @@ end;
 
 {----- Xchange --------------------------------------}
 procedure Xchange(var A,B : byte);
-{$IFDEF cpu64}
+{$IFNDEF CPUI386}
 var
   X : byte;
 begin
@@ -212,7 +212,7 @@ end;
 {$ENDIF}
 
 procedure Xchange(var A,B : shortint);
-{$IFDEF cpu64}
+{$IFNDEF CPUI386}
 var
   X : shortint;
 begin
@@ -228,7 +228,7 @@ end;
 {$ENDIF}
 
 procedure Xchange(var A,B : word);
-{$IFDEF cpu64}
+{$IFNDEF CPUI386}
 var
   X : word;
 begin
@@ -244,7 +244,7 @@ end;
 {$ENDIF}
 
 procedure Xchange(var A,B : smallint);
-{$IFDEF cpu64}
+{$IFNDEF CPUI386}
 var
   X : smallint;
 begin
@@ -260,7 +260,7 @@ end;
 {$ENDIF}
 
 procedure Xchange(var A,B : longint);
-{$IFDEF cpu64}
+{$IFNDEF CPUI386}
 var
   X : longint;
 begin
@@ -276,7 +276,7 @@ end;
 {$ENDIF}
 
 procedure Xchange(var A,B : longword);
-{$IFDEF cpu64}
+{$IFNDEF CPUI386}
 var
   X : longword;
 begin
@@ -292,7 +292,7 @@ end;
 {$ENDIF}
 
 procedure Xchange(var A,B : int64);
-{$IFDEF cpu64}
+{$IFNDEF CPUI386}
 var
   X : int64;
 begin
@@ -311,7 +311,7 @@ end;
 {$ENDIF}
 
 procedure Xchange(var A,B : tPoint);
-{$IFDEF cpu64}
+{$IFNDEF CPUI386}
 var
   X : tPoint;
 begin
@@ -330,7 +330,7 @@ end;
 {$ENDIF}
 
 procedure Xchange(var A,B : string);
-{$IFDEF cpu64}
+{$IFNDEF CPUI386}
 var
   X : string;
 begin
@@ -346,7 +346,7 @@ end;
 {$ENDIF}
 
 procedure Xchange(var A,B : pointer);
-{$IFDEF cpu64}
+{$IFNDEF CPUI386}
 var
   X : pointer;
 begin
@@ -362,7 +362,7 @@ end;
 {$ENDIF}
 
 procedure Xchange(var A,B; Size : integer);
-{$IFDEF cpu64}
+{$IFNDEF CPUI386}
 var
   X : byte;
   p1,p2 : pByte;
@@ -390,7 +390,7 @@ end;
 
 {----- compare points --------------------------------------}
 function CmpPts(const P1,P2 : tPoint) : integer;
-{$IFDEF cpu64}
+{$IFNDEF CPUI386}
 begin
   Result:=P1.Y-P2.Y;
   if (Result=0) then Result:=P1.X-P2.X;
