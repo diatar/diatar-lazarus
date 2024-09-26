@@ -33,6 +33,9 @@ interface
 {$IFDEF CPUI386}
   {$ASMMODE intel}
 {$ENDIF}
+{$IFDEF CPUX86_64}
+  {$ASMMODE intel}
+{$ENDIF}
 
 {$IFDEF windows}
 uses Windows{, WinSvc};
