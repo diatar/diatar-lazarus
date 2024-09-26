@@ -16,6 +16,7 @@ uses
 {$R *.res}
 
 begin
+  Application.Title:='';
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TEdVSPropForm, EdVSPropForm);

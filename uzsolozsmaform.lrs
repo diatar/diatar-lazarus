@@ -1,5 +1,3 @@
-{ This is an automatically generated lazarus resource file }
-
 LazarusResources.Add('TZsolozsmaForm','FORMDATA',[
   'TPF0'#14'TZsolozsmaForm'#13'ZsolozsmaForm'#4'Left'#3'b'#2#6'Height'#3#24#1#3
   +'Top'#3#247#0#5'Width'#3#26#1#11'BorderStyle'#7#8'bsDialog'#7'Caption'#6#20
@@ -9,24 +7,23 @@ LazarusResources.Add('TZsolozsmaForm','FORMDATA',[
   +'.2.0.0'#0#6'TLabel'#6'Label1'#4'Left'#2'#'#6'Height'#2#15#3'Top'#2#10#5'Wid'
   +'th'#2''''#9'Alignment'#7#14'taRightJustify'#7'Caption'#6#7'D'#195#161'tum:'
   +#11'ParentColor'#8#0#0#15'TDateTimePicker'#6'DateEd'#4'Left'#2'S'#6'Height'#2
-  +#23#3'Top'#2#8#5'Width'#2'O'#11'CenturyFrom'#3#149#7#7'MaxDate'#5#0#0#0#0#0#4
-  +#146#180#20'@'#7'MinDate'#5#0#0#0#0#0#0#20#210#14#192#8'TabOrder'#2#0#17'Tra'
-  +'ilingSeparator'#8#15'TextForNullDate'#6#4'NULL'#12'LeadingZeros'#9#4'Kind'#7
-  +#7'dtkDate'#10'TimeFormat'#7#4'tf24'#11'TimeDisplay'#7#5'tdHMS'#8'DateMode'#7
-  +#10'dmComboBox'#4'Date'#5#0#0#0#0#0#0'J'#177#14'@'#4'Time'#5#0#0#0'8-'#237'c'
-  +#197#254'?'#20'UseDefaultSeparators'#9#17'HideDateTimeParts'#11#0#10'MonthNa'
-  +'mes'#6#4'Long'#8'OnChange'#7#12'DateEdChange'#0#0#6'TLabel'#6'Label2'#4'Lef'
-  +'t'#2'"'#6'Height'#2#15#3'Top'#2'0'#5'Width'#2'('#9'Alignment'#7#14'taRightJ'
-  +'ustify'#7'Caption'#6#8'Ima'#195#179'ra:'#11'ParentColor'#8#0#0#8'TListBox'#6
-  +'ImaLst'#4'Left'#2'T'#6'Height'#3#184#0#3'Top'#2'0'#5'Width'#3#188#0#10'Item'
-  +'Height'#2#0#8'TabOrder'#2#1#7'OnClick'#7#11'ImaLstClick'#10'OnDblClick'#7#14
-  +'ImaLstDblClick'#0#0#7'TBitBtn'#7'DownBtn'#4'Left'#2' '#6'Height'#2#30#3'Top'
-  +#3#241#0#5'Width'#2'c'#7'Caption'#6#11'&Let'#195#182'lt'#195#169's'#7'Defaul'
-  +'t'#9#7'Enabled'#8#4'Kind'#7#4'bkOK'#7'OnClick'#7#12'DownBtnClick'#8'TabOrde'
-  +'r'#2#2#0#0#7'TBitBtn'#9'CancelBtn'#4'Left'#3#154#0#6'Height'#2#30#3'Top'#3
-  +#241#0#5'Width'#2'c'#6'Cancel'#9#14'DefaultCaption'#9#4'Kind'#7#8'bkCancel'
-  +#11'ModalResult'#2#2#8'TabOrder'#2#3#0#0#6'TPanel'#9'WaitPanel'#4'Left'#2#8#6
-  +'Height'#2'2'#3'Top'#2'`'#5'Width'#2'C'#7'Caption'#6'&Pillanat... Let'#195
-  +#182'lt'#195#169's az internetr'#197#145'l'#8'TabOrder'#2#4#7'Visible'#8#0#0
-  +#0
+  +#23#3'Top'#2#8#5'Width'#2'O'#11'CenturyFrom'#3#149#7#7'MaxDate'#4#129'$-'#0#7
+  +'MinDate'#4#236'-'#255#255#8'TabOrder'#2#0#17'TrailingSeparator'#8#15'TextFo'
+  +'rNullDate'#6#4'NULL'#12'LeadingZeros'#9#4'Kind'#7#7'dtkDate'#10'TimeFormat'
+  +#7#4'tf24'#11'TimeDisplay'#7#5'tdHMS'#8'DateMode'#7#10'dmComboBox'#4'Date'#4
+  +'J'#177#0#0#4'Time'#5#0#8#0'8-'#237'c'#197#254'?'#20'UseDefaultSeparators'#9
+  +#17'HideDateTimeParts'#11#0#10'MonthNames'#6#4'Long'#8'OnChange'#7#12'DateEd'
+  +'Change'#0#0#6'TLabel'#6'Label2'#4'Left'#2'"'#6'Height'#2#15#3'Top'#2'0'#5'W'
+  +'idth'#2'('#9'Alignment'#7#14'taRightJustify'#7'Caption'#6#8'Ima'#195#179'ra'
+  +':'#11'ParentColor'#8#0#0#8'TListBox'#6'ImaLst'#4'Left'#2'T'#6'Height'#3#184
+  +#0#3'Top'#2'0'#5'Width'#3#188#0#10'ItemHeight'#2#0#8'TabOrder'#2#1#7'OnClick'
+  +#7#11'ImaLstClick'#10'OnDblClick'#7#14'ImaLstDblClick'#0#0#7'TBitBtn'#7'Down'
+  +'Btn'#4'Left'#2' '#6'Height'#2#30#3'Top'#3#241#0#5'Width'#2'c'#7'Caption'#6
+  +#11'&Let'#195#182'lt'#195#169's'#7'Default'#9#7'Enabled'#8#4'Kind'#7#4'bkOK'
+  +#7'OnClick'#7#12'DownBtnClick'#8'TabOrder'#2#2#0#0#7'TBitBtn'#9'CancelBtn'#4
+  +'Left'#3#154#0#6'Height'#2#30#3'Top'#3#241#0#5'Width'#2'c'#6'Cancel'#9#14'De'
+  +'faultCaption'#9#4'Kind'#7#8'bkCancel'#11'ModalResult'#2#2#8'TabOrder'#2#3#0
+  +#0#6'TPanel'#9'WaitPanel'#4'Left'#2#8#6'Height'#2'2'#3'Top'#2'`'#5'Width'#2
+  +'C'#7'Caption'#6'&Pillanat... Let'#195#182'lt'#195#169's az internetr'#197
+  +#145'l'#8'TabOrder'#2#4#7'Visible'#8#0#0#0
 ]);

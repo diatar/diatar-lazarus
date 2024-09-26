@@ -3,9 +3,9 @@ program diatar;
 {$mode objfpc}{$H+}
 
 uses
-  {$IFDEF UNIX}{$IFDEF UseCThreads}
-  cthreads,
-  {$ENDIF}{$ENDIF}
+  {$IFDEF UNIX}//{$IFDEF UseCThreads}
+  cthreads, cmem,
+  {$ENDIF}//{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, uAppForm, uProjektedForm, uTxTar, uGlobals, uDiaLst, uPaintResizedText,
   udtxlst, uAddOne, uAdd, uTxList, uEditorForm, uSetupForm, uCommBtns,
@@ -14,7 +14,7 @@ uses
   uPropEdit, uSetupDtx, uDtxFlagsList, uAkkord, uNetBase, uSerialIO, uNetQueue,
   uNetOffDlg, uAkkordForm, uSearchForm, uSerialIOForm, uKottaEditor, uKottazo,
   uKottaKepek, uFotoForm, uMyFileDlgs, uMainMenu, uMain, uDiaLoadSave,
-  uSelGotoTarget, WinUser, lnetbase, uZsolozsmaForm, uHtml, uDecodeBreviar,
+  uSelGotoTarget, lnetbase, uZsolozsmaForm, uHtml, uDecodeBreviar,
   datetimectrls;
 
 //{$IFDEF WINDOWS}{$R Diatar.rc}{$ENDIF}

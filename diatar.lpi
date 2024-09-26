@@ -55,7 +55,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="230">
+    <Units Count="232">
       <Unit0>
         <Filename Value="Diatar.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -125,7 +125,6 @@
         <TopLine Value="37"/>
         <CursorPos X="3" Y="165"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit7>
       <Unit8>
         <Filename Value="uglobals.pas"/>
@@ -211,7 +210,6 @@
         <TopLine Value="1413"/>
         <CursorPos X="35" Y="1427"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit19>
       <Unit20>
         <Filename Value="upaintresizedtext.pas"/>
@@ -345,7 +343,7 @@
         <EditorIndex Value="-1"/>
         <CursorPos X="2" Y="24"/>
         <UsageCount Value="200"/>
-        <DefaultSyntaxHighlighter Value="None"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
       </Unit33>
       <Unit34>
         <Filename Value="unetwork.pas"/>
@@ -697,9 +695,11 @@
         <Filename Value="usound.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uSound"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos Y="5"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="16"/>
+        <CursorPos X="36" Y="32"/>
         <UsageCount Value="202"/>
+        <Loaded Value="True"/>
       </Unit87>
       <Unit88>
         <Filename Value="upropedit.pas"/>
@@ -744,7 +744,7 @@
         <TopLine Value="58"/>
         <CursorPos Y="92"/>
         <UsageCount Value="8"/>
-        <DefaultSyntaxHighlighter Value="None"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
       </Unit92>
       <Unit93>
         <Filename Value="unetbase.pas"/>
@@ -1319,7 +1319,7 @@
         <EditorIndex Value="-1"/>
         <CursorPos Y="7"/>
         <UsageCount Value="7"/>
-        <DefaultSyntaxHighlighter Value="None"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
       </Unit174>
       <Unit175>
         <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\objpas\sysutils\sysstrh.inc"/>
@@ -1391,7 +1391,6 @@
       </Unit184>
       <Unit185>
         <Filename Value="winuser.pas"/>
-        <IsPartOfProject Value="True"/>
         <UnitName Value="WinUser"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="23"/>
@@ -1703,10 +1702,10 @@
       </Unit227>
       <Unit228>
         <Filename Value="uRoutines.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="586"/>
-        <CursorPos X="15" Y="599"/>
+        <EditorIndex Value="3"/>
+        <CursorPos Y="22"/>
         <UsageCount Value="16"/>
+        <Loaded Value="True"/>
       </Unit228>
       <Unit229>
         <Filename Value="C:\lazarus64\lcl\lcltype.pp"/>
@@ -1716,6 +1715,20 @@
         <CursorPos X="3" Y="904"/>
         <UsageCount Value="9"/>
       </Unit229>
+      <Unit230>
+        <Filename Value="HwIO.pas"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="17"/>
+        <CursorPos Y="33"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit230>
+      <Unit231>
+        <Filename Value="C:\lazarus64\fpc\3.2.2\source\rtl\unix\unix.pp"/>
+        <UnitName Value="Unix"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit231>
     </Units>
     <JumpHistory Count="12" HistoryIndex="11">
       <Position1>
@@ -1776,7 +1789,7 @@
     </Target>
     <SearchPaths>
       <Libraries Value="..\LazRGBGraphics;..\lnet"/>
-      <OtherUnitFiles Value="..\lnet;..\lib;..\lnet\lazaruspackage"/>
+      <OtherUnitFiles Value="..\lnet;..\lib;..\lnet\lazaruspackage;uoslib"/>
       <UnitOutputDirectory Value="objWindows"/>
     </SearchPaths>
     <Parsing>
