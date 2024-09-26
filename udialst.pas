@@ -1314,7 +1314,6 @@ type
 var
   o : tTxBase;
   ogoto : tTxGoto absolute o;
-  vs,vs1 : tVersszak;
   s,q : string;
   fs,np,x,y,splen : integer;
   ttm : tTEXTMETRIC;
@@ -1322,6 +1321,10 @@ var
   tf : tTitleFormat;
   dd : tDblDia;
   skipped : boolean;
+  lbthis,lbprev : tLiteralBase;    //ez a sor es az elozo - ha mindketto szoveg
+  kotetthis,kotetprev : string;    //kotet nevek
+  versthis,versprev : string;      //vers nevek
+  vszakthis,vszakprev : string;    //versszak nevek
 
   procedure DrawSong(cnv : tCanvas; const aR : tRect; SS : tSoundState; SFW : boolean);
   var
@@ -1396,6 +1399,34 @@ var
     cnv.Line(aR.Left+1,y+2,aR.Left+3,y+2); cnv.Line(aR.Left+4,y+2,aR.Left+6,y+2);
     cnv.Line(aR.Left  ,y+3,aR.Left+2,y+3); cnv.Line(aR.Left+5,y+3,aR.Left+7,y+3);
     cnv.Pen.Color:=cnv.Font.Color;
+  end;
+
+  procedure SplitTitle(lb : tLiteralBase; out kotetnev,versnev,vszaknev : string);
+  var
+    vs : tVersszak;
+    p1,p2 : integer;
+  begin
+    if not Assigned(lb) then begin
+      kotetnev:=''; versnev:=''; vszaknev:='';
+      exit;
+    end;
+    if lb is tVersszak then begin
+      vs:=(lb as tVersszak);
+      kotetnev:=vs.Parent.Parent.ShortName;
+      versnev:=vs.Parent.Name;
+      vszaknev:=vs.Name;
+      exit;
+    end;
+    p1:=Pos(': ',lb.Name);
+    if p1>0 then begin kotetnev:=LeftStr(lb.Name,p1-1); inc(p1); end;
+    p2:=Pos('/',lb.Name,p1+1);
+    if p2>0 then begin
+      versnev:=MidStr(lb.Name,p1+1,p2-1-p1);
+      vszaknev:=MidStr(lb.Name,p2+1,99999999);
+    end else begin
+      versnev:=MidStr(lb.Name,p1+1,99999999);
+      vszaknev:='';
+    end;
   end;
 
 begin
@@ -1488,7 +1519,7 @@ begin
       fList.Canvas.Font.Color:=clDkGray;
       fList.Canvas.Font.StrikeThrough:=true;
     end;
-    if not (o is tVersszak) then begin
+    if not (o is tLiteralBase) then begin
       if o is tTxHiba then begin
         fList.Canvas.Font.Size:=fs-iif(fs>10,4,2);
         fList.Canvas.Font.Style:=fList.Canvas.Font.Style+[fsItalic];
@@ -1514,37 +1545,42 @@ begin
       end else begin
         OutText(ARect,TxtOfIndex(Index));
       end;
-    end else begin
-      vs:=(o as tVersszak);
-      s:=vs.Parent.Name; np:=1;
-      if tf in [tfFullTitle,tfSpacedFullTitle,tfIndentFullTitle] then begin
-        q:=vs.Parent.Parent.ShortName+': ';
-        s:=q+s; np:=UTF8Length(q)+1;
-      end;
-      vs1:=nil;
+    end else begin  //szoveges dia
+      lbthis:=(o as tLiteralBase);
+      lbprev:=nil;
       if Index>0 then begin
-        o:=Objects[Index-1]; //Lst2Obj(Index-1)];
-        if o is tVersszak then vs1:=(o as tVersszak);
+        o:=Objects[Index-1];
+        if o is tLiteralBase then lbprev:=(o as tLiteralBase);
+      end;
+      SplitTitle(lbthis,kotetthis,versthis,vszakthis);
+      SplitTitle(lbprev,kotetprev,versprev,vszakprev);
+
+      s:=versthis; np:=1;
+      if tf in [tfFullTitle,tfSpacedFullTitle,tfIndentFullTitle] then begin
+        if kotetthis>'' then begin
+          q:=kotetthis+': ';
+          s:=q+s; np:=UTF8Length(q)+1;
+        end;
       end;
       if (fFilter='') or not (fFilter[1] in ['0'..'9']) then np:=0;
       if not (tf in [tfSpacedTitle,tfSpacedLongTitle,tfSpacedFullTitle]) and
          not ((tf in [tfIndentLongTitle,tfIndentFullTitle]) and
-              Assigned(vs1) and (vs.Parent=vs1.Parent))
+              (kotetthis=kotetprev) and (versthis=versprev))
       then
-        OutText(ARect,s,true,np)
+        OutText(ARect,s,true,np)    //kiirjuk a cim kezdetet
       else begin
-        OutText(ARect,s,false,np);
+        OutText(ARect,s,false,np);  //elnyeljuk
         if ARect.Left>(R.Left+R.Right) div 2 then ARect.Left:=(R.Left+R.Right) div 2;
       end;
       if np>0 then np:=999999;
-      OutText(ARect,iif(vs.Name>'','/','')+vs.Name+' ',true,np);
+      OutText(ARect,iif(vszakthis>'','/','')+vszakthis+' ',true,np);
       if tf in [tfLongTitle,tfSpacedLongTitle..tfIndentFullTitle] then begin
         GetTextMetrics(fList.Canvas.Handle,ttm); inc(ARect.Top,ttm.tmAscent);
         if fs<12 then dec(fs) else if fs<16 then dec(fs,2) else dec(fs,4);
         fList.Canvas.Font.Size:=fs;
         GetTextMetrics(fList.Canvas.Handle,ttm); dec(ARect.Top,ttm.tmAscent);
-        if vs.Lines.Count>0 then
-          OutText(ARect,'('+vs.Text[0]+')',true,np);
+        if lbthis.Lines.Count>0 then
+          OutText(ARect,'('+lbthis.Text[0]+')',true,np);
       end;
     end;
   end;

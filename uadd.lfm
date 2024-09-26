@@ -2499,7 +2499,7 @@ object AddForm: TAddForm
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '1.6.2.0'
+  LCLVersion = '3.2.0.0'
   object PropEdBtn: TSpeedButton
     Left = 298
     Height = 25

@@ -39,6 +39,8 @@ type
     fPsalmState : integer;        //0=nem zsoltar, 1=antifona, 2=versek
     fFound : pTagAndTxt;
     fVersNev : string;
+    fOlvCnt, fZsoltCnt, fHymnCnt, fRespCnt : integer;
+    fOlvMin, fOlvMax : integer;   //olvasmany tordeleshez ennyi keruljon egy diara
     fKonyorges : boolean;
     fFirstVszak : boolean;
 
@@ -49,6 +51,12 @@ type
     function StartsWith(const base : string; const startstr : string) : boolean;
     function EndsWith(const base : string; const endstr : string) : boolean;
     function Contains(const base : string; const substr : string) : boolean;
+
+    procedure StartXXX(var cnt : integer; const txt : string);
+    procedure StartHymn;
+    procedure StartOlv;
+    procedure StartZsolt;
+    procedure StartResp;
 
     procedure DoRespons;
     procedure DoHymn;
@@ -73,6 +81,9 @@ constructor tBreviarDecoder.Create(tag0 : tHtmlTag);
 begin
   inherited Create;
   fTag0:=tag0;
+
+  fOlvMin:=200;
+  fOlvMax:=300;
 end;
 
 procedure tBreviarDecoder.AddLine(const txt : string);
@@ -126,7 +137,8 @@ begin
     fFirstVszak:=false;
   end;
   fPsalmState:=ps;
-  if fFirstVszak then fCurrLit.Name:=fVersNev+'/'+txt else fCurrLit.Name:='    /'+txt;
+  //if fFirstVszak then fCurrLit.Name:=fVersNev+'/'+txt else fCurrLit.Name:='    /'+txt;
+  fCurrLit.Name:=fVersNev+'/'+txt;
   fFirstVszak:=false;
 end;
 
@@ -263,13 +275,39 @@ begin
   end;
 end;
 
+procedure tBreviarDecoder.StartXXX(var cnt : integer; const txt : string);
+begin
+  inc(cnt);
+  if cnt>1 then StartVers(IntToStr(cnt)+'.'+txt) else StartVers(txt);
+end;
+
+procedure tBreviarDecoder.StartHymn;
+begin
+  StartXXX(fHymnCnt,'Himnusz');
+end;
+
+procedure tBreviarDecoder.StartOlv;
+begin
+  StartXXX(fOlvCnt,'Olvasmány');
+end;
+
+procedure tBreviarDecoder.StartZsolt;
+begin
+  StartXXX(fZsoltCnt,'Zsoltár');
+end;
+
+procedure tBreviarDecoder.StartResp;
+begin
+  StartXXX(fRespCnt,'Responsorium');
+end;
+
 procedure tBreviarDecoder.DoRespons;
 var
   f : pTagAndTxt;
   s,cls : string;
   skip : boolean;
 begin
-  StartVers('Responsorium');
+  StartResp;
   f:=fCurrTag.Traverse(fCurrTag);
   while Assigned(f) do begin
     skip:=false;
@@ -292,16 +330,17 @@ var
   skip : boolean;
   first,last : boolean;
   vszak,lcnt : integer;
+
 begin
-  StartVers('Himnusz');
+  StartHymn;
   first:=true; last:=false; vszak:=1; lcnt:=0;
   f:=fCurrTag.Traverse(fCurrTag);
   while Assigned(f) do begin
     skip:=false;
     if f^.Tag.NameStr='p' then begin
       cls:=f^.Tag.ClassName;
-      if cls='rubric' then begin    //alternativ himnusz kezdodik
-        if (vszak>1) or (lcnt>0) then StartVers('Himnusz');
+      if StartsWith(cls,'rubric') then begin    //alternativ himnusz kezdodik
+        if (vszak>1) or (lcnt>0) then StartHymn;
         first:=true; last:=false; vszak:=1; lcnt:=0;
         f:=f^.Tag.Traverse(fCurrTag,true);
         continue;
@@ -333,7 +372,7 @@ var
   s : string;
   t : tHtmlTag;
 begin
-  if fPsalmState=0 then StartVers('Zsoltár');
+  if fPsalmState=0 then StartZsolt;
   fPsalmState:=1;
   StartVszak('Ant');
   s:='';
@@ -359,7 +398,7 @@ begin
     if StartsWith(fCurrTag.ClassName,'tedeum') then
       StartVers('Te Deum')
     else
-      StartVers('Zsoltár');
+      StartZsolt;
   end;
   fPsalmState:=2;
   f:=fCurrTag.Traverse(fCurrTag);
@@ -458,8 +497,50 @@ var
   cls : string;
   vszak : integer;
   sectionpar : string;
+
+  procedure Tordeles(const txt : string; startpos : integer);
+  var
+    len : integer;
+    pgcnt : integer;
+    p0,i,psp,ptor : integer;
+    c : char;
+  begin
+    len:=Length(txt);
+    if startpos+len <= fOlvMax then begin
+      AddLine(txt);
+      exit;
+    end;
+    pgcnt:=1+((startpos+len) div fOlvMax);
+    p0:=(len div pgcnt) - startpos;
+    psp:=9999; ptor:=9999;
+    for i:=0 to 50 do begin
+      if p0+i<len then begin
+        c:=txt[p0+i];
+        if (c=' ') and (psp=9999) then psp:=i;
+        if c in [#13,#10,'.',',',';','?','!'] then begin
+          ptor:=i;
+          break;
+        end;
+      end;
+      if p0-i>0 then begin
+        c:=txt[p0-i];
+        if (c=' ') and (psp=9999) then psp:=-i;
+        if c in [#13,#10,'.',',',';','?','!'] then begin
+          ptor:=-i;
+          break;
+        end;
+      end;
+    end;
+    if ptor=9999 then ptor:=psp; //nem volt irasjel a kornyeken...
+    if ptor=9999 then ptor:=0;   //szokoz se :(
+    AddLine(LeftStr(txt,p0+ptor));
+    inc(vszak);
+    StartVszak(IntToStr(vszak));
+    Tordeles(copy(txt,p0+ptor+1,len),0);
+  end;
+
 begin
-  StartVers('Olvasmány');
+  StartOlv;
   vszak:=0;
   sectionpar:='';
   for i:=0 to Length(fCurrTag.SubTags)-1 do begin
@@ -488,13 +569,14 @@ begin
     if cls='par' then begin
       inc(vszak);
       StartVszak(IntToStr(vszak));
-      if sectionpar>'' then AddLine(sectionpar);
+      if sectionpar>'' then Tordeles(sectionpar,0);
       if Length(sectionpar)>20 then begin
         inc(vszak);
         StartVszak(IntToStr(vszak));
+        sectionpar:='';
       end;
+      Tordeles(AllTxt(tag), Length(sectionpar));
       sectionpar:='';
-      AddLine(AllTxt(tag));
       continue;
     end;
     AddLine('??? <p class="'+cls+'">');
