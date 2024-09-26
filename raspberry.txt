@@ -1,0 +1,100 @@
+Feladat: Diatár és esetleg DiaEditor bináris keresztfordítás
+Gazda: Win10 (Lazarus x86 és i64 keretrendszer, FPC win 32/64 bites háttér)
+Target: Raspberry Pi ARM 64bites
+
+Leírás: https://wiki.freepascal.org/Lazarus_on_Raspberry_Pi
+Keresztfordításról: https://wiki.freepascal.org/fpcup#Linux_ARM_cross_compiler
+
+- forráskönyvtár:
+	c:\lazarus64
+	c:\lazarus64\fpc\
+	c:\lazarus64\fpc\3.2.2
+
+
+>>> sokat küzdöttem az elején, de végül az fpcupdeluxe segített
+>>> az alábbiak eleje tehát elhagyható, ugorj ide: "consider using fpcupdeluxe instead of fpcup"
+
+
+- keresztfordítás könyvtára:
+	c:\lazarus64\cross
+
+- kell Raspberry OS image
+	- https://www.raspberrypi.com/software/operating-systems/
+	- célszerű a 64bit lite, abban van a legkevesebb plusz dolog
+	- jelenleg: 2024-03-15-raspios-bookworm-arm64-lite.img.xz
+
+- .xz kiterjesztést kezeli a WinZip (tryware!) vagy 7zip (free, opensource)
+	- .xz  -> 1.img  -> könyvtárstruktúrába
+
+- kell minden .so fájl /lib, /usr/lib, /usr/lib/arm-linux-gnueabihf könyvtárakból
+	- ide teszem: c:\lazarus64\cross\lib\arm-linux
+	- /lib üres - majd kiderül, hiányzik-e valami
+	- /usr/lib - a legtöbb .so üres (a 7zip azt mondta rájuk, hogy nincs jogom a szimbolikus linkekhez
+		- ezt írja is a doksi, hogy sok .so fájl script; a *.so.1 fájlokat kell átnevezni
+	- 64bitesnél aarch64-linux-gnu mappanév van
+		- itt is rengeteg üres .so van, és számvégű -> minden *.so.12345 típusút kiveszek és átnevezek
+
+		- átnevezéshez egy kis DOS batch, addig futtattam, amíg elfogytak a fájlok (minden .so végű lett)
+		
+			for %%F in (*.so.*) do (
+				if NOT %%~xF == .so  (
+					ren %%F %%~nF
+					echo %%F %%~nF
+				)
+			)
+
+		- egyetlen fájl maradt: libnsl.so.2 nem nevezhető át, mert már van egy libnsl.so
+			libnsl.so		2024.02.03 06:32 133960
+			libnsl.so.2		2020.10.10 16:15  89376
+		- így marad, meglátjuk...
+
+- "download the binutils from http://svn2.freepascal.org/svn/fpcbuild/binaries/i386-win32"
+	- na ez a link nincs már!!! kutakodás alapján 2021-ben áttették gitlab alá
+	- új link: https://gitlab.com/freepascal.org/fpc/binaries
+	- letöltött fájlok (minden arm-linux-* ):
+		arm-linux-ar.exe
+		arm-linux-as.exe
+		arm-linux-ld.exe
+		arm-linux-nm.exe
+		arm-linux-oabi-ar.exe
+		arm-linux-oabi-as.exe
+		arm-linux-oabi-ld.exe
+		arm-linux-oabi-objdump.exe
+		arm-linux-oabi-strip.exe
+		arm-linux-objcopy.exe
+		arm-linux-objdump.exe
+		arm-linux-strip.exe
+	- hely: c:\lazarus64\cross\bin\arm-linux
+
+- "consider using fpcupdeluxe instead of fpcup"
+	- https://github.com/LongDirtyAnimAlf/fpcupdeluxe
+		- leszedem, fpcupdeluxe.lpi -t megnyitom Lazarusban, fordítás/futtatás OK
+	- megpróbáltam a "stable fpc" verziót fordíttatni vele
+		- egy figyelmeztetéssel indít: win64 keresztfordító nem támogatott
+		- a system.pp:77 -ben hibával leáll
+	- Lazarusban átállítottam win32/i386 targetre, fordítás/futtatás OK
+	- "stable fpc" fordítás OK
+		- munkakönyvtár: c:\fpcupdeluxe
+	- aarch64/linux cross fordítás OK
+		- kimenet: c:\fpcupdeluxe\cross\bin\aarch64-linux
+
+- copy c:\fpcupdeluxe\cross\bin\aarch64-linux c:\lazarus64\fpc\3.2.2\bin\aarch64-linux
+- copy c:\fpcupdeluxe\fpc\fpmkints\aarch64-linux c:\lazarus64\fpc\3.2.2\fpmkinst\aarch64-linux
+	- nem tudom, ez a másolás kell-e és mire...
+- copy c:\fpcupdeluxe\fpc\units\aarch64-linux c:\lazarus64\fpc\3.2.2\units\aarch64-linux
+
+- Lazarusban Diatár projektem
+	- beállítás -> target=linux/aarch64
+		- válasz: nincs FPC a c:\lazarus64\fpc\3.2.2\bin\aarch64-linux könyvtárban
+		- kézzel bemásoltam az i386-win32 könyvtárból, így elindul a fordítás
+		
+	- uRoutines.pas:20 "{$ASMMODE intel}" köré kell egy "{$IFDEF CPUI386}"
+	- HwIO:33 ugyanez
+	- uSound igényli az uos_flat csomagot - szerencsére ez a linux miatt már van, be kell tenni a keresési pathba!
+	- WinUser unit is benne volt a projektben; pedig nem is kell,
+		úgy tűnik (és nem található linux alatt)... eltávolítva
+
+Háááát akkor, van egy binárisunk!!!
+
+- aarch64-linux-gnu-strip.exe -s rdiatar
+	40MB -> 11MB
