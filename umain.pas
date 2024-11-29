@@ -35,7 +35,7 @@ uses
   uGlobals, uRoutines, uTxTar, uDiaLst, uDtxLst, uHintForm, uCommBtns, HwIO,
   uKeys, uSound, uAkkord, uPropEdit, uNetOffDlg, uTxList, uFotoForm,
   uSearchForm, uEditorForm, uSymbolForm, uSerialIOForm, uMyFileDlgs,
-  uTxtAtom, uZsolozsmaForm,
+  uTxtAtom, uZsolozsmaForm, uMQTT_IO,
   StdCtrls, ExtCtrls, Buttons, IniFiles, LCLIntf, ComCtrls, Menus, LazLogger;
 
 const
@@ -214,6 +214,7 @@ type
     fGotoTarget : integer;        //ide ugrunk
     fErrorTmr : integer;          //error kikapcs ideje
     fShowOrderTmr : integer;      //idonkent rendezzuk, hogy a foablak elol legyen
+    fMQTT_IO : tMQTT_IO;
 
     function ReadDia(f : tIniFile; const sect : string; IsUTF8 : boolean) : tTxBase;
     function QuerySave(Index : integer = 0) : boolean;
@@ -473,6 +474,8 @@ begin
   ShowDia(0);
   if not Globals.SerialAskOn or (QuestBox('Bekapcsoljuk a projektort?')=idYes) then
     ProcessSerialOn;
+
+    MQTT_IO.Open(IsMQTTSender);
 end;
 
 procedure TMainForm.FormDeactivate(Sender: TObject);
@@ -2689,7 +2692,7 @@ begin
   dec(fShowOrderTmr);
   if fShowOrderTmr<0 then begin
     fShowOrderTmr:=200 div Tmr.Interval;
-    if not Globals.HideMain and not ScrollState and (WindowState<>wsMinimized) and not InResizing then
+    if Application.Active and not Globals.HideMain and not ScrollState and (WindowState<>wsMinimized) and not InResizing then
       BringToFront;
   end;
 

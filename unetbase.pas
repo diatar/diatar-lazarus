@@ -322,6 +322,13 @@ type
     procedure SendAskSize;
   end;
 
+// tMyMemStream = kulso memoriat hasznal puffernek, igy nem kell masolgatni
+type
+  tMyMemStream = class(tCustomMemoryStream)
+  public
+    procedure SetMem(Ptr : pointer; aSize : longint);
+  end;
+
 implementation
 
 uses uNetwork;
@@ -985,15 +992,6 @@ begin
   p:=@IpBuf[IpRecPos];
   fOnRecState(Self,p^.Rec);
 end;
-
-///////////////////////////////////
-// tMyMemStream = kulso memoriat hasznal puffernek, igy nem kell masolgatni
-///////////////////////////////////
-type
-  tMyMemStream = class(tCustomMemoryStream)
-  public
-    procedure SetMem(Ptr : pointer; aSize : longint);
-  end;
 
 procedure tMyMemStream.SetMem(Ptr : pointer; aSize : longint);
 begin

@@ -48,6 +48,9 @@ const
   caUnderline = $04;
   caStrikeout = $08;
 
+var
+  IsMQTTSender : boolean = false;
+
 type
   tCharAttribs = byte;
 
