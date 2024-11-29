@@ -7,12 +7,12 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, uMain, uAdd, uAddOne, uCommBtns, uTxTar, uProjektedForm, uGlobals,
-  uGetPsw, uDiaLst, uRotateBmp, uSetupForm, uPaintResizedText, uMonitors,
-  uShutdown, uEditorForm, uNetwork, uDtxLst, uKeys, uNetQueue, uNetBase,
-  uSymbolForm, uSerialIO, uSearchForm, uSound, uhowtosaveform, ukottaeditor,
-  ukottakepek, ukottazo, userialioform, uappform, uKeyInputForm, uSelectProfil,
-  uLinuxRegistry, uDiatarIniLoader, uPropEdit;
+  Forms, datetimectrls, uMain, uAdd, uAddOne, uCommBtns, uTxTar, uProjektedForm,
+  uGlobals, uGetPsw, uDiaLst, uRotateBmp, uSetupForm, uPaintResizedText,
+  uMonitors, uShutdown, uEditorForm, uNetwork, uDtxLst, uKeys, uNetQueue,
+  uNetBase, uSymbolForm, uSerialIO, uSearchForm, uSound, uhowtosaveform,
+  ukottaeditor, ukottakepek, ukottazo, userialioform, uappform, uKeyInputForm,
+  uSelectProfil, uLinuxRegistry, uDiatarIniLoader, uPropEdit;
 
 {$IFDEF WINDOWS}{$R project1.rc}{$ENDIF}
 
