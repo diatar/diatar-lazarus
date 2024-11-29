@@ -12,9 +12,10 @@ uses
   uSetupProfil, uSelectProfil, uGetPsw, uRotateBmp, uNetwork, uShutdown,
   uHintForm, uMonitors, uRTF, uKeys, uKeyInputForm, uSymbolForm, uSound,
   uPropEdit, uSetupDtx, uDtxFlagsList, uAkkord, uNetBase, uSerialIO, uNetQueue,
-  uNetOffDlg, uAkkordForm, uSearchForm, uSerialIOForm, uKottaEditor,
-  uKottazo, uKottaKepek, uFotoForm, uMyFileDlgs, uMainMenu, uMain, uDiaLoadSave,
-  uSelGotoTarget, WinUser, uTxtAtom, uZsolozsmaForm, datetimectrls, lnetbase;
+  uNetOffDlg, uAkkordForm, uSearchForm, uSerialIOForm, uKottaEditor, uKottazo,
+  uKottaKepek, uFotoForm, uMyFileDlgs, uMainMenu, uMain, uDiaLoadSave,
+  uSelGotoTarget, WinUser, uTxtAtom, uZsolozsmaForm, datetimectrls, lnetbase,
+  umqtt_io;
 
 //{$IFDEF WINDOWS}{$R Diatar.rc}{$ENDIF}
 

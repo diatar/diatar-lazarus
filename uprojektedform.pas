@@ -26,7 +26,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
-  uTxTar, uRoutines, uGlobals, uPaintResizedText, LazFileUtils, LazUTF8,
+  uTxTar, uRoutines, uGlobals, uPaintResizedText, LazFileUtils, LazUTF8, uMQTT_IO,
   IntfGraphics, FPImage, LCLIntf, LCLType, ExtCtrls, Menus, Types, LazLogger;
 
 const
@@ -336,6 +336,8 @@ begin
     Network.StateChanged;
     Network.BlankChanged;
   end;
+  MQTT_IO.StateChanged;
+  MQTT_IO.BlankChanged;
 end;
 
 procedure tProjektedForm.FormWindowStateChange(Sender: TObject);
@@ -608,6 +610,8 @@ begin
         Network.NewPic((fCurrTxt as tKep).FileName);
         Network.StateChanged;
       end;
+      MQTT_IO.SendPic((fCurrTxt as tKep).FileName);
+      MQTT_IO.StateChanged;
     end else if fCurrTxt is tLiteralBase then begin
       DrawTxt(fTxtPainter,fProjImage.Canvas,
         fCurrTxt as tLiteralBase,fCurrentProperties,fUseLastDrawTxt);
@@ -618,6 +622,9 @@ begin
           iif(Globals.KorusMode or Globals.CmdLineKorus,fScholaLine,''));
         Network.StateChanged;
       end;
+      MQTT_IO.SendText(fCurrTxt as tLiteralBase,
+        iif(Globals.KorusMode or Globals.CmdLineKorus,fScholaLine,''));
+      MQTT_IO.StateChanged;
     end else if fCurrTxt is tText then begin
       fCurrLiteral:=LoadLiteralText((fCurrTxt as tText).FileName);
       DrawTxt(fTxtPainter,fProjImage.Canvas,
@@ -627,6 +634,8 @@ begin
         Network.NewText(fCurrLiteral,'');
         Network.StateChanged;
       end;
+      MQTT_IO.SendText(fCurrLiteral,'');
+      MQTT_IO.StateChanged;
     end;
   end else if (Globals.ScrMode=smProject) and Assigned(Network.ProjPic) then begin
     DrawPic(fProjImage.Canvas,Network.ProjPic);
@@ -927,6 +936,7 @@ begin
 //  else
     AlphaBlendValue:=255-((255*iif(fReallyProjekting,Globals.BackTransPerc,Globals.BlankTransPerc)) div 100);
   if Globals.ScrMode=smControl then Network.StateChanged;
+  MQTT_IO.StateChanged;
   PostRedraw;
 end;
 
@@ -935,6 +945,7 @@ begin
   fUseBlankPic:=NewValue;
   if not fReallyProjekting then PostRedraw;
   if Globals.ScrMode=smControl then Network.StateChanged;
+  MQTT_IO.StateChanged;
 end;
 
 function tProjektedForm.GetWordToHighlight : integer;
@@ -962,6 +973,7 @@ begin
     if oldvalue=fTxtPainter.WordHighlightPos then exit; //nem valtozott
     if fReallyProjekting then PostRedraw;
     if Globals.ScrMode=smControl then Network.StateChanged;
+    MQTT_IO.StateChanged;
   end;
 end;
 

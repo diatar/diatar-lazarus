@@ -129,11 +129,15 @@ var
 
 implementation
 
+//ha kell a DebugLn() logger (console ablak):
+//  Project options / Compiler options / Config and Target / Target specific
+//    kivenni a "Win32 GUI" pipat
+
 uses
   LazLogger,
   uRoutines,
   uMain,uSerialIOForm,uSymbolForm,uMonitors,uProjektedForm,
-  uGlobals,uSelectProfil,uKottaKepek,uNetwork,uCommBtns,
+  uGlobals,uSelectProfil,uKottaKepek,uNetwork,uCommBtns,uMQTT_IO,
   uTxTar
   ;
 
@@ -154,6 +158,7 @@ begin
 
   FillKottaBmps;
   Network:=tNetwork.Create;
+  MQTT_IO:=tMQTT_IO.Create;
   CommBtns:=tCommBtns.Create;
 
   TxTarDtxDir:=Globals.DtxDir;
@@ -166,6 +171,7 @@ begin
   if FindCmdLineSwitch('KORUS',['-','/'],true) then Globals.CmdLineKorus:=true;
   if FindCmdLineSwitch('AKKORD',['-','/'],true) then Globals.CmdLineAkkord:=true;
   if FindCmdLineSwitch('KOTTA',['-','/'],true) then Globals.CmdLineKotta:=true;
+  if FindCmdLineSwitch('KULDO',['-','/'],true) then IsMQTTSender:=true;
   LoadGlobalsSetup;
 
   //Application.TaskBarBehavior:=tbSingleButton;
@@ -186,6 +192,7 @@ begin
   StopSymbolFiltering;
   FreeAndNil(ProjektedForm);
   Globals.DTXs.Free;
+  FreeAndNil(MQTT_IO);
   FreeAndNil(Network);
   FreeAndNil(CommBtns);
   FreeAndNil(SerialIOForm);

@@ -91,8 +91,14 @@ type
     procedure ProjectedFormResized;
     procedure StateChanged;
     procedure BlankChanged;
+    function CreateState : nrState;
 
     procedure GlobalsChanged;
+
+    procedure RecState(const StateRec: nrState);
+    procedure RecBlankPic(PicStream: tStream; const Ext: nrFileExt);
+    procedure RecDiaPic(PicStream: tStream; const Ext: nrFileExt);
+    procedure RecDiaTxt(Lit: tLiteral; const ScholaLine: string);
   end;
 
 var
@@ -384,44 +390,49 @@ begin
 end;
 
 //statusz kuldese
+function tNetwork.CreateState : nrState;
+begin
+  if not Assigned(ProjektedForm) then exit;
+  FillChar(Result, SizeOf(Result), 0);
+  Result.Projekting := ProjektedForm.Projekting;
+  Result.ShowBlankPic := ProjektedForm.UseBlankPic;
+  Result.EndProgram := fEndProgram;
+  Result.BkColor  := ProjektedForm.CurrentProperties^.BkColor; //Globals.BkColor;
+  Result.TxtColor := ProjektedForm.CurrentProperties^.TxColor; //Globals.TxtColor;
+  Result.HighColor:= ProjektedForm.CurrentProperties^.HiColor;
+  Result.BlankColor := ProjektedForm.CurrentProperties^.OffColor; //Globals.BlankColor;
+  Result.FontSize := ProjektedForm.CurrentProperties^.FontSize;  //Globals.FontSize;
+  Result.TitleSize := ProjektedForm.CurrentProperties^.TitleSize; //Globals.TitleSize;
+  Result.LeftIndent := ProjektedForm.CurrentProperties^.Indent; //Globals.LeftIndent;
+  Result.Spacing100 := ProjektedForm.CurrentProperties^.Spacing; //Globals.Spacing100;
+  Result.HKey     := Globals.HKey;
+  Result.BorderRect := Globals.BorderRect;
+  Result.FontName := ProjektedForm.CurrentProperties^.FontName; //Globals.FontName;
+  Result.IsBlankPic := (Globals.BlankPicFile > '');
+  Result.AutoResize := Globals.AutoResize;
+  Result.HCenter  := ProjektedForm.CurrentProperties^.HCenter = b3TRUE;  //Globals.HCenter;
+  Result.VCenter  := ProjektedForm.CurrentProperties^.VCenter = b3TRUE; //Globals.VCenter;
+  Result.ScholaMode:=Globals.KorusMode or Globals.CmdLineKorus;
+  Result.UseAkkord:=Globals.TavAkkord;
+  Result.UseKotta:=Globals.TavKotta and Globals.UseKotta;
+  Result.UseTransitions:=Globals.UseTransitions;
+  Result.HideTitle:=Globals.HideTitle;
+  Result.InverzKotta:=Globals.InverzKotta;
+  Result.WordToHighlight:=ProjektedForm.WordToHighlight;
+  Result.BgMode:=Globals.BgMode;
+  Result.KottaPerc:=Globals.KottaPerc;
+  Result.AkkordPerc:=Globals.AkkordPerc;
+  Result.BackTransPerc:=Globals.BackTransPerc;
+  Result.BlankTransPerc:=Globals.BlankTransPerc;
+  Result.FontBold:=(Globals.DefCharAttribs and caBold)<>0;
+end;
+
 procedure tNetwork.WriteState;
 var
   buf: nrState;
   i: integer;
 begin
-  if not Assigned(ProjektedForm) then exit;
-  FillChar(buf, SizeOf(buf), 0);
-  buf.Projekting := ProjektedForm.Projekting;
-  buf.ShowBlankPic := ProjektedForm.UseBlankPic;
-  buf.EndProgram := fEndProgram;
-  buf.BkColor  := ProjektedForm.CurrentProperties^.BkColor; //Globals.BkColor;
-  buf.TxtColor := ProjektedForm.CurrentProperties^.TxColor; //Globals.TxtColor;
-  buf.HighColor:= ProjektedForm.CurrentProperties^.HiColor;
-  buf.BlankColor := ProjektedForm.CurrentProperties^.OffColor; //Globals.BlankColor;
-  buf.FontSize := ProjektedForm.CurrentProperties^.FontSize;  //Globals.FontSize;
-  buf.TitleSize := ProjektedForm.CurrentProperties^.TitleSize; //Globals.TitleSize;
-  buf.LeftIndent := ProjektedForm.CurrentProperties^.Indent; //Globals.LeftIndent;
-  buf.Spacing100 := ProjektedForm.CurrentProperties^.Spacing; //Globals.Spacing100;
-  buf.HKey     := Globals.HKey;
-  buf.BorderRect := Globals.BorderRect;
-  buf.FontName := ProjektedForm.CurrentProperties^.FontName; //Globals.FontName;
-  buf.IsBlankPic := (Globals.BlankPicFile > '');
-  buf.AutoResize := Globals.AutoResize;
-  buf.HCenter  := ProjektedForm.CurrentProperties^.HCenter = b3TRUE;  //Globals.HCenter;
-  buf.VCenter  := ProjektedForm.CurrentProperties^.VCenter = b3TRUE; //Globals.VCenter;
-  buf.ScholaMode:=Globals.KorusMode or Globals.CmdLineKorus;
-  buf.UseAkkord:=Globals.TavAkkord;
-  buf.UseKotta:=Globals.TavKotta and Globals.UseKotta;
-  buf.UseTransitions:=Globals.UseTransitions;
-  buf.HideTitle:=Globals.HideTitle;
-  buf.InverzKotta:=Globals.InverzKotta;
-  buf.WordToHighlight:=ProjektedForm.WordToHighlight;
-  buf.BgMode:=Globals.BgMode;
-  buf.KottaPerc:=Globals.KottaPerc;
-  buf.AkkordPerc:=Globals.AkkordPerc;
-  buf.BackTransPerc:=Globals.BackTransPerc;
-  buf.BlankTransPerc:=Globals.BlankTransPerc;
-  buf.FontBold:=(Globals.DefCharAttribs and caBold)<>0;
+  buf:=CreateState;
   for i:=1 to MAXIP do fNetIO[i].SendState(buf);
   //  DebugOut('SendState with ShowBlankPic='+iif(buf.ShowBlankPic,'TRUE','false'));
 end;
@@ -493,6 +504,26 @@ procedure tNetwork.BlankChanged;
 begin
   if fScrMode <> smControl then exit;
   WriteBlank;
+end;
+
+procedure tNetwork.RecState(const StateRec: nrState);
+begin
+  NetIORecState(nil, StateRec);
+end;
+
+procedure tNetwork.RecBlankPic(PicStream: tStream; const Ext: nrFileExt);
+begin
+  NetIORecBlank(nil, PicStream, Ext);
+end;
+
+procedure tNetwork.RecDiaPic(PicStream: tStream; const Ext: nrFileExt);
+begin
+  NetIORecPic(nil, PicStream, Ext);
+end;
+
+procedure tNetwork.RecDiaTxt(Lit: tLiteral; const ScholaLine: string);
+begin
+  NetIORecTxt(nil, Lit, ScholaLine);
 end;
 
 end.
