@@ -84,7 +84,14 @@ uses
 
 procedure tZsolozsmaForm.FormCreate(Sender: TObject);
 begin
-  if not InitSSLInterface then ErrorBox('Internet kapcsolat sikertelen!');
+  if not InitSSLInterface then begin
+{$IFNDEF windows}
+    //on linux we can simply change to openssl.3
+    DLLVersions[1]:='.3';
+    if not InitSSLInterface then
+{$ENDIF}
+    ErrorBox('Internet kapcsolat sikertelen!');
+  end;
 
   fAllNames:=TStringList.Create;
   fImaNames:=TStringList.Create;

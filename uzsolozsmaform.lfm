@@ -11,7 +11,7 @@ object ZsolozsmaForm: TZsolozsmaForm
   OnDestroy = FormDestroy
   OnShow = FormShow
   Position = poOwnerFormCenter
-  LCLVersion = '3.2.0.0'
+  LCLVersion = '2.2.0.4'
   object Label1: TLabel
     Left = 35
     Height = 15
@@ -19,13 +19,12 @@ object ZsolozsmaForm: TZsolozsmaForm
     Width = 39
     Alignment = taRightJustify
     Caption = 'Dátum:'
-    ParentColor = False
   end
   object DateEd: TDateTimePicker
     Left = 83
     Height = 23
     Top = 8
-    Width = 79
+    Width = 83
     CenturyFrom = 1941
     MaxDate = 2958465
     MinDate = -53780
@@ -51,7 +50,6 @@ object ZsolozsmaForm: TZsolozsmaForm
     Width = 40
     Alignment = taRightJustify
     Caption = 'Imaóra:'
-    ParentColor = False
   end
   object ImaLst: TListBox
     Left = 84
@@ -59,9 +57,9 @@ object ZsolozsmaForm: TZsolozsmaForm
     Top = 48
     Width = 188
     ItemHeight = 0
-    TabOrder = 1
     OnClick = ImaLstClick
     OnDblClick = ImaLstDblClick
+    TabOrder = 1
   end
   object DownBtn: TBitBtn
     Left = 32
