@@ -91,6 +91,7 @@ begin
     if FileExistsUTF8('/etc/opt/diatar/diatar.ini') then fname:='/etc/opt/diatar/diatar.ini';
   end;
   fDiaDir:='';
+  fBreviarDir:=fDtxDir;
 {$else}
   fDtxDir:=fProgDir;
   fRegDir:='';
@@ -108,7 +109,7 @@ begin
         if copy(s,1,7)='DtxDir=' then fDtxDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,8,9999)));
         if copy(s,1,7)='RegDir=' then fRegDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,8,9999)));
         if copy(s,1,7)='DiaDir=' then fDiaDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,8,9999)));
-        if copy(s,1,11)='BreviarDir=' then fBreviarDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,8,9999)));
+        if copy(s,1,11)='BreviarDir=' then fBreviarDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,12,9999)));
       end;
       CloseFile(tf);
     finally
