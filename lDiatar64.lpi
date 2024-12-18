@@ -23,8 +23,9 @@
     </MacroValues>
     <BuildModes Count="1">
       <Item1 Name="default" Default="True"/>
-      <SharedMatrixOptions Count="1">
+      <SharedMatrixOptions Count="2">
         <Item1 ID="895246551760" Modes="default" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
+        <Item2 ID="670897005948" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt6"/>
       </SharedMatrixOptions>
     </BuildModes>
     <PublishOptions>
@@ -51,14 +52,14 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="194">
+    <Units Count="200">
       <Unit0>
         <Filename Value="lDiatar64.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="159"/>
+        <UsageCount Value="161"/>
       </Unit0>
       <Unit1>
         <Filename Value="umain.pas"/>
@@ -67,9 +68,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
-        <TopLine Value="675"/>
-        <CursorPos X="21" Y="704"/>
-        <UsageCount Value="159"/>
+        <TopLine Value="3257"/>
+        <CursorPos X="12" Y="3277"/>
+        <UsageCount Value="161"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -80,14 +81,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="779"/>
         <CursorPos X="20" Y="789"/>
-        <UsageCount Value="159"/>
+        <UsageCount Value="161"/>
       </Unit2>
       <Unit3>
         <Filename Value="ucommbtns.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uCommBtns"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="159"/>
+        <UsageCount Value="161"/>
       </Unit3>
       <Unit4>
         <Filename Value="uaddone.pas"/>
@@ -99,7 +100,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="16"/>
         <CursorPos X="38" Y="29"/>
-        <UsageCount Value="159"/>
+        <UsageCount Value="161"/>
       </Unit4>
       <Unit5>
         <Filename Value="uadd.pas"/>
@@ -111,7 +112,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="486"/>
         <CursorPos X="28" Y="489"/>
-        <UsageCount Value="159"/>
+        <UsageCount Value="161"/>
       </Unit5>
       <Unit6>
         <Filename Value="uglobals.pas"/>
@@ -120,7 +121,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="1993"/>
         <CursorPos X="6" Y="2008"/>
-        <UsageCount Value="159"/>
+        <UsageCount Value="161"/>
       </Unit6>
       <Unit7>
         <Filename Value="uprojektedform.pas"/>
@@ -132,7 +133,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="218"/>
         <CursorPos X="26" Y="242"/>
-        <UsageCount Value="159"/>
+        <UsageCount Value="161"/>
       </Unit7>
       <Unit8>
         <Filename Value="../Lib/uRoutines.pas"/>
@@ -147,7 +148,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="1454"/>
         <CursorPos X="39" Y="1465"/>
-        <UsageCount Value="159"/>
+        <UsageCount Value="161"/>
       </Unit9>
       <Unit10>
         <Filename Value="ugetpsw.pas"/>
@@ -156,7 +157,7 @@
         <HasResources Value="True"/>
         <UnitName Value="uGetPsw"/>
         <CursorPos X="48" Y="9"/>
-        <UsageCount Value="159"/>
+        <UsageCount Value="161"/>
       </Unit10>
       <Unit11>
         <Filename Value="../../../../usr/lib/lazarus/lcl/interfaces/gtk/gtkwinapi.inc"/>
@@ -240,7 +241,7 @@
         <UnitName Value="uPaintResizedText"/>
         <TopLine Value="220"/>
         <CursorPos X="34" Y="244"/>
-        <UsageCount Value="142"/>
+        <UsageCount Value="144"/>
       </Unit23>
       <Unit24>
         <Filename Value="usetupform.pas"/>
@@ -252,7 +253,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="685"/>
         <CursorPos Y="690"/>
-        <UsageCount Value="142"/>
+        <UsageCount Value="144"/>
       </Unit24>
       <Unit25>
         <Filename Value="../../../../usr/lib/lazarus/lcl/stdctrls.pp"/>
@@ -291,7 +292,7 @@
         <UnitName Value="uRotateBmp"/>
         <TopLine Value="23"/>
         <CursorPos X="30" Y="36"/>
-        <UsageCount Value="142"/>
+        <UsageCount Value="144"/>
       </Unit30>
       <Unit31>
         <Filename Value="../LazRGBGraphics/rgbgtkroutines.pas"/>
@@ -368,7 +369,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="78"/>
         <CursorPos X="15" Y="91"/>
-        <UsageCount Value="128"/>
+        <UsageCount Value="130"/>
       </Unit42>
       <Unit43>
         <Filename Value="ueditorform.pas"/>
@@ -379,7 +380,7 @@
         <UnitName Value="uEditorForm"/>
         <TopLine Value="19"/>
         <CursorPos X="36" Y="30"/>
-        <UsageCount Value="128"/>
+        <UsageCount Value="130"/>
       </Unit43>
       <Unit44>
         <Filename Value="../../../../usr/lib/lazarus/lcl/lclclasses.pp"/>
@@ -411,7 +412,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="172"/>
         <CursorPos X="9" Y="195"/>
-        <UsageCount Value="131"/>
+        <UsageCount Value="133"/>
       </Unit48>
       <Unit49>
         <Filename Value="../../../../usr/lib/lazarus/lcl/extctrls.pp"/>
@@ -449,7 +450,7 @@
         <Filename Value="todo.txt"/>
         <CursorPos X="45" Y="9"/>
         <UsageCount Value="37"/>
-        <DefaultSyntaxHighlighter Value="None"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
       </Unit54>
       <Unit55>
         <Filename Value="../../../../usr/share/fpcsrc/2.2.2/rtl/objpas/sysutils/sysstrh.inc"/>
@@ -475,7 +476,7 @@
         <UnitName Value="uNetwork"/>
         <TopLine Value="321"/>
         <CursorPos X="17" Y="330"/>
-        <UsageCount Value="120"/>
+        <UsageCount Value="122"/>
       </Unit58>
       <Unit59>
         <Filename Value="../lnet/lib/lcontainersh.inc"/>
@@ -672,7 +673,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="222"/>
         <CursorPos X="3" Y="232"/>
-        <UsageCount Value="102"/>
+        <UsageCount Value="104"/>
       </Unit91>
       <Unit92>
         <Filename Value="../../../../usr/lib/lazarus/lcl/interfaces/gtk/gtk1widgetset.inc"/>
@@ -746,7 +747,7 @@
         <UnitName Value="uKeys"/>
         <TopLine Value="37"/>
         <CursorPos X="39" Y="8"/>
-        <UsageCount Value="89"/>
+        <UsageCount Value="91"/>
       </Unit103>
       <Unit104>
         <Filename Value="../../../../usr/share/fpcsrc/2.2.2/packages/libc/src/kerneldefs.pp"/>
@@ -761,7 +762,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="320"/>
         <CursorPos X="31" Y="338"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="61"/>
       </Unit105>
       <Unit106>
         <Filename Value="../../../../usr/share/fpcsrc/3.0.0/packages/sndfile/src/sndfile.pp"/>
@@ -846,7 +847,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="37"/>
         <CursorPos Y="37"/>
-        <UsageCount Value="69"/>
+        <UsageCount Value="71"/>
       </Unit118>
       <Unit119>
         <Filename Value="unetbase.pas"/>
@@ -855,7 +856,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="14"/>
         <CursorPos X="65" Y="35"/>
-        <UsageCount Value="69"/>
+        <UsageCount Value="71"/>
       </Unit119>
       <Unit120>
         <Filename Value="../../../../usr/lib/lazarus/lcl/interfaces/gtk2/interfaces.pas"/>
@@ -871,7 +872,7 @@
         <UnitName Value="uSymbolForm"/>
         <TopLine Value="389"/>
         <CursorPos Y="133"/>
-        <UsageCount Value="69"/>
+        <UsageCount Value="71"/>
       </Unit121>
       <Unit122>
         <Filename Value="unetqueue.pas"/>
@@ -880,7 +881,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="15"/>
         <CursorPos X="35" Y="30"/>
-        <UsageCount Value="69"/>
+        <UsageCount Value="71"/>
       </Unit122>
       <Unit123>
         <Filename Value="../../../../usr/share/fpcsrc/2.2.4/rtl/objpas/sysutils/filutilh.inc"/>
@@ -892,8 +893,8 @@
         <Filename Value="../lnet/lazaruspackage/lclnet.pas"/>
         <UnitName Value="LCLNet"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="16"/>
-        <CursorPos X="27" Y="31"/>
+        <TopLine Value="33"/>
+        <CursorPos X="15" Y="45"/>
         <UsageCount Value="10"/>
       </Unit124>
       <Unit125>
@@ -1029,7 +1030,7 @@
         <UnitName Value="uSearchForm"/>
         <TopLine Value="307"/>
         <CursorPos Y="327"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="61"/>
       </Unit145>
       <Unit146>
         <Filename Value="../../../../usr/lib/lazarus/0.9.30/lcl/fileutil.pas"/>
@@ -1053,13 +1054,13 @@
         <UnitName Value="uHowToSaveForm"/>
         <TopLine Value="61"/>
         <CursorPos X="38" Y="70"/>
-        <UsageCount Value="57"/>
+        <UsageCount Value="59"/>
       </Unit148>
       <Unit149>
         <Filename Value="ukottaeditor.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UsageCount Value="57"/>
+        <UsageCount Value="59"/>
       </Unit149>
       <Unit150>
         <Filename Value="ukottakepek.pas"/>
@@ -1067,7 +1068,7 @@
         <UnitName Value="uKottaKepek"/>
         <TopLine Value="300"/>
         <CursorPos X="45" Y="315"/>
-        <UsageCount Value="57"/>
+        <UsageCount Value="59"/>
       </Unit150>
       <Unit151>
         <Filename Value="ukottazo.pas"/>
@@ -1075,7 +1076,7 @@
         <UnitName Value="uKottazo"/>
         <TopLine Value="500"/>
         <CursorPos X="23" Y="505"/>
-        <UsageCount Value="57"/>
+        <UsageCount Value="59"/>
       </Unit151>
       <Unit152>
         <Filename Value="userialioform.pas"/>
@@ -1086,7 +1087,7 @@
         <UnitName Value="uSerialIOForm"/>
         <TopLine Value="171"/>
         <CursorPos X="63" Y="181"/>
-        <UsageCount Value="57"/>
+        <UsageCount Value="59"/>
       </Unit152>
       <Unit153>
         <Filename Value="../../../../usr/lib/lazarus/0.9.30/lcl/interfaces/gtk2/gtk2themes.pas"/>
@@ -1102,10 +1103,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAppForm"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="153"/>
-        <CursorPos Y="164"/>
-        <UsageCount Value="52"/>
+        <TopLine Value="310"/>
+        <CursorPos X="13" Y="331"/>
+        <UsageCount Value="54"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit154>
@@ -1208,7 +1210,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="40"/>
         <CursorPos X="24" Y="40"/>
-        <UsageCount Value="39"/>
+        <UsageCount Value="41"/>
       </Unit167>
       <Unit168>
         <Filename Value="/usr/share/fpcsrc/3.0.0/rtl/objpas/classes/lists.inc"/>
@@ -1227,7 +1229,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="110"/>
         <CursorPos X="41" Y="122"/>
-        <UsageCount Value="36"/>
+        <UsageCount Value="38"/>
       </Unit169>
       <Unit170>
         <Filename Value="/usr/share/fpcsrc/3.0.0/packages/fcl-registry/src/registry.pp"/>
@@ -1248,7 +1250,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="491"/>
         <CursorPos X="3" Y="497"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="36"/>
       </Unit172>
       <Unit173>
         <Filename Value="/usr/share/fpcsrc/3.0.0/packages/fcl-registry/src/regdef.inc"/>
@@ -1271,7 +1273,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="100"/>
         <CursorPos X="101" Y="112"/>
-        <UsageCount Value="32"/>
+        <UsageCount Value="34"/>
       </Unit175>
       <Unit176>
         <Filename Value="/usr/share/lazarus/1.6.4/components/lazutils/lazfileutils.pas"/>
@@ -1331,7 +1333,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="722"/>
         <CursorPos X="11" Y="736"/>
-        <UsageCount Value="28"/>
+        <UsageCount Value="30"/>
       </Unit183>
       <Unit184>
         <Filename Value="../lnet/lib/openssl.pas"/>
@@ -1365,7 +1367,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="758"/>
         <CursorPos X="26" Y="782"/>
-        <UsageCount Value="26"/>
+        <UsageCount Value="28"/>
       </Unit187>
       <Unit188>
         <Filename Value="uoslib/uos_portaudio.pas"/>
@@ -1393,10 +1395,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uZsolozsmaForm"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="76"/>
-        <CursorPos X="20" Y="88"/>
+        <TopLine Value="27"/>
+        <CursorPos X="26" Y="39"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -1410,86 +1411,179 @@
       </Unit192>
       <Unit193>
         <Filename Value="/usr/share/fpcsrc/3.2.2/packages/openssl/src/openssl.pas"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="104"/>
-        <CursorPos X="36" Y="114"/>
+        <CursorPos X="24" Y="109"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit193>
+      <Unit194>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <UnitName Value="DateTimePicker"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="782"/>
+        <CursorPos X="23" Y="782"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit194>
+      <Unit195>
+        <Filename Value="/usr/share/lazarus/3.4.0/lcl/include/customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1739"/>
+        <CursorPos X="47" Y="1742"/>
+        <UsageCount Value="10"/>
+      </Unit195>
+      <Unit196>
+        <Filename Value="/usr/share/lazarus/3.4.0/lcl/forms.pp"/>
+        <UnitName Value="Forms"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="585"/>
+        <CursorPos X="15" Y="595"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit196>
+      <Unit197>
+        <Filename Value="/usr/share/lazarus/3.4.0/lcl/widgetset/wsforms.pp"/>
+        <UnitName Value="WSForms"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="214"/>
+        <CursorPos Y="221"/>
+        <UsageCount Value="10"/>
+      </Unit197>
+      <Unit198>
+        <Filename Value="uappform.lrs"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit198>
+      <Unit199>
+        <Filename Value="umain.lrs"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="68"/>
+        <CursorPos Y="68"/>
+        <UsageCount Value="10"/>
+      </Unit199>
     </Units>
-    <JumpHistory Count="18" HistoryIndex="17">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2919" Column="33" TopLine="2906"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="29" Column="32" TopLine="17"/>
       </Position1>
       <Position2>
-        <Filename Value="umain.pas"/>
-        <Caret Line="513" Column="22" TopLine="507"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="24" Column="57" TopLine="17"/>
       </Position2>
       <Position3>
-        <Filename Value="umain.pas"/>
-        <Caret Line="291" Column="15" TopLine="278"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="87" Column="18" TopLine="78"/>
       </Position3>
       <Position4>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1431" Column="3" TopLine="1427"/>
+        <Filename Value="/usr/share/fpcsrc/3.2.2/packages/openssl/src/openssl.pas"/>
+        <Caret Line="1460" Column="10" TopLine="1448"/>
       </Position4>
       <Position5>
-        <Filename Value="umain.pas"/>
-        <Caret Line="527" Column="44" TopLine="507"/>
+        <Filename Value="/usr/share/fpcsrc/3.2.2/packages/openssl/src/openssl.pas"/>
+        <Caret Line="5653" Column="16" TopLine="5644"/>
       </Position5>
       <Position6>
-        <Filename Value="umain.pas"/>
-        <Caret Line="269" Column="26" TopLine="243"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="88" Column="20" TopLine="76"/>
       </Position6>
       <Position7>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="92" TopLine="80"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="89" Column="20" TopLine="77"/>
       </Position7>
       <Position8>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="164" TopLine="153"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="88" Column="20" TopLine="76"/>
       </Position8>
       <Position9>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="29" Column="22" TopLine="17"/>
+        <Caret Line="93" Column="49" TopLine="76"/>
       </Position9>
       <Position10>
         <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="39" Column="13" TopLine="27"/>
+        <Caret Line="39" Column="26" TopLine="27"/>
       </Position10>
       <Position11>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="40" Column="13" TopLine="27"/>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <Caret Line="300" Column="17" TopLine="295"/>
       </Position11>
       <Position12>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="39" Column="23" TopLine="19"/>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <Caret Line="3315" Column="6" TopLine="3306"/>
       </Position12>
       <Position13>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="29" Column="32" TopLine="17"/>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <Caret Line="298" Column="15" TopLine="289"/>
       </Position13>
       <Position14>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="24" Column="57" TopLine="17"/>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <Caret Line="3315" Column="6" TopLine="3307"/>
       </Position14>
       <Position15>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="87" Column="18" TopLine="78"/>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <Caret Line="316" Column="15" TopLine="305"/>
       </Position15>
       <Position16>
-        <Filename Value="/usr/share/fpcsrc/3.2.2/packages/openssl/src/openssl.pas"/>
-        <Caret Line="1460" Column="10" TopLine="1448"/>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <Caret Line="3762" Column="30" TopLine="3754"/>
       </Position16>
       <Position17>
         <Filename Value="/usr/share/fpcsrc/3.2.2/packages/openssl/src/openssl.pas"/>
-        <Caret Line="5653" Column="16" TopLine="5644"/>
+        <Caret Line="109" Column="24" TopLine="104"/>
       </Position17>
       <Position18>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="88" Column="18" TopLine="76"/>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <Caret Line="3761" Column="33" TopLine="3754"/>
       </Position18>
+      <Position19>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <Caret Line="662" Column="18" TopLine="651"/>
+      </Position19>
+      <Position20>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <Caret Line="903" Column="7" TopLine="899"/>
+      </Position20>
+      <Position21>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <Caret Line="3762" TopLine="3750"/>
+      </Position21>
+      <Position22>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <Caret Line="3761" Column="44" TopLine="3750"/>
+      </Position22>
+      <Position23>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <Caret Line="680" Column="17" TopLine="669"/>
+      </Position23>
+      <Position24>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <Caret Line="890" Column="4" TopLine="873"/>
+      </Position24>
+      <Position25>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <Caret Line="665" Column="15" TopLine="653"/>
+      </Position25>
+      <Position26>
+        <Filename Value="/usr/share/lazarus/3.4.0/components/datetimectrls/datetimepicker.pas"/>
+        <Caret Line="785" Column="10" TopLine="780"/>
+      </Position26>
+      <Position27>
+        <Filename Value="/usr/share/lazarus/3.4.0/lcl/forms.pp"/>
+        <Caret Line="595" Column="15" TopLine="585"/>
+      </Position27>
+      <Position28>
+        <Filename Value="uappform.pas"/>
+        <Caret Line="331" Column="13" TopLine="310"/>
+      </Position28>
+      <Position29>
+        <Filename Value="umain.pas"/>
+        <Caret Line="691" Column="19" TopLine="681"/>
+      </Position29>
+      <Position30>
+        <Filename Value="umain.pas"/>
+        <Caret Line="3277" Column="12" TopLine="3257"/>
+      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

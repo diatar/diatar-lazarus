@@ -63,7 +63,7 @@
         <UnitName Value="uEdMain"/>
         <IsVisibleTab Value="True"/>
         <TopLine Value="54"/>
-        <CursorPos X="20" Y="68"/>
+        <CursorPos Y="68"/>
         <UsageCount Value="53"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -172,7 +172,7 @@
         <UnitName Value="uSound"/>
         <EditorIndex Value="2"/>
         <TopLine Value="334"/>
-        <CursorPos X="23" Y="356"/>
+        <CursorPos X="15" Y="356"/>
         <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit14>
@@ -586,8 +586,8 @@
     <Parsing>
       <SyntaxOptions>
         <CStyleOperator Value="False"/>
-        <CStyleMacros Value="True"/>
         <UseAnsiStrings Value="False"/>
+        <CStyleMacros Value="True"/>
       </SyntaxOptions>
     </Parsing>
     <CodeGeneration>

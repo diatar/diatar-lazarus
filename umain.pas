@@ -3263,7 +3263,7 @@ begin
       ZsolozsmaForm.Literals[i]:=nil;
     end;
     R^.Filename:='';
-    R^.Modified:=true;
+    R^.Modified:=false; //true;
     R^.TopIndex:=0;
     R^.ItemIndex:=0;
     ActDLGet;

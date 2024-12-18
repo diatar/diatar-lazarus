@@ -3,29 +3,29 @@
 LazarusResources.Add('TZsolozsmaForm','FORMDATA',[
   'TPF0'#14'TZsolozsmaForm'#13'ZsolozsmaForm'#4'Left'#3'b'#2#6'Height'#3#24#1#3
   +'Top'#3#247#0#5'Width'#3#26#1#11'BorderStyle'#7#8'bsDialog'#7'Caption'#6#20
-  +'Zsolozsma let'#195#182'lt'#195#169's'#12'ClientHeight'#3#24#1#11'ClientWidt'
+  +'Zsolozsma bet'#195#182'lt'#195#169's'#12'ClientHeight'#3#24#1#11'ClientWidt'
   +'h'#3#26#1#8'OnCreate'#7#10'FormCreate'#9'OnDestroy'#7#11'FormDestroy'#6'OnS'
-  +'how'#7#8'FormShow'#8'Position'#7#17'poOwnerFormCenter'#10'LCLVersion'#6#7'2'
-  +'.2.0.4'#0#6'TLabel'#6'Label1'#4'Left'#2'#'#6'Height'#2#15#3'Top'#2#10#5'Wid'
-  +'th'#2''''#9'Alignment'#7#14'taRightJustify'#7'Caption'#6#7'D'#195#161'tum:'
-  +#0#0#15'TDateTimePicker'#6'DateEd'#4'Left'#2'S'#6'Height'#2#23#3'Top'#2#8#5
-  +'Width'#2'S'#11'CenturyFrom'#3#149#7#7'MaxDate'#5#0#0#0#0#0#4#146#180#20'@'#7
+  +'how'#7#8'FormShow'#8'Position'#7#17'poOwnerFormCenter'#10'LCLVersion'#6#7'3'
+  +'.4.0.0'#0#6'TLabel'#6'Label1'#4'Left'#2'#'#6'Height'#2#17#3'Top'#2#10#5'Wid'
+  +'th'#2'1'#9'Alignment'#7#14'taRightJustify'#7'Caption'#6#7'D'#195#161'tum:'#0
+  +#0#15'TDateTimePicker'#6'DateEd'#4'Left'#2'S'#6'Height'#2#23#3'Top'#2#8#5'Wi'
+  +'dth'#2'_'#11'CenturyFrom'#3#149#7#7'MaxDate'#5#0#0#0#0#0#4#146#180#20'@'#7
   +'MinDate'#5#0#0#0#0#0#0#20#210#14#192#8'TabOrder'#2#0#17'TrailingSeparator'#8
   +#15'TextForNullDate'#6#4'NULL'#12'LeadingZeros'#9#4'Kind'#7#7'dtkDate'#10'Ti'
   +'meFormat'#7#4'tf24'#11'TimeDisplay'#7#5'tdHMS'#8'DateMode'#7#10'dmComboBox'
   +#4'Date'#5#0#0#0#0#0#0'J'#177#14'@'#4'Time'#5#0#0#0'8-'#237'c'#197#254'?'#20
   +'UseDefaultSeparators'#9#17'HideDateTimeParts'#11#0#10'MonthNames'#6#4'Long'
   +#8'OnChange'#7#12'DateEdChange'#0#0#6'TLabel'#6'Label2'#4'Left'#2'"'#6'Heigh'
-  +'t'#2#15#3'Top'#2'0'#5'Width'#2'('#9'Alignment'#7#14'taRightJustify'#7'Capti'
+  +'t'#2#17#3'Top'#2'0'#5'Width'#2'4'#9'Alignment'#7#14'taRightJustify'#7'Capti'
   +'on'#6#8'Ima'#195#179'ra:'#0#0#8'TListBox'#6'ImaLst'#4'Left'#2'T'#6'Height'#3
-  +#184#0#3'Top'#2'0'#5'Width'#3#188#0#10'ItemHeight'#2#0#7'OnClick'#7#11'ImaLs'
-  +'tClick'#10'OnDblClick'#7#14'ImaLstDblClick'#8'TabOrder'#2#1#0#0#7'TBitBtn'#7
-  +'DownBtn'#4'Left'#2' '#6'Height'#2#30#3'Top'#3#241#0#5'Width'#2'c'#7'Caption'
-  +#6#11'&Let'#195#182'lt'#195#169's'#7'Default'#9#7'Enabled'#8#4'Kind'#7#4'bkO'
-  +'K'#7'OnClick'#7#12'DownBtnClick'#8'TabOrder'#2#2#0#0#7'TBitBtn'#9'CancelBtn'
-  +#4'Left'#3#154#0#6'Height'#2#30#3'Top'#3#241#0#5'Width'#2'c'#6'Cancel'#9#14
-  +'DefaultCaption'#9#4'Kind'#7#8'bkCancel'#11'ModalResult'#2#2#8'TabOrder'#2#3
-  +#0#0#6'TPanel'#9'WaitPanel'#4'Left'#2#8#6'Height'#2'2'#3'Top'#2'`'#5'Width'#2
-  +'C'#7'Caption'#6'&Pillanat... Let'#195#182'lt'#195#169's az internetr'#197
-  +#145'l'#8'TabOrder'#2#4#7'Visible'#8#0#0#0
+  +#184#0#3'Top'#2'0'#5'Width'#3#188#0#10'ItemHeight'#2#0#8'TabOrder'#2#1#8'Top'
+  +'Index'#2#255#7'OnClick'#7#11'ImaLstClick'#10'OnDblClick'#7#14'ImaLstDblClic'
+  +'k'#0#0#7'TBitBtn'#7'DownBtn'#4'Left'#2' '#6'Height'#2#30#3'Top'#3#241#0#5'W'
+  +'idth'#2'c'#7'Caption'#6#3'&Ok'#7'Default'#9#7'Enabled'#8#4'Kind'#7#4'bkOK'#7
+  +'OnClick'#7#12'DownBtnClick'#8'TabOrder'#2#2#0#0#7'TBitBtn'#9'CancelBtn'#4'L'
+  +'eft'#3#154#0#6'Height'#2#30#3'Top'#3#241#0#5'Width'#2'c'#6'Cancel'#9#14'Def'
+  +'aultCaption'#9#4'Kind'#7#8'bkCancel'#11'ModalResult'#2#2#8'TabOrder'#2#3#0#0
+  +#6'TPanel'#9'WaitPanel'#4'Left'#2#8#6'Height'#2'2'#3'Top'#2'`'#5'Width'#2'C'
+  +#7'Caption'#6'&Pillanat... Let'#195#182'lt'#195#169's az internetr'#197#145
+  +'l'#8'TabOrder'#2#4#7'Visible'#8#0#0#0
 ]);

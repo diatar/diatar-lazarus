@@ -16,7 +16,7 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
-      <BuildNr Value="102"/>
+      <BuildNr Value="103"/>
       <Language Value="040E"/>
       <CharSet Value="04B0"/>
       <StringTable ProductVersion="0.0.0.2"/>
@@ -48,7 +48,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="171">
+    <Units Count="173">
       <Unit0>
         <Filename Value="Diatar64.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -63,12 +63,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAppForm"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="89"/>
-        <CursorPos X="34" Y="333"/>
+        <CursorPos X="14" Y="93"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="utextbox.pas"/>
@@ -86,9 +84,9 @@
         <Filename Value="C:\lazarus\lcl\forms.pp"/>
         <UnitName Value="Forms"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="146"/>
-        <CursorPos X="57" Y="174"/>
-        <UsageCount Value="3"/>
+        <TopLine Value="754"/>
+        <CursorPos X="44" Y="771"/>
+        <UsageCount Value="11"/>
       </Unit4>
       <Unit5>
         <Filename Value="uprojektedform.pas"/>
@@ -97,30 +95,26 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uProjektedForm"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="223"/>
         <CursorPos X="59" Y="236"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="utxtar.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTxTar"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="-1"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="uglobals.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uGlobals"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="741"/>
         <CursorPos X="14" Y="763"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit7>
       <Unit8>
         <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\objpas\classes\stringl.inc"/>
@@ -155,11 +149,10 @@
         <Filename Value="utxlist.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTxList"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="660"/>
         <CursorPos X="33" Y="676"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit12>
       <Unit13>
         <Filename Value="udialst.pas"/>
@@ -246,14 +239,15 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uCommBtns"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="978"/>
-        <CursorPos Y="1009"/>
+        <TopLine Value="973"/>
+        <CursorPos Y="1007"/>
         <UsageCount Value="200"/>
       </Unit21>
       <Unit22>
         <Filename Value="usetupprofil.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="SetupProfilForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uSetupProfil"/>
         <EditorIndex Value="-1"/>
@@ -264,6 +258,7 @@
         <Filename Value="uselectprofil.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="SelectProfilForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uSelectProfil"/>
         <EditorIndex Value="-1"/>
@@ -299,7 +294,7 @@
       <Unit27>
         <Filename Value="todo.txt"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="20" Y="9"/>
+        <CursorPos X="44" Y="13"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="None"/>
@@ -325,6 +320,7 @@
         <Filename Value="uhintform.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="HintForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uHintForm"/>
         <EditorIndex Value="-1"/>
@@ -425,6 +421,7 @@
         <Filename Value="ukeyinputform.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="KeyInputForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uKeyInputForm"/>
         <EditorIndex Value="-1"/>
@@ -466,6 +463,7 @@
         <Filename Value="usetupdtx.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="SetupDtxForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uSetupDtx"/>
         <EditorIndex Value="-1"/>
@@ -477,7 +475,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uDtxFlagsList"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="166"/>
+        <TopLine Value="165"/>
         <CursorPos X="14" Y="58"/>
         <UsageCount Value="200"/>
       </Unit49>
@@ -528,6 +526,7 @@
         <Filename Value="unetoffdlg.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="NetOffDlg"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uNetOffDlg"/>
         <EditorIndex Value="-1"/>
@@ -538,10 +537,11 @@
         <Filename Value="uakkordform.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="AkkordForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAkkordForm"/>
         <EditorIndex Value="-1"/>
-        <CursorPos Y="5"/>
+        <CursorPos X="91" Y="10"/>
         <UsageCount Value="201"/>
       </Unit56>
       <Unit57>
@@ -587,8 +587,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uSearchForm"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="245"/>
-        <CursorPos Y="279"/>
+        <TopLine Value="246"/>
+        <CursorPos X="76" Y="251"/>
         <UsageCount Value="200"/>
       </Unit63>
       <Unit64>
@@ -607,6 +607,7 @@
         <Filename Value="userialioform.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="SerialIOForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uSerialIOForm"/>
         <EditorIndex Value="-1"/>
@@ -709,7 +710,7 @@
         <UnitName Value="uKottaEditor"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="438"/>
-        <CursorPos X="39" Y="448"/>
+        <CursorPos X="67" Y="443"/>
         <UsageCount Value="200"/>
       </Unit80>
       <Unit81>
@@ -767,6 +768,7 @@
         <Filename Value="uhowtosaveform.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="HowToSaveForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uHowToSaveForm"/>
         <EditorIndex Value="-1"/>
@@ -818,7 +820,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uMyFileDlgs"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="222"/>
+        <TopLine Value="214"/>
         <CursorPos X="19" Y="225"/>
         <UsageCount Value="207"/>
       </Unit96>
@@ -844,12 +846,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="301"/>
-        <CursorPos Y="301"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="3245"/>
+        <CursorPos X="27" Y="3266"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit99>
       <Unit100>
         <Filename Value="udialoadsave.pas"/>
@@ -870,7 +872,9 @@
       <Unit102>
         <Filename Value="uselgototarget.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="SelGotoTargetFrm"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
         <UnitName Value="uSelGotoTarget"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="5"/>
@@ -993,8 +997,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uDiatarIniLoader"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="86"/>
-        <CursorPos Y="91"/>
+        <TopLine Value="68"/>
+        <CursorPos X="86" Y="80"/>
         <UsageCount Value="202"/>
         <Loaded Value="True"/>
       </Unit119>
@@ -1003,7 +1007,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="WinUser"/>
         <EditorIndex Value="-1"/>
-        <CursorPos Y="22"/>
+        <CursorPos X="56" Y="12"/>
         <UsageCount Value="200"/>
       </Unit120>
       <Unit121>
@@ -1321,11 +1325,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uZsolozsmaForm"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="6"/>
-        <TopLine Value="73"/>
-        <CursorPos X="50" Y="93"/>
-        <UsageCount Value="85"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="169"/>
+        <CursorPos X="19" Y="194"/>
+        <UsageCount Value="92"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit163>
@@ -1346,32 +1349,28 @@
       <Unit166>
         <Filename Value="uDecodeBreviar.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="331"/>
         <CursorPos X="21" Y="354"/>
-        <UsageCount Value="85"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="92"/>
       </Unit166>
       <Unit167>
         <Filename Value="uHtml.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="85"/>
+        <UsageCount Value="92"/>
       </Unit167>
       <Unit168>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="65"/>
-        <CursorPos Y="89"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="11"/>
       </Unit168>
       <Unit169>
         <Filename Value="HwIO.pas"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="14"/>
         <CursorPos X="18" Y="36"/>
         <UsageCount Value="33"/>
-        <Loaded Value="True"/>
       </Unit169>
       <Unit170>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
@@ -1380,108 +1379,72 @@
         <CursorPos X="8" Y="95"/>
         <UsageCount Value="5"/>
       </Unit170>
+      <Unit171>
+        <Filename Value="ubaseform.pas"/>
+        <ComponentName Value="Form1"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uBaseForm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="15"/>
+        <CursorPos Y="43"/>
+        <UsageCount Value="23"/>
+      </Unit171>
+      <Unit172>
+        <Filename Value="C:\lazarus\lcl\include\customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="268"/>
+        <CursorPos Y="285"/>
+        <UsageCount Value="11"/>
+      </Unit172>
     </Units>
-    <JumpHistory Count="25" HistoryIndex="24">
+    <JumpHistory Count="12" HistoryIndex="11">
       <Position1>
-        <Filename Value="uDecodeBreviar.pas"/>
-        <Caret Line="340" TopLine="324"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="89" Column="5" TopLine="82"/>
       </Position1>
       <Position2>
-        <Filename Value="uDecodeBreviar.pas"/>
-        <Caret Line="341" TopLine="324"/>
+        <Filename Value="uzsolozsmaform.pas"/>
       </Position2>
       <Position3>
-        <Filename Value="uDecodeBreviar.pas"/>
-        <Caret Line="347" TopLine="327"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="239" Column="47" TopLine="213"/>
       </Position3>
       <Position4>
-        <Filename Value="uDecodeBreviar.pas"/>
-        <Caret Line="352" TopLine="340"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="258" Column="38" TopLine="233"/>
       </Position4>
       <Position5>
-        <Filename Value="uDecodeBreviar.pas"/>
-        <Caret Line="355" TopLine="340"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="261" Column="70" TopLine="239"/>
       </Position5>
       <Position6>
-        <Filename Value="uDecodeBreviar.pas"/>
-        <Caret Line="356" TopLine="340"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="265" TopLine="248"/>
       </Position6>
       <Position7>
-        <Filename Value="uDecodeBreviar.pas"/>
-        <Caret Line="357" TopLine="340"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="90" Column="21" TopLine="75"/>
       </Position7>
       <Position8>
-        <Filename Value="uDecodeBreviar.pas"/>
-        <Caret Line="359" TopLine="340"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="86" Column="50" TopLine="77"/>
       </Position8>
       <Position9>
-        <Filename Value="uDecodeBreviar.pas"/>
-        <Caret Line="360" TopLine="340"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="258" Column="29" TopLine="231"/>
       </Position9>
       <Position10>
-        <Filename Value="uDecodeBreviar.pas"/>
-        <Caret Line="361" TopLine="341"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2859" Column="33" TopLine="2831"/>
       </Position10>
       <Position11>
-        <Filename Value="uDecodeBreviar.pas"/>
-        <Caret Line="362" TopLine="342"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2951" Column="31" TopLine="2923"/>
       </Position11>
       <Position12>
-        <Filename Value="uDecodeBreviar.pas"/>
-        <Caret Line="354" Column="21" TopLine="331"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="258" Column="15" TopLine="243"/>
       </Position12>
-      <Position13>
-        <Filename Value="HwIO.pas"/>
-        <Caret Line="96" TopLine="85"/>
-      </Position13>
-      <Position14>
-        <Filename Value="umain.pas"/>
-        <Caret Line="23" Column="67"/>
-      </Position14>
-      <Position15>
-        <Filename Value="umain.pas"/>
-        <Caret Line="359" Column="10" TopLine="331"/>
-      </Position15>
-      <Position16>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2859" Column="12" TopLine="2831"/>
-      </Position16>
-      <Position17>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2887" Column="23" TopLine="2859"/>
-      </Position17>
-      <Position18>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2951" Column="12" TopLine="2923"/>
-      </Position18>
-      <Position19>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="68" Column="55" TopLine="58"/>
-      </Position19>
-      <Position20>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="302" Column="10" TopLine="274"/>
-      </Position20>
-      <Position21>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="454" Column="44" TopLine="426"/>
-      </Position21>
-      <Position22>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="87" Column="17" TopLine="70"/>
-      </Position22>
-      <Position23>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="87" Column="17" TopLine="70"/>
-      </Position23>
-      <Position24>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="87" Column="17" TopLine="70"/>
-      </Position24>
-      <Position25>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="236" Column="59" TopLine="223"/>
-      </Position25>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
