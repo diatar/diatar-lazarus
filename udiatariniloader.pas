@@ -76,6 +76,11 @@ var
 begin
   fProgDir:=AppendPathDelim(ExtractFilePath(ParamStrUTF8(0)));
   fname:=fProgDir+'diatar.ini';
+{$ifdef WINDOWS}
+  //az OpenSSL azonos nevu DLLeket hasznal 32/64 bitre, ezert telepiteskor alkonyvtarba kerul a program
+  if not FileExistsUTF8(fname) and FileExistsUTF8(fProgDir+'..\diatar.ini') then
+    fname:=fProgDir+'..\diatar.ini';
+{$endif}
 
 {$ifdef UNIX}
   if XmlOk('/usr/local/etc/','reg.xml') or XmlOk('/usr/local/etc/','diatar.xml')

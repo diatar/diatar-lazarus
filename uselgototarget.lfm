@@ -9,47 +9,44 @@ object SelGotoTargetFrm: TSelGotoTargetFrm
   ClientWidth = 304
   ParentFont = True
   Position = poOwnerFormCenter
-  LCLVersion = '1.6.2.0'
+  LCLVersion = '2.2.0.4'
   object Label1: TLabel
     Left = 8
-    Height = 13
+    Height = 15
     Top = 8
-    Width = 207
+    Width = 202
     Caption = 'Ugrani egy létező elválasztóra lehet.'
     Font.Style = [fsBold]
-    ParentColor = False
     ParentFont = False
   end
   object Label2: TLabel
     Left = 8
-    Height = 13
+    Height = 15
     Top = 40
-    Width = 52
+    Width = 54
     Caption = '&Elválasztó:'
-    ParentColor = False
     ParentFont = False
   end
   object SeparLst: TComboBox
     Left = 64
-    Height = 26
+    Height = 23
     Top = 34
     Width = 224
-    ItemHeight = 18
+    ItemHeight = 15
     Style = csDropDownList
     TabOrder = 0
   end
   object Label3: TLabel
     Left = 8
-    Height = 13
+    Height = 15
     Top = 80
-    Width = 76
+    Width = 82
     Caption = '&Ugrások száma:'
-    ParentColor = False
     ParentFont = False
   end
   object CntEd: TSpinEdit
     Left = 88
-    Height = 26
+    Height = 23
     Top = 74
     Width = 64
     MaxValue = 99
@@ -57,11 +54,10 @@ object SelGotoTargetFrm: TSelGotoTargetFrm
   end
   object Label4: TLabel
     Left = 160
-    Height = 13
+    Height = 15
     Top = 80
-    Width = 78
+    Width = 90
     Caption = '(0=mindig ugrik)'
-    ParentColor = False
     ParentFont = False
   end
   object OkBtn: TBitBtn
