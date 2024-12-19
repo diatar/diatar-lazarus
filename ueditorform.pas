@@ -1025,7 +1025,7 @@ begin
   txt:=LineAtY(Y);
   len:=Length(txt);
   if X<0 then X:=0;                        //karakterpoz. behatarolasa
-  if X>len then
+  if X>=len then
     X:=len
   else                                     //utf8 karakter elejere
     while (X>0) and ((byte(txt[X+1]) and $C0)=$80) do dec(X);
