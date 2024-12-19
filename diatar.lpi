@@ -339,7 +339,7 @@
         <EditorIndex Value="-1"/>
         <CursorPos X="2" Y="24"/>
         <UsageCount Value="200"/>
-        <DefaultSyntaxHighlighter Value="Text"/>
+        <DefaultSyntaxHighlighter Value="None"/>
       </Unit33>
       <Unit34>
         <Filename Value="unetwork.pas"/>
@@ -739,7 +739,7 @@
         <TopLine Value="58"/>
         <CursorPos Y="92"/>
         <UsageCount Value="8"/>
-        <DefaultSyntaxHighlighter Value="Text"/>
+        <DefaultSyntaxHighlighter Value="None"/>
       </Unit92>
       <Unit93>
         <Filename Value="unetbase.pas"/>
@@ -1314,7 +1314,7 @@
         <EditorIndex Value="-1"/>
         <CursorPos Y="7"/>
         <UsageCount Value="7"/>
-        <DefaultSyntaxHighlighter Value="Text"/>
+        <DefaultSyntaxHighlighter Value="None"/>
       </Unit174>
       <Unit175>
         <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\objpas\sysutils\sysstrh.inc"/>
@@ -1650,7 +1650,7 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <TopLine Value="75"/>
-        <CursorPos X="31" Y="91"/>
+        <CursorPos X="64" Y="86"/>
         <UsageCount Value="45"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -1777,6 +1777,9 @@
       <TargetOS Value="win32"/>
     </CodeGeneration>
     <Linking>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf2Set"/>
+      </Debugging>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>
