@@ -21,8 +21,101 @@
     <MacroValues Count="1">
       <Macro1 Name="LCLWidgetType" Value="gtk2"/>
     </MacroValues>
-    <BuildModes Count="1">
+    <BuildModes Count="3" Active="Release">
       <Item1 Name="default" Default="True"/>
+      <Item2 Name="Debug">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="./diatar64"/>
+          </Target>
+          <SearchPaths>
+            <Libraries Value="../Lib;/usr/lib/x86_64-linux-gnu/"/>
+            <OtherUnitFiles Value="../lnet/lib;../lnet/lazaruspackage/lib/i386-linux;../Lib;/usr/share/fpcsrc/$(FPCVER)/packages/libc/src/;../lnet/lazaruspackage;/usr/share/fpcsrc/$(FPCVER)/packages/fcl-net/src/;uoslib"/>
+            <UnitOutputDirectory Value="objLinux64"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+              <IncludeAssertionCode Value="True"/>
+              <UseAnsiStrings Value="False"/>
+              <CStyleMacros Value="True"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+            <VerifyObjMethodCallValidity Value="True"/>
+            <TargetCPU Value="x86_64"/>
+            <TargetOS Value="linux"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf3"/>
+              <UseHeaptrc Value="True"/>
+              <TrashVariables Value="True"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dUseCThreads
+-dlinux"/>
+          </Other>
+        </CompilerOptions>
+      </Item2>
+      <Item3 Name="Release">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="./diatar64"/>
+          </Target>
+          <SearchPaths>
+            <Libraries Value="../Lib;/usr/lib/x86_64-linux-gnu/"/>
+            <OtherUnitFiles Value="../lnet/lib;../lnet/lazaruspackage/lib/i386-linux;../Lib;/usr/share/fpcsrc/$(FPCVER)/packages/libc/src/;../lnet/lazaruspackage;/usr/share/fpcsrc/$(FPCVER)/packages/fcl-net/src/;uoslib"/>
+            <UnitOutputDirectory Value="objLinux64"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+              <UseAnsiStrings Value="False"/>
+              <CStyleMacros Value="True"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <TargetCPU Value="x86_64"/>
+            <TargetOS Value="linux"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <RunWithoutDebug Value="True"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dUseCThreads
+-dlinux"/>
+          </Other>
+        </CompilerOptions>
+      </Item3>
       <SharedMatrixOptions Count="2">
         <Item1 ID="895246551760" Modes="default" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
         <Item2 ID="670897005948" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt6"/>
@@ -1105,8 +1198,8 @@
         <UnitName Value="uAppForm"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="310"/>
-        <CursorPos X="13" Y="331"/>
+        <TopLine Value="309"/>
+        <CursorPos X="49" Y="320"/>
         <UsageCount Value="54"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
