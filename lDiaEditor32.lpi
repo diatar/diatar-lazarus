@@ -7,6 +7,7 @@
         <LRSInOutputDirectory Value="False"/>
       </Flags>
       <MainUnit Value="0"/>
+      <Title Value="lDiaEditor32"/>
       <UseXPManifest Value="True"/>
       <Icon Value="0"/>
     </General>
@@ -135,9 +136,9 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="54">
+    <Units Count="55">
       <Unit0>
-        <Filename Value="lDiaEditor.lpr"/>
+        <Filename Value="lDiaEditor32.lpr"/>
         <IsPartOfProject Value="True"/>
         <CursorPos X="8" Y="9"/>
         <UsageCount Value="34"/>
@@ -510,6 +511,16 @@
         <CursorPos X="10" Y="449"/>
         <UsageCount Value="10"/>
       </Unit53>
+      <Unit54>
+        <Filename Value="usplash.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit54>
     </Units>
     <JumpHistory Count="26" HistoryIndex="25">
       <Position1>

@@ -207,7 +207,7 @@ var
 implementation
 
 uses
-  uDiatarIniLoader, uRTF, uDtxIds,
+  uDiatarIniLoader, uRTF, uDtxIds, uSplash,
   {$ifdef UNIX} uLinuxRegistry {$else} Registry {$endif} ;
 
 const
@@ -234,32 +234,43 @@ var
   dil : tDiatarIniLoader;
 
 begin
-  Caption:='Diatár szerkesztő – '+VERSION+' by Rieth © polyJoe software '+VERSIONDATE;
-  DoubleBuffered:=true;
-  KLst.DoubleBuffered:=true;
-  VLst.DoubleBuffered:=true;
-  VSLst.DoubleBuffered:=true;
-
-  FillKottaBmps;
-
-  DiaSound:=tDiaSound.Create;
-
-  dil:=tDiatarIniLoader.Create;
+  SplashForm:=tSplashForm.Create(nil);
   try
-    ProgDir:=dil.ProgDir;
-    DtxDir:=dil.DtxDir;
-    RegDir:=dil.RegDir;
+    SplashForm.Show;
+    SplashForm.SetProgress(0,'Betöltés...');
+
+    Caption:='Diatár szerkesztő – '+VERSION+' by Rieth © polyJoe software '+VERSIONDATE;
+    DoubleBuffered:=true;
+    KLst.DoubleBuffered:=true;
+    VLst.DoubleBuffered:=true;
+    VSLst.DoubleBuffered:=true;
+
+    FillKottaBmps;
+
+    DiaSound:=tDiaSound.Create;
+
+    dil:=tDiatarIniLoader.Create;
+    try
+      ProgDir:=dil.ProgDir;
+      DtxDir:=dil.DtxDir;
+      RegDir:=dil.RegDir;
+    finally
+      dil.Free;
+    end;
+    TxTarDtxDir:=DtxDir;
+
+    SplashForm.SetProgress(20,'Kötetek...');
+    DTXs:=LoadDTXs([ProgDir,DtxDir]);
+    InitDtxIds(DTXs);
+
+    SplashForm.SetProgress(80,'Listák...');
+    FillKLst0;
+    FillVLst0;
+    FillVSLst0;
+
   finally
-    dil.Free;
+    FreeAndNil(SplashForm);
   end;
-  TxTarDtxDir:=DtxDir;
-
-  DTXs:=LoadDTXs([ProgDir,DtxDir]);
-  InitDtxIds(DTXs);
-
-  FillKLst0;
-  FillVLst0;
-  FillVSLst0;
 end;
 
 procedure tMainForm.FormDestroy(Sender: TObject);

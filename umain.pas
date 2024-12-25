@@ -3268,6 +3268,7 @@ begin
     R^.ItemIndex:=0;
     ActDLGet;
     ShowDia(0);
+    ShowDiaLst;
   finally
     ZsolozsmaForm.Free;
   end;

@@ -11,7 +11,7 @@ uses
   { you can add units after this }, uEdMain, uTxTar, uEdKotetProp,
   uPaintResizedText, uEdVersProp, uEdVSProp, uEditorForm, uClipBrd, uSymbolForm,
   uSound, uSndEdit, uAkkordForm, uAkkord, uKottaKepek, uKottazo, uKottaEditor,
-  uEdSetup, uRoutines, uDiatarIniLoader, uTxtAtom;
+  uEdSetup, uRoutines, uDiatarIniLoader, uTxtAtom, uSplash;
 
 {$R diaednewicon.res}
 

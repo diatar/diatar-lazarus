@@ -1,11 +1,11 @@
-program diatar;
+program rDiatar64;
 
 {$mode objfpc}{$H+}
 
 uses
-  {$IFDEF UNIX}{$IFDEF UseCThreads}
-  cthreads,
-  {$ENDIF}{$ENDIF}
+  {$IFDEF UNIX}//{$IFDEF UseCThreads}
+  cthreads, cmem,
+  {$ENDIF}//{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, uAppForm, uProjektedForm, uTxTar, uGlobals, uDiaLst, uPaintResizedText,
   udtxlst, uAddOne, uAdd, uTxList, uEditorForm, uSetupForm, uCommBtns,
@@ -24,7 +24,6 @@ uses
 {$R *.res}
 
 begin
-  Application.Title:='Diatár';
   Application.Initialize;
   Application.CreateForm(TAppForm, AppForm);
   Application.CreateForm(TAddForm, AddForm);
