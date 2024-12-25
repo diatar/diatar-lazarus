@@ -134,7 +134,7 @@ uses
   uRoutines,
   uMain,uSerialIOForm,uSymbolForm,uMonitors,uProjektedForm,
   uGlobals,uSelectProfil,uKottaKepek,uNetwork,uCommBtns,
-  uTxTar
+  uTxTar, uSplash
   ;
 
 { tAppForm }
@@ -151,30 +151,42 @@ begin
   Application.AddOnMinimizeHandler(@AppMinimize);
   Application.AddOnRestoreHandler(@AppRestore);
 
+  SplashForm:=tSplashForm.Create(nil);
+  try
+    SplashForm.Show;
+    SplashForm.SetProgress(0,'Betöltés...');
+    FillKottaBmps;
+    SplashForm.SetProgress(10,'Hálózat...');
+    Network:=tNetwork.Create;
+    CommBtns:=tCommBtns.Create;
 
-  FillKottaBmps;
-  Network:=tNetwork.Create;
-  CommBtns:=tCommBtns.Create;
+    SplashForm.SetProgress(20,'Kötetek...');
+    TxTarDtxDir:=Globals.DtxDir;
+    Globals.DTXs:=LoadDTXs([Globals.ProgDir,Globals.DtxDir]);
 
-  TxTarDtxDir:=Globals.DtxDir;
-  Globals.DTXs:=LoadDTXs([Globals.ProgDir,Globals.DtxDir]);
-  if FindCmdLineSwitch('VETITO',['-','/'],true) then Globals.ScrMode:=smProject;
-  if FindCmdLineSwitch('VEZERLO',['-','/'],true) then Globals.ScrMode:=smControl;
-  if FindCmdLineSwitch('DUAL',['-','/'],true) then Globals.CmdLineDual:=true;
-  if FindCmdLineSwitch('SCHOLA',['-','/'],true) then Globals.CmdLineSchola:=true;
-  if FindCmdLineSwitch('SZKOLA',['-','/'],true) then Globals.CmdLineSchola:=true;
-  if FindCmdLineSwitch('KORUS',['-','/'],true) then Globals.CmdLineKorus:=true;
-  if FindCmdLineSwitch('AKKORD',['-','/'],true) then Globals.CmdLineAkkord:=true;
-  if FindCmdLineSwitch('KOTTA',['-','/'],true) then Globals.CmdLineKotta:=true;
-  LoadGlobalsSetup;
+    SplashForm.SetProgress(80,'Parancssor...');
+    if FindCmdLineSwitch('VETITO',['-','/'],true) then Globals.ScrMode:=smProject;
+    if FindCmdLineSwitch('VEZERLO',['-','/'],true) then Globals.ScrMode:=smControl;
+    if FindCmdLineSwitch('DUAL',['-','/'],true) then Globals.CmdLineDual:=true;
+    if FindCmdLineSwitch('SCHOLA',['-','/'],true) then Globals.CmdLineSchola:=true;
+    if FindCmdLineSwitch('SZKOLA',['-','/'],true) then Globals.CmdLineSchola:=true;
+    if FindCmdLineSwitch('KORUS',['-','/'],true) then Globals.CmdLineKorus:=true;
+    if FindCmdLineSwitch('AKKORD',['-','/'],true) then Globals.CmdLineAkkord:=true;
+    if FindCmdLineSwitch('KOTTA',['-','/'],true) then Globals.CmdLineKotta:=true;
+    LoadGlobalsSetup;
 
-  //Application.TaskBarBehavior:=tbSingleButton;
-  Application.CreateForm(tSerialIOForm,SerialIOForm);
-  Application.CreateForm(tMainForm,MainForm);
-  Application.CreateForm(TProjektedForm, ProjektedForm);
-  //ProjektedForm.Show;
-  MainForm.Show;
-  Show;
+    SplashForm.SetProgress(90,'Ablakok...');
+    //Application.TaskBarBehavior:=tbSingleButton;
+    Application.CreateForm(tSerialIOForm,SerialIOForm);
+    Application.CreateForm(tMainForm,MainForm);
+    Application.CreateForm(TProjektedForm, ProjektedForm);
+    SplashForm.SetProgress(100,'Főablak...');
+    //ProjektedForm.Show;
+    MainForm.Show;
+    Show;
+  finally
+    FreeAndNil(SplashForm);
+  end;
   MainForm.SetFocus;
   //ProjektedForm.SendToBack;
   //MainForm.SetFocus;

@@ -313,9 +313,11 @@ function ExpandRelFName(const BaseFName,FileName : string) : string;
 implementation
 ///////////////////////////////////////////////////////////////
 
+uses uSplash
 {$IFNDEF DiaEditor}
-uses uGlobals;
+  , uGlobals
 {$ENDIF}
+;
 
 procedure FreeTxObj(obj : tTxBase);
   begin
@@ -683,12 +685,13 @@ var
   DTXs : tObjectList;
   v : tVers;
   vs,vs2 : tVersszak;
-  i : integer;
+  i,n : integer;
   modfname : string;
-  FNames : tStringList;
+  FNames,FullNames : tStringList;
 
 begin
   FNames:=tStringList.Create;
+  FullNames:=tStringList.Create;
   try
     DTXs:=tObjectList.Create;
     modfname:='';
@@ -701,9 +704,7 @@ begin
             modfname:=dirs[i]+TXMODFILENAME;
           end else if FNames.IndexOf(sr.Name)<0 then begin
             FNames.Add(sr.Name);
-            kt:=tKotet.Create;
-            kt.Load(dirs[i]+sr.Name);
-            DTXs.Add(kt);
+            FullNames.Add(dirs[i]+sr.Name);
           end;
           fr:=FindNextUTF8(sr);
         end;
@@ -711,8 +712,16 @@ begin
         FindCloseUTF8(sr);
       end;
     end;
+    n:=FNames.Count;
+    for i:=0 to n-1 do begin
+      SplashForm.SetProgress(20+((60*i) div (n+1)),FNames[i]);
+      kt:=tKotet.Create;
+      kt.Load(FullNames[i]);
+      DTXs.Add(kt);
+    end;
   finally
     FNames.Free;
+    FullNames.Free;
   end;
 
   if DTXs.Count<=0 then begin

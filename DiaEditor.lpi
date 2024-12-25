@@ -126,7 +126,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="110">
+    <Units Count="111">
       <Unit0>
         <Filename Value="DiaEditor.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -141,8 +141,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEdMain"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="33"/>
-        <CursorPos Y="50"/>
+        <TopLine Value="245"/>
+        <CursorPos X="38" Y="266"/>
         <UsageCount Value="100"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -151,9 +151,10 @@
         <Filename Value="utxtar.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTxTar"/>
-        <EditorIndex Value="7"/>
-        <TopLine Value="1511"/>
-        <CursorPos X="46" Y="1514"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="307"/>
+        <CursorPos X="14" Y="317"/>
         <UsageCount Value="99"/>
         <Loaded Value="True"/>
       </Unit2>
@@ -188,12 +189,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEdKotetProp"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="207"/>
         <CursorPos X="64" Y="235"/>
         <UsageCount Value="98"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="..\Lib\uRoutines.pas"/>
@@ -294,10 +293,9 @@
         <Filename Value="upaintresizedtext.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uPaintResizedText"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="20" Y="2"/>
         <UsageCount Value="82"/>
-        <Loaded Value="True"/>
       </Unit22>
       <Unit23>
         <Filename Value="uedversprop.pas"/>
@@ -326,13 +324,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEditorForm"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="1014"/>
-        <CursorPos X="57" Y="1025"/>
+        <CursorPos X="58" Y="1021"/>
         <UsageCount Value="74"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit25>
       <Unit26>
         <Filename Value="urtf.pas"/>
@@ -456,7 +451,7 @@
         <CursorPos Y="31"/>
         <UsageCount Value="51"/>
         <Loaded Value="True"/>
-        <DefaultSyntaxHighlighter Value="None"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
       </Unit43>
       <Unit44>
         <Filename Value="uakkord.pas"/>
@@ -522,11 +517,10 @@
         <Filename Value="ukottazo.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uKottazo"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="1364"/>
         <CursorPos X="9" Y="1371"/>
         <UsageCount Value="42"/>
-        <Loaded Value="True"/>
       </Unit51>
       <Unit52>
         <Filename Value="ukottakepek.pas"/>
@@ -772,19 +766,18 @@
         <Filename Value="uappform.pas"/>
         <UnitName Value="uAppForm"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="73"/>
-        <CursorPos X="32" Y="86"/>
+        <TopLine Value="137"/>
+        <CursorPos Y="158"/>
         <UsageCount Value="10"/>
       </Unit93>
       <Unit94>
         <Filename Value="udiatariniloader.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uDiatarIniLoader"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="42"/>
         <CursorPos Y="58"/>
         <UsageCount Value="35"/>
-        <Loaded Value="True"/>
       </Unit94>
       <Unit95>
         <Filename Value="C:\lazarus\components\lazutils\lazfileutils.pas"/>
@@ -897,127 +890,32 @@
         <CursorPos X="10" Y="32"/>
         <UsageCount Value="10"/>
       </Unit109>
+      <Unit110>
+        <Filename Value="usplash.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="SplashForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uSplash"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit110>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="3" HistoryIndex="2">
       <Position1>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="90" Column="50" TopLine="64"/>
-      </Position1>
-      <Position2>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="129" Column="54" TopLine="103"/>
-      </Position2>
-      <Position3>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="307" Column="37" TopLine="281"/>
-      </Position3>
-      <Position4>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1508" Column="5" TopLine="1478"/>
-      </Position4>
-      <Position5>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1505" TopLine="1480"/>
-      </Position5>
-      <Position6>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1506" TopLine="1481"/>
-      </Position6>
-      <Position7>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1507" TopLine="1482"/>
-      </Position7>
-      <Position8>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1505" TopLine="1482"/>
-      </Position8>
-      <Position9>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1513" Column="14" TopLine="1500"/>
-      </Position9>
-      <Position10>
         <Filename Value="uedmain.pas"/>
         <Caret Line="245" Column="37" TopLine="236"/>
-      </Position10>
-      <Position11>
+      </Position1>
+      <Position2>
         <Filename Value="uedmain.pas"/>
         <Caret Line="50" TopLine="33"/>
-      </Position11>
-      <Position12>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="1001" Column="82" TopLine="988"/>
-      </Position12>
-      <Position13>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="127" TopLine="127"/>
-      </Position13>
-      <Position14>
-        <Filename Value="ueditorform.pas"/>
-      </Position14>
-      <Position15>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="48" Column="8" TopLine="22"/>
-      </Position15>
-      <Position16>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="274" Column="49" TopLine="248"/>
-      </Position16>
-      <Position17>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="846" Column="32" TopLine="821"/>
-      </Position17>
-      <Position18>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="900" Column="12" TopLine="884"/>
-      </Position18>
-      <Position19>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="979" Column="12" TopLine="953"/>
-      </Position19>
-      <Position20>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="1145" Column="14" TopLine="1120"/>
-      </Position20>
-      <Position21>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="1360" Column="40" TopLine="1335"/>
-      </Position21>
-      <Position22>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="1408" Column="38" TopLine="1383"/>
-      </Position22>
-      <Position23>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="1461" Column="39" TopLine="1435"/>
-      </Position23>
-      <Position24>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="1462" Column="39" TopLine="1436"/>
-      </Position24>
-      <Position25>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="1544" Column="34" TopLine="1519"/>
-      </Position25>
-      <Position26>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="1676" Column="12" TopLine="1651"/>
-      </Position26>
-      <Position27>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="1795" Column="46" TopLine="1778"/>
-      </Position27>
-      <Position28>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="2046" Column="38" TopLine="2020"/>
-      </Position28>
-      <Position29>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="2065" Column="33" TopLine="2040"/>
-      </Position29>
-      <Position30>
-        <Filename Value="ueditorform.pas"/>
-        <Caret Line="48" Column="8"/>
-      </Position30>
+      </Position2>
+      <Position3>
+        <Filename Value="uedmain.pas"/>
+        <Caret Line="266" Column="39" TopLine="245"/>
+      </Position3>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

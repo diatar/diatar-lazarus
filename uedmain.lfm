@@ -20,7 +20,7 @@ object MainForm: TMainForm
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '3.4.0.0'
+  LCLVersion = '3.6.0.0'
   object ProjBox: TPaintBox
     Left = 510
     Height = 256
@@ -56,10 +56,10 @@ object MainForm: TMainForm
     OnClick = ModBtnClick
   end
   object OrigCk: TCheckBox
-    Left = 550
-    Height = 23
-    Top = 267
-    Width = 75
+    Left = 571
+    Height = 19
+    Top = 271
+    Width = 54
     Anchors = [akRight, akBottom]
     Caption = 'Eredeti'
     TabOrder = 2
@@ -79,9 +79,9 @@ object MainForm: TMainForm
     TabOrder = 3
     object Label1: TLabel
       Left = 4
-      Height = 17
+      Height = 15
       Top = 0
-      Width = 62
+      Width = 46
       Caption = '&Diatárak:'
       FocusControl = KLst
     end
@@ -154,9 +154,9 @@ object MainForm: TMainForm
     TabOrder = 4
     object Label2: TLabel
       Left = 4
-      Height = 17
+      Height = 15
       Top = 0
-      Width = 50
+      Width = 36
       Caption = '&Versek:'
       FocusControl = VLst
     end
@@ -171,7 +171,6 @@ object MainForm: TMainForm
       ScrollWidth = 114
       Style = lbOwnerDrawFixed
       TabOrder = 0
-      TopIndex = -1
       OnDblClick = VLstDblClick
       OnDrawItem = VLstDrawItem
       OnSelectionChange = VLstSelectionChange
@@ -322,9 +321,9 @@ object MainForm: TMainForm
     TabOrder = 5
     object Label3: TLabel
       Left = 4
-      Height = 17
+      Height = 15
       Top = 0
-      Width = 80
+      Width = 59
       Caption = 'Verssza&kok:'
       FocusControl = VSLst
     end
@@ -339,7 +338,6 @@ object MainForm: TMainForm
       ScrollWidth = 114
       Style = lbOwnerDrawFixed
       TabOrder = 0
-      TopIndex = -1
       OnDblClick = VSLstDblClick
       OnDrawItem = VSLstDrawItem
       OnSelectionChange = VSLstSelectionChange

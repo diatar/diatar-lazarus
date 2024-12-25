@@ -48,7 +48,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="173">
+    <Units Count="197">
       <Unit0>
         <Filename Value="Diatar64.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -63,10 +63,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAppForm"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="89"/>
-        <CursorPos X="14" Y="93"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="159"/>
+        <CursorPos X="25" Y="165"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="utextbox.pas"/>
@@ -104,8 +105,11 @@
         <Filename Value="utxtar.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTxTar"/>
-        <EditorIndex Value="-1"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="685"/>
+        <CursorPos X="33" Y="692"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="uglobals.pas"/>
@@ -211,8 +215,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEditorForm"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="1005"/>
-        <CursorPos X="11" Y="1021"/>
+        <TopLine Value="232"/>
+        <CursorPos Y="232"/>
         <UsageCount Value="200"/>
       </Unit18>
       <Unit19>
@@ -294,10 +298,10 @@
       <Unit27>
         <Filename Value="todo.txt"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="44" Y="13"/>
+        <CursorPos X="43" Y="13"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <DefaultSyntaxHighlighter Value="None"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
       </Unit27>
       <Unit28>
         <Filename Value="unetwork.pas"/>
@@ -494,7 +498,7 @@
         <EditorIndex Value="-1"/>
         <CursorPos X="88" Y="28"/>
         <UsageCount Value="234"/>
-        <DefaultSyntaxHighlighter Value="None"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
       </Unit51>
       <Unit52>
         <Filename Value="unetbase.pas"/>
@@ -846,12 +850,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="3245"/>
-        <CursorPos X="27" Y="3266"/>
+        <TopLine Value="365"/>
+        <CursorPos Y="65"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit99>
       <Unit100>
         <Filename Value="udialoadsave.pas"/>
@@ -996,11 +1000,10 @@
         <Filename Value="udiatariniloader.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uDiatarIniLoader"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="68"/>
         <CursorPos X="86" Y="80"/>
         <UsageCount Value="202"/>
-        <Loaded Value="True"/>
       </Unit119>
       <Unit120>
         <Filename Value="winuser.pas"/>
@@ -1262,9 +1265,9 @@
         <Filename Value="C:\lazarus64\lcl\graphics.pp"/>
         <UnitName Value="Graphics"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="63"/>
-        <CursorPos X="58" Y="78"/>
-        <UsageCount Value="2"/>
+        <TopLine Value="1661"/>
+        <CursorPos X="14" Y="1675"/>
+        <UsageCount Value="10"/>
       </Unit155>
       <Unit156>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\packages\openssl\src\opensslsockets.pp"/>
@@ -1328,7 +1331,7 @@
         <EditorIndex Value="1"/>
         <TopLine Value="169"/>
         <CursorPos X="19" Y="194"/>
-        <UsageCount Value="92"/>
+        <UsageCount Value="97"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit163>
@@ -1352,13 +1355,13 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="331"/>
         <CursorPos X="21" Y="354"/>
-        <UsageCount Value="92"/>
+        <UsageCount Value="97"/>
       </Unit166>
       <Unit167>
         <Filename Value="uHtml.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="92"/>
+        <UsageCount Value="97"/>
       </Unit167>
       <Unit168>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
@@ -1396,55 +1399,357 @@
         <CursorPos Y="285"/>
         <UsageCount Value="11"/>
       </Unit172>
+      <Unit173>
+        <Filename Value="usplash.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="SplashForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uSplash"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="20"/>
+        <CursorPos Y="34"/>
+        <UsageCount Value="25"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit173>
+      <Unit174>
+        <Filename Value="C:\lazarus64\fpc\3.2.2\source\rtl\objpas\types.pp"/>
+        <UnitName Value="Types"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="68"/>
+        <CursorPos X="3" Y="83"/>
+        <UsageCount Value="10"/>
+      </Unit174>
+      <Unit175>
+        <Filename Value="C:\lazarus64\lcl\include\icon.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="948"/>
+        <CursorPos X="3" Y="954"/>
+        <UsageCount Value="10"/>
+      </Unit175>
+      <Unit176>
+        <Filename Value="C:\lazarus64\ide\frmcustomapplicationoptions.pas"/>
+        <ComponentName Value="CustomApplicationOptionsForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmCustomApplicationOptions"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit176>
+      <Unit177>
+        <Filename Value="C:\lazarus64\ide\projectinspector.pas"/>
+        <ComponentName Value="ProjectInspectorForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ProjectInspector"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="80" Y="11"/>
+        <UsageCount Value="10"/>
+      </Unit177>
+      <Unit178>
+        <Filename Value="C:\lazarus64\ide\projectwizarddlg.pas"/>
+        <ComponentName Value="ProjectWizardDialog"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ProjectWizardDlg"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="48" Y="13"/>
+        <UsageCount Value="10"/>
+      </Unit178>
+      <Unit179>
+        <Filename Value="C:\lazarus64\ide\ideoptionsdlg.pas"/>
+        <ComponentName Value="IDEOptionsDialog"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="IDEOptionsDlg"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit179>
+      <Unit180>
+        <Filename Value="C:\lazarus64\ide\ideinfoneedbuild.pas"/>
+        <ComponentName Value="IDEInfoNeedBuildDlg"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="IDEInfoNeedBuild"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit180>
+      <Unit181>
+        <Filename Value="C:\lazarus64\ide\ideinfodlg.pas"/>
+        <ComponentName Value="IDEInfoDialog"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="IDEInfoDlg"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit181>
+      <Unit182>
+        <Filename Value="C:\lazarus64\ide\allcompileroptions.pas"/>
+        <ComponentName Value="frmAllCompilerOptions"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="AllCompilerOptions"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit182>
+      <Unit183>
+        <Filename Value="C:\lazarus64\ide\buildfiledlg.pas"/>
+        <ComponentName Value="BuildFileDialog"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="BuildFileDlg"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="35" Y="3"/>
+        <UsageCount Value="10"/>
+      </Unit183>
+      <Unit184>
+        <Filename Value="C:\lazarus64\ide\buildlazdialog.pas"/>
+        <ComponentName Value="ConfigureBuildLazarusDlg"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="BuildLazDialog"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="81" Y="8"/>
+        <UsageCount Value="10"/>
+      </Unit184>
+      <Unit185>
+        <Filename Value="C:\lazarus64\ide\buildmodediffdlg.pas"/>
+        <ComponentName Value="BuildModeDiffDialog"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="BuildModeDiffDlg"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="71" Y="14"/>
+        <UsageCount Value="10"/>
+      </Unit185>
+      <Unit186>
+        <Filename Value="C:\lazarus64\ide\buildprojectdlg.pas"/>
+        <ComponentName Value="CleanBuildProjectDialog"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="BuildProjectDlg"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="64" Y="19"/>
+        <UsageCount Value="10"/>
+      </Unit186>
+      <Unit187>
+        <Filename Value="C:\lazarus64\ide\checkcompileropts.pas"/>
+        <ComponentName Value="CheckCompilerOptsDlg"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="CheckCompilerOpts"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="48" Y="5"/>
+        <UsageCount Value="10"/>
+      </Unit187>
+      <Unit188>
+        <Filename Value="C:\lazarus64\ide\codetoolsdefpreview.pas"/>
+        <ComponentName Value="CodeToolsDefinesDialog"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="CodeToolsDefPreview"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="75" Y="12"/>
+        <UsageCount Value="10"/>
+      </Unit188>
+      <Unit189>
+        <Filename Value="C:\lazarus64\ide\definesgui.pas"/>
+        <ComponentName Value="DefinesGuiForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="DefinesGui"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="51" Y="14"/>
+        <UsageCount Value="10"/>
+      </Unit189>
+      <Unit190>
+        <Filename Value="C:\lazarus64\ide\desktopmanager.pas"/>
+        <ComponentName Value="DesktopForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="DesktopManager"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="58" Y="20"/>
+        <UsageCount Value="10"/>
+      </Unit190>
+      <Unit191>
+        <Filename Value="C:\lazarus64\ide\showcompileropts.pas"/>
+        <ComponentName Value="ShowCompilerOptionsDlg"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ShowCompilerOpts"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="66" Y="17"/>
+        <UsageCount Value="10"/>
+      </Unit191>
+      <Unit192>
+        <Filename Value="C:\lazarus64\ide\splash.pp"/>
+        <ComponentName Value="SplashForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Splash"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="106"/>
+        <UsageCount Value="10"/>
+      </Unit192>
+      <Unit193>
+        <Filename Value="C:\lazarus64\ide\runparamsopts.pas"/>
+        <ComponentName Value="RunParamsOptsDlg"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="RunParamsOpts"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="71" Y="7"/>
+        <UsageCount Value="10"/>
+      </Unit193>
+      <Unit194>
+        <Filename Value="C:\lazarus64\ide\projectuserresources.pas"/>
+        <UnitName Value="ProjectUserResources"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit194>
+      <Unit195>
+        <Filename Value="C:\lazarus64\ide\frames\compiler_config_target.pas"/>
+        <ComponentName Value="CompilerConfigTargetFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit195>
+      <Unit196>
+        <Filename Value="C:\lazarus64\ide\frames\project_application_options.pas"/>
+        <ComponentName Value="ProjectApplicationOptionsFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="144"/>
+        <CursorPos X="3" Y="155"/>
+        <UsageCount Value="10"/>
+      </Unit196>
     </Units>
-    <JumpHistory Count="12" HistoryIndex="11">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="89" Column="5" TopLine="82"/>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="14" Column="26" TopLine="3"/>
       </Position1>
       <Position2>
-        <Filename Value="uzsolozsmaform.pas"/>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="39" Column="16" TopLine="15"/>
       </Position2>
       <Position3>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="239" Column="47" TopLine="213"/>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="38" Column="38" TopLine="15"/>
       </Position3>
       <Position4>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="258" Column="38" TopLine="233"/>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="40" Column="20" TopLine="15"/>
       </Position4>
       <Position5>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="261" Column="70" TopLine="239"/>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="41" Column="32" TopLine="15"/>
       </Position5>
       <Position6>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="265" TopLine="248"/>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="37" Column="8" TopLine="19"/>
       </Position6>
       <Position7>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="90" Column="21" TopLine="75"/>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="41" Column="26" TopLine="19"/>
       </Position7>
       <Position8>
-        <Filename Value="umain.pas"/>
-        <Caret Line="86" Column="50" TopLine="77"/>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="37" Column="11" TopLine="19"/>
       </Position8>
       <Position9>
-        <Filename Value="umain.pas"/>
-        <Caret Line="258" Column="29" TopLine="231"/>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="9" Column="28"/>
       </Position9>
       <Position10>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2859" Column="33" TopLine="2831"/>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="41" Column="17" TopLine="19"/>
       </Position10>
       <Position11>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2951" Column="31" TopLine="2923"/>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="50" Column="11" TopLine="21"/>
       </Position11>
       <Position12>
-        <Filename Value="umain.pas"/>
-        <Caret Line="258" Column="15" TopLine="243"/>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="48" Column="19" TopLine="22"/>
       </Position12>
+      <Position13>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="47" Column="19" TopLine="21"/>
+      </Position13>
+      <Position14>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="35" Column="3" TopLine="6"/>
+      </Position14>
+      <Position15>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="22" Column="51" TopLine="6"/>
+      </Position15>
+      <Position16>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="36" Column="23" TopLine="12"/>
+      </Position16>
+      <Position17>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="32" Column="7" TopLine="12"/>
+      </Position17>
+      <Position18>
+        <Filename Value="uappform.pas"/>
+        <Caret Line="165" Column="24" TopLine="159"/>
+      </Position18>
+      <Position19>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="295" Column="10" TopLine="280"/>
+      </Position19>
+      <Position20>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="317" Column="23" TopLine="304"/>
+      </Position20>
+      <Position21>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="678" Column="18" TopLine="670"/>
+      </Position21>
+      <Position22>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="295" Column="11" TopLine="279"/>
+      </Position22>
+      <Position23>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="704" Column="64" TopLine="688"/>
+      </Position23>
+      <Position24>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="721" Column="20" TopLine="691"/>
+      </Position24>
+      <Position25>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="18" Column="19" TopLine="6"/>
+      </Position25>
+      <Position26>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="39" Column="38" TopLine="22"/>
+      </Position26>
+      <Position27>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="51" Column="5" TopLine="29"/>
+      </Position27>
+      <Position28>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="49" TopLine="29"/>
+      </Position28>
+      <Position29>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="41" Column="8" TopLine="29"/>
+      </Position29>
+      <Position30>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="39" Column="26" TopLine="22"/>
+      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

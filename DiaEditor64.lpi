@@ -116,7 +116,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="120">
+    <Units Count="121">
       <Unit0>
         <Filename Value="DiaEditor64.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -447,7 +447,7 @@
         <CursorPos Y="31"/>
         <UsageCount Value="95"/>
         <Loaded Value="True"/>
-        <DefaultSyntaxHighlighter Value="None"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
       </Unit43>
       <Unit44>
         <Filename Value="uakkord.pas"/>
@@ -963,6 +963,18 @@
         <CursorPos Y="75"/>
         <UsageCount Value="10"/>
       </Unit119>
+      <Unit120>
+        <Filename Value="usplash.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="SplashForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uSplash"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit120>
     </Units>
     <JumpHistory HistoryIndex="-1"/>
   </ProjectOptions>

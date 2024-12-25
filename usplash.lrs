@@ -1,0 +1,13 @@
+{ This is an automatically generated lazarus resource file }
+
+LazarusResources.Add('TSplashForm','FORMDATA',[
+  'TPF0'#11'TSplashForm'#10'SplashForm'#4'Left'#3'U'#2#6'Height'#3'6'#1#3'Top'#3
+  +#0#1#5'Width'#3#0#1#11'BorderStyle'#7#6'bsNone'#12'ClientHeight'#3'6'#1#11'C'
+  +'lientWidth'#3#0#1#9'FormStyle'#7#8'fsSplash'#8'OnCreate'#7#10'FormCreate'#8
+  +'Position'#7#15'poDesktopCenter'#13'ShowInTaskBar'#7#7'stNever'#10'LCLVersio'
+  +'n'#6#7'2.2.6.0'#0#12'TProgressBar'#8'Progress'#4'Left'#2#8#6'Height'#2#20#3
+  +'Top'#3#8#1#5'Width'#3#244#0#8'TabOrder'#2#0#0#0#6'TLabel'#3'Lbl'#4'Left'#2#8
+  +#6'Height'#2#23#3'Top'#3' '#1#5'Width'#3#242#0#9'Alignment'#7#8'taCenter'#8
+  +'AutoSize'#8#11'ParentColor'#8#0#0#6'TImage'#3'Pic'#4'Left'#2#0#6'Height'#3#0
+  +#1#3'Top'#2#0#5'Width'#3#0#1#0#0#0
+]);
