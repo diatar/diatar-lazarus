@@ -21,7 +21,7 @@
       <CharSet Value="04B0"/>
       <StringTable ProductVersion="0.0.0.2"/>
     </VersionInfo>
-    <BuildModes Count="3" Active="Debug">
+    <BuildModes Count="3" Active="Release">
       <Item1 Name="default" Default="True"/>
       <Item2 Name="Debug">
         <CompilerOptions>

@@ -2024,7 +2024,7 @@ var
   vc : tColor;
   vb : tBool3;
   Dlg : tMySaveDlg;
-  fname : string;
+  fname,s : string;
 begin
   Result:=false;
   ShowDiaLst;
@@ -2040,7 +2040,12 @@ begin
       Dlg.InitialDir:=Globals.DiaDir2
     else if (Globals.BaseDiaDir>'') and DirectoryExists(Globals.BaseDiaDir) then
       Dlg.InitialDir:=Globals.BaseDiaDir;
-    Dlg.FileName:=DiasorFName; fname:=DiasorFName;
+    Dlg.FileName:=DiasorFName;
+    fname:=DiasorFName; s:=ExtractFilePath(fname);
+    if (s>'') and DirectoryExists(s) then begin
+      Dlg.InitialDir:=s;
+      Dlg.FileName:=ExtractFileNameOnly(fname);
+    end;
     if (DiasorFName='') or not overwrite then begin
       if not Dlg.Execute then exit(false);
       fname:={UTF8ToAnsi}(Dlg.FileName);
@@ -2690,8 +2695,9 @@ begin
   if fShowOrderTmr<0 then begin
     fShowOrderTmr:=200 div Tmr.Interval;
     if not Globals.HideMain and not ScrollState and (WindowState<>wsMinimized)
-       and not InResizing and Assigned(ProjektedForm) and ProjektedForm.Active
-    then BringToFront;
+       and not InResizing and (Screen.ActiveCustomForm=ProjektedForm)
+    then
+      BringToFront;
   end;
 
   if Globals.StrikeProjektSignal then begin
