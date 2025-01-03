@@ -21,8 +21,101 @@
       <CharSet Value="04B0"/>
       <StringTable ProductVersion="0.0.0.2"/>
     </VersionInfo>
-    <BuildModes Count="1">
+    <BuildModes Count="3" Active="Debug">
       <Item1 Name="default" Default="True"/>
+      <Item2 Name="Debug">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value=".\diatar"/>
+          </Target>
+          <SearchPaths>
+            <Libraries Value="..\LazRGBGraphics;..\lnet"/>
+            <OtherUnitFiles Value="..\lnet;..\lib;..\lnet\lazaruspackage;uoslib"/>
+            <UnitOutputDirectory Value="objWindows"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+              <IncludeAssertionCode Value="True"/>
+              <UseAnsiStrings Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+            <VerifyObjMethodCallValidity Value="True"/>
+            <TargetCPU Value="i386"/>
+            <TargetOS Value="win32"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf3"/>
+              <UseHeaptrc Value="True"/>
+              <TrashVariables Value="True"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <WriteFPCLogo Value="False"/>
+            <CustomOptions Value="-dFPC_OS_UNICODE"/>
+          </Other>
+        </CompilerOptions>
+      </Item2>
+      <Item3 Name="Release">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value=".\diatar"/>
+          </Target>
+          <SearchPaths>
+            <Libraries Value="..\LazRGBGraphics;..\lnet"/>
+            <OtherUnitFiles Value="..\lnet;..\lib;..\lnet\lazaruspackage;uoslib"/>
+            <UnitOutputDirectory Value="objWindows"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+              <UseAnsiStrings Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <TargetCPU Value="i386"/>
+            <TargetOS Value="win32"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <RunWithoutDebug Value="True"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <WriteFPCLogo Value="False"/>
+            <CustomOptions Value="-dFPC_OS_UNICODE"/>
+          </Other>
+        </CompilerOptions>
+      </Item3>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
@@ -55,7 +148,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="234">
+    <Units Count="235">
       <Unit0>
         <Filename Value="Diatar.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -122,9 +215,10 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTxTar"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="37"/>
-        <CursorPos X="3" Y="165"/>
+        <TopLine Value="519"/>
+        <CursorPos X="8" Y="532"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit7>
       <Unit8>
         <Filename Value="uglobals.pas"/>
@@ -196,9 +290,12 @@
         <Filename Value="utxlist.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTxList"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos Y="96"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="662"/>
+        <CursorPos X="23" Y="680"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit18>
       <Unit19>
         <Filename Value="udialst.pas"/>
@@ -339,7 +436,7 @@
         <EditorIndex Value="-1"/>
         <CursorPos X="2" Y="24"/>
         <UsageCount Value="200"/>
-        <DefaultSyntaxHighlighter Value="None"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
       </Unit33>
       <Unit34>
         <Filename Value="unetwork.pas"/>
@@ -739,7 +836,7 @@
         <TopLine Value="58"/>
         <CursorPos Y="92"/>
         <UsageCount Value="8"/>
-        <DefaultSyntaxHighlighter Value="None"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
       </Unit92>
       <Unit93>
         <Filename Value="unetbase.pas"/>
@@ -1314,7 +1411,7 @@
         <EditorIndex Value="-1"/>
         <CursorPos Y="7"/>
         <UsageCount Value="7"/>
-        <DefaultSyntaxHighlighter Value="None"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
       </Unit174>
       <Unit175>
         <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\objpas\sysutils\sysstrh.inc"/>
@@ -1649,7 +1746,7 @@
         <UnitName Value="uZsolozsmaForm"/>
         <EditorIndex Value="1"/>
         <TopLine Value="75"/>
-        <CursorPos X="40" Y="80"/>
+        <CursorPos X="15" Y="80"/>
         <UsageCount Value="45"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -1733,16 +1830,25 @@
       <Unit233>
         <Filename Value="usplash.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="SplashForm"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
         <UnitName Value="uSplash"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="26" Y="12"/>
+        <CursorPos Y="12"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit233>
+      <Unit234>
+        <Filename Value="C:\lazarus64\fpc\3.2.2\source\rtl\objpas\classes\classesh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="312"/>
+        <CursorPos X="14" Y="327"/>
+        <UsageCount Value="10"/>
+      </Unit234>
     </Units>
-    <JumpHistory Count="4" HistoryIndex="3">
+    <JumpHistory Count="6" HistoryIndex="5">
       <Position1>
         <Filename Value="umain.pas"/>
         <Caret Line="221" Column="24" TopLine="216"/>
@@ -1759,6 +1865,14 @@
         <Filename Value="uzsolozsmaform.pas"/>
         <Caret Line="91" Column="125" TopLine="77"/>
       </Position4>
+      <Position5>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="12"/>
+      </Position5>
+      <Position6>
+        <Filename Value="utxlist.pas"/>
+        <Caret Line="680" Column="23" TopLine="659"/>
+      </Position6>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -1816,7 +1930,7 @@
         <Expression Value="mov"/>
       </Item4>
     </Watches>
-    <Exceptions Count="4">
+    <Exceptions Count="6">
       <Item1>
         <Name Value="ECodetoolError"/>
       </Item1>
@@ -1829,6 +1943,12 @@
       <Item4>
         <Name Value="EReadError"/>
       </Item4>
+      <Item5>
+        <Name Value="ERangeError"/>
+      </Item5>
+      <Item6>
+        <Name Value="RunError(201)"/>
+      </Item6>
     </Exceptions>
   </Debugging>
 </CONFIG>

@@ -444,7 +444,7 @@
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
         <TopLine Value="38"/>
-        <CursorPos Y="31"/>
+        <CursorPos X="39" Y="50"/>
         <UsageCount Value="95"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Text"/>

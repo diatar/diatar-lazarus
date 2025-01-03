@@ -21,7 +21,6 @@ uses
 {$R *.res}
 
 begin
-  Application.Title:='Diatar';
   Application.Initialize;
   Application.CreateForm(TAppForm, AppForm);
   Application.CreateForm(TAddForm, AddForm);

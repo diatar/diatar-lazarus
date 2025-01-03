@@ -4,9 +4,13 @@
     <Version Value="12"/>
     <General>
       <Flags>
+        <MainUnitHasCreateFormStatements Value="False"/>
+        <MainUnitHasTitleStatement Value="False"/>
+        <MainUnitHasScaledStatement Value="False"/>
         <LRSInOutputDirectory Value="False"/>
         <CompatibilityMode Value="True"/>
       </Flags>
+      <Title Value="lDiaEditor64"/>
       <UseXPManifest Value="True"/>
       <Icon Value="0"/>
     </General>
@@ -23,7 +27,7 @@
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
-            <Filename Value="./diaeditor64"/>
+            <Filename Value="./lDiaEditor64"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
@@ -71,7 +75,7 @@
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
-            <Filename Value="./diaeditor64"/>
+            <Filename Value="./lDiaEditor64"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
@@ -132,16 +136,19 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="58">
+    <Units Count="59">
       <Unit0>
-        <Filename Value="lDiaEditor.lpr"/>
+        <Filename Value="lDiaEditor64.lpr"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="MainForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="33" Y="9"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="5"/>
+        <CursorPos X="31" Y="28"/>
         <UsageCount Value="60"/>
+        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="uedmain.pas"/>
@@ -150,11 +157,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEdMain"/>
-        <TopLine Value="54"/>
-        <CursorPos X="45" Y="59"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="434"/>
+        <CursorPos X="37" Y="437"/>
         <UsageCount Value="60"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="uedkotetprop.pas"/>
@@ -200,10 +206,8 @@
         <Filename Value="utxtar.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTxTar"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="4"/>
         <TopLine Value="771"/>
-        <CursorPos X="50" Y="780"/>
+        <CursorPos X="39" Y="773"/>
         <UsageCount Value="60"/>
         <Loaded Value="True"/>
       </Unit6>
@@ -259,11 +263,10 @@
       <Unit14>
         <Filename Value="usound.pas"/>
         <UnitName Value="uSound"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="334"/>
         <CursorPos X="15" Y="356"/>
         <UsageCount Value="25"/>
-        <Loaded Value="True"/>
       </Unit14>
       <Unit15>
         <Filename Value="../Lib/uRoutines.pas"/>
@@ -497,10 +500,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEdSetup"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <UsageCount Value="48"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit51>
       <Unit52>
         <Filename Value="/usr/share/fpcsrc/3.0.4/packages/sndfile/src/sndfile.pp"/>
@@ -517,11 +518,10 @@
       </Unit53>
       <Unit54>
         <Filename Value="uoslib/uos_flat.pas"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="383"/>
         <CursorPos X="11" Y="383"/>
         <UsageCount Value="13"/>
-        <Loaded Value="True"/>
       </Unit54>
       <Unit55>
         <Filename Value="uappform.lfm"/>
@@ -549,134 +549,121 @@
         <CursorPos X="-1" Y="-1"/>
         <UsageCount Value="27"/>
       </Unit57>
+      <Unit58>
+        <Filename Value="lDiaEditor32.lpr"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5"/>
+        <CursorPos Y="28"/>
+        <UsageCount Value="10"/>
+      </Unit58>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="25" HistoryIndex="24">
       <Position1>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1462" TopLine="1438"/>
+        <Caret Line="1465" Column="9" TopLine="1445"/>
       </Position1>
       <Position2>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1465" TopLine="1441"/>
+        <Caret Line="1426" TopLine="1413"/>
       </Position2>
       <Position3>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1466" TopLine="1442"/>
+        <Caret Line="1427" TopLine="1413"/>
       </Position3>
       <Position4>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1465" Column="9" TopLine="1445"/>
+        <Caret Line="1428" TopLine="1413"/>
       </Position4>
       <Position5>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="423" Column="20" TopLine="401"/>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="1433" TopLine="1413"/>
       </Position5>
       <Position6>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1426" TopLine="1413"/>
+        <Caret Line="1434" TopLine="1413"/>
       </Position6>
       <Position7>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1427" TopLine="1413"/>
+        <Caret Line="1435" TopLine="1413"/>
       </Position7>
       <Position8>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1428" TopLine="1413"/>
+        <Caret Line="1436" TopLine="1413"/>
       </Position8>
       <Position9>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1433" TopLine="1413"/>
+        <Caret Line="1437" TopLine="1413"/>
       </Position9>
       <Position10>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1434" TopLine="1413"/>
+        <Caret Line="1438" TopLine="1414"/>
       </Position10>
       <Position11>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1435" TopLine="1413"/>
+        <Caret Line="1465" TopLine="1443"/>
       </Position11>
       <Position12>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1436" TopLine="1413"/>
+        <Caret Line="1398" TopLine="1384"/>
       </Position12>
       <Position13>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1437" TopLine="1413"/>
+        <Caret Line="1399" TopLine="1384"/>
       </Position13>
       <Position14>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1438" TopLine="1414"/>
+        <Caret Line="1412" Column="37" TopLine="1396"/>
       </Position14>
       <Position15>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1465" TopLine="1443"/>
+        <Caret Line="1401" TopLine="1397"/>
       </Position15>
       <Position16>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1398" TopLine="1384"/>
+        <Caret Line="1468" TopLine="1456"/>
       </Position16>
       <Position17>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1399" TopLine="1384"/>
+        <Caret Line="1397" TopLine="1382"/>
       </Position17>
       <Position18>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1412" Column="37" TopLine="1396"/>
+        <Caret Line="1398" TopLine="1382"/>
       </Position18>
       <Position19>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1401" TopLine="1397"/>
+        <Caret Line="1399" TopLine="1382"/>
       </Position19>
       <Position20>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1468" TopLine="1456"/>
+        <Caret Line="1400" TopLine="1382"/>
       </Position20>
       <Position21>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1397" TopLine="1382"/>
+        <Caret Line="1404" TopLine="1382"/>
       </Position21>
       <Position22>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1398" TopLine="1382"/>
+        <Caret Line="1316" Column="9" TopLine="1302"/>
       </Position22>
       <Position23>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1399" TopLine="1382"/>
+        <Caret Line="722" Column="31" TopLine="715"/>
       </Position23>
       <Position24>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1400" TopLine="1382"/>
+        <Caret Line="793" Column="12" TopLine="769"/>
       </Position24>
       <Position25>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1404" TopLine="1382"/>
+        <Filename Value="lDiaEditor64.lpr"/>
+        <Caret Column="33"/>
       </Position25>
-      <Position26>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="247" Column="27" TopLine="233"/>
-      </Position26>
-      <Position27>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1316" Column="9" TopLine="1302"/>
-      </Position27>
-      <Position28>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="722" Column="31" TopLine="715"/>
-      </Position28>
-      <Position29>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="793" Column="12" TopLine="769"/>
-      </Position29>
-      <Position30>
-        <Filename Value="usound.pas"/>
-        <Caret Line="345" Column="14" TopLine="335"/>
-      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>
     <Target>
-      <Filename Value="./diaeditor64"/>
+      <Filename Value="./lDiaEditor64"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
