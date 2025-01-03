@@ -518,7 +518,7 @@ var
         if (csum and $80000000)=0 then
           inc(csum,csum)
         else begin
-{$ifdef DEBUG}
+{$ifopt D+}
           csum:=csum and $7FFFFFFF;
           csum:=(csum shl 1);
           csum:=tID(int64(csum)-$A6734221);
@@ -527,7 +527,7 @@ var
 {$endif}
         end;
         if (b and $80)<>0 then inc(csum);
-{$ifdef DEBUG}
+{$ifopt D+}
         b:=b and $7F;
 {$endif}
         inc(b,b);

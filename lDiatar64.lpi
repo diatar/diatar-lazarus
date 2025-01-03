@@ -7,7 +7,7 @@
         <LRSInOutputDirectory Value="False"/>
         <CompatibilityMode Value="True"/>
       </Flags>
-      <Title Value="Diatar"/>
+      <Title Value="lDiatar64"/>
       <UseAppBundle Value="False"/>
       <Icon Value="0"/>
     </General>
@@ -162,8 +162,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="3258"/>
-        <CursorPos X="33" Y="3261"/>
+        <TopLine Value="2675"/>
+        <CursorPos X="10" Y="2694"/>
         <UsageCount Value="161"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -1563,7 +1563,7 @@
         <UsageCount Value="20"/>
       </Unit200>
     </Units>
-    <JumpHistory Count="9" HistoryIndex="8">
+    <JumpHistory Count="10" HistoryIndex="9">
       <Position1>
         <Filename Value="uappform.pas"/>
         <Caret Line="331" Column="13" TopLine="310"/>
@@ -1600,6 +1600,10 @@
         <Filename Value="umain.pas"/>
         <Caret Line="234" Column="15" TopLine="224"/>
       </Position9>
+      <Position10>
+        <Filename Value="umain.pas"/>
+        <Caret Line="3268" Column="42" TopLine="3258"/>
+      </Position10>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

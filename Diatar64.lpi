@@ -21,8 +21,100 @@
       <CharSet Value="04B0"/>
       <StringTable ProductVersion="0.0.0.2"/>
     </VersionInfo>
-    <BuildModes Count="1">
+    <BuildModes Count="3" Active="Debug">
       <Item1 Name="default" Default="True"/>
+      <Item2 Name="Debug">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value=".\Diatar64"/>
+          </Target>
+          <SearchPaths>
+            <Libraries Value="f:\Lazarus\lnet\lib\"/>
+            <OtherUnitFiles Value="..\lib;..\lnet\lazaruspackage"/>
+            <UnitOutputDirectory Value="f:\Lazarus\out"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+              <IncludeAssertionCode Value="True"/>
+              <UseAnsiStrings Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+            <VerifyObjMethodCallValidity Value="True"/>
+            <TargetCPU Value="x86_64"/>
+            <TargetOS Value="win64"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf3"/>
+              <TrashVariables Value="True"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <WriteFPCLogo Value="False"/>
+            <CustomOptions Value="-dFPC_OS_UNICODE"/>
+          </Other>
+        </CompilerOptions>
+      </Item2>
+      <Item3 Name="Release">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value=".\Diatar64"/>
+          </Target>
+          <SearchPaths>
+            <Libraries Value="f:\Lazarus\lnet\lib\"/>
+            <OtherUnitFiles Value="..\lib;..\lnet\lazaruspackage"/>
+            <UnitOutputDirectory Value="f:\Lazarus\out"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+              <UseAnsiStrings Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <TargetCPU Value="x86_64"/>
+            <TargetOS Value="win64"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <RunWithoutDebug Value="True"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <WriteFPCLogo Value="False"/>
+            <CustomOptions Value="-dFPC_OS_UNICODE"/>
+          </Other>
+        </CompilerOptions>
+      </Item3>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
@@ -107,7 +199,7 @@
         <UnitName Value="uTxTar"/>
         <EditorIndex Value="4"/>
         <TopLine Value="685"/>
-        <CursorPos X="33" Y="692"/>
+        <CursorPos X="6" Y="692"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit6>
@@ -850,9 +942,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="365"/>
-        <CursorPos Y="65"/>
+        <TopLine Value="2671"/>
+        <CursorPos X="56" Y="2693"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -1406,10 +1499,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uSplash"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
         <TopLine Value="20"/>
-        <CursorPos Y="34"/>
+        <CursorPos X="27" Y="27"/>
         <UsageCount Value="25"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -1632,123 +1724,123 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="usplash.pas"/>
-        <Caret Line="14" Column="26" TopLine="3"/>
+        <Caret Line="38" Column="38" TopLine="15"/>
       </Position1>
       <Position2>
         <Filename Value="usplash.pas"/>
-        <Caret Line="39" Column="16" TopLine="15"/>
+        <Caret Line="40" Column="20" TopLine="15"/>
       </Position2>
       <Position3>
         <Filename Value="usplash.pas"/>
-        <Caret Line="38" Column="38" TopLine="15"/>
+        <Caret Line="41" Column="32" TopLine="15"/>
       </Position3>
       <Position4>
         <Filename Value="usplash.pas"/>
-        <Caret Line="40" Column="20" TopLine="15"/>
+        <Caret Line="37" Column="8" TopLine="19"/>
       </Position4>
       <Position5>
         <Filename Value="usplash.pas"/>
-        <Caret Line="41" Column="32" TopLine="15"/>
+        <Caret Line="41" Column="26" TopLine="19"/>
       </Position5>
       <Position6>
         <Filename Value="usplash.pas"/>
-        <Caret Line="37" Column="8" TopLine="19"/>
+        <Caret Line="37" Column="11" TopLine="19"/>
       </Position6>
       <Position7>
         <Filename Value="usplash.pas"/>
-        <Caret Line="41" Column="26" TopLine="19"/>
+        <Caret Line="9" Column="28"/>
       </Position7>
       <Position8>
         <Filename Value="usplash.pas"/>
-        <Caret Line="37" Column="11" TopLine="19"/>
+        <Caret Line="41" Column="17" TopLine="19"/>
       </Position8>
       <Position9>
         <Filename Value="usplash.pas"/>
-        <Caret Line="9" Column="28"/>
+        <Caret Line="50" Column="11" TopLine="21"/>
       </Position9>
       <Position10>
         <Filename Value="usplash.pas"/>
-        <Caret Line="41" Column="17" TopLine="19"/>
+        <Caret Line="48" Column="19" TopLine="22"/>
       </Position10>
       <Position11>
         <Filename Value="usplash.pas"/>
-        <Caret Line="50" Column="11" TopLine="21"/>
+        <Caret Line="47" Column="19" TopLine="21"/>
       </Position11>
       <Position12>
         <Filename Value="usplash.pas"/>
-        <Caret Line="48" Column="19" TopLine="22"/>
+        <Caret Line="35" Column="3" TopLine="6"/>
       </Position12>
       <Position13>
         <Filename Value="usplash.pas"/>
-        <Caret Line="47" Column="19" TopLine="21"/>
+        <Caret Line="22" Column="51" TopLine="6"/>
       </Position13>
       <Position14>
         <Filename Value="usplash.pas"/>
-        <Caret Line="35" Column="3" TopLine="6"/>
+        <Caret Line="36" Column="23" TopLine="12"/>
       </Position14>
       <Position15>
         <Filename Value="usplash.pas"/>
-        <Caret Line="22" Column="51" TopLine="6"/>
+        <Caret Line="32" Column="7" TopLine="12"/>
       </Position15>
       <Position16>
-        <Filename Value="usplash.pas"/>
-        <Caret Line="36" Column="23" TopLine="12"/>
-      </Position16>
-      <Position17>
-        <Filename Value="usplash.pas"/>
-        <Caret Line="32" Column="7" TopLine="12"/>
-      </Position17>
-      <Position18>
         <Filename Value="uappform.pas"/>
         <Caret Line="165" Column="24" TopLine="159"/>
+      </Position16>
+      <Position17>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="295" Column="10" TopLine="280"/>
+      </Position17>
+      <Position18>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="317" Column="23" TopLine="304"/>
       </Position18>
       <Position19>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="295" Column="10" TopLine="280"/>
+        <Caret Line="678" Column="18" TopLine="670"/>
       </Position19>
       <Position20>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="317" Column="23" TopLine="304"/>
+        <Caret Line="295" Column="11" TopLine="279"/>
       </Position20>
       <Position21>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="678" Column="18" TopLine="670"/>
+        <Caret Line="704" Column="64" TopLine="688"/>
       </Position21>
       <Position22>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="295" Column="11" TopLine="279"/>
+        <Caret Line="721" Column="20" TopLine="691"/>
       </Position22>
       <Position23>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="704" Column="64" TopLine="688"/>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="18" Column="19" TopLine="6"/>
       </Position23>
       <Position24>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="721" Column="20" TopLine="691"/>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="39" Column="38" TopLine="22"/>
       </Position24>
       <Position25>
         <Filename Value="usplash.pas"/>
-        <Caret Line="18" Column="19" TopLine="6"/>
+        <Caret Line="51" Column="5" TopLine="29"/>
       </Position25>
       <Position26>
         <Filename Value="usplash.pas"/>
-        <Caret Line="39" Column="38" TopLine="22"/>
+        <Caret Line="49" TopLine="29"/>
       </Position26>
       <Position27>
         <Filename Value="usplash.pas"/>
-        <Caret Line="51" Column="5" TopLine="29"/>
+        <Caret Line="41" Column="8" TopLine="29"/>
       </Position27>
       <Position28>
         <Filename Value="usplash.pas"/>
-        <Caret Line="49" TopLine="29"/>
+        <Caret Line="39" Column="26" TopLine="22"/>
       </Position28>
       <Position29>
-        <Filename Value="usplash.pas"/>
-        <Caret Line="41" Column="8" TopLine="29"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="65" TopLine="365"/>
       </Position29>
       <Position30>
-        <Filename Value="usplash.pas"/>
-        <Caret Line="39" Column="26" TopLine="22"/>
+        <Filename Value="umain.pas"/>
+        <Caret TopLine="145"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>

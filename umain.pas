@@ -2689,8 +2689,9 @@ begin
   dec(fShowOrderTmr);
   if fShowOrderTmr<0 then begin
     fShowOrderTmr:=200 div Tmr.Interval;
-    if not Globals.HideMain and not ScrollState and (WindowState<>wsMinimized) and not InResizing then
-      BringToFront;
+    if not Globals.HideMain and not ScrollState and (WindowState<>wsMinimized)
+       and not InResizing and Assigned(ProjektedForm) and ProjektedForm.Active
+    then BringToFront;
   end;
 
   if Globals.StrikeProjektSignal then begin
