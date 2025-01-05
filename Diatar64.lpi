@@ -21,7 +21,7 @@
       <CharSet Value="04B0"/>
       <StringTable ProductVersion="0.0.0.2"/>
     </VersionInfo>
-    <BuildModes Count="3" Active="Release">
+    <BuildModes Count="3" Active="Debug">
       <Item1 Name="default" Default="True"/>
       <Item2 Name="Debug">
         <CompilerOptions>
@@ -1424,7 +1424,7 @@
         <EditorIndex Value="1"/>
         <TopLine Value="169"/>
         <CursorPos X="19" Y="194"/>
-        <UsageCount Value="97"/>
+        <UsageCount Value="99"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit163>
@@ -1448,13 +1448,13 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="331"/>
         <CursorPos X="21" Y="354"/>
-        <UsageCount Value="97"/>
+        <UsageCount Value="99"/>
       </Unit166>
       <Unit167>
         <Filename Value="uHtml.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="97"/>
+        <UsageCount Value="99"/>
       </Unit167>
       <Unit168>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
@@ -1502,7 +1502,7 @@
         <EditorIndex Value="5"/>
         <TopLine Value="20"/>
         <CursorPos X="27" Y="27"/>
-        <UsageCount Value="25"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit173>
