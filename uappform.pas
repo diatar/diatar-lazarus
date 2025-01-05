@@ -202,6 +202,7 @@ begin
   FreeAndNil(CommBtns);
   FreeAndNil(SerialIOForm);
   Application.RemoveAllHandlersOfObject(Self);
+  FreeKottaBmps;
 end;
 
 {$ifdef WINDOWS}
