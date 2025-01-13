@@ -487,7 +487,8 @@ begin
     fFound:=f;
     exit;
   end;
-  AddLine('??? <p class="strong">'+AllTxt(fCurrTag)+'</p>');
+  StartVers('Ima');
+  AddLine(s);
 end;
 
 procedure tBreviarDecoder.DoReading;
