@@ -64,6 +64,7 @@ var
   tf : TextFile;
   s : RawByteString;
   origdir,fname : string;
+  hasbreviardir : boolean;
 {$ifdef UNIX}
   function XmlOk(const path,fname : string) : boolean;
   begin
@@ -108,19 +109,26 @@ begin
   {$I-} Reset(tf); {$I+}
   if IOResult=0 then begin
     origdir:=GetCurrentDirUTF8(); SetCurrentDirUTF8(ProgDir);
+    hasbreviardir:=false;
     try
       while not eof(tf) do begin
         ReadLn(tf,s); if not IsUTF8(s) then s:=WinCPToUTF8(s);
         if copy(s,1,7)='DtxDir=' then fDtxDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,8,9999)));
         if copy(s,1,7)='RegDir=' then fRegDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,8,9999)));
         if copy(s,1,7)='DiaDir=' then fDiaDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,8,9999)));
-        if copy(s,1,11)='BreviarDir=' then fBreviarDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,12,9999)));
+        if copy(s,1,11)='BreviarDir=' then begin
+          fBreviarDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,12,9999)));
+          hasbreviardir:=true;
+        end;
       end;
       CloseFile(tf);
+      if not hasbreviardir then fBreviarDir:=fDtxDir;
     finally
       SetCurrentDirUTF8(origdir);
     end;
   end;
+
+  if not DirectoryIsWritable(fBreviarDir) then fBreviarDir:=GetUserDir;
 end;
 
 end.
