@@ -139,12 +139,13 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="198">
+    <Units Count="199">
       <Unit0>
         <Filename Value="Diatar64.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <CursorPos Y="26"/>
+        <TopLine Value="4"/>
+        <CursorPos X="48" Y="22"/>
         <UsageCount Value="200"/>
       </Unit0>
       <Unit1>
@@ -155,8 +156,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAppForm"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="159"/>
-        <CursorPos X="25" Y="165"/>
+        <TopLine Value="132"/>
+        <CursorPos X="26" Y="327"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit1>
@@ -196,7 +197,7 @@
         <Filename Value="utxtar.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTxTar"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="7"/>
         <TopLine Value="492"/>
         <CursorPos X="3" Y="497"/>
         <UsageCount Value="200"/>
@@ -206,10 +207,11 @@
         <Filename Value="uglobals.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uGlobals"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="741"/>
-        <CursorPos X="14" Y="763"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="7"/>
+        <CursorPos X="46" Y="30"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit7>
       <Unit8>
         <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\objpas\classes\stringl.inc"/>
@@ -392,7 +394,7 @@
         <CursorPos X="43" Y="13"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <DefaultSyntaxHighlighter Value="None"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
       </Unit27>
       <Unit28>
         <Filename Value="unetwork.pas"/>
@@ -1091,10 +1093,12 @@
         <Filename Value="udiatariniloader.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uDiatarIniLoader"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="68"/>
-        <CursorPos X="86" Y="80"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="104"/>
+        <CursorPos Y="133"/>
         <UsageCount Value="202"/>
+        <Loaded Value="True"/>
       </Unit119>
       <Unit120>
         <Filename Value="winuser.pas"/>
@@ -1377,9 +1381,8 @@
       <Unit158>
         <Filename Value="uRoutines.pas"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="147"/>
-        <CursorPos X="3" Y="164"/>
-        <UsageCount Value="4"/>
+        <TopLine Value="148"/>
+        <UsageCount Value="10"/>
       </Unit158>
       <Unit159>
         <Filename Value="C:\lazarus\lcl\lmessages.pp"/>
@@ -1420,9 +1423,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uZsolozsmaForm"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="169"/>
-        <CursorPos X="19" Y="194"/>
-        <UsageCount Value="99"/>
+        <TopLine Value="216"/>
+        <CursorPos X="26" Y="233"/>
+        <UsageCount Value="100"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit163>
@@ -1443,18 +1446,17 @@
       <Unit166>
         <Filename Value="uDecodeBreviar.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <TopLine Value="474"/>
         <CursorPos X="14" Y="491"/>
-        <UsageCount Value="99"/>
+        <UsageCount Value="100"/>
         <Loaded Value="True"/>
       </Unit166>
       <Unit167>
         <Filename Value="uHtml.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="99"/>
+        <UsageCount Value="100"/>
       </Unit167>
       <Unit168>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
@@ -1499,10 +1501,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uSplash"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="8"/>
         <TopLine Value="20"/>
         <CursorPos X="27" Y="27"/>
-        <UsageCount Value="27"/>
+        <UsageCount Value="28"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit173>
@@ -1727,126 +1729,133 @@
         <CursorPos X="10" Y="201"/>
         <UsageCount Value="10"/>
       </Unit197>
+      <Unit198>
+        <Filename Value="C:\lazarus64\components\lazutils\lazfileutils.pas"/>
+        <UnitName Value="LazFileUtils"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="104"/>
+        <CursorPos X="10" Y="110"/>
+        <UsageCount Value="10"/>
+      </Unit198>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="usplash.pas"/>
-        <Caret Line="32" Column="7" TopLine="12"/>
+        <Caret Line="51" Column="5" TopLine="29"/>
       </Position1>
       <Position2>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="165" Column="24" TopLine="159"/>
-      </Position2>
-      <Position3>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="295" Column="10" TopLine="280"/>
-      </Position3>
-      <Position4>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="317" Column="23" TopLine="304"/>
-      </Position4>
-      <Position5>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="678" Column="18" TopLine="670"/>
-      </Position5>
-      <Position6>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="295" Column="11" TopLine="279"/>
-      </Position6>
-      <Position7>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="704" Column="64" TopLine="688"/>
-      </Position7>
-      <Position8>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="721" Column="20" TopLine="691"/>
-      </Position8>
-      <Position9>
-        <Filename Value="usplash.pas"/>
-        <Caret Line="18" Column="19" TopLine="6"/>
-      </Position9>
-      <Position10>
-        <Filename Value="usplash.pas"/>
-        <Caret Line="39" Column="38" TopLine="22"/>
-      </Position10>
-      <Position11>
-        <Filename Value="usplash.pas"/>
-        <Caret Line="51" Column="5" TopLine="29"/>
-      </Position11>
-      <Position12>
         <Filename Value="usplash.pas"/>
         <Caret Line="49" TopLine="29"/>
-      </Position12>
-      <Position13>
+      </Position2>
+      <Position3>
         <Filename Value="usplash.pas"/>
         <Caret Line="41" Column="8" TopLine="29"/>
-      </Position13>
-      <Position14>
+      </Position3>
+      <Position4>
         <Filename Value="usplash.pas"/>
         <Caret Line="39" Column="26" TopLine="22"/>
+      </Position4>
+      <Position5>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2690" Column="28" TopLine="2683"/>
+      </Position5>
+      <Position6>
+        <Filename Value="umain.pas"/>
+      </Position6>
+      <Position7>
+        <Filename Value="umain.pas"/>
+        <Caret Line="75" Column="9" TopLine="49"/>
+      </Position7>
+      <Position8>
+        <Filename Value="umain.pas"/>
+        <Caret Line="122" Column="9" TopLine="97"/>
+      </Position8>
+      <Position9>
+        <Filename Value="umain.pas"/>
+        <Caret Line="168" Column="19" TopLine="143"/>
+      </Position9>
+      <Position10>
+        <Filename Value="umain.pas"/>
+        <Caret Line="220" Column="19" TopLine="207"/>
+      </Position10>
+      <Position11>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2041" Column="55" TopLine="2032"/>
+      </Position11>
+      <Position12>
+        <Filename Value="umain.pas"/>
+        <Caret Line="220" Column="14" TopLine="206"/>
+      </Position12>
+      <Position13>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2041" Column="42" TopLine="2016"/>
+      </Position13>
+      <Position14>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2047" Column="48" TopLine="2026"/>
       </Position14>
       <Position15>
         <Filename Value="umain.pas"/>
-        <Caret Line="2690" Column="28" TopLine="2683"/>
+        <Caret Line="1942" Column="17" TopLine="1926"/>
       </Position15>
       <Position16>
         <Filename Value="umain.pas"/>
+        <Caret Line="218" Column="14" TopLine="204"/>
       </Position16>
       <Position17>
         <Filename Value="umain.pas"/>
-        <Caret Line="75" Column="9" TopLine="49"/>
+        <Caret Line="1942" Column="13" TopLine="1924"/>
       </Position17>
       <Position18>
-        <Filename Value="umain.pas"/>
-        <Caret Line="122" Column="9" TopLine="97"/>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="290" Column="10" TopLine="274"/>
       </Position18>
       <Position19>
         <Filename Value="umain.pas"/>
-        <Caret Line="168" Column="19" TopLine="143"/>
+        <Caret Line="1942" Column="13" TopLine="1924"/>
       </Position19>
       <Position20>
-        <Filename Value="umain.pas"/>
-        <Caret Line="220" Column="19" TopLine="207"/>
-      </Position20>
-      <Position21>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2041" Column="55" TopLine="2032"/>
-      </Position21>
-      <Position22>
-        <Filename Value="umain.pas"/>
-        <Caret Line="220" Column="14" TopLine="206"/>
-      </Position22>
-      <Position23>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2041" Column="42" TopLine="2016"/>
-      </Position23>
-      <Position24>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2047" Column="48" TopLine="2026"/>
-      </Position24>
-      <Position25>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1942" Column="17" TopLine="1926"/>
-      </Position25>
-      <Position26>
-        <Filename Value="umain.pas"/>
-        <Caret Line="218" Column="14" TopLine="204"/>
-      </Position26>
-      <Position27>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1942" Column="13" TopLine="1924"/>
-      </Position27>
-      <Position28>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="290" Column="10" TopLine="274"/>
-      </Position28>
-      <Position29>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1942" Column="13" TopLine="1924"/>
-      </Position29>
-      <Position30>
         <Filename Value="uDecodeBreviar.pas"/>
         <Caret Line="337" Column="58" TopLine="331"/>
+      </Position20>
+      <Position21>
+        <Filename Value="uappform.pas"/>
+        <Caret Line="335" Column="61" TopLine="315"/>
+      </Position21>
+      <Position22>
+        <Filename Value="uappform.pas"/>
+      </Position22>
+      <Position23>
+        <Filename Value="uappform.pas"/>
+        <Caret Line="119" Column="21" TopLine="93"/>
+      </Position23>
+      <Position24>
+        <Filename Value="uappform.pas"/>
+        <Caret Line="176" Column="11" TopLine="151"/>
+      </Position24>
+      <Position25>
+        <Filename Value="udiatariniloader.pas"/>
+        <Caret Line="56" Column="25" TopLine="52"/>
+      </Position25>
+      <Position26>
+        <Filename Value="udiatariniloader.pas"/>
+        <Caret Line="82" Column="18" TopLine="76"/>
+      </Position26>
+      <Position27>
+        <Filename Value="uglobals.pas"/>
+        <Caret Line="769" Column="34" TopLine="753"/>
+      </Position27>
+      <Position28>
+        <Filename Value="uglobals.pas"/>
+        <Caret Line="30" Column="46" TopLine="7"/>
+      </Position28>
+      <Position29>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="194" Column="19" TopLine="40"/>
+      </Position29>
+      <Position30>
+        <Filename Value="udiatariniloader.pas"/>
+        <Caret Line="132" TopLine="106"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
