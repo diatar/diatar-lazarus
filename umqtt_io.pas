@@ -34,6 +34,12 @@ type
       fTCPComp : tLTCPComponent;
       fIsOpen : boolean;
       fIsSender : boolean;
+      fTopicNumber : integer;         //csatorna azonosito
+      fTopicGroup : string;           //teljes csatorna neve
+      fTopicMask : string;            //csatorna maszk
+      fTopicState : string;           //statusz uzenet alcsatorna
+      fTopicBlank : string;           //hatterkep alcsatorna
+      fTopicDia : string;             //dia kep/szoveg alcsatorna
 
       //TCPComp esemenyei
       procedure TCPCompAccept(aSocket: TLSocket);
@@ -42,11 +48,12 @@ type
       procedure TCPCompError(const msg: string; aSocket: TLSocket);
       procedure TCPCompReceive(aSocket: TLSocket);
 
-      procedure TCPOpen;
-      procedure TCPClose;
-      procedure TCPAttach;
-      procedure TCPSend(const mqtt : tMQTT_Message);
-      procedure TCPRespond(const mqtt : tMQTT_Message);
+      //MQTT kapcsolat
+      procedure MQTTOpen;
+      procedure MQTTClose;
+      procedure MQTTAttach;
+      procedure MQTTSend(const mqtt : tMQTT_Message);
+      procedure MQTTRespond(const mqtt : tMQTT_Message);
 
       //MQTT kuldes
       procedure SendConnect;
@@ -57,6 +64,13 @@ type
       procedure ProcessPic(buf : pUInt8; size : Integer; isblankpic : boolean);
       procedure ProcessTxt(buf : pUInt8; size : Integer);
     public
+      property TopicNumber : integer read fTopicNumber write fTopicNumber;
+      property TopicGroup : string read fTopicGroup;
+      property TopicMask : string read fTopicMask;
+      property TopicState : string read fTopicState;
+      property TopicBlank : string read fTopicBlank;
+      property TopicDia : string read fTopicDia;
+
       constructor Create;
       destructor Destroy; override;
 
@@ -77,15 +91,9 @@ implementation
 uses uMain, uNetBase, uNetwork, uGlobals,
   LazUTF8, LazLoggerBase;
 
+//fogado puffert ekkora lepesekben noveljuk
 const
   RECBUFMAX             = 1024;
-
-const
-  TOPICGROUP = 'Diatar/test2/';
-  TOPICNAME_MASK = TOPICGROUP+'#';
-  TOPICNAME_STATE = TOPICGROUP+'state';
-  TOPICNAME_BLANK = TOPICGROUP+'blank';
-  TOPICNAME_DIA = TOPICGROUP+'dia';
 
 constructor tMQTT_IO.Create;
 begin
@@ -101,26 +109,35 @@ end;
 
 destructor tMQTT_IO.Destroy;
 begin
-  TCPClose;
+  MQTTClose;
   fTCPComp.Free;
   inherited;
 end;
 
+//publikus megnyitas
 procedure tMQTT_IO.Open(issender : boolean);
 begin
   fIsSender:=issender;
-  TCPOpen;
+  fTopicGroup:='Diatar/'+IntToStr(fTopicNumber)+'/';
+  fTopicMask:=fTopicGroup+'#';
+  fTopicState:=fTopicGroup+'state';
+  fTopicBlank:=fTopicGroup+'blank';
+  fTopicDia:=fTopicGroup+'dia';
+  MQTTOpen;
 end;
 
+//publikus lezaras
 procedure tMQTT_IO.Close;
 begin
-  TCPClose;
+  MQTTClose;
 end;
 
+//szerver fogad egy bejovo hivast - jelenleg nem hasznaljuk
 procedure tMQTT_IO.TCPCompAccept(aSocket: TLSocket);
 begin
 end;
 
+//kliens kapcsolodott
 procedure tMQTT_IO.TCPCompConnect(aSocket: TLSocket);
 begin
   fIsOpen:=true;
@@ -128,17 +145,20 @@ begin
   SendConnect;
 end;
 
+//kliens levalt
 procedure tMQTT_IO.TCPCompDisconnect(aSocket: TLSocket);
 begin
   DebugLn('MQTT: Tcp Disconnected');
 end;
 
+//kommunikacios hiba tortent
 procedure tMQTT_IO.TCPCompError(const msg: string; aSocket: TLSocket);
 begin
   MainForm.ShowError('MQTT TcpError: '+msg);
   DebugLn('MQTT: Tcp Error -> '+msg);
 end;
 
+//adat erkezett
 procedure tMQTT_IO.TCPCompReceive(aSocket: TLSocket);
 var
   buf : tMQTT_Buffer;
@@ -148,15 +168,16 @@ var
   txt : string;
 
 begin
+  //addig olvasunk, mig van mit
   bufsize:=0;
   buf:=nil;
   repeat
-    if Length(buf) < bufsize + RECBUFMAX then
-      SetLength(buf, Length(buf) + RECBUFMAX);
+    if Length(buf) < bufsize + RECBUFMAX then SetLength(buf, Length(buf) + RECBUFMAX);
     len:=aSocket.Get(buf[bufsize], RECBUFMAX);
     inc(bufsize,len);
   until len<=0;
 
+  //megprobaljuk dekodolni
   mqtt:=tMQTT_Message.Create;
   try
     merr:=mqtt.Decode(buf);
@@ -176,31 +197,35 @@ begin
       MainForm.ShowError(txt);
       exit;
     end;
-    TCPRespond(mqtt);
+    MQTTRespond(mqtt);     //milyen reakciot igenyel?
   finally
     mqtt.Free;
   end;
 end;
 
-procedure tMQTT_IO.TCPOpen;
+//MQTT szerverrel kommunikacio megnyitasa
+procedure tMQTT_IO.MQTTOpen;
 begin
   DebugLn('MQTT: Tcp Open');
-  TCPClose;
-  TCPAttach;
+  MQTTClose;
+  MQTTAttach;
 end;
 
-procedure tMQTT_IO.TCPClose;
+//MQTT szerverrel zarjuk a kapcsolatot
+procedure tMQTT_IO.MQTTClose;
 begin
   fIsOpen:=false;
   fTCPComp.Disconnect();
 end;
 
-procedure tMQTT_IO.TCPAttach;
+//MQTT szerverhez csatlakozzunk
+procedure tMQTT_IO.MQTTAttach;
 begin
   fTCPComp.Connect('mqtt.eclipseprojects.io',1883);
 end;
 
-procedure tMQTT_IO.TCPSend(const mqtt : tMQTT_Message);
+//MQTT szervernek kuldjunk egy uzenetet
+procedure tMQTT_IO.MQTTSend(const mqtt : tMQTT_Message);
 var
   buf : tMQTT_Buffer;
   len : integer;
@@ -210,7 +235,8 @@ begin
   if len>0 then fTCPComp.Send(buf[0],len);
 end;
 
-procedure tMQTT_IO.TCPRespond(const mqtt : tMQTT_Message);
+//MQTT szervernek valaszoljunk egy uzenetre
+procedure tMQTT_IO.MQTTRespond(const mqtt : tMQTT_Message);
   procedure SendResp(msg : UInt8; pid : UInt16 = 0);
   var
     mqttresp : tMQTT_Message;
@@ -220,7 +246,7 @@ procedure tMQTT_IO.TCPRespond(const mqtt : tMQTT_Message);
       mqttresp.MessageType:=msg;
       mqttresp.PacketId:=pid;
       mqttresp.CalcRemLen();
-      TCPSend(mqttresp);
+      MQTTSend(mqttresp);
     finally
       mqttresp.Free;
     end;
@@ -231,22 +257,23 @@ begin
 
   if mqtt.MessageType=mqttPUBLISH then ProcessPublish(mqtt);
 
-  if mqtt.MessageType=mqttCONNACK then begin
-    if not fIsSender then SendSubscribe;
+  if mqtt.MessageType=mqttCONNACK then begin  //csatlakozas elfogadva
+    if not fIsSender then SendSubscribe; //ha fogado vagyunk, feliratkozunk
     exit;
-  end else if mqtt.MessageType=mqttPINGREQ then begin
+  end else if mqtt.MessageType=mqttPINGREQ then begin  //csak megszolitottak
     SendResp(mqttPINGRESP);
-  end else if (mqtt.MessageType=mqttPUBLISH) and (mqtt.QoS=1) then begin
+  end else if (mqtt.MessageType=mqttPUBLISH) and (mqtt.QoS=1) then begin  //handshake
     SendResp(mqttPUBACK, mqtt.PacketId);
-  end else if (mqtt.MessageType=mqttPUBLISH) and (mqtt.QoS=2) then begin
+  end else if (mqtt.MessageType=mqttPUBLISH) and (mqtt.QoS=2) then begin  //handshake
     SendResp(mqttPUBREC, mqtt.PacketId);
-  end else if (mqtt.MessageType=mqttPUBREC) then begin
+  end else if (mqtt.MessageType=mqttPUBREC) then begin  //handshake
     SendResp(mqttPUBREL, mqtt.PacketId);
-  end else if (mqtt.MessageType=mqttPUBREL) then begin
+  end else if (mqtt.MessageType=mqttPUBREL) then begin  //handshake
     SendResp(mqttPUBCOMP, mqtt.PacketId);
   end;
 end;
 
+//MQTT CONNECT kuldese
 procedure tMQTT_IO.SendConnect;
 var
   mqtt : tMQTT_Message;
@@ -259,12 +286,13 @@ begin
     if fIsSender then mqtt.ClientId:='DiatarTest2K' else mqtt.ClientId:='DiatarTest2F';
     mqtt.CalcRemLen();
 
-    TCPSend(mqtt);
+    MQTTSend(mqtt);
   finally
     mqtt.Free;
   end;
 end;
 
+//MQTT SUBSCRIBE kuldese
 procedure tMQTT_IO.SendSubscribe;
 var
   mqtt : tMQTT_Message;
@@ -275,16 +303,17 @@ begin
     mqtt.MessageType:=mqttSUBSCRIBE;
     mqtt.PacketId:=1;
     SetLength(f,1);
-    f[0].Topic:=TOPICNAME_MASK; f[0].QoS:=0;
+    f[0].Topic:=fTopicMask; f[0].QoS:=0;
     mqtt.Filters:=f;
     mqtt.CalcRemLen();
 
-    TCPSend(mqtt);
+    MQTTSend(mqtt);
   finally
     mqtt.Free;
   end;
 end;
 
+//MQTT PUBLISH erkezett
 procedure tMQTT_IO.ProcessPublish(const mqtt : tMQTT_Message);
 var
   StateRec : pnrState;
@@ -294,13 +323,13 @@ begin
   DebugLn('MQTT: Received in topic '+mqtt.TopicName);
   len:=Length(mqtt.ApplicationMessage);
   if len<=0 then exit;
-  if mqtt.TopicName=TOPICNAME_BLANK then begin
+  if mqtt.TopicName=fTopicBlank then begin
     ProcessPic(@mqtt.ApplicationMessage[0],len,true);
-  end else if mqtt.TopicName=TOPICNAME_STATE then begin
+  end else if mqtt.TopicName=fTopicState then begin
     if len<SizeOf(nrState) then exit;
     StateRec:=@mqtt.ApplicationMessage[0];
     Network.RecState(StateRec^);
-  end else if mqtt.TopicName=TOPICNAME_DIA then begin
+  end else if mqtt.TopicName=fTopicDia then begin
     if mqtt.ApplicationMessage[0]=ord('P') then begin
       ProcessPic(@mqtt.ApplicationMessage[1],len-1,false);
     end else if mqtt.ApplicationMessage[0]=ord('T') then begin
@@ -309,6 +338,7 @@ begin
   end;
 end;
 
+//bejovo kep feldolgozasa
 procedure tMQTT_IO.ProcessPic(buf : pUInt8; size : Integer; isblankpic : boolean);
 var
   ext : nrFileExt;
@@ -334,6 +364,7 @@ begin
   end;
 end;
 
+//bejovo szoveg feldolgozasa
 procedure tMQTT_IO.ProcessTxt(buf : pUInt8; size : Integer);
 var
   s,scholaline : AnsiString;
@@ -361,6 +392,7 @@ begin
   end;
 end;
 
+//kep kuldese
 procedure tMQTT_IO.SendPic(const fname: string; isblankpic : boolean = false);
 var
   fulldata : PUInt8;    //az adatterulet cime
@@ -409,15 +441,16 @@ begin
   try
     mqtt.MessageType:=mqttPUBLISH;
     mqtt.DUP:=false; mqtt.QoS:=0; mqtt.RETAIN:=true;
-    if isblankpic then mqtt.TopicName:=TOPICNAME_BLANK else mqtt.TopicName:=TOPICNAME_DIA;
+    if isblankpic then mqtt.TopicName:=fTopicBlank else mqtt.TopicName:=fTopicDia;
     mqtt.ApplicationMessage:=msg;
     mqtt.CalcRemLen();
-    TCPSend(mqtt);
+    MQTTSend(mqtt);
   finally
     mqtt.Free;
   end;
 end;
 
+//szoveg kuldese
 procedure tMQTT_IO.SendText(Txt: tLiteralBase; const ScholaLine: string);
 var
   s : AnsiString;
@@ -440,15 +473,16 @@ begin
   try
     mqtt.MessageType:=mqttPUBLISH;
     mqtt.DUP:=false; mqtt.QoS:=0; mqtt.RETAIN:=true;
-    mqtt.TopicName:=TOPICNAME_DIA;
+    mqtt.TopicName:=fTopicDia;
     mqtt.ApplicationMessage:=msg;
     mqtt.CalcRemLen();
-    TCPSend(mqtt);
+    MQTTSend(mqtt);
   finally
     mqtt.Free;
   end;
 end;
 
+//statusz kikuldese
 procedure tMQTT_IO.StateChanged;
 var
   buf : nrState;
@@ -463,17 +497,18 @@ begin
   try
     mqtt.MessageType:=mqttPUBLISH;
     mqtt.DUP:=false; mqtt.QoS:=0; mqtt.RETAIN:=true;
-    mqtt.TopicName:=TOPICNAME_STATE;
+    mqtt.TopicName:=fTopicState;
     SetLength(msg,sizeof(buf));
     Move(buf,msg[0],sizeof(buf));
     mqtt.ApplicationMessage:=msg;
     mqtt.CalcRemLen();
-    TCPSend(mqtt);
+    MQTTSend(mqtt);
   finally
     mqtt.Free;
   end;
 end;
 
+//hatterkep valtozott
 procedure tMQTT_IO.BlankChanged;
 begin
   if not fIsSender or not fIsOpen then exit;
