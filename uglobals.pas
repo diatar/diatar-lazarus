@@ -31,7 +31,7 @@ uses Classes, Forms, Controls, SysUtils, Contnrs, Graphics,
   Dialogs, LCLType, LazFileUtils, LazUTF8;
 
 // uj valtozo felvetele:
-// 1. tProfil.XXX valtozo vagy tGlobals.fXXX valtozo definialas
+// 1. tProfil.XXX valtozo vagy tGlobalVars.fXXX valtozo definialas
 // 2. procedure SetXXX deklaracio
 // 3. property XXX
 // 4. SetXXX megirasa
@@ -272,6 +272,7 @@ type
     fSaveCnt : integer;                               //0..5 (le=save, fel=overwr)
     fKottaCnt : integer;                 //b0..2=hatter, b3..5=kotta. b6..9=hang
     fShutdownCmd : string;                            //linux shutdown parancs
+    fMqttId : integer;                                //Diatar egyedi MQTT azonositoja
   end;
 
 //a tGlobals objektum osztaly:
@@ -449,6 +450,7 @@ type
     procedure SetBackTransPerc(NewValue : integer);
     procedure SetBlankTransPerc(NewValue : integer);
     procedure SetAutoSave(NewValue : boolean);
+    procedure SetMqttId(NewValue : integer);
   public
     property ProgDir : string read fProgDir;
     property DtxDir : string read fDtxDir;
@@ -586,6 +588,7 @@ type
     property BackTransPerc : integer read fActProfil.BackTransPerc write SetBackTransPerc;
     property BlankTransPerc : integer read fActProfil.BlankTransPerc write SetBlankTransPerc;
     property AutoSave : boolean read fActProfil.AutoSave write SetAutoSave;
+    property MqttId : integer read fV.fMqttId write SetMqttId;
 
     property DtxFlags[Index: integer]: tDtxFlags read GetDtxFlags write SetDtxFlags;
     property DtxVisible[Index: integer]: boolean
@@ -1842,6 +1845,13 @@ begin
   GlobalVarModified;
 end;
 
+procedure tGlobals.SetMqttId(NewValue : integer);
+begin
+  if NewValue=fV.fMqttId then exit;
+  fV.fMqttId:=NewValue;
+  GlobalVarModified;
+end;
+
 {***** modify events ********************************}
 procedure tGlobals.ModEvent;
 begin
@@ -1930,6 +1940,7 @@ begin
   fV.fSaveCnt:=0;
   fV.fKottaCnt:=0;
   fV.fShutdownCmd:='shutdown -P now';
+  fV.fMqttId:=0;
 
   fProfilCount := 1;
   SetLength(fProfiles, 1);
@@ -2650,6 +2661,8 @@ var
     end;
     if Reg.ValueExists('ScholaMode') then ScholaMode := Reg.ReadBool('ScholaMode');
     if Reg.ValueExists('KorusMode') then KorusMode := Reg.ReadBool('KorusMode');
+    if Reg.GetDataType('MqttId')=rdInteger then
+      MqttId:=Reg.ReadInteger('MqttId');
 
     r := BorderRect;
     LoadRect(r, 'Border');
@@ -3102,6 +3115,7 @@ begin
         SaveRegString('SerialProj'+IntToStr(i), SerialProjTxt[i]);
       Reg.WriteBool('ScholaMode', ScholaMode);
       Reg.WriteBool('KorusMode', KorusMode);
+      Reg.WriteInteger('MqttId', MqttId);
 
       i := 0;
       while Reg.KeyExists('Profil' + IntToStr(i)) do
