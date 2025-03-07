@@ -101,7 +101,7 @@ uses
   Forms, Controls, Graphics, Dialogs;
 
 const
-  VERSION = 'v13.0 - ß2';
+  VERSION = 'v13.0';
   VERSIONDATE = '2005-24';
 
 type
@@ -117,6 +117,7 @@ type
     { private declarations }
     procedure AppException(Sender : tObject; Err : Exception);
     procedure LoadGlobalsSetup;
+    procedure AcquireMqttId;
     procedure AppMinimize(Sender : tObject);
     procedure AppRestore(Sender : tObject);
   public
@@ -134,7 +135,7 @@ implementation
 //    kivenni a "Win32 GUI" pipat
 
 uses
-  LazLogger,
+  LazLogger, fphttpclient,openssl,opensslsockets,
   uRoutines,
   uMain,uSerialIOForm,uSymbolForm,uMonitors,uProjektedForm,
   uGlobals,uSelectProfil,uKottaKepek,uNetwork,uCommBtns,uMQTT_IO,
@@ -172,6 +173,7 @@ begin
   if FindCmdLineSwitch('AKKORD',['-','/'],true) then Globals.CmdLineAkkord:=true;
   if FindCmdLineSwitch('KOTTA',['-','/'],true) then Globals.CmdLineKotta:=true;
   if FindCmdLineSwitch('KULDO',['-','/'],true) then IsMQTTSender:=true;
+
   LoadGlobalsSetup;
 
   //Application.TaskBarBehavior:=tbSingleButton;
@@ -331,6 +333,41 @@ begin
     ix:=LoginToProfil(Globals.StartProfilIndex);
     if ix<0 then Application.Terminate;
     Globals.ProfilIndex:=ix;
+  end;
+  if Globals.MqttId=0 then AcquireMqttId;
+end;
+
+procedure tAppForm.AcquireMqttId;
+var
+  ss : tStringStream;
+  http : TFPHTTPClient;
+  id : integer;
+begin
+  if not InitSSLInterface then exit; //nem talalhato az OpenSLL
+  ss:=TStringStream.Create();
+  try
+    DebugLn('HTTP Client create');
+    http:=TFPHTTPClient.Create(Self);
+    try
+      try
+        http.ConnectTimeout:=3000;
+        http.IOTimeout:=15000;
+        http.AllowRedirect:=true;
+        http.AddHeader('User-Agent','Mozilla/5.0 (compatible; fpweb)');
+        DebugLn('HTTP Client GET');
+        http.Get('https://diatar.eu/mqtt/generate_id.php', ss);
+      except
+        exit;
+      end;
+    finally
+      http.Free;
+    end;
+    DebugLn('HTTP Client finished.');
+    id:=StrToInt(ss.DataString);
+    if (id<100000) or (id>999999) then exit;
+    Globals.MqttId:=id;
+  finally
+    ss.Free;
   end;
 end;
 

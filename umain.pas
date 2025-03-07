@@ -475,7 +475,12 @@ begin
   if not Globals.SerialAskOn or (QuestBox('Bekapcsoljuk a projektort?')=idYes) then
     ProcessSerialOn;
 
+  if Globals.MqttId>0 then begin
+    MQTT_IO.TopicNumber:=Globals.MqttId;
     MQTT_IO.Open(IsMQTTSender);
+  end else begin
+    ShowError('Internet elérési hiba!');
+  end;
 end;
 
 procedure TMainForm.FormDeactivate(Sender: TObject);
