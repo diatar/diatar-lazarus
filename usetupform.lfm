@@ -1,12 +1,12 @@
 object SetupForm: TSetupForm
   Left = 380
-  Height = 464
+  Height = 534
   Top = 156
   Width = 700
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Beállítások'
-  ClientHeight = 464
+  ClientHeight = 534
   ClientWidth = 700
   Font.CharSet = 4
   KeyPreview = True
@@ -32,7 +32,7 @@ object SetupForm: TSetupForm
   end
   object CategLst: TTreeView
     Left = 4
-    Height = 453
+    Height = 525
     Top = 3
     Width = 204
     ParentFont = False
@@ -88,9 +88,9 @@ object SetupForm: TSetupForm
     TabOrder = 2
   end
   object OkBtn: TBitBtn
-    Left = 320
+    Left = 312
     Height = 30
-    Top = 426
+    Top = 498
     Width = 83
     Caption = '&OK'
     Default = True
@@ -99,9 +99,9 @@ object SetupForm: TSetupForm
     TabOrder = 3
   end
   object CancelBtn: TBitBtn
-    Left = 416
+    Left = 408
     Height = 30
-    Top = 426
+    Top = 498
     Width = 88
     Cancel = True
     Caption = 'Mégsem'
@@ -111,15 +111,15 @@ object SetupForm: TSetupForm
   end
   object PgFrm: TPageControl
     Left = 212
-    Height = 388
+    Height = 460
     Top = 32
     Width = 481
-    ActivePage = PgShow
-    TabIndex = 0
+    ActivePage = PgProj
+    TabIndex = 1
     TabOrder = 5
     object PgShow: TTabSheet
       Caption = 'PgShow'
-      ClientHeight = 360
+      ClientHeight = 432
       ClientWidth = 473
       object Label14: TLabel
         Left = 16
@@ -261,7 +261,7 @@ object SetupForm: TSetupForm
     end
     object PgProj: TTabSheet
       Caption = 'PgProj'
-      ClientHeight = 360
+      ClientHeight = 432
       ClientWidth = 473
       object Label5: TLabel
         Left = 2
@@ -732,10 +732,47 @@ object SetupForm: TSetupForm
         Style = csDropDownList
         TabOrder = 19
       end
+      object Label56: TLabel
+        Left = 0
+        Height = 17
+        Top = 368
+        Width = 157
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Képek átméretezése:'
+      end
+      object StretchModeLst: TComboBox
+        Left = 162
+        Height = 23
+        Top = 366
+        Width = 112
+        ItemHeight = 15
+        Items.Strings = (
+          'Op.rendszer'
+          'Éles'
+          'Alap'
+          'Négyzetes'
+          'Mitchell'
+          'Blackman'
+          'SinC'
+          'Bessel'
+          'Gauss'
+          'Doboz'
+          'Hermite'
+          'Lánczos'
+          'Kvadratikus'
+          'Köbös'
+          'Catrom'
+          'Kétirányú'
+          'Hamming'
+        )
+        Style = csDropDownList
+        TabOrder = 20
+      end
     end
     object PgLst: TTabSheet
       Caption = 'PgLst'
-      ClientHeight = 360
+      ClientHeight = 432
       ClientWidth = 473
       object Label15: TLabel
         Left = 0
@@ -909,7 +946,7 @@ object SetupForm: TSetupForm
     end
     object PgFxx: TTabSheet
       Caption = 'PgFxx'
-      ClientHeight = 360
+      ClientHeight = 432
       ClientWidth = 473
       object FxCk: TCheckBox
         Left = 4
@@ -957,7 +994,7 @@ object SetupForm: TSetupForm
     end
     object PgDtx: TTabSheet
       Caption = 'PgDtx'
-      ClientHeight = 360
+      ClientHeight = 432
       ClientWidth = 473
       object DiatarArrows: TPaintBox
         Left = 0
@@ -998,7 +1035,7 @@ object SetupForm: TSetupForm
     end
     object PgDia: TTabSheet
       Caption = 'PgDia'
-      ClientHeight = 360
+      ClientHeight = 432
       ClientWidth = 473
       object Label50: TLabel
         Left = 4
@@ -1069,7 +1106,7 @@ object SetupForm: TSetupForm
     end
     object PgPort: TTabSheet
       Caption = 'PgPort'
-      ClientHeight = 360
+      ClientHeight = 432
       ClientWidth = 473
       object Label18: TLabel
         Left = 2
@@ -1221,7 +1258,7 @@ object SetupForm: TSetupForm
     end
     object PgSign: TTabSheet
       Caption = 'PgSign'
-      ClientHeight = 360
+      ClientHeight = 432
       ClientWidth = 473
       object Label21: TLabel
         Left = 2
@@ -1424,7 +1461,7 @@ object SetupForm: TSetupForm
     end
     object PgKeys: TTabSheet
       Caption = 'PgKeys'
-      ClientHeight = 360
+      ClientHeight = 432
       ClientWidth = 473
       object KbHdrPanel: TPanel
         Left = 0
@@ -1475,7 +1512,7 @@ object SetupForm: TSetupForm
       object Panel2: TPanel
         Left = 0
         Height = 36
-        Top = 324
+        Top = 396
         Width = 473
         Align = alBottom
         BevelOuter = bvNone
@@ -1503,7 +1540,7 @@ object SetupForm: TSetupForm
       end
       object KbScrollBox: TScrollBox
         Left = 0
-        Height = 302
+        Height = 374
         Top = 22
         Width = 473
         HorzScrollBar.Page = 1
@@ -1515,7 +1552,7 @@ object SetupForm: TSetupForm
     end
     object PgMode: TTabSheet
       Caption = 'PgMode'
-      ClientHeight = 360
+      ClientHeight = 432
       ClientWidth = 473
       object ModeBtn: TRadioGroup
         Left = 8
@@ -1632,7 +1669,7 @@ object SetupForm: TSetupForm
     end
     object TabSheet5: TTabSheet
       Caption = 'PgScr'
-      ClientHeight = 360
+      ClientHeight = 432
       ClientWidth = 473
       object Label31: TLabel
         Left = 2
@@ -1752,7 +1789,7 @@ object SetupForm: TSetupForm
     end
     object PgNet: TTabSheet
       Caption = 'PgNet'
-      ClientHeight = 360
+      ClientHeight = 432
       ClientWidth = 473
       object Label33: TLabel
         Left = 282
@@ -1979,7 +2016,7 @@ object SetupForm: TSetupForm
     end
     object PgSer: TTabSheet
       Caption = 'PgSer'
-      ClientHeight = 360
+      ClientHeight = 432
       ClientWidth = 473
       object Label41: TLabel
         Left = 70
@@ -2134,7 +2171,7 @@ object SetupForm: TSetupForm
     end
     object PgRot: TTabSheet
       Caption = 'PgRot'
-      ClientHeight = 360
+      ClientHeight = 432
       ClientWidth = 473
       object ScrBox: TPaintBox
         Left = 183
@@ -2305,7 +2342,7 @@ object SetupForm: TSetupForm
     end
     object PgProfil: TTabSheet
       Caption = 'PgProfil'
-      ClientHeight = 360
+      ClientHeight = 432
       ClientWidth = 473
       object NewProfilBtn: TBitBtn
         Left = 65
@@ -2436,7 +2473,7 @@ object SetupForm: TSetupForm
       'ColorS=F0FBFF'
       'ColorT=A4A0A0'
     )
-    Left = 564
-    Top = 416
+    Left = 556
+    Top = 488
   end
 end

@@ -100,7 +100,6 @@
           <Linking>
             <Debugging>
               <GenerateDebugInfo Value="False"/>
-              <RunWithoutDebug Value="True"/>
             </Debugging>
             <LinkSmart Value="True"/>
             <Options>
@@ -164,9 +163,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAppForm"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
-        <TopLine Value="177"/>
-        <CursorPos X="17" Y="205"/>
+        <TopLine Value="84"/>
+        <CursorPos X="24" Y="105"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit1>
@@ -1273,9 +1273,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="1373"/>
-        <CursorPos Y="1385"/>
+        <TopLine Value="3107"/>
+        <CursorPos X="34" Y="3112"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -1845,19 +1844,17 @@
       </Unit233>
       <Unit234>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\rtl\objpas\classes\classesh.inc"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="307"/>
         <CursorPos X="19" Y="314"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit234>
       <Unit235>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\rtl\objpas\classes\lists.inc"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="133"/>
         <CursorPos X="26" Y="147"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit235>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
@@ -1882,103 +1879,103 @@
         <Caret Line="680" Column="22" TopLine="662"/>
       </Position5>
       <Position6>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\rtl\objpas\classes\classesh.inc"/>
-        <Caret Line="328" Column="15" TopLine="313"/>
+        <Filename Value="utxlist.pas"/>
+        <Caret Line="697" Column="20" TopLine="683"/>
       </Position6>
       <Position7>
         <Filename Value="utxlist.pas"/>
-        <Caret Line="697" Column="20" TopLine="683"/>
+        <Caret Line="141" Column="7" TopLine="119"/>
       </Position7>
       <Position8>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\rtl\objpas\classes\classesh.inc"/>
-        <Caret Line="314" Column="19" TopLine="307"/>
+        <Filename Value="utxlist.pas"/>
+        <Caret Line="710" TopLine="685"/>
       </Position8>
       <Position9>
         <Filename Value="utxlist.pas"/>
-        <Caret Line="141" Column="7" TopLine="119"/>
+        <Caret Line="711" Column="36" TopLine="695"/>
       </Position9>
       <Position10>
         <Filename Value="utxlist.pas"/>
-        <Caret Line="710" TopLine="685"/>
+        <Caret Line="709" TopLine="689"/>
       </Position10>
       <Position11>
         <Filename Value="utxlist.pas"/>
-        <Caret Line="711" Column="36" TopLine="695"/>
+        <Caret Line="139" Column="15" TopLine="128"/>
       </Position11>
       <Position12>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\rtl\objpas\classes\lists.inc"/>
-        <Caret Line="616" Column="4" TopLine="614"/>
+        <Filename Value="ukottakepek.pas"/>
+        <Caret Line="315" Column="21" TopLine="303"/>
       </Position12>
       <Position13>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\rtl\objpas\classes\lists.inc"/>
+        <Filename Value="ukottakepek.pas"/>
+        <Caret Line="317" Column="16" TopLine="303"/>
       </Position13>
       <Position14>
-        <Filename Value="C:\lazarus64\fpc\3.2.2\source\rtl\objpas\classes\lists.inc"/>
-        <Caret Line="79" Column="13" TopLine="53"/>
+        <Filename Value="ukottakepek.pas"/>
+        <Caret Line="387" Column="11" TopLine="371"/>
       </Position14>
       <Position15>
-        <Filename Value="utxlist.pas"/>
-        <Caret Line="709" TopLine="689"/>
+        <Filename Value="ukottakepek.pas"/>
+        <Caret Line="339" Column="3" TopLine="323"/>
       </Position15>
       <Position16>
-        <Filename Value="utxlist.pas"/>
-        <Caret Line="139" Column="15" TopLine="128"/>
+        <Filename Value="ukottakepek.pas"/>
+        <Caret Line="317" Column="11" TopLine="301"/>
       </Position16>
       <Position17>
         <Filename Value="ukottakepek.pas"/>
-        <Caret Line="315" Column="21" TopLine="303"/>
+        <Caret Line="339" Column="3" TopLine="323"/>
       </Position17>
       <Position18>
         <Filename Value="ukottakepek.pas"/>
-        <Caret Line="317" Column="16" TopLine="303"/>
+        <Caret Line="387" Column="11" TopLine="371"/>
       </Position18>
       <Position19>
-        <Filename Value="ukottakepek.pas"/>
-        <Caret Line="387" Column="11" TopLine="371"/>
-      </Position19>
-      <Position20>
-        <Filename Value="ukottakepek.pas"/>
-        <Caret Line="339" Column="3" TopLine="323"/>
-      </Position20>
-      <Position21>
-        <Filename Value="ukottakepek.pas"/>
-        <Caret Line="317" Column="11" TopLine="301"/>
-      </Position21>
-      <Position22>
-        <Filename Value="ukottakepek.pas"/>
-        <Caret Line="339" Column="3" TopLine="323"/>
-      </Position22>
-      <Position23>
-        <Filename Value="ukottakepek.pas"/>
-        <Caret Line="387" Column="11" TopLine="371"/>
-      </Position23>
-      <Position24>
         <Filename Value="udiatariniloader.pas"/>
         <Caret Line="133" Column="10" TopLine="107"/>
+      </Position19>
+      <Position20>
+        <Filename Value="umain.pas"/>
+        <Caret Line="379" Column="43" TopLine="364"/>
+      </Position20>
+      <Position21>
+        <Filename Value="umain.pas"/>
+        <Caret Line="383" Column="17" TopLine="364"/>
+      </Position21>
+      <Position22>
+        <Filename Value="umain.pas"/>
+        <Caret Line="455" Column="15" TopLine="430"/>
+      </Position22>
+      <Position23>
+        <Filename Value="umain.pas"/>
+        <Caret Line="959" Column="39" TopLine="934"/>
+      </Position23>
+      <Position24>
+        <Filename Value="umain.pas"/>
+        <Caret Line="455" Column="10" TopLine="440"/>
       </Position24>
       <Position25>
         <Filename Value="umain.pas"/>
-        <Caret Line="379" Column="43" TopLine="364"/>
+        <Caret Line="290" Column="15" TopLine="276"/>
       </Position25>
       <Position26>
         <Filename Value="umain.pas"/>
-        <Caret Line="383" Column="17" TopLine="364"/>
+        <Caret Line="1384" Column="30" TopLine="1373"/>
       </Position26>
       <Position27>
         <Filename Value="umain.pas"/>
-        <Caret Line="455" Column="15" TopLine="430"/>
       </Position27>
       <Position28>
         <Filename Value="umain.pas"/>
-        <Caret Line="959" Column="39" TopLine="934"/>
+        <Caret Line="125" Column="19" TopLine="97"/>
       </Position28>
       <Position29>
         <Filename Value="umain.pas"/>
-        <Caret Line="455" Column="10" TopLine="440"/>
+        <Caret Line="169" Column="26" TopLine="141"/>
       </Position29>
       <Position30>
-        <Filename Value="umain.pas"/>
-        <Caret Line="290" Column="15" TopLine="276"/>
+        <Filename Value="uappform.pas"/>
+        <Caret Line="193" Column="41" TopLine="178"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
