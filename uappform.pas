@@ -86,6 +86,7 @@ v12.5   2021/03/28  kotta/akkord arany, atlatszo hatter, triola
 v12.6   2022/01/09  9+ autoload, net:egyediek+margok, dkKotta
 v12.7   2023/03/19  export, autosave, zenereldir, linux hintform javitas, athuzott
 v13.0   2024/04/13  zsolozsma, raspberry
+v13.1   2025/03/21  stretchmode
 
 **************************************************************)
 
@@ -101,8 +102,8 @@ uses
   Forms, Controls, Graphics, Dialogs;
 
 const
-  VERSION = 'v13.0';
-  VERSIONDATE = '2005-24';
+  VERSION = 'v13.1 - ß1';
+  VERSIONDATE = '2005-25';
 
 type
 

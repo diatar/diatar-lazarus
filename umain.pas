@@ -3124,7 +3124,7 @@ begin
     DCanvas:=tLazCanvas.Create(DIntf);
     SIntf:=tLazIntfImage.Create(0,0);
     SIntf.LoadFromBitmap(SBmp.Handle,0);
-    DCanvas.Interpolation:=TBlackmanSincInterpolation.Create; //tFPSharpInterpolation.Create;
+    DCanvas.Interpolation:= TFPBaseInterpolation.Create; //TBlackmanSincInterpolation.Create; //tFPSharpInterpolation.Create;
     DCanvas.StretchDraw(DX,DY,DW,DH,SIntf);
     DBmp.LoadFromIntfImage(DIntf);
   finally

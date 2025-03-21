@@ -10,7 +10,7 @@ LazarusResources.Add('TMainForm','FORMDATA',[
   +'OnDestroy'#7#11'FormDestroy'#9'OnKeyDown'#7#11'FormKeyDown'#7'OnKeyUp'#7#9
   +'FormKeyUp'#8'OnResize'#7#10'FormResize'#14'OnUTF8KeyPress'#7#16'FormUTF8Key'
   +'Press'#19'OnWindowStateChange'#7#21'FormWindowStateChange'#10'LCLVersion'#6
-  +#7'3.6.0.0'#0#6'TPanel'#8'FxxPanel'#4'Left'#2#0#6'Height'#2'R'#3'Top'#3#237#1
+  +#7'2.2.0.4'#0#6'TPanel'#8'FxxPanel'#4'Left'#2#0#6'Height'#2'R'#3'Top'#3#237#1
   +#5'Width'#3'2'#3#5'Align'#7#8'alBottom'#10'BevelOuter'#7#6'bvNone'#12'Client'
   +'Height'#2'R'#11'ClientWidth'#3'2'#3#8'TabOrder'#2#0#8'OnResize'#7#14'FxxPan'
   +'elResize'#0#6'TPanel'#5'F1Btn'#4'Left'#2#0#6'Height'#2'('#3'Top'#2#255#5'Wi'
@@ -112,9 +112,9 @@ LazarusResources.Add('TMainForm','FORMDATA',[
   +'tnClick'#10'ParentFont'#8#0#0#10'TToggleBox'#6'PicBtn'#4'Left'#2'~'#6'Heigh'
   +'t'#2#22#3'Top'#2#2#5'Width'#2'>'#7'Anchors'#11#5'akTop'#6'akLeft'#8'akBotto'
   +'m'#0#7'Caption'#6#8'H'#195#161'tt'#195#169'r'#7'Checked'#9#12'Font.CharSet'
-  +#2#4#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#5'State'#7
-  +#9'cbChecked'#8'TabOrder'#2#1#7'OnClick'#7#11'PicBtnClick'#0#0#12'TSpeedButt'
-  +'on'#10'PicDownBtn'#4'Left'#3#186#0#6'Height'#2#22#3'Top'#2#2#5'Width'#2#12
+  +#2#4#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#7'OnClick'#7#11'PicBtnClic'
+  +'k'#10'ParentFont'#8#5'State'#7#9'cbChecked'#8'TabOrder'#2#1#0#0#12'TSpeedBu'
+  +'tton'#10'PicDownBtn'#4'Left'#3#186#0#6'Height'#2#22#3'Top'#2#2#5'Width'#2#12
   +#10'Glyph.Data'#10#202#0#0#0#198#0#0#0'BM'#198#0#0#0#0#0#0#0'6'#0#0#0'('#0#0
   +#0#5#0#0#0#9#0#0#0#1#0#24#0#0#0#0#0#144#0#0#0'd'#0#0#0'd'#0#0#0#0#0#0#0#0#0#0
   +#0#255#255#255#255#255#255#169#169#169#255#255#255#255#255#255#0#255#255#255

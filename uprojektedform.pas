@@ -180,6 +180,9 @@ type
     //fProjImage valtozott
     procedure RepaintProjImage;
 
+    //segedrutin egy kep atmeretezesehez
+    procedure StretchDraw(Dest : tCanvas; Source : tPicture; const R : tRect; Mode : tStretchMode);
+
     //kep kirajzolasa
     procedure DrawPic(Dest: tCanvas; const FileName : string; Mode : tBackgroundMode = bmZOOM); overload;
     procedure DrawPic(Dest: tCanvas; Source : tPicture; Mode : tBackgroundMode = bmZOOM); overload;
@@ -194,7 +197,9 @@ var
 
 implementation
 
-uses uAppForm, uMain, uRotateBmp, uNetwork, uMonitors, uFotoForm, uMainMenu, uDiaLst;
+uses
+  lazcanvas, fpcanvas, extinterpolation,
+  uAppForm, uMain, uRotateBmp, uNetwork, uMonitors, uFotoForm, uMainMenu, uDiaLst;
 
 /////////////////////////////////////////////////////
 /////////// main routines ///////////////////////////
@@ -775,6 +780,49 @@ begin
   end;
 end;
 
+//based on https://wiki.freepascal.org/Developing_with_Graphics#Using_the_non-native_StretchDraw_from_LazCanvas
+procedure tProjektedForm.StretchDraw(Dest : tCanvas; Source : tPicture; const R : tRect; Mode : tStretchMode);
+var
+  DestIntfImage, SourceIntfImage: TLazIntfImage;
+  DestCanvas: TLazCanvas;
+  DestBmp : tBitmap;
+begin
+  if Mode=smCANVAS then begin
+    Dest.StretchDraw(R,Source.Graphic);
+    exit;
+  end;
+  DestBmp:=nil; DestIntfImage:=nil; SourceIntfImage:=nil; DestCanvas:=nil;
+  try
+    //Prepare the destination bitmap
+    DestBmp:=tBitmap.Create;
+    DestBmp.SetSize(R.Width,R.Height);
+    //Prepare the destination interface
+    DestIntfImage := TLazIntfImage.Create(0, 0);
+    DestIntfImage.LoadFromBitmap(DestBmp.Handle, 0);
+    DestCanvas := TLazCanvas.Create(DestIntfImage);
+    //Prepare the source
+    SourceIntfImage := TLazIntfImage.Create(0, 0);
+    SourceIntfImage.LoadFromBitmap(Source.Bitmap.Handle, 0);
+    case Mode of
+      smSHARP: DestCanvas.Interpolation := TFPSharpInterpolation.Create;
+      smBASE: DestCanvas.Interpolation := TFPBaseInterpolation.Create;
+      smBOX:  DestCanvas.Interpolation := TFPBoxInterpolation.Create;
+      smMITCHEL: DestCanvas.Interpolation := TMitchelInterpolation.Create;
+      otherwise DestCanvas.Interpolation := TFPBoxInterpolation.Create;
+    end;
+    DestCanvas.StretchDraw(0, 0, R.Width, R.Height, SourceIntfImage);
+    // Reload the image into the TBitmap
+    DestBmp.LoadFromIntfImage(DestIntfImage);
+    Dest.Draw(R.Left,R.Top,DestBmp);
+  finally
+    DestCanvas.Interpolation.Free;
+    SourceIntfImage.Free;
+    DestCanvas.Free;
+    DestIntfImage.Free;
+    DestBmp.Free;
+  end;
+end;
+
 procedure tProjektedForm.DrawPic(Dest: tCanvas; Source : tPicture; Mode : tBackgroundMode = bmZOOM);
 var
   w,h : integer;
@@ -798,7 +846,8 @@ begin
     end;
     R.Left:=(Dest.Width-w) div 2; R.Top:=(Dest.Height-h) div 2;
     R.Right:=R.Left+w; R.Bottom:=R.Top+h;
-    Dest.StretchDraw(R,Source.Graphic);
+    //Dest.StretchDraw(R,Source.Graphic);
+    StretchDraw(Dest,Source,R,Globals.StretchMode);
     exit;
   end;
   y:=0; m:=0;
