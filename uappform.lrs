@@ -1,8 +1,8 @@
 { This is an automatically generated lazarus resource file }
 
 LazarusResources.Add('TAppForm','FORMDATA',[
-  'TPF0'#8'TAppForm'#7'AppForm'#4'Left'#3#252#0#6'Height'#2'T'#3'Top'#2'|'#5'Wi'
-  +'dth'#3#245#0#11'BorderIcons'#11#0#11'BorderStyle'#7#6'bsNone'#5'Color'#7#7
+  'TPF0'#8'TAppForm'#7'AppForm'#4'Left'#3#145#1#6'Height'#2'T'#3'Top'#3#152#0#5
+  +'Width'#3#245#0#11'BorderIcons'#11#0#11'BorderStyle'#7#6'bsNone'#5'Color'#7#7
   +'clBlack'#14'DefaultMonitor'#7#9'dmDesktop'#7'Enabled'#8#12'Font.CharSet'#2#4
   +#10'KeyPreview'#9#10'OnActivate'#7#12'FormActivate'#8'OnCreate'#7#10'FormCre'
   +'ate'#9'OnDestroy'#7#11'FormDestroy'#19'OnWindowStateChange'#7#21'FormWindow'

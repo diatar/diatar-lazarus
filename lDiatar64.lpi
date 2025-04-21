@@ -45,8 +45,6 @@
           <CodeGeneration>
             <Checks>
               <IOChecks Value="True"/>
-              <RangeChecks Value="True"/>
-              <OverflowChecks Value="True"/>
               <StackChecks Value="True"/>
             </Checks>
             <VerifyObjMethodCallValidity Value="True"/>
@@ -145,14 +143,14 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="201">
+    <Units Count="202">
       <Unit0>
         <Filename Value="lDiatar64.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="161"/>
+        <UsageCount Value="165"/>
       </Unit0>
       <Unit1>
         <Filename Value="umain.pas"/>
@@ -161,10 +159,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="2675"/>
-        <CursorPos X="10" Y="2694"/>
-        <UsageCount Value="161"/>
+        <TopLine Value="1620"/>
+        <CursorPos Y="1622"/>
+        <UsageCount Value="165"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -175,14 +172,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="302"/>
         <CursorPos Y="321"/>
-        <UsageCount Value="161"/>
+        <UsageCount Value="165"/>
       </Unit2>
       <Unit3>
         <Filename Value="ucommbtns.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uCommBtns"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="161"/>
+        <UsageCount Value="165"/>
       </Unit3>
       <Unit4>
         <Filename Value="uaddone.pas"/>
@@ -194,7 +191,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="16"/>
         <CursorPos X="38" Y="29"/>
-        <UsageCount Value="161"/>
+        <UsageCount Value="165"/>
       </Unit4>
       <Unit5>
         <Filename Value="uadd.pas"/>
@@ -206,7 +203,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="486"/>
         <CursorPos X="28" Y="489"/>
-        <UsageCount Value="161"/>
+        <UsageCount Value="165"/>
       </Unit5>
       <Unit6>
         <Filename Value="uglobals.pas"/>
@@ -215,7 +212,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="1993"/>
         <CursorPos X="6" Y="2008"/>
-        <UsageCount Value="161"/>
+        <UsageCount Value="165"/>
       </Unit6>
       <Unit7>
         <Filename Value="uprojektedform.pas"/>
@@ -227,7 +224,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="218"/>
         <CursorPos X="26" Y="242"/>
-        <UsageCount Value="161"/>
+        <UsageCount Value="165"/>
       </Unit7>
       <Unit8>
         <Filename Value="../Lib/uRoutines.pas"/>
@@ -242,7 +239,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="1454"/>
         <CursorPos X="39" Y="1465"/>
-        <UsageCount Value="161"/>
+        <UsageCount Value="165"/>
       </Unit9>
       <Unit10>
         <Filename Value="ugetpsw.pas"/>
@@ -251,7 +248,7 @@
         <HasResources Value="True"/>
         <UnitName Value="uGetPsw"/>
         <CursorPos X="48" Y="9"/>
-        <UsageCount Value="161"/>
+        <UsageCount Value="165"/>
       </Unit10>
       <Unit11>
         <Filename Value="../../../../usr/lib/lazarus/lcl/interfaces/gtk/gtkwinapi.inc"/>
@@ -335,7 +332,7 @@
         <UnitName Value="uPaintResizedText"/>
         <TopLine Value="220"/>
         <CursorPos X="34" Y="244"/>
-        <UsageCount Value="144"/>
+        <UsageCount Value="148"/>
       </Unit23>
       <Unit24>
         <Filename Value="usetupform.pas"/>
@@ -347,7 +344,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="685"/>
         <CursorPos Y="690"/>
-        <UsageCount Value="144"/>
+        <UsageCount Value="148"/>
       </Unit24>
       <Unit25>
         <Filename Value="../../../../usr/lib/lazarus/lcl/stdctrls.pp"/>
@@ -386,7 +383,7 @@
         <UnitName Value="uRotateBmp"/>
         <TopLine Value="23"/>
         <CursorPos X="30" Y="36"/>
-        <UsageCount Value="144"/>
+        <UsageCount Value="148"/>
       </Unit30>
       <Unit31>
         <Filename Value="../LazRGBGraphics/rgbgtkroutines.pas"/>
@@ -463,7 +460,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="78"/>
         <CursorPos X="15" Y="91"/>
-        <UsageCount Value="130"/>
+        <UsageCount Value="134"/>
       </Unit42>
       <Unit43>
         <Filename Value="ueditorform.pas"/>
@@ -474,7 +471,7 @@
         <UnitName Value="uEditorForm"/>
         <TopLine Value="19"/>
         <CursorPos X="36" Y="30"/>
-        <UsageCount Value="130"/>
+        <UsageCount Value="134"/>
       </Unit43>
       <Unit44>
         <Filename Value="../../../../usr/lib/lazarus/lcl/lclclasses.pp"/>
@@ -506,7 +503,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="172"/>
         <CursorPos X="9" Y="195"/>
-        <UsageCount Value="133"/>
+        <UsageCount Value="137"/>
       </Unit48>
       <Unit49>
         <Filename Value="../../../../usr/lib/lazarus/lcl/extctrls.pp"/>
@@ -570,7 +567,7 @@
         <UnitName Value="uNetwork"/>
         <TopLine Value="321"/>
         <CursorPos X="17" Y="330"/>
-        <UsageCount Value="122"/>
+        <UsageCount Value="126"/>
       </Unit58>
       <Unit59>
         <Filename Value="../lnet/lib/lcontainersh.inc"/>
@@ -767,7 +764,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="222"/>
         <CursorPos X="3" Y="232"/>
-        <UsageCount Value="104"/>
+        <UsageCount Value="108"/>
       </Unit91>
       <Unit92>
         <Filename Value="../../../../usr/lib/lazarus/lcl/interfaces/gtk/gtk1widgetset.inc"/>
@@ -841,7 +838,7 @@
         <UnitName Value="uKeys"/>
         <TopLine Value="37"/>
         <CursorPos X="39" Y="8"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="95"/>
       </Unit103>
       <Unit104>
         <Filename Value="../../../../usr/share/fpcsrc/2.2.2/packages/libc/src/kerneldefs.pp"/>
@@ -853,10 +850,11 @@
         <Filename Value="usound.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uSound"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="320"/>
-        <CursorPos X="31" Y="338"/>
-        <UsageCount Value="61"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="325"/>
+        <CursorPos X="13" Y="325"/>
+        <UsageCount Value="65"/>
+        <Loaded Value="True"/>
       </Unit105>
       <Unit106>
         <Filename Value="../../../../usr/share/fpcsrc/3.0.0/packages/sndfile/src/sndfile.pp"/>
@@ -941,7 +939,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="37"/>
         <CursorPos Y="37"/>
-        <UsageCount Value="71"/>
+        <UsageCount Value="75"/>
       </Unit118>
       <Unit119>
         <Filename Value="unetbase.pas"/>
@@ -950,7 +948,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="14"/>
         <CursorPos X="65" Y="35"/>
-        <UsageCount Value="71"/>
+        <UsageCount Value="75"/>
       </Unit119>
       <Unit120>
         <Filename Value="../../../../usr/lib/lazarus/lcl/interfaces/gtk2/interfaces.pas"/>
@@ -966,7 +964,7 @@
         <UnitName Value="uSymbolForm"/>
         <TopLine Value="389"/>
         <CursorPos Y="133"/>
-        <UsageCount Value="71"/>
+        <UsageCount Value="75"/>
       </Unit121>
       <Unit122>
         <Filename Value="unetqueue.pas"/>
@@ -975,7 +973,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="15"/>
         <CursorPos X="35" Y="30"/>
-        <UsageCount Value="71"/>
+        <UsageCount Value="75"/>
       </Unit122>
       <Unit123>
         <Filename Value="../../../../usr/share/fpcsrc/2.2.4/rtl/objpas/sysutils/filutilh.inc"/>
@@ -1124,7 +1122,7 @@
         <UnitName Value="uSearchForm"/>
         <TopLine Value="307"/>
         <CursorPos Y="327"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="65"/>
       </Unit145>
       <Unit146>
         <Filename Value="../../../../usr/lib/lazarus/0.9.30/lcl/fileutil.pas"/>
@@ -1148,13 +1146,13 @@
         <UnitName Value="uHowToSaveForm"/>
         <TopLine Value="61"/>
         <CursorPos X="38" Y="70"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="63"/>
       </Unit148>
       <Unit149>
         <Filename Value="ukottaeditor.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="63"/>
       </Unit149>
       <Unit150>
         <Filename Value="ukottakepek.pas"/>
@@ -1162,7 +1160,7 @@
         <UnitName Value="uKottaKepek"/>
         <TopLine Value="300"/>
         <CursorPos X="45" Y="315"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="63"/>
       </Unit150>
       <Unit151>
         <Filename Value="ukottazo.pas"/>
@@ -1170,7 +1168,7 @@
         <UnitName Value="uKottazo"/>
         <TopLine Value="500"/>
         <CursorPos X="23" Y="505"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="63"/>
       </Unit151>
       <Unit152>
         <Filename Value="userialioform.pas"/>
@@ -1181,7 +1179,7 @@
         <UnitName Value="uSerialIOForm"/>
         <TopLine Value="171"/>
         <CursorPos X="63" Y="181"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="63"/>
       </Unit152>
       <Unit153>
         <Filename Value="../../../../usr/lib/lazarus/0.9.30/lcl/interfaces/gtk2/gtk2themes.pas"/>
@@ -1197,12 +1195,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAppForm"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="309"/>
-        <CursorPos X="29" Y="320"/>
-        <UsageCount Value="54"/>
+        <TopLine Value="85"/>
+        <CursorPos X="50" Y="89"/>
+        <UsageCount Value="58"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit154>
       <Unit155>
         <Filename Value="umainmenu.pas"/>
@@ -1303,7 +1301,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="40"/>
         <CursorPos X="24" Y="40"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="45"/>
       </Unit167>
       <Unit168>
         <Filename Value="/usr/share/fpcsrc/3.0.0/rtl/objpas/classes/lists.inc"/>
@@ -1322,7 +1320,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="110"/>
         <CursorPos X="41" Y="122"/>
-        <UsageCount Value="38"/>
+        <UsageCount Value="42"/>
       </Unit169>
       <Unit170>
         <Filename Value="/usr/share/fpcsrc/3.0.0/packages/fcl-registry/src/registry.pp"/>
@@ -1343,7 +1341,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="491"/>
         <CursorPos X="3" Y="497"/>
-        <UsageCount Value="36"/>
+        <UsageCount Value="40"/>
       </Unit172>
       <Unit173>
         <Filename Value="/usr/share/fpcsrc/3.0.0/packages/fcl-registry/src/regdef.inc"/>
@@ -1366,7 +1364,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="100"/>
         <CursorPos X="101" Y="112"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="38"/>
       </Unit175>
       <Unit176>
         <Filename Value="/usr/share/lazarus/1.6.4/components/lazutils/lazfileutils.pas"/>
@@ -1424,9 +1422,9 @@
         <Filename Value="uoslib/uos_flat.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="722"/>
-        <CursorPos X="11" Y="736"/>
-        <UsageCount Value="30"/>
+        <TopLine Value="2044"/>
+        <CursorPos X="20" Y="2046"/>
+        <UsageCount Value="34"/>
       </Unit183>
       <Unit184>
         <Filename Value="../lnet/lib/openssl.pas"/>
@@ -1439,16 +1437,17 @@
       <Unit185>
         <Filename Value="uoslib/uos.pas"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="3688"/>
-        <CursorPos X="3" Y="3688"/>
+        <TopLine Value="8635"/>
+        <CursorPos Y="8640"/>
         <UsageCount Value="11"/>
       </Unit185>
       <Unit186>
         <Filename Value="uoslib/uos_httpgetthread.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="28"/>
-        <CursorPos X="3" Y="43"/>
-        <UsageCount Value="10"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="78"/>
+        <CursorPos X="38" Y="100"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
       </Unit186>
       <Unit187>
         <Filename Value="upropedit.pas"/>
@@ -1457,15 +1456,18 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uPropEdit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="758"/>
-        <CursorPos X="26" Y="782"/>
-        <UsageCount Value="28"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="800"/>
+        <CursorPos X="17" Y="820"/>
+        <UsageCount Value="32"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit187>
       <Unit188>
         <Filename Value="uoslib/uos_portaudio.pas"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="3" Y="14"/>
+        <TopLine Value="329"/>
+        <CursorPos Y="340"/>
         <UsageCount Value="11"/>
       </Unit188>
       <Unit189>
@@ -1560,50 +1562,86 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="24"/>
       </Unit200>
+      <Unit201>
+        <Filename Value="uoslib/define.inc"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit201>
     </Units>
-    <JumpHistory Count="10" HistoryIndex="9">
+    <JumpHistory Count="18" HistoryIndex="17">
       <Position1>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="331" Column="13" TopLine="310"/>
+        <Filename Value="upropedit.pas"/>
+        <Caret Column="36"/>
       </Position1>
       <Position2>
-        <Filename Value="umain.pas"/>
-        <Caret Line="691" Column="19" TopLine="681"/>
+        <Filename Value="upropedit.pas"/>
+        <Caret Line="173" Column="23" TopLine="154"/>
       </Position2>
       <Position3>
-        <Filename Value="umain.pas"/>
-        <Caret Line="3277" Column="12" TopLine="3257"/>
+        <Filename Value="upropedit.pas"/>
+        <Caret Line="174" Column="23" TopLine="155"/>
       </Position3>
       <Position4>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="320" Column="29" TopLine="309"/>
+        <Filename Value="upropedit.pas"/>
+        <Caret Line="654" Column="31" TopLine="647"/>
       </Position4>
       <Position5>
-        <Filename Value="umain.pas"/>
-        <Caret Line="316" Column="23" TopLine="304"/>
+        <Filename Value="upropedit.pas"/>
+        <Caret Line="780" Column="20" TopLine="772"/>
       </Position5>
       <Position6>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1123" Column="3" TopLine="1119"/>
+        <Filename Value="upropedit.pas"/>
+        <Caret Line="781" Column="22" TopLine="772"/>
       </Position6>
       <Position7>
-        <Filename Value="umain.pas"/>
-        <Caret Line="221" Column="15" TopLine="211"/>
+        <Filename Value="upropedit.pas"/>
+        <Caret Line="782" Column="21" TopLine="772"/>
       </Position7>
       <Position8>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1779" Column="11" TopLine="1769"/>
+        <Filename Value="upropedit.pas"/>
+        <Caret Line="800" Column="33" TopLine="780"/>
       </Position8>
       <Position9>
-        <Filename Value="umain.pas"/>
-        <Caret Line="234" Column="15" TopLine="224"/>
+        <Filename Value="upropedit.pas"/>
       </Position9>
       <Position10>
-        <Filename Value="umain.pas"/>
-        <Caret Line="3268" Column="42" TopLine="3258"/>
+        <Filename Value="upropedit.pas"/>
+        <Caret Line="653" Column="17" TopLine="633"/>
       </Position10>
+      <Position11>
+        <Filename Value="upropedit.pas"/>
+        <Caret Line="780" Column="26" TopLine="760"/>
+      </Position11>
+      <Position12>
+        <Filename Value="usound.pas"/>
+        <Caret Line="325" Column="13" TopLine="325"/>
+      </Position12>
+      <Position13>
+        <Filename Value="uoslib/uos_httpgetthread.pas"/>
+        <Caret Line="82" Column="52" TopLine="72"/>
+      </Position13>
+      <Position14>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2530" TopLine="2517"/>
+      </Position14>
+      <Position15>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2531" TopLine="2517"/>
+      </Position15>
+      <Position16>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2532" TopLine="2517"/>
+      </Position16>
+      <Position17>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2533" TopLine="2517"/>
+      </Position17>
+      <Position18>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2534" TopLine="2517"/>
+      </Position18>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -1644,6 +1682,22 @@
     </Other>
   </CompilerOptions>
   <Debugging>
+    <BreakPoints Count="2">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="uoslib/uos_portaudio.pas"/>
+        <Line Value="313"/>
+      </Item1>
+      <Item2>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="uoslib/uos.pas"/>
+        <Line Value="8639"/>
+      </Item2>
+    </BreakPoints>
     <Exceptions Count="6">
       <Item1>
         <Name Value="ECodetoolError"/>

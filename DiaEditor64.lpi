@@ -121,7 +121,7 @@
         <Filename Value="DiaEditor64.lpr"/>
         <IsPartOfProject Value="True"/>
         <CursorPos X="45" Y="8"/>
-        <UsageCount Value="144"/>
+        <UsageCount Value="146"/>
       </Unit0>
       <Unit1>
         <Filename Value="uedmain.pas"/>
@@ -130,10 +130,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEdMain"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="55"/>
-        <CursorPos X="50" Y="65"/>
-        <UsageCount Value="144"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="160"/>
+        <CursorPos X="25" Y="72"/>
+        <UsageCount Value="146"/>
+        <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="utxtar.pas"/>
@@ -142,7 +143,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="1500"/>
         <CursorPos Y="1518"/>
-        <UsageCount Value="143"/>
+        <UsageCount Value="145"/>
       </Unit2>
       <Unit3>
         <Filename Value="uglobals.pas"/>
@@ -159,8 +160,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="94"/>
-        <CursorPos Y="94"/>
+        <TopLine Value="33"/>
+        <CursorPos Y="33"/>
         <UsageCount Value="10"/>
       </Unit4>
       <Unit5>
@@ -179,7 +180,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="200"/>
         <CursorPos Y="222"/>
-        <UsageCount Value="142"/>
+        <UsageCount Value="144"/>
       </Unit6>
       <Unit7>
         <Filename Value="..\Lib\uRoutines.pas"/>
@@ -187,7 +188,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="812"/>
         <CursorPos Y="827"/>
-        <UsageCount Value="97"/>
+        <UsageCount Value="99"/>
       </Unit7>
       <Unit8>
         <Filename Value="C:\lazarus\lcl\stdctrls.pp"/>
@@ -284,7 +285,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="731"/>
         <CursorPos X="78" Y="748"/>
-        <UsageCount Value="126"/>
+        <UsageCount Value="128"/>
       </Unit22>
       <Unit23>
         <Filename Value="uedversprop.pas"/>
@@ -295,7 +296,7 @@
         <UnitName Value="uEdVersProp"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="21"/>
-        <UsageCount Value="125"/>
+        <UsageCount Value="127"/>
       </Unit23>
       <Unit24>
         <Filename Value="uedvsprop.pas"/>
@@ -306,7 +307,7 @@
         <UnitName Value="uEdVSProp"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="28" Y="29"/>
-        <UsageCount Value="119"/>
+        <UsageCount Value="121"/>
       </Unit24>
       <Unit25>
         <Filename Value="ueditorform.pas"/>
@@ -315,10 +316,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEditorForm"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="277"/>
-        <CursorPos X="59" Y="299"/>
-        <UsageCount Value="118"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="1054"/>
+        <CursorPos X="41" Y="881"/>
+        <UsageCount Value="120"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit25>
       <Unit26>
         <Filename Value="urtf.pas"/>
@@ -347,7 +351,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="293"/>
         <CursorPos Y="315"/>
-        <UsageCount Value="113"/>
+        <UsageCount Value="115"/>
       </Unit29>
       <Unit30>
         <Filename Value="C:\lazarus\fpc\2.2.2\source\rtl\objpas\classes\lists.inc"/>
@@ -371,7 +375,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="358"/>
         <CursorPos X="91" Y="366"/>
-        <UsageCount Value="105"/>
+        <UsageCount Value="107"/>
       </Unit32>
       <Unit33>
         <Filename Value="C:\lazarus\lcl\lclproc.pas"/>
@@ -424,7 +428,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="380"/>
         <CursorPos X="50" Y="397"/>
-        <UsageCount Value="96"/>
+        <UsageCount Value="98"/>
       </Unit40>
       <Unit41>
         <Filename Value="todo.txt"/>
@@ -442,10 +446,8 @@
       <Unit43>
         <Filename Value="fileformats.txt"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="38"/>
-        <CursorPos X="39" Y="50"/>
-        <UsageCount Value="95"/>
+        <CursorPos X="51" Y="47"/>
+        <UsageCount Value="97"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Text"/>
       </Unit43>
@@ -456,7 +458,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="269"/>
         <CursorPos X="18" Y="297"/>
-        <UsageCount Value="94"/>
+        <UsageCount Value="96"/>
       </Unit44>
       <Unit45>
         <Filename Value="uakkordform.pas"/>
@@ -468,7 +470,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="36"/>
         <CursorPos X="30" Y="53"/>
-        <UsageCount Value="94"/>
+        <UsageCount Value="96"/>
       </Unit45>
       <Unit46>
         <Filename Value="unetbase.pas"/>
@@ -508,7 +510,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="671"/>
         <CursorPos X="24" Y="677"/>
-        <UsageCount Value="86"/>
+        <UsageCount Value="88"/>
       </Unit50>
       <Unit51>
         <Filename Value="ukottazo.pas"/>
@@ -517,14 +519,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="581"/>
         <CursorPos X="52" Y="608"/>
-        <UsageCount Value="86"/>
+        <UsageCount Value="88"/>
       </Unit51>
       <Unit52>
         <Filename Value="ukottakepek.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uKottaKepek"/>
         <CursorPos Y="3"/>
-        <UsageCount Value="86"/>
+        <UsageCount Value="88"/>
       </Unit52>
       <Unit53>
         <Filename Value="C:\lazarus\fpc\2.4.2\source\packages\fcl-image\src\fpcanvas.pp"/>
@@ -754,7 +756,7 @@
         <UnitName Value="uEdSetup"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="22"/>
-        <UsageCount Value="82"/>
+        <UsageCount Value="84"/>
       </Unit91>
       <Unit92>
         <Filename Value="C:\lazarus\fpc\2.4.2\source\packages\fcl-registry\src\registry.pp"/>
@@ -766,7 +768,7 @@
         <UnitName Value="uAppForm"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="73"/>
-        <CursorPos Y="86"/>
+        <CursorPos Y="90"/>
         <UsageCount Value="10"/>
       </Unit93>
       <Unit94>
@@ -776,7 +778,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="86"/>
         <CursorPos X="3" Y="31"/>
-        <UsageCount Value="79"/>
+        <UsageCount Value="81"/>
       </Unit94>
       <Unit95>
         <Filename Value="C:\lazarus\components\lazutils\lazfileutils.pas"/>
@@ -917,7 +919,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="89"/>
         <CursorPos X="35" Y="94"/>
-        <UsageCount Value="58"/>
+        <UsageCount Value="60"/>
       </Unit113>
       <Unit114>
         <Filename Value="C:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\sysutilh.inc"/>
@@ -940,7 +942,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="74"/>
         <CursorPos X="43" Y="82"/>
-        <UsageCount Value="26"/>
+        <UsageCount Value="28"/>
       </Unit116>
       <Unit117>
         <Filename Value="C:\lazarus\fpc\3.0.4\source\packages\fcl-base\src\contnrs.pp"/>
@@ -973,10 +975,35 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="22"/>
       </Unit120>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="6" HistoryIndex="5">
+      <Position1>
+        <Filename Value="uedmain.pas"/>
+        <Caret Line="65" Column="50" TopLine="55"/>
+      </Position1>
+      <Position2>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="278" Column="57" TopLine="268"/>
+      </Position2>
+      <Position3>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="264" Column="23" TopLine="250"/>
+      </Position3>
+      <Position4>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="310" Column="3" TopLine="266"/>
+      </Position4>
+      <Position5>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="265" Column="46" TopLine="242"/>
+      </Position5>
+      <Position6>
+        <Filename Value="ueditorform.pas"/>
+        <Caret Line="311" Column="3" TopLine="306"/>
+      </Position6>
+    </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>

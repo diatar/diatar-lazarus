@@ -261,8 +261,10 @@ var
 
 //ha nincs EditorForm, ezzel letrehozzuk+lefut+felszabaditjuk
 function EditorFormExecute(Lit : tLiteralBase; const aFontName : string) : boolean;
+//ez ugyanaz, de a vers neve is szerkesztheto (DiaEditorbol hivas)
 function EditorFormVSExecute(Lit : tLiteralBase; const aFontName : string) : boolean;
 
+//versnev ideiglenes tarolasara
 var
   VNameStr : string;
 
@@ -270,6 +272,7 @@ implementation
 
 uses uRTF, uKottaEditor;
 
+//lehetseges kezdet/veg formatumkodok keszlete
 const
   FORMATS = [escB0,escB1,escI0,escI1,escU0,escU1,escV0,escV1,escS0,escS1];
 
@@ -279,6 +282,7 @@ const
   abAkkord    = 1;
   abKotta     = 2;
 
+//EditorForm utolso pozicioja
 var
   FormPos : TPoint;
 
@@ -355,6 +359,11 @@ begin
     for i:=0 to fLines.Count-1 do begin     //szoveget vissza
       CleanUpStyles(i);
       Lit.Lines.Add(Esc2Tx(fLines[i]));
+    end;
+    i:=Lit.Lines.Count-1;
+    while (i>=0) and (Trim(Lit.Lines[i])='') do begin
+      Lit.Lines.Delete(i);
+      dec(i);
     end;
   end;
 
@@ -662,7 +671,7 @@ begin
   len:=Length(Line);
   if X<0 then X:=0;                            //hatarok betartasa
   if X>=len then exit(len);
-  if (Line[X+1]=escKOTTASTART) {or (Line[X]=escKOTTASTART) }then begin
+  if Line[X+1]=escKOTTASTART then begin
     repeat
       inc(X);
     until (X>=len) or (Line[X]=escKOTTAEND);
@@ -868,7 +877,10 @@ begin
                 case txt[p1] of
                   'G' : Gitar();
                   'K' : Kotta();
-                  else while (p1<=len) and (txt[p1]<>';') do inc(p1);
+                  else begin
+                    Result[p2]:=txt[p1];
+                    while (p1<=len) and (txt[p1]<>';') do inc(p1);
+                  end;
                 end;
               end;
         else  Result[p2]:=txt[p1];  // ez pl. \\ vagy hibas vezerlo
