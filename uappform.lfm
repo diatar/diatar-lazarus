@@ -1,7 +1,7 @@
 object AppForm: TAppForm
-  Left = 252
+  Left = 401
   Height = 84
-  Top = 124
+  Top = 152
   Width = 245
   BorderIcons = []
   BorderStyle = bsNone

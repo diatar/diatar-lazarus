@@ -16,7 +16,7 @@ object PropEditForm: TPropEditForm
   OnHide = FormHide
   OnShow = FormShow
   Position = poOwnerFormCenter
-  LCLVersion = '2.2.0.4'
+  LCLVersion = '3.4.0.0'
   object OkBtn: TBitBtn
     Left = 88
     Height = 30
@@ -44,14 +44,14 @@ object PropEditForm: TPropEditForm
     Height = 372
     Top = 0
     Width = 469
-    ActivePage = ViewPg
+    ActivePage = SndPg
     Align = alTop
-    TabIndex = 4
+    TabIndex = 1
     TabOrder = 2
     object TypPg: TTabSheet
       Caption = '&Típus'
-      ClientHeight = 344
-      ClientWidth = 461
+      ClientHeight = 341
+      ClientWidth = 459
       object DiaLbl: TLabel
         Left = 128
         Height = 55
@@ -62,42 +62,43 @@ object PropEditForm: TPropEditForm
       end
       object TypDiaRB: TRadioButton
         Left = 4
-        Height = 19
+        Height = 23
         Top = 2
-        Width = 103
+        Width = 131
         Caption = 'Diatár-beli ének'
+        Checked = True
         Enabled = False
-        OnClick = TypRBClick
         TabOrder = 0
+        OnClick = TypRBClick
       end
       object TypLitRB: TRadioButton
         Left = 4
-        Height = 19
+        Height = 23
         Top = 62
-        Width = 94
+        Width = 121
         Caption = 'Begépelt ének'
-        OnClick = TypRBClick
         TabOrder = 1
+        OnClick = TypRBClick
       end
       object LitEd: TEdit
         Left = 128
-        Height = 23
+        Height = 33
         Top = 62
         Width = 292
         TabOrder = 2
       end
       object TypTxtRB: TRadioButton
         Left = 4
-        Height = 19
+        Height = 23
         Top = 94
-        Width = 78
+        Width = 98
         Caption = 'Szöveg-fájl'
-        OnClick = TypRBClick
         TabOrder = 3
+        OnClick = TypRBClick
       end
       object TxtEd: TEdit
         Left = 128
-        Height = 23
+        Height = 33
         Top = 94
         Width = 268
         TabOrder = 4
@@ -108,21 +109,21 @@ object PropEditForm: TPropEditForm
         Top = 94
         Width = 24
         Caption = '...'
-        OnClick = TxtBtnClick
         TabOrder = 5
+        OnClick = TxtBtnClick
       end
       object TypPicRB: TRadioButton
         Left = 4
-        Height = 19
+        Height = 23
         Top = 126
-        Width = 61
+        Width = 78
         Caption = 'Kép-fájl'
-        OnClick = TypRBClick
         TabOrder = 6
+        OnClick = TypRBClick
       end
       object PicEd: TEdit
         Left = 128
-        Height = 23
+        Height = 33
         Top = 126
         Width = 268
         TabOrder = 7
@@ -133,21 +134,21 @@ object PropEditForm: TPropEditForm
         Top = 126
         Width = 24
         Caption = '...'
-        OnClick = PicBtnClick
         TabOrder = 8
+        OnClick = PicBtnClick
       end
       object TypSepRB: TRadioButton
         Left = 4
-        Height = 19
+        Height = 23
         Top = 158
-        Width = 71
+        Width = 94
         Caption = 'Elválasztó'
-        OnClick = TypRBClick
         TabOrder = 9
+        OnClick = TypRBClick
       end
       object SepEd: TEdit
         Left = 128
-        Height = 23
+        Height = 33
         Top = 158
         Width = 292
         TabOrder = 10
@@ -155,17 +156,17 @@ object PropEditForm: TPropEditForm
     end
     object SndPg: TTabSheet
       Caption = '&Hang és fotó'
-      ClientHeight = 344
-      ClientWidth = 461
+      ClientHeight = 341
+      ClientWidth = 459
       object Panel1: TPanel
         Left = 0
-        Height = 344
+        Height = 341
         Top = 0
-        Width = 461
+        Width = 459
         Align = alClient
         BevelOuter = bvNone
-        ClientHeight = 344
-        ClientWidth = 461
+        ClientHeight = 341
+        ClientWidth = 459
         TabOrder = 0
         object Panel2: TPanel
           Left = 4
@@ -178,10 +179,11 @@ object PropEditForm: TPropEditForm
           TabOrder = 0
           object SndOrigRB: TRadioButton
             Left = 8
-            Height = 19
+            Height = 23
             Top = 51
-            Width = 86
+            Width = 110
             Caption = 'E&redeti hang'
+            Checked = True
             TabOrder = 0
           end
           object PlayOrigBtn: TSpeedButton
@@ -210,26 +212,26 @@ object PropEditForm: TPropEditForm
           end
           object SndFileLbl: TLabel
             Left = 24
-            Height = 15
+            Height = 17
             Top = 72
-            Width = 41
+            Width = 53
             Caption = 'fájnév...'
           end
           object SndPrivRB: TRadioButton
             Left = 8
-            Height = 19
+            Height = 23
             Top = 96
-            Width = 85
+            Width = 105
             Caption = 'E&gyedi hang'
             TabOrder = 1
           end
           object SndEd: TEdit
             Left = 24
-            Height = 23
+            Height = 33
             Top = 114
             Width = 268
-            OnChange = SndEdChange
             TabOrder = 2
+            OnChange = SndEdChange
           end
           object SndBtn: TButton
             Left = 292
@@ -237,8 +239,8 @@ object PropEditForm: TPropEditForm
             Top = 114
             Width = 24
             Caption = '...'
-            OnClick = SndBtnClick
             TabOrder = 3
+            OnClick = SndBtnClick
           end
           object PlayPrivBtn: TSpeedButton
             Left = 322
@@ -280,17 +282,17 @@ object PropEditForm: TPropEditForm
           end
           object SoundCk: TCheckBox
             Left = 12
-            Height = 19
+            Height = 23
             Top = 3
-            Width = 175
+            Width = 223
             Caption = 'H&ang lejátszása engedélyezve'
             TabOrder = 4
           end
           object SoundFwCk: TCheckBox
             Left = 12
-            Height = 19
+            Height = 23
             Top = 27
-            Width = 178
+            Width = 229
             Caption = 'Lejátszás &után következő diára'
             TabOrder = 5
           end
@@ -306,19 +308,20 @@ object PropEditForm: TPropEditForm
           TabOrder = 1
           object FotoOrigRB: TRadioButton
             Left = 8
-            Height = 19
+            Height = 23
             Top = 8
-            Width = 81
+            Width = 108
             Caption = 'Eredeti &fotó'
+            Checked = True
             TabOrder = 0
           end
           object FotoEd: TEdit
             Left = 24
-            Height = 23
+            Height = 33
             Top = 72
             Width = 268
-            OnChange = FotoEdChange
             TabOrder = 1
+            OnChange = FotoEdChange
           end
           object FotoBtn: TButton
             Left = 292
@@ -326,22 +329,22 @@ object PropEditForm: TPropEditForm
             Top = 72
             Width = 24
             Caption = '...'
-            OnClick = FotoBtnClick
             TabOrder = 2
+            OnClick = FotoBtnClick
           end
           object FotoPrivRB: TRadioButton
             Left = 8
-            Height = 19
+            Height = 23
             Top = 48
-            Width = 80
+            Width = 103
             Caption = 'Egyedi f&otó'
             TabOrder = 3
           end
           object FotoFileLbl: TLabel
             Left = 24
-            Height = 15
+            Height = 17
             Top = 26
-            Width = 41
+            Width = 53
             Caption = 'fájnév...'
           end
         end
@@ -349,13 +352,13 @@ object PropEditForm: TPropEditForm
     end
     object DiaPg: TTabSheet
       Caption = 'Eg&yedi'
-      ClientHeight = 344
-      ClientWidth = 461
+      ClientHeight = 341
+      ClientWidth = 459
       object Label2: TLabel
         Left = 0
-        Height = 15
+        Height = 17
         Top = 7
-        Width = 235
+        Width = 299
         Caption = 'Erre a diára vonatkozó egyedi tulajdonságok:'
         Font.CharSet = 4
         Font.Style = [fsUnderline]
@@ -363,23 +366,23 @@ object PropEditForm: TPropEditForm
       end
       object Label1: TLabel
         Left = 24
-        Height = 15
+        Height = 17
         Top = 62
-        Width = 149
+        Width = 193
         Alignment = taRightJustify
         Caption = 'Időzített továbbítás (mperc):'
       end
       object DblDiaCk: TCheckBox
         Left = 24
-        Height = 19
+        Height = 23
         Top = 33
-        Width = 201
+        Width = 256
         Caption = 'Összekapcsolva a következő diával'
         TabOrder = 0
       end
       object FwdmsEd: TFloatSpinEdit
         Left = 196
-        Height = 23
+        Height = 33
         Top = 59
         Width = 120
         DecimalPlaces = 3
@@ -407,39 +410,39 @@ object PropEditForm: TPropEditForm
           TabOrder = 0
           object Label4: TLabel
             Left = 27
-            Height = 15
+            Height = 17
             Top = 136
-            Width = 31
+            Width = 41
             Caption = 'Stílus:'
           end
           object DiaFontCk: TCheckBox
             Left = 11
-            Height = 19
+            Height = 23
             Top = 54
-            Width = 73
+            Width = 95
             Caption = 'Betűtípus:'
             TabOrder = 0
           end
           object DiaFontLst: TComboBox
             Left = 131
-            Height = 23
+            Height = 33
             Top = 54
             Width = 209
-            ItemHeight = 15
-            OnClick = DiaFontLstClick
+            ItemHeight = 0
             TabOrder = 1
+            OnClick = DiaFontLstClick
           end
           object DiaFSizeCk: TCheckBox
             Left = 11
-            Height = 19
+            Height = 23
             Top = 82
-            Width = 78
+            Width = 102
             Caption = 'Betűméret:'
             TabOrder = 2
           end
           object DiaFSizeEd: TSpinEdit
             Left = 131
-            Height = 23
+            Height = 33
             Top = 82
             Width = 65
             Increment = 2
@@ -451,15 +454,15 @@ object PropEditForm: TPropEditForm
           end
           object DiaCSizeCk: TCheckBox
             Left = 12
-            Height = 19
+            Height = 23
             Top = 108
-            Width = 61
+            Width = 78
             Caption = 'Címsor:'
             TabOrder = 4
           end
           object DiaCSizeEd: TSpinEdit
             Left = 131
-            Height = 23
+            Height = 33
             Top = 108
             Width = 65
             Increment = 2
@@ -471,42 +474,42 @@ object PropEditForm: TPropEditForm
           end
           object DiaBoldCk: TCheckBox
             Left = 131
-            Height = 19
+            Height = 23
             Top = 136
-            Width = 64
+            Width = 82
             AllowGrayed = True
             Caption = 'Félkövér'
             TabOrder = 6
           end
           object DiaHCenterCk: TCheckBox
             Left = 223
-            Height = 19
+            Height = 23
             Top = 136
-            Width = 78
+            Width = 102
             AllowGrayed = True
             Caption = 'Sorközépre'
             TabOrder = 7
           end
           object DiaVCenterCk: TCheckBox
             Left = 323
-            Height = 19
+            Height = 23
             Top = 136
-            Width = 80
+            Width = 104
             AllowGrayed = True
             Caption = 'Lapközépre'
             TabOrder = 8
           end
           object DiaIndentCk: TCheckBox
             Left = 11
-            Height = 19
+            Height = 23
             Top = 164
-            Width = 66
+            Width = 85
             Caption = 'Behúzás:'
             TabOrder = 9
           end
           object DiaIndentEd: TSpinEdit
             Left = 131
-            Height = 23
+            Height = 33
             Top = 164
             Width = 65
             MaxValue = 10
@@ -515,18 +518,18 @@ object PropEditForm: TPropEditForm
           end
           object DiaSpacingCk: TCheckBox
             Left = 11
-            Height = 19
+            Height = 23
             Top = 192
-            Width = 58
+            Width = 75
             Caption = 'Sorköz:'
             TabOrder = 11
           end
           object DiaSpacingLst: TComboBox
             Left = 131
-            Height = 23
+            Height = 29
             Top = 192
             Width = 65
-            ItemHeight = 15
+            ItemHeight = 0
             Items.Strings = (
               '100%'
               '110%'
@@ -541,9 +544,9 @@ object PropEditForm: TPropEditForm
               '200%'
             )
             MaxLength = 65535
-            OnClick = DiaSpacingLstClick
             Style = csDropDownList
             TabOrder = 12
+            OnClick = DiaSpacingLstClick
           end
           object GroupBox1: TGroupBox
             Left = 3
@@ -551,8 +554,8 @@ object PropEditForm: TPropEditForm
             Top = -1
             Width = 444
             Caption = ' Színek: '
-            ClientHeight = 34
-            ClientWidth = 440
+            ClientHeight = 36
+            ClientWidth = 442
             TabOrder = 13
             object DiaHiColorBtn: TPanel
               Left = 406
@@ -564,12 +567,12 @@ object PropEditForm: TPropEditForm
             end
             object DiaHiColorCk: TCheckBox
               Left = 318
-              Height = 19
+              Height = 23
               Top = 4
-              Width = 63
+              Width = 82
               Caption = 'Kiemelt:'
-              OnClick = DiaHiColorCkClick
               TabOrder = 1
+              OnClick = DiaHiColorCkClick
             end
             object DiaTxColorBtn: TPanel
               Left = 246
@@ -581,12 +584,12 @@ object PropEditForm: TPropEditForm
             end
             object DiaTxColorCk: TCheckBox
               Left = 166
-              Height = 19
+              Height = 23
               Top = 4
-              Width = 47
+              Width = 61
               Caption = 'Betű:'
-              OnClick = DiaTxColorCkClick
               TabOrder = 3
+              OnClick = DiaTxColorCkClick
             end
             object DiaBkColorBtn: TPanel
               Left = 86
@@ -598,12 +601,12 @@ object PropEditForm: TPropEditForm
             end
             object DiaBkColorCk: TCheckBox
               Left = 6
-              Height = 19
+              Height = 23
               Top = 4
-              Width = 56
+              Width = 74
               Caption = 'Háttér:'
-              OnClick = DiaBkColorCkClick
               TabOrder = 5
+              OnClick = DiaBkColorCkClick
             end
           end
         end
@@ -611,13 +614,13 @@ object PropEditForm: TPropEditForm
     end
     object AllPg: TTabSheet
       Caption = '&Közös'
-      ClientHeight = 344
-      ClientWidth = 461
+      ClientHeight = 341
+      ClientWidth = 459
       object Label3: TLabel
         Left = 0
-        Height = 15
+        Height = 17
         Top = 13
-        Width = 279
+        Width = 354
         Caption = 'Az egész énekrendre vonatkozó közös tulajdonságok:'
         Font.CharSet = 4
         Font.Style = [fsUnderline]
@@ -634,39 +637,39 @@ object PropEditForm: TPropEditForm
         TabOrder = 0
         object Label5: TLabel
           Left = 24
-          Height = 15
+          Height = 17
           Top = 170
-          Width = 31
+          Width = 41
           Caption = 'Stílus:'
         end
         object AllFontCk: TCheckBox
           Left = 8
-          Height = 19
+          Height = 23
           Top = 88
-          Width = 73
+          Width = 95
           Caption = 'Betűtípus:'
           TabOrder = 0
         end
         object AllFontLst: TComboBox
           Left = 128
-          Height = 23
+          Height = 33
           Top = 88
           Width = 196
-          ItemHeight = 15
-          OnClick = AllFontLstClick
+          ItemHeight = 0
           TabOrder = 1
+          OnClick = AllFontLstClick
         end
         object AllFSizeCk: TCheckBox
           Left = 8
-          Height = 19
+          Height = 23
           Top = 116
-          Width = 78
+          Width = 102
           Caption = 'Betűméret:'
           TabOrder = 2
         end
         object AllFSizeEd: TSpinEdit
           Left = 128
-          Height = 23
+          Height = 33
           Top = 116
           Width = 65
           Increment = 2
@@ -678,15 +681,15 @@ object PropEditForm: TPropEditForm
         end
         object AllCSizeCk: TCheckBox
           Left = 9
-          Height = 19
+          Height = 23
           Top = 142
-          Width = 61
+          Width = 78
           Caption = 'Címsor:'
           TabOrder = 4
         end
         object AllCSizeEd: TSpinEdit
           Left = 128
-          Height = 23
+          Height = 33
           Top = 142
           Width = 65
           Increment = 2
@@ -698,39 +701,39 @@ object PropEditForm: TPropEditForm
         end
         object AllBoldCk: TCheckBox
           Left = 128
-          Height = 19
+          Height = 23
           Top = 170
-          Width = 64
+          Width = 82
           Caption = 'Félkövér'
           TabOrder = 6
         end
         object AllHCenterCk: TCheckBox
           Left = 220
-          Height = 19
+          Height = 23
           Top = 170
-          Width = 78
+          Width = 102
           Caption = 'Sorközépre'
           TabOrder = 7
         end
         object AllVCenterCk: TCheckBox
           Left = 320
-          Height = 19
+          Height = 23
           Top = 170
-          Width = 80
+          Width = 104
           Caption = 'Lapközépre'
           TabOrder = 8
         end
         object AllIndentCk: TCheckBox
           Left = 8
-          Height = 19
+          Height = 23
           Top = 198
-          Width = 66
+          Width = 85
           Caption = 'Behúzás:'
           TabOrder = 9
         end
         object AllIndentEd: TSpinEdit
           Left = 128
-          Height = 23
+          Height = 33
           Top = 198
           Width = 65
           MaxValue = 10
@@ -739,18 +742,18 @@ object PropEditForm: TPropEditForm
         end
         object AllSpacingCk: TCheckBox
           Left = 8
-          Height = 19
+          Height = 23
           Top = 226
-          Width = 58
+          Width = 75
           Caption = 'Sorköz:'
           TabOrder = 11
         end
         object AllSpacingLst: TComboBox
           Left = 128
-          Height = 23
+          Height = 29
           Top = 226
           Width = 65
-          ItemHeight = 15
+          ItemHeight = 0
           Items.Strings = (
             '100%'
             '110%'
@@ -765,9 +768,9 @@ object PropEditForm: TPropEditForm
             '200%'
           )
           MaxLength = 65535
-          OnClick = AllSpacingLstClick
           Style = csDropDownList
           TabOrder = 12
+          OnClick = AllSpacingLstClick
         end
         object GroupBox2: TGroupBox
           Left = 4
@@ -775,8 +778,8 @@ object PropEditForm: TPropEditForm
           Top = 3
           Width = 445
           Caption = ' Színek: '
-          ClientHeight = 57
-          ClientWidth = 441
+          ClientHeight = 59
+          ClientWidth = 443
           TabOrder = 13
           object AllHiColorBtn: TPanel
             Left = 230
@@ -788,12 +791,12 @@ object PropEditForm: TPropEditForm
           end
           object AllHiColorCk: TCheckBox
             Left = 210
-            Height = 19
+            Height = 23
             Top = 5
-            Width = 63
+            Width = 82
             Caption = 'Kiemelt:'
-            OnClick = AllHiColorCkClick
             TabOrder = 1
+            OnClick = AllHiColorCkClick
           end
           object AllTxColorBtn: TPanel
             Left = 130
@@ -805,12 +808,12 @@ object PropEditForm: TPropEditForm
           end
           object AllTxColorCk: TCheckBox
             Left = 110
-            Height = 19
+            Height = 23
             Top = 5
-            Width = 47
+            Width = 61
             Caption = 'Betű:'
-            OnClick = AllTxColorCkClick
             TabOrder = 3
+            OnClick = AllTxColorCkClick
           end
           object AllBkColorBtn: TPanel
             Left = 22
@@ -822,21 +825,21 @@ object PropEditForm: TPropEditForm
           end
           object AllBkColorCk: TCheckBox
             Left = 6
-            Height = 19
+            Height = 23
             Top = 5
-            Width = 56
+            Width = 74
             Caption = 'Háttér:'
-            OnClick = AllBkColorCkClick
             TabOrder = 5
+            OnClick = AllBkColorCkClick
           end
           object AllOffColorCk: TCheckBox
             Left = 322
-            Height = 19
+            Height = 23
             Top = 5
-            Width = 77
+            Width = 101
             Caption = 'Kikapcsolt:'
-            OnClick = AllOffColorCkClick
             TabOrder = 6
+            OnClick = AllOffColorCkClick
           end
           object AllOffColorBtn: TPanel
             Left = 346
@@ -851,13 +854,13 @@ object PropEditForm: TPropEditForm
     end
     object ViewPg: TTabSheet
       Caption = '&Előnézet'
-      ClientHeight = 344
-      ClientWidth = 461
+      ClientHeight = 341
+      ClientWidth = 459
       object ScrBox: TPaintBox
         Left = 0
-        Height = 344
+        Height = 341
         Top = 0
-        Width = 461
+        Width = 459
         Align = alClient
         OnPaint = ScrBoxPaint
       end

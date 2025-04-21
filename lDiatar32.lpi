@@ -42,8 +42,6 @@
           <CodeGeneration>
             <Checks>
               <IOChecks Value="True"/>
-              <RangeChecks Value="True"/>
-              <OverflowChecks Value="True"/>
               <StackChecks Value="True"/>
             </Checks>
             <VerifyObjMethodCallValidity Value="True"/>
@@ -135,11 +133,11 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="179">
+    <Units Count="180">
       <Unit0>
         <Filename Value="lDiatar32.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <CursorPos X="19" Y="9"/>
         <UsageCount Value="147"/>
         <Loaded Value="True"/>
@@ -486,7 +484,7 @@
         <Filename Value="umonitors.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uMonitors"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="195"/>
         <CursorPos X="33" Y="202"/>
         <UsageCount Value="119"/>
@@ -1360,7 +1358,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uSplash"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <TopLine Value="26"/>
         <CursorPos X="35" Y="34"/>
@@ -1368,8 +1365,17 @@
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit178>
+      <Unit179>
+        <Filename Value="uoslib/uos_httpgetthread.pas"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="71"/>
+        <CursorPos X="48" Y="83"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit179>
     </Units>
-    <JumpHistory Count="26" HistoryIndex="25">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
         <Filename Value="uprojektedform.pas"/>
         <Caret Line="550" Column="17" TopLine="548"/>
@@ -1474,6 +1480,14 @@
         <Filename Value="uprojektedform.pas"/>
         <Caret Line="558" Column="10" TopLine="542"/>
       </Position26>
+      <Position27>
+        <Filename Value="usplash.pas"/>
+        <Caret Line="34" Column="35" TopLine="26"/>
+      </Position27>
+      <Position28>
+        <Filename Value="uoslib/uos_httpgetthread.pas"/>
+        <Caret Line="83" Column="48" TopLine="71"/>
+      </Position28>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
