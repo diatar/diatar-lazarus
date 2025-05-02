@@ -151,6 +151,8 @@ type
 
     constructor Create;
     destructor Destroy; override;
+
+    procedure TrimLines;
   end;
 
 type
@@ -972,6 +974,18 @@ function tLiteralBase.GetText(Index : integer) : string;
   begin
     Result:=RemoveEscape(Lines[Index]);
   end;
+
+procedure tLiteralBase.TrimLines;
+var
+  idx : integer;
+begin
+  idx:=fLines.Count;
+  while idx>0 do begin
+    dec(idx);
+    if Trim(fLines[idx])>'' then exit;
+    fLines.Delete(idx);
+  end;
+end;
 
 {***********************************************}
 destructor tVersszak.Destroy;

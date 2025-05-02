@@ -360,11 +360,7 @@ begin
       CleanUpStyles(i);
       Lit.Lines.Add(Esc2Tx(fLines[i]));
     end;
-    i:=Lit.Lines.Count-1;
-    while (i>=0) and (Trim(Lit.Lines[i])='') do begin
-      Lit.Lines.Delete(i);
-      dec(i);
-    end;
+    Lit.TrimLines;
   end;
 
   fLines.Clear;
@@ -2086,7 +2082,7 @@ begin
      iif(msArc in fs,escV1,escV0)+
      copy(s,sx+1,len); //kezdo formazas
   len:=Length(s);                                         // +a sor tovabbi resze
-  if sy=ey then dec(ex,sx-4); //ha ez a zarosor, ex igazitasa (negyfele formazast illesztettunk be)
+  if sy=ey then dec(ex,sx-5); //ha ez a zarosor, ex igazitasa (negyfele formazast illesztettunk be)
   //kiiras
   RTF:=tRTFOutput.Create;              //egyszerre RTF es sima text
   try

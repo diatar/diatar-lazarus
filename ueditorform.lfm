@@ -14,7 +14,7 @@ object EditorForm: TEditorForm
   OnDestroy = FormDestroy
   OnShow = FormShow
   ShowHint = True
-  LCLVersion = '2.2.0.4'
+  LCLVersion = '3.6.0.0'
   object NamLbl: TLabel
     Left = 4
     Height = 17
