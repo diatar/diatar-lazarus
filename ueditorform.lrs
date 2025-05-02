@@ -6,7 +6,7 @@ LazarusResources.Add('TEditorForm','FORMDATA',[
   +'neksz'#195#182'veg szerkeszt'#195#169'se'#12'ClientHeight'#3'='#1#11'Client'
   +'Width'#3#23#2#21'Constraints.MinHeight'#3'='#1#20'Constraints.MinWidth'#3#23
   +#2#12'Font.CharSet'#2#4#8'OnCreate'#7#10'FormCreate'#9'OnDestroy'#7#11'FormD'
-  +'estroy'#6'OnShow'#7#8'FormShow'#8'ShowHint'#9#10'LCLVersion'#6#7'2.2.0.4'#0
+  +'estroy'#6'OnShow'#7#8'FormShow'#8'ShowHint'#9#10'LCLVersion'#6#7'3.6.0.0'#0
   +#6'TLabel'#6'NamLbl'#4'Left'#2#4#6'Height'#2#17#3'Top'#2#8#5'Width'#2'l'#9'A'
   +'lignment'#7#14'taRightJustify'#8'AutoSize'#8#7'Caption'#6#12#195#137'nek &n'
   +'eve:'#0#0#6'TLabel'#8'VsNamLbl'#4'Left'#3#4#1#6'Height'#2#17#3'Top'#2#8#5'W'

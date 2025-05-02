@@ -1499,6 +1499,7 @@ begin
         v:=CBI[i];
         for j:=0 to v.Count-1 do begin
           vs:=v[j];
+          vs.TrimLines;
           id:=vs.ID;
           if id=0 then
             id:=GenerateID(k.ShortName+v.Name+vs.Name); //meg nem hasznalhato a Title !!!
@@ -1894,6 +1895,7 @@ begin
         vc:=CBI[i];
         for j:=0 to vc.Count-1 do begin
           vs:=vc[j];
+          vs.TrimLines;
           id:=vs.ID;
           if id=0 then
             id:=GenerateID(k.ShortName+v.Name+vs.Name); //meg nem hasznalhato a Title !!!
