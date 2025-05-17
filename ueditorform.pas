@@ -358,7 +358,7 @@ begin
     Lit.Lines.Clear;
     for i:=0 to fLines.Count-1 do begin     //szoveget vissza
       CleanUpStyles(i);
-      Lit.Lines.Add(Esc2Tx(fLines[i]));
+      Lit.Lines.Add(TrimRight(Esc2Tx(fLines[i])));
     end;
     Lit.TrimLines;
   end;
