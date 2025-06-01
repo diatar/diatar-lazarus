@@ -11,7 +11,7 @@ LazarusResources.Add('TProjektedForm','FORMDATA',[
   +'MouseLeave'#7#14'FormMouseLeave'#11'OnMouseMove'#7#13'FormMouseMove'#8'OnRe'
   +'size'#7#10'FormResize'#6'OnShow'#7#8'FormShow'#14'OnUTF8KeyPress'#7#16'Form'
   +'UTF8KeyPress'#19'OnWindowStateChange'#7#21'FormWindowStateChange'#8'Positio'
-  +'n'#7#9'poDefault'#13'ShowInTaskBar'#7#7'stNever'#10'LCLVersion'#6#7'2.0.6.0'
+  +'n'#7#9'poDefault'#13'ShowInTaskBar'#7#7'stNever'#10'LCLVersion'#6#7'2.2.0.4'
   +#7'Visible'#9#0#9'TPaintBox'#12'FormPaintbox'#4'Left'#2#0#6'Height'#3#138#0#3
   +'Top'#2#0#5'Width'#3#231#1#5'Align'#7#8'alClient'#7'OnPaint'#7#9'FormPaint'#0
   +#0#6'TImage'#9'Menu25Img'#4'Left'#2#8#6'Height'#2' '#4'Hint'#6#4'asdf'#3'Top'
@@ -94,5 +94,5 @@ LazarusResources.Add('TProjektedForm','FORMDATA',[
   +#6#11'R'#195#182'gz'#195#173't'#195#169's'#3'Top'#2#0#5'Width'#2' '#7'OnClic'
   +'k'#7#14'MenuImageClick'#12'OnMouseEnter'#7#19'MenuImageMouseEnter'#12'OnMou'
   +'seLeave'#7#19'MenuImageMouseLeave'#7'Visible'#8#0#0#6'TTimer'#3'Tmr'#8'Inte'
-  +'rval'#2'd'#7'OnTimer'#7#8'TmrTimer'#4'left'#3#136#0#3'top'#2#8#0#0#0
+  +'rval'#2'd'#7'OnTimer'#7#8'TmrTimer'#4'Left'#3#136#0#3'Top'#2#8#0#0#0
 ]);

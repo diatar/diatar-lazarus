@@ -1,4 +1,4 @@
-program lDiaEditor;
+program lDiaEditor64;
 
 {$mode objfpc}{$H+}
 
@@ -9,18 +9,20 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, uEdMain, uPaintResizedText, uEditorForm,
   uEdVSProp, uEdVersProp, uEdKotetProp, uTxTar, uSymbolForm, uAkkordForm,
-  uAkkord, ukottaeditor, ukottakepek, ukottazo;
+  uAkkord, ukottaeditor, ukottakepek, ukottazo, uEdSetup, uSplash;
 
 {$IFDEF WINDOWS}{$R lDiaEditor.rc}{$ENDIF}
 
 {$R *.res}
 
 begin
+  Application.Title:='DiaEditor32';
   Application.Initialize;
-Application.CreateForm(TMainForm, MainForm);
-Application.CreateForm(TEdVSPropForm, EdVSPropForm);
-Application.CreateForm(TEdVPropForm, EdVPropForm);
-Application.CreateForm(TEdKPropForm, EdKPropForm);
+  Application.CreateForm(TMainForm, MainForm);
+  Application.CreateForm(TEdVSPropForm, EdVSPropForm);
+  Application.CreateForm(TEdVPropForm, EdVPropForm);
+  Application.CreateForm(TEdKPropForm, EdKPropForm);
+  Application.CreateForm(TEdSetupForm, EdSetupForm);
   Application.Run;
 end.
 

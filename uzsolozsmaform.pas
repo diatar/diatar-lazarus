@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2024 József Rieth
+Copyright 2005-2025 József Rieth
 
     This file is part of Diatar.
 
@@ -55,6 +55,8 @@ type
     fImaNames : tStringList;
     fUnzippedTxt : AnsiString;
     fLiterals : tLiterals;
+    fCurrYear : integer;
+    fYearDownloadable : array[-1..+1] of boolean;
 
     procedure DoCreateOutZipStream(Sender : tObject; var AStream : TStream; AItem : TFullZipFileEntry);
     procedure DoDoneOutZipStream(Sender : tObject; var AStream : TStream; AItem : TFullZipFileEntry);
@@ -84,14 +86,25 @@ uses
 
 procedure tZsolozsmaForm.FormCreate(Sender: TObject);
 begin
-  if not InitSSLInterface then ErrorBox('Internet kapcsolat sikertelen!');
+  fYearDownloadable[-1]:=true; fYearDownloadable[0]:=true; fYearDownloadable[+1]:=true;
+  if not InitSSLInterface then begin
+{$IFNDEF windows}
+    //on linux we can simply change to openssl.3
+    DLLVersions[1]:='.3';
+{$ENDIF}
+    if not InitSSLInterface then begin
+      ErrorBox('Internet kapcsolat sikertelen!');
+      fYearDownloadable[-1]:=false; fYearDownloadable[0]:=false; fYearDownloadable[+1]:=false;
+    end;
+  end;
 
   fAllNames:=TStringList.Create;
   fImaNames:=TStringList.Create;
 
   DateEd.Date:=Now;
-  DateEd.MinDate:=EncodeDate(YearOf(Now)-2,1,1);
-  DateEd.MaxDate:=EncodeDate(YearOf(Now)+1,12,31);
+  fCurrYear:=YearOf(Now);
+  DateEd.MinDate:=EncodeDate(fCurrYear-1,1,1);
+  DateEd.MaxDate:=EncodeDate(fCurrYear+1,12,31);
 
   WaitPanel.Align:=alClient;
 end;
@@ -222,7 +235,9 @@ begin
   if FileExists(fname) then exit(fname);  //mar letoltve
 
   Result:=''; http:=nil;
-  if QuestBox(IntToStr(year)+' év nem található. Megpróbáljuk letölteni webről?')<>idYes then exit;
+  if (year<fCurrYear-1) or (year>fCurrYear+1) then exit; //jatsszunk biztonsagosan!
+  if not fYearDownloadable[year-fCurrYear] then exit; //mar megprobaltuk es nem sikerult
+  //if QuestBox(IntToStr(year)+' év nem található. Megpróbáljuk letölteni webről?')<>idYes then exit;
   try
     fs:=TFileStream.Create(fname,fmCreate);
   except
@@ -239,13 +254,16 @@ begin
       http.AddHeader('User-Agent','Mozilla/5.0 (compatible; fpweb)');
       http.Get('https://breviar.sk/download/'+IntToStr(fYear)+'-hu-plain.zip', fs);
     except
-      if http.ResponseStatusCode=404 then
-        ErrorBox('Ez az év nem található a weblapon.')
-      else
-        ErrorBox('Ellenőrizze az internet kapcsolatot.');
-      FreeAndNil(fs);
-      DeleteFile(fname);
-      exit;
+      on E : Exception do begin
+        fYearDownloadable[year-fCurrYear]:=false;
+        if http.ResponseStatusCode=404 then
+          ErrorBox('Ez az év nem található a weblapon.')
+        else
+          ErrorBox('Ellenőrizze az internet kapcsolatot. '+e.Message);
+        FreeAndNil(fs);
+        DeleteFile(fname);
+        exit;
+      end;
     end;
   finally
     EndWait;
@@ -297,7 +315,7 @@ begin
       exit;
     end;
   end;
-  ErrorBox('Nem található fájl erre a napra ('+fname+')');
+  //ErrorBox('Nem található fájl erre a napra ('+fname+')');
 end;
 
 procedure tZsolozsmaForm.NewZip;

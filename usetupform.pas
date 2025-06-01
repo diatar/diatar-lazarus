@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2024 József Rieth
+Copyright 2005-2025 József Rieth
 
     This file is part of Diatar.
 
@@ -47,6 +47,8 @@ type
     BgModeLst: TComboBox;
     AlwaysDiaTabCk: TCheckBox;
     AutoSave: TCheckBox;
+    Label56: TLabel;
+    StretchModeLst: TComboBox;
     UseBRectCk: TCheckBox;
     DiatarLbl3: TLabel;
     DiaLstSetBtn: TButton;
@@ -604,6 +606,7 @@ begin
   AlwaysDiaTabCk.Checked:=p^.AlwaysDiaTabs;
   BgModeLst.ItemIndex:=Ord(p^.BgMode);
   AutoSave.Checked:=p^.AutoSave;
+  StretchModeLst.ItemIndex:=Ord(p^.StretchMode);
 
   FxLst.Clear;
   for i:=1 to MAXFXX do begin
@@ -687,6 +690,7 @@ begin
     p^.DiaListFiles[i]:=copy(DiaLst.Items[i],iif(i>9,5,4),99999999);
   p^.BgMode:=tBackgroundMode(BgModeLst.ItemIndex);
   p^.AutoSave:=AutoSave.Checked;
+  p^.StretchMode:=tStretchMode(StretchModeLst.ItemIndex);
 
   for i:=1 to MAXFXX do begin
     p^.FxxObject[i]:=FxObjs[i];

@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2024 József Rieth
+Copyright 2005-2025 József Rieth
 
     This file is part of Diatar.
 
@@ -261,8 +261,10 @@ var
 
 //ha nincs EditorForm, ezzel letrehozzuk+lefut+felszabaditjuk
 function EditorFormExecute(Lit : tLiteralBase; const aFontName : string) : boolean;
+//ez ugyanaz, de a vers neve is szerkesztheto (DiaEditorbol hivas)
 function EditorFormVSExecute(Lit : tLiteralBase; const aFontName : string) : boolean;
 
+//versnev ideiglenes tarolasara
 var
   VNameStr : string;
 
@@ -270,6 +272,7 @@ implementation
 
 uses uRTF, uKottaEditor;
 
+//lehetseges kezdet/veg formatumkodok keszlete
 const
   FORMATS = [escB0,escB1,escI0,escI1,escU0,escU1,escV0,escV1,escS0,escS1];
 
@@ -279,6 +282,7 @@ const
   abAkkord    = 1;
   abKotta     = 2;
 
+//EditorForm utolso pozicioja
 var
   FormPos : TPoint;
 
@@ -354,8 +358,9 @@ begin
     Lit.Lines.Clear;
     for i:=0 to fLines.Count-1 do begin     //szoveget vissza
       CleanUpStyles(i);
-      Lit.Lines.Add(Esc2Tx(fLines[i]));
+      Lit.Lines.Add(TrimRight(Esc2Tx(fLines[i])));
     end;
+    Lit.TrimLines;
   end;
 
   fLines.Clear;
@@ -662,7 +667,7 @@ begin
   len:=Length(Line);
   if X<0 then X:=0;                            //hatarok betartasa
   if X>=len then exit(len);
-  if (Line[X+1]=escKOTTASTART) {or (Line[X]=escKOTTASTART) }then begin
+  if Line[X+1]=escKOTTASTART then begin
     repeat
       inc(X);
     until (X>=len) or (Line[X]=escKOTTAEND);
@@ -868,7 +873,10 @@ begin
                 case txt[p1] of
                   'G' : Gitar();
                   'K' : Kotta();
-                  else while (p1<=len) and (txt[p1]<>';') do inc(p1);
+                  else begin
+                    Result[p2]:=txt[p1];
+                    while (p1<=len) and (txt[p1]<>';') do inc(p1);
+                  end;
                 end;
               end;
         else  Result[p2]:=txt[p1];  // ez pl. \\ vagy hibas vezerlo
@@ -1025,7 +1033,7 @@ begin
   txt:=LineAtY(Y);
   len:=Length(txt);
   if X<0 then X:=0;                        //karakterpoz. behatarolasa
-  if X>len then
+  if X>=len then
     X:=len
   else                                     //utf8 karakter elejere
     while (X>0) and ((byte(txt[X+1]) and $C0)=$80) do dec(X);
@@ -2074,7 +2082,7 @@ begin
      iif(msArc in fs,escV1,escV0)+
      copy(s,sx+1,len); //kezdo formazas
   len:=Length(s);                                         // +a sor tovabbi resze
-  if sy=ey then dec(ex,sx-4); //ha ez a zarosor, ex igazitasa (negyfele formazast illesztettunk be)
+  if sy=ey then dec(ex,sx-5); //ha ez a zarosor, ex igazitasa (negyfele formazast illesztettunk be)
   //kiiras
   RTF:=tRTFOutput.Create;              //egyszerre RTF es sima text
   try

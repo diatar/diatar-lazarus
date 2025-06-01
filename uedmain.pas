@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2024 József Rieth
+Copyright 2005-2025 József Rieth
 
     This file is part of Diatar.
 
@@ -50,6 +50,7 @@ v12.5   2021/03/28  kotta/akkord arany, atlatszo hatter, triola
 v12.6   2022/01/09  9+ autoload, net:egyediek+margok, dkKotta
 v12.7   2023/03/19  export, autosave, zenereldir, linux hintform javitas, athuzott
 v13.0   2024/04/13  zsolozsma, raspberry
+v13.1   2025/03/21  stretchmode
 
 *************************************************************)
 
@@ -67,8 +68,8 @@ uses
   PairSplitter, ComCtrls, types, LazFileUtils, LazUTF8;
 
 const
-  VERSION = 'v13.0 - ß2';
-  VERSIONDATE = '2005-24';
+  VERSION = 'v13.0';
+  VERSIONDATE = '2005-25';
   EDITORFONT = 'Arial';
 
 type
@@ -207,7 +208,7 @@ var
 implementation
 
 uses
-  uDiatarIniLoader, uRTF, uDtxIds,
+  uDiatarIniLoader, uRTF, uDtxIds, uSplash,
   {$ifdef UNIX} uLinuxRegistry {$else} Registry {$endif} ;
 
 const
@@ -234,32 +235,43 @@ var
   dil : tDiatarIniLoader;
 
 begin
-  Caption:='Diatár szerkesztő – '+VERSION+' by Rieth © polyJoe software '+VERSIONDATE;
-  DoubleBuffered:=true;
-  KLst.DoubleBuffered:=true;
-  VLst.DoubleBuffered:=true;
-  VSLst.DoubleBuffered:=true;
-
-  FillKottaBmps;
-
-  DiaSound:=tDiaSound.Create;
-
-  dil:=tDiatarIniLoader.Create;
+  SplashForm:=tSplashForm.Create(nil);
   try
-    ProgDir:=dil.ProgDir;
-    DtxDir:=dil.DtxDir;
-    RegDir:=dil.RegDir;
+    SplashForm.Show;
+    SplashForm.SetProgress(0,'Betöltés...');
+
+    Caption:='Diatár szerkesztő – '+VERSION+' by Rieth © polyJoe software '+VERSIONDATE;
+    DoubleBuffered:=true;
+    KLst.DoubleBuffered:=true;
+    VLst.DoubleBuffered:=true;
+    VSLst.DoubleBuffered:=true;
+
+    FillKottaBmps;
+
+    DiaSound:=tDiaSound.Create;
+
+    dil:=tDiatarIniLoader.Create;
+    try
+      ProgDir:=dil.ProgDir;
+      DtxDir:=dil.DtxDir;
+      RegDir:=dil.RegDir;
+    finally
+      dil.Free;
+    end;
+    TxTarDtxDir:=DtxDir;
+
+    SplashForm.SetProgress(20,'Kötetek...');
+    DTXs:=LoadDTXs([ProgDir,DtxDir]);
+    InitDtxIds(DTXs);
+
+    SplashForm.SetProgress(80,'Listák...');
+    FillKLst0;
+    FillVLst0;
+    FillVSLst0;
+
   finally
-    dil.Free;
+    FreeAndNil(SplashForm);
   end;
-  TxTarDtxDir:=DtxDir;
-
-  DTXs:=LoadDTXs([ProgDir,DtxDir]);
-  InitDtxIds(DTXs);
-
-  FillKLst0;
-  FillVLst0;
-  FillVSLst0;
 end;
 
 procedure tMainForm.FormDestroy(Sender: TObject);
@@ -1487,6 +1499,7 @@ begin
         v:=CBI[i];
         for j:=0 to v.Count-1 do begin
           vs:=v[j];
+          vs.TrimLines;
           id:=vs.ID;
           if id=0 then
             id:=GenerateID(k.ShortName+v.Name+vs.Name); //meg nem hasznalhato a Title !!!
@@ -1882,6 +1895,7 @@ begin
         vc:=CBI[i];
         for j:=0 to vc.Count-1 do begin
           vs:=vc[j];
+          vs.TrimLines;
           id:=vs.ID;
           if id=0 then
             id:=GenerateID(k.ShortName+v.Name+vs.Name); //meg nem hasznalhato a Title !!!

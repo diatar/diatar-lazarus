@@ -14,7 +14,7 @@ uses
   uPropEdit, uSetupDtx, uDtxFlagsList, uAkkord, uNetBase, uSerialIO, uNetQueue,
   uNetOffDlg, uAkkordForm, uSearchForm, uSerialIOForm, uKottaEditor, uKottazo,
   uKottaKepek, uFotoForm, uMyFileDlgs, uMainMenu, uMain, uDiaLoadSave,
-  uSelGotoTarget, lnetbase, uZsolozsmaForm, uHtml, uDecodeBreviar,
+  uSelGotoTarget, lnetbase, uZsolozsmaForm, uHtml, uDecodeBreviar, uSplash,
   datetimectrls;
 
 //{$IFDEF WINDOWS}{$R Diatar.rc}{$ENDIF}

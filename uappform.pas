@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2024 József Rieth
+Copyright 2005-2025 József Rieth
 
     This file is part of Diatar.
 
@@ -86,6 +86,7 @@ v12.5   2021/03/28  kotta/akkord arany, atlatszo hatter, triola
 v12.6   2022/01/09  9+ autoload, net:egyediek+margok, dkKotta
 v12.7   2023/03/19  export, autosave, zenereldir, linux hintform javitas, athuzott
 v13.0   2024/04/13  zsolozsma, raspberry
+v13.1   2025/03/21  stretchmode, uos soundforward
 
 **************************************************************)
 
@@ -101,8 +102,8 @@ uses
   Forms, Controls, Graphics, Dialogs;
 
 const
-  VERSION = 'v13.0';
-  VERSIONDATE = '2005-24';
+  VERSION = 'v13.1 - ß2';
+  VERSIONDATE = '2005-25';
 
 type
 
@@ -139,7 +140,7 @@ uses
   uRoutines,
   uMain,uSerialIOForm,uSymbolForm,uMonitors,uProjektedForm,
   uGlobals,uSelectProfil,uKottaKepek,uNetwork,uCommBtns,uMQTT_IO,
-  uTxTar
+  uTxTar, uSplash
   ;
 
 { tAppForm }
@@ -156,33 +157,43 @@ begin
   Application.AddOnMinimizeHandler(@AppMinimize);
   Application.AddOnRestoreHandler(@AppRestore);
 
+  SplashForm:=tSplashForm.Create(nil);
+  try
+    SplashForm.Show;
+    SplashForm.SetProgress(0,'Betöltés...');
+    FillKottaBmps;
+    SplashForm.SetProgress(10,'Hálózat...');
+    Network:=tNetwork.Create;
+    MQTT_IO:=tMQTT_IO.Create;
+    CommBtns:=tCommBtns.Create;
 
-  FillKottaBmps;
-  Network:=tNetwork.Create;
-  MQTT_IO:=tMQTT_IO.Create;
-  CommBtns:=tCommBtns.Create;
+    SplashForm.SetProgress(20,'Kötetek...');
+    TxTarDtxDir:=Globals.DtxDir;
+    Globals.DTXs:=LoadDTXs([Globals.ProgDir,Globals.DtxDir]);
 
-  TxTarDtxDir:=Globals.DtxDir;
-  Globals.DTXs:=LoadDTXs([Globals.ProgDir,Globals.DtxDir]);
-  if FindCmdLineSwitch('VETITO',['-','/'],true) then Globals.ScrMode:=smProject;
-  if FindCmdLineSwitch('VEZERLO',['-','/'],true) then Globals.ScrMode:=smControl;
-  if FindCmdLineSwitch('DUAL',['-','/'],true) then Globals.CmdLineDual:=true;
-  if FindCmdLineSwitch('SCHOLA',['-','/'],true) then Globals.CmdLineSchola:=true;
-  if FindCmdLineSwitch('SZKOLA',['-','/'],true) then Globals.CmdLineSchola:=true;
-  if FindCmdLineSwitch('KORUS',['-','/'],true) then Globals.CmdLineKorus:=true;
-  if FindCmdLineSwitch('AKKORD',['-','/'],true) then Globals.CmdLineAkkord:=true;
-  if FindCmdLineSwitch('KOTTA',['-','/'],true) then Globals.CmdLineKotta:=true;
-  if FindCmdLineSwitch('KULDO',['-','/'],true) then IsMQTTSender:=true;
+    SplashForm.SetProgress(80,'Parancssor...');
+    if FindCmdLineSwitch('VETITO',['-','/'],true) then Globals.ScrMode:=smProject;
+    if FindCmdLineSwitch('VEZERLO',['-','/'],true) then Globals.ScrMode:=smControl;
+    if FindCmdLineSwitch('DUAL',['-','/'],true) then Globals.CmdLineDual:=true;
+    if FindCmdLineSwitch('SCHOLA',['-','/'],true) then Globals.CmdLineSchola:=true;
+    if FindCmdLineSwitch('SZKOLA',['-','/'],true) then Globals.CmdLineSchola:=true;
+    if FindCmdLineSwitch('KORUS',['-','/'],true) then Globals.CmdLineKorus:=true;
+    if FindCmdLineSwitch('AKKORD',['-','/'],true) then Globals.CmdLineAkkord:=true;
+    if FindCmdLineSwitch('KOTTA',['-','/'],true) then Globals.CmdLineKotta:=true;
+    LoadGlobalsSetup;
 
-  LoadGlobalsSetup;
-
-  //Application.TaskBarBehavior:=tbSingleButton;
-  Application.CreateForm(tSerialIOForm,SerialIOForm);
-  Application.CreateForm(tMainForm,MainForm);
-  Application.CreateForm(TProjektedForm, ProjektedForm);
-  //ProjektedForm.Show;
-  MainForm.Show;
-  Show;
+    SplashForm.SetProgress(90,'Ablakok...');
+    //Application.TaskBarBehavior:=tbSingleButton;
+    Application.CreateForm(tSerialIOForm,SerialIOForm);
+    Application.CreateForm(tMainForm,MainForm);
+    Application.CreateForm(TProjektedForm, ProjektedForm);
+    SplashForm.SetProgress(100,'Főablak...');
+    //ProjektedForm.Show;
+    MainForm.Show;
+    Show;
+  finally
+    FreeAndNil(SplashForm);
+  end;
   MainForm.SetFocus;
   //ProjektedForm.SendToBack;
   //MainForm.SetFocus;
@@ -199,6 +210,7 @@ begin
   FreeAndNil(CommBtns);
   FreeAndNil(SerialIOForm);
   Application.RemoveAllHandlersOfObject(Self);
+  FreeKottaBmps;
 end;
 
 {$ifdef WINDOWS}
