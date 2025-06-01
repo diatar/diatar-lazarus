@@ -35,7 +35,7 @@ uses
   uGlobals, uRoutines, uTxTar, uDiaLst, uDtxLst, uHintForm, uCommBtns, HwIO,
   uKeys, uSound, uAkkord, uPropEdit, uNetOffDlg, uTxList, uFotoForm,
   uSearchForm, uEditorForm, uSymbolForm, uSerialIOForm, uMyFileDlgs,
-  uTxtAtom, uZsolozsmaForm, uMQTT_IO,
+  uTxtAtom, uZsolozsmaForm, uMQTT_IO, uMqttForm,
   StdCtrls, ExtCtrls, Buttons, IniFiles, LCLIntf, ComCtrls, Menus, LazLogger;
 
 const
@@ -72,6 +72,7 @@ type
     AdHocBtn: TSpeedButton;
     EdBtn: TSpeedButton;
     ErrorPanel: TPanel;
+    ProjDownBtn: TSpeedButton;
     SaveDownBtn: TSpeedButton;
     ProjLbl: TLabel;
     P1Panel: TPanel;
@@ -317,6 +318,7 @@ type
     procedure LoadEvent;
     procedure SkipEvent;
     procedure SelLstEvent(Index : integer);
+    procedure MqttEvent;
     procedure FillMenuFromLst(Index : integer; PPMenu : tPopupMenu);    //-1=DiaLst, 0.. =DtxLst index
     procedure MenuLstEvent(Index : integer);
     function IndexToTab(Index : integer) : string;     // forma: &1.
@@ -367,6 +369,7 @@ const
   dbmUNDERLINE  = 202;
   dbmKOTTA      = 203;
   dbmHANG       = 204;
+  dbmMQTT       = 301;
 
 { TMainForm }
 
@@ -1140,6 +1143,16 @@ begin
   DiaLst.ToggleSkip(DiaLst.ItemIndex);
   //ix:=DiaLst.ItemIndex;
   //DiaLst.Skip[ix]:=not DiaLst.Skip[ix];
+end;
+
+procedure tMainForm.MqttEvent;
+begin
+  MqttForm:=tMqttForm.Create(Self);
+  try
+    MqttForm.ShowModal;
+  finally
+    FreeAndNil(MqttForm);
+  end;
 end;
 
 procedure tMainForm.SelLstEvent(Index : integer);
@@ -2873,6 +2886,7 @@ begin
     dbmUNDERLINE: Result:='&Aláhúzás';
     dbmKOTTA:  Result:='Kotta';
     dbmHANG:   Result:='Hang';
+    dbmMQTT:   Result:='Internet...';
     else       Result:='?';
   end;
 end;
@@ -2921,6 +2935,9 @@ begin
     DownBtnAdd(dbmKOTTA).Checked:=Globals.UseKotta;
     DownBtnAdd(dbmHANG).Checked:=Globals.UseSound;
     btn:=PicBtn;
+  end else if Sender=ProjDownBtn then begin
+    DownBtnAdd(dbmMQTT);
+    btn:=ProjBtn;
   end else
     exit;
   pt:=btn.ClientToScreen(Point(0,btn.Height));
@@ -2992,6 +3009,9 @@ begin
       end;
     dbmHANG : begin
         SoundEvent(not Globals.UseSound);
+      end;
+    dbmMQTT : begin
+        MqttEvent;
       end;
   end;
   SetupLoadSaveBtn(ID);

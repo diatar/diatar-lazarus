@@ -55,7 +55,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="65">
+    <Units Count="66">
       <Unit0>
         <Filename Value="Diatar64.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -91,11 +91,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uProjektedForm"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="399"/>
         <CursorPos X="3" Y="401"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="utxtar.pas"/>
@@ -108,11 +107,10 @@
         <Filename Value="uglobals.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uGlobals"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="2758"/>
         <CursorPos X="29" Y="2784"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="..\Lib\uRoutines.pas"/>
@@ -179,7 +177,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAdd"/>
         <EditorIndex Value="-1"/>
-        <CursorPos Y="5"/>
+        <TopLine Value="815"/>
+        <CursorPos Y="846"/>
         <UsageCount Value="200"/>
       </Unit12>
       <Unit13>
@@ -265,11 +264,10 @@
         <Filename Value="unetwork.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uNetwork"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="435"/>
         <CursorPos X="64" Y="445"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit21>
       <Unit22>
         <Filename Value="ushutdown.pas"/>
@@ -398,11 +396,10 @@
         <Filename Value="unetbase.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uNetBase"/>
-        <EditorIndex Value="8"/>
-        <TopLine Value="604"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="603"/>
         <CursorPos X="22" Y="443"/>
         <UsageCount Value="201"/>
-        <Loaded Value="True"/>
       </Unit35>
       <Unit36>
         <Filename Value="userialio.pas"/>
@@ -541,11 +538,10 @@
         <Filename Value="umainmenu.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uMainMenu"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="96"/>
         <CursorPos X="3" Y="98"/>
         <UsageCount Value="202"/>
-        <Loaded Value="True"/>
       </Unit50>
       <Unit51>
         <Filename Value="umain.pas"/>
@@ -554,10 +550,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="490"/>
-        <CursorPos X="46" Y="510"/>
+        <TopLine Value="2925"/>
+        <CursorPos X="23" Y="2939"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -613,11 +608,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uZsolozsmaForm"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="227"/>
         <CursorPos X="14" Y="234"/>
         <UsageCount Value="264"/>
-        <Loaded Value="True"/>
       </Unit57>
       <Unit58>
         <Filename Value="uDecodeBreviar.pas"/>
@@ -635,20 +629,18 @@
         <Filename Value="umqtt.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uMQTT"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="13" Y="43"/>
         <UsageCount Value="211"/>
-        <Loaded Value="True"/>
       </Unit60>
       <Unit61>
         <Filename Value="umqtt_io.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uMQTT_IO"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="489"/>
         <CursorPos X="19" Y="512"/>
         <UsageCount Value="211"/>
-        <Loaded Value="True"/>
       </Unit61>
       <Unit62>
         <Filename Value="C:\lazarus\components\lazutils\lazutf8.pas"/>
@@ -674,125 +666,142 @@
         <CursorPos X="28" Y="39"/>
         <UsageCount Value="1"/>
       </Unit64>
+      <Unit65>
+        <Filename Value="umqttform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MqttForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uMqttForm"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="73"/>
+        <CursorPos X="55" Y="98"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit65>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="345" TopLine="338"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="92" Column="8" TopLine="64"/>
       </Position1>
       <Position2>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="346" TopLine="338"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="91" Column="8" TopLine="63"/>
       </Position2>
       <Position3>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="347" TopLine="338"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="90" Column="8" TopLine="62"/>
       </Position3>
       <Position4>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="351" TopLine="338"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="89" Column="8" TopLine="61"/>
       </Position4>
       <Position5>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="352" TopLine="338"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="88" Column="8" TopLine="60"/>
       </Position5>
       <Position6>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="353" TopLine="338"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="87" Column="8" TopLine="59"/>
       </Position6>
       <Position7>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="354" TopLine="338"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="86" Column="8" TopLine="58"/>
       </Position7>
       <Position8>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="357" TopLine="338"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="85" Column="8" TopLine="57"/>
       </Position8>
       <Position9>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="360" TopLine="338"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="84" Column="8" TopLine="56"/>
       </Position9>
       <Position10>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="361" TopLine="338"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="83" Column="8" TopLine="55"/>
       </Position10>
       <Position11>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="362" TopLine="338"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="82" Column="8" TopLine="54"/>
       </Position11>
       <Position12>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="364" Column="16" TopLine="338"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="81" Column="8" TopLine="53"/>
       </Position12>
       <Position13>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="591" Column="55" TopLine="577"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="80" Column="8" TopLine="52"/>
       </Position13>
       <Position14>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="453" Column="15" TopLine="438"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="79" Column="8" TopLine="51"/>
       </Position14>
       <Position15>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="1866" Column="4" TopLine="1854"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="78" Column="8" TopLine="50"/>
       </Position15>
       <Position16>
-        <Filename Value="umainmenu.pas"/>
-        <Caret Line="36" Column="11" TopLine="20"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="77" Column="8" TopLine="49"/>
       </Position16>
       <Position17>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="364" TopLine="336"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="76" Column="8" TopLine="48"/>
       </Position17>
       <Position18>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="208" TopLine="189"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="75" Column="8" TopLine="47"/>
       </Position18>
       <Position19>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="364" Column="35" TopLine="343"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="74" Column="8" TopLine="46"/>
       </Position19>
       <Position20>
-        <Filename Value="umqtt_io.pas"/>
-        <Caret Line="512" Column="19" TopLine="489"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="73" Column="8" TopLine="45"/>
       </Position20>
       <Position21>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="177" Column="3" TopLine="164"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="74" Column="8" TopLine="46"/>
       </Position21>
       <Position22>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="1874" Column="18" TopLine="1854"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="75" Column="8" TopLine="47"/>
       </Position22>
       <Position23>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="2152" Column="21" TopLine="2126"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="76" Column="8" TopLine="48"/>
       </Position23>
       <Position24>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="2160" Column="24" TopLine="2134"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="77" Column="8" TopLine="49"/>
       </Position24>
       <Position25>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="2146" Column="21" TopLine="2121"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="76" Column="8" TopLine="48"/>
       </Position25>
       <Position26>
-        <Filename Value="uglobals.pas"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="77" Column="8" TopLine="49"/>
       </Position26>
       <Position27>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="41" Column="16" TopLine="15"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="86" Column="8" TopLine="55"/>
       </Position27>
       <Position28>
-        <Filename Value="uglobals.pas"/>
-        <Caret Line="615" Column="24" TopLine="591"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="88" Column="29" TopLine="57"/>
       </Position28>
       <Position29>
-        <Filename Value="umain.pas"/>
-        <Caret Line="482" Column="35" TopLine="463"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="94" Column="28" TopLine="70"/>
       </Position29>
       <Position30>
-        <Filename Value="umain.pas"/>
+        <Filename Value="umqttform.pas"/>
+        <Caret Line="97" Column="55" TopLine="72"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
