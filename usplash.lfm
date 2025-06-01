@@ -1,0 +1,36 @@
+object SplashForm: TSplashForm
+  Left = 597
+  Height = 310
+  Top = 256
+  Width = 256
+  BorderStyle = bsNone
+  ClientHeight = 310
+  ClientWidth = 256
+  FormStyle = fsSplash
+  OnCreate = FormCreate
+  Position = poDesktopCenter
+  ShowInTaskBar = stNever
+  LCLVersion = '2.2.6.0'
+  object Progress: TProgressBar
+    Left = 8
+    Height = 20
+    Top = 264
+    Width = 244
+    TabOrder = 0
+  end
+  object Lbl: TLabel
+    Left = 8
+    Height = 23
+    Top = 288
+    Width = 242
+    Alignment = taCenter
+    AutoSize = False
+    ParentColor = False
+  end
+  object Pic: TImage
+    Left = 0
+    Height = 256
+    Top = 0
+    Width = 256
+  end
+end

@@ -4,7 +4,7 @@ object ZsolozsmaForm: TZsolozsmaForm
   Top = 247
   Width = 282
   BorderStyle = bsDialog
-  Caption = 'Zsolozsma letöltés'
+  Caption = 'Zsolozsma betöltés'
   ClientHeight = 280
   ClientWidth = 282
   OnCreate = FormCreate
@@ -19,7 +19,6 @@ object ZsolozsmaForm: TZsolozsmaForm
     Width = 49
     Alignment = taRightJustify
     Caption = 'Dátum:'
-    ParentColor = False
   end
   object DateEd: TDateTimePicker
     Left = 83
@@ -51,7 +50,6 @@ object ZsolozsmaForm: TZsolozsmaForm
     Width = 52
     Alignment = taRightJustify
     Caption = 'Imaóra:'
-    ParentColor = False
   end
   object ImaLst: TListBox
     Left = 84
@@ -69,7 +67,7 @@ object ZsolozsmaForm: TZsolozsmaForm
     Height = 30
     Top = 241
     Width = 99
-    Caption = '&Letöltés'
+    Caption = '&Ok'
     Default = True
     Enabled = False
     Kind = bkOK

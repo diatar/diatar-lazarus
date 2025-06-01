@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2024 József Rieth
+Copyright 2005-2025 József Rieth
 
     This file is part of Diatar.
 
@@ -2045,7 +2045,7 @@ var
   vc : tColor;
   vb : tBool3;
   Dlg : tMySaveDlg;
-  fname : string;
+  fname,s : string;
 begin
   Result:=false;
   ShowDiaLst;
@@ -2061,7 +2061,12 @@ begin
       Dlg.InitialDir:=Globals.DiaDir2
     else if (Globals.BaseDiaDir>'') and DirectoryExists(Globals.BaseDiaDir) then
       Dlg.InitialDir:=Globals.BaseDiaDir;
-    Dlg.FileName:=DiasorFName; fname:=DiasorFName;
+    Dlg.FileName:=DiasorFName;
+    fname:=DiasorFName; s:=ExtractFilePath(fname);
+    if (s>'') and DirectoryExists(s) then begin
+      Dlg.InitialDir:=s;
+      Dlg.FileName:=ExtractFileNameOnly(fname);
+    end;
     if (DiasorFName='') or not overwrite then begin
       if not Dlg.Execute then exit(false);
       fname:={UTF8ToAnsi}(Dlg.FileName);
@@ -2710,7 +2715,9 @@ begin
   dec(fShowOrderTmr);
   if fShowOrderTmr<0 then begin
     fShowOrderTmr:=200 div Tmr.Interval;
-    if Application.Active and not Globals.HideMain and not ScrollState and (WindowState<>wsMinimized) and not InResizing then
+    if not Globals.HideMain and not ScrollState and (WindowState<>wsMinimized)
+       and not InResizing and (Screen.ActiveCustomForm=ProjektedForm)
+    then
       BringToFront;
   end;
 
@@ -3145,7 +3152,7 @@ begin
     DCanvas:=tLazCanvas.Create(DIntf);
     SIntf:=tLazIntfImage.Create(0,0);
     SIntf.LoadFromBitmap(SBmp.Handle,0);
-    DCanvas.Interpolation:=TBlackmanSincInterpolation.Create; //tFPSharpInterpolation.Create;
+    DCanvas.Interpolation:= TFPBaseInterpolation.Create; //TBlackmanSincInterpolation.Create; //tFPSharpInterpolation.Create;
     DCanvas.StretchDraw(DX,DY,DW,DH,SIntf);
     DBmp.LoadFromIntfImage(DIntf);
   finally
@@ -3291,11 +3298,12 @@ begin
       ZsolozsmaForm.Literals[i]:=nil;
     end;
     R^.Filename:='';
-    R^.Modified:=true;
+    R^.Modified:=false; //true;
     R^.TopIndex:=0;
     R^.ItemIndex:=0;
     ActDLGet;
     ShowDia(0);
+    ShowDiaLst;
   finally
     ZsolozsmaForm.Free;
   end;

@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2024 József Rieth
+Copyright 2005-2025 József Rieth
 
     This file is part of Diatar.
 
@@ -684,11 +684,14 @@ end;
 procedure tTxList.Clear;
 var
   ix : integer;
+  p : pTxListItem;
 begin
   for ix:=0 to Count-1 do begin   //toroljuk a stringeket (az inherited nem torli)
     SoundFile[ix]:='';
     FontName[ix]:='';
     FotoFile[ix]:='';
+    p:=Get(ix);
+    if Assigned(p) then Dispose(p);
   end;
   inherited;
   DoDelete(-1);

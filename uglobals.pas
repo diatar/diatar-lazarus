@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2024 József Rieth
+Copyright 2005-2025 József Rieth
 
     This file is part of Diatar.
 
@@ -86,6 +86,27 @@ type
     bmFULL,       //faltol falig
     bmCASCADE,    //csempezes
     bmMIRROR      //tukrozve csempezes
+  );
+
+type
+  tStretchMode = (
+    smCANVAS,       //eredeti tCanvas.StretchDraw()
+    smSHARP,
+    smBASE,
+    smBOX,
+    smMITCHEL,
+    smBLACKMAN,
+    smSINC,
+    smBESSEL,
+    smGAUSSIAN,
+    smEXBOX,
+    smHERMITE,
+    smLANCZOS,
+    smQUADRATIC,
+    smCUBIC,
+    smCATROM,
+    smBILINEAR,
+    smHAMMING
   );
 
 //3-allapotu "boolean"
@@ -200,6 +221,7 @@ type
     BackTransPerc : integer;             //hatter atlatszosag
     BlankTransPerc : integer;            //kikapcsolt atlatszosag
     AutoSave : boolean;                  //automatikus mentes
+    StretchMode : tStretchMode;          //kepek atmeretezesi modja
   end;
   tProfiles = array of tProfil;
 
@@ -450,6 +472,7 @@ type
     procedure SetBackTransPerc(NewValue : integer);
     procedure SetBlankTransPerc(NewValue : integer);
     procedure SetAutoSave(NewValue : boolean);
+    procedure SetStretchMode(NewValue : tStretchMode);
     procedure SetMqttId(NewValue : integer);
   public
     property ProgDir : string read fProgDir;
@@ -588,6 +611,7 @@ type
     property BackTransPerc : integer read fActProfil.BackTransPerc write SetBackTransPerc;
     property BlankTransPerc : integer read fActProfil.BlankTransPerc write SetBlankTransPerc;
     property AutoSave : boolean read fActProfil.AutoSave write SetAutoSave;
+    property StretchMode : tStretchMode read fActProfil.StretchMode write SetStretchMode;
     property MqttId : integer read fV.fMqttId write SetMqttId;
 
     property DtxFlags[Index: integer]: tDtxFlags read GetDtxFlags write SetDtxFlags;
@@ -1845,6 +1869,10 @@ begin
   GlobalVarModified;
 end;
 
+procedure tGlobals.SetStretchMode(NewValue : tStretchMode);
+begin
+  if NewValue=fActProfil.StretchMode then exit;
+  fActProfil.StretchMode:=NewValue;
 procedure tGlobals.SetMqttId(NewValue : integer);
 begin
   if NewValue=fV.fMqttId then exit;
@@ -2015,6 +2043,7 @@ begin
   Profil.BackTransPerc:=0;
   Profil.BlankTransPerc:=0;
   Profil.AutoSave:=false;
+  Profil.StretchMode:=smBASE;
 
   ResetFixSymbols(Profil.FixSymbols);
   for i := 1 to MAXFXX do
@@ -2129,6 +2158,7 @@ begin
   BackTransPerc:=Source.BackTransPerc;
   BlankTransPerc:=Source.BlankTransPerc;
   AutoSave:=Source.AutoSave;
+  StretchMode:=Source.StretchMode;
 
   for i := 1 to MAXFXX do
   begin
@@ -2331,6 +2361,8 @@ var
          Profil.BlankTransPerc:=Reg.ReadInteger('BlankTransPerc');
       if Reg.ValueExists('AutoSave') then
          Profil.AutoSave:=Reg.ReadBool('AutoSave');
+      if Reg.GetDataType('StretchMode')=rdInteger then
+         Profil.StretchMode:=tStretchMode(Reg.ReadInteger('StretchMode'));
 
       for i := Low(Profil.FixSymbols) to High(Profil.FixSymbols) do
       begin
@@ -2876,6 +2908,7 @@ var
       Reg.WriteInteger('BackTransPerc', Profil.BackTransPerc);
       Reg.WriteInteger('BlankTransPerc', Profil.BlankTransPerc);
       Reg.WriteBool('AutoSave',Profil.AutoSave);
+      Reg.WriteInteger('StretchMode', ord(Profil.StretchMode));
 
       for i := Low(Profil.FixSymbols) to High(Profil.FixSymbols) do
         Reg.WriteInteger('Symbol' + IntToStr(i), Profil.FixSymbols[i]);

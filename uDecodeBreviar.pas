@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2024 József Rieth
+Copyright 2005-2025 József Rieth
 
     This file is part of Diatar.
 
@@ -487,7 +487,8 @@ begin
     fFound:=f;
     exit;
   end;
-  AddLine('??? <p class="strong">'+AllTxt(fCurrTag)+'</p>');
+  StartVers('Ima');
+  AddLine(s);
 end;
 
 procedure tBreviarDecoder.DoReading;

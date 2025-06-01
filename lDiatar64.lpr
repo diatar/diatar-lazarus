@@ -12,7 +12,7 @@ uses
   uMonitors, uShutdown, uEditorForm, uNetwork, uDtxLst, uKeys, uNetQueue,
   uNetBase, uSymbolForm, uSerialIO, uSearchForm, uSound, uhowtosaveform,
   ukottaeditor, ukottakepek, ukottazo, userialioform, uappform, uKeyInputForm,
-  uSelectProfil, uLinuxRegistry, uDiatarIniLoader, uPropEdit;
+  uSelectProfil, uLinuxRegistry, uDiatarIniLoader, uPropEdit, uSplash;
 
 {$IFDEF WINDOWS}{$R project1.rc}{$ENDIF}
 
@@ -21,7 +21,6 @@ uses
 {$R *.res}
 
 begin
-  Application.Title:='Diatar';
   Application.Initialize;
   Application.CreateForm(TAppForm, AppForm);
   Application.CreateForm(TAddForm, AddForm);

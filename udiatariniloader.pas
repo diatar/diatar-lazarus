@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2024 József Rieth
+Copyright 2005-2025 József Rieth
 
     This file is part of Diatar.
 
@@ -64,6 +64,7 @@ var
   tf : TextFile;
   s : RawByteString;
   origdir,fname : string;
+  hasbreviardir : boolean;
 {$ifdef UNIX}
   function XmlOk(const path,fname : string) : boolean;
   begin
@@ -76,6 +77,11 @@ var
 begin
   fProgDir:=AppendPathDelim(ExtractFilePath(ParamStrUTF8(0)));
   fname:=fProgDir+'diatar.ini';
+{$ifdef WINDOWS}
+  //az OpenSSL azonos nevu DLLeket hasznal 32/64 bitre, ezert telepiteskor alkonyvtarba kerul a program
+  if not FileExistsUTF8(fname) and FileExistsUTF8(fProgDir+'..\diatar.ini') then
+    fname:=fProgDir+'..\diatar.ini';
+{$endif}
 
 {$ifdef UNIX}
   if XmlOk('/usr/local/etc/','reg.xml') or XmlOk('/usr/local/etc/','diatar.xml')
@@ -91,6 +97,7 @@ begin
     if FileExistsUTF8('/etc/opt/diatar/diatar.ini') then fname:='/etc/opt/diatar/diatar.ini';
   end;
   fDiaDir:='';
+  fBreviarDir:=fDtxDir;
 {$else}
   fDtxDir:=fProgDir;
   fRegDir:='';
@@ -102,19 +109,26 @@ begin
   {$I-} Reset(tf); {$I+}
   if IOResult=0 then begin
     origdir:=GetCurrentDirUTF8(); SetCurrentDirUTF8(ProgDir);
+    hasbreviardir:=false;
     try
       while not eof(tf) do begin
         ReadLn(tf,s); if not IsUTF8(s) then s:=WinCPToUTF8(s);
         if copy(s,1,7)='DtxDir=' then fDtxDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,8,9999)));
         if copy(s,1,7)='RegDir=' then fRegDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,8,9999)));
         if copy(s,1,7)='DiaDir=' then fDiaDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,8,9999)));
-        if copy(s,1,11)='BreviarDir=' then fBreviarDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,8,9999)));
+        if copy(s,1,11)='BreviarDir=' then begin
+          fBreviarDir:=AppendPathDelim(ExpandFileNameUTF8(copy(s,12,9999)));
+          hasbreviardir:=true;
+        end;
       end;
       CloseFile(tf);
+      if not hasbreviardir then fBreviarDir:=fDtxDir;
     finally
       SetCurrentDirUTF8(origdir);
     end;
   end;
+
+  if not DirectoryIsWritable(fBreviarDir) then fBreviarDir:=GetUserDir;
 end;
 
 end.

@@ -1,5 +1,5 @@
 (* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-Copyright 2005-2024 József Rieth
+Copyright 2005-2025 József Rieth
 
     This file is part of Diatar.
 
@@ -151,6 +151,8 @@ type
 
     constructor Create;
     destructor Destroy; override;
+
+    procedure TrimLines;
   end;
 
 type
@@ -313,9 +315,11 @@ function ExpandRelFName(const BaseFName,FileName : string) : string;
 implementation
 ///////////////////////////////////////////////////////////////
 
+uses uSplash
 {$IFNDEF DiaEditor}
-uses uGlobals;
+  , uGlobals
 {$ENDIF}
+;
 
 procedure FreeTxObj(obj : tTxBase);
   begin
@@ -516,7 +520,7 @@ var
         if (csum and $80000000)=0 then
           inc(csum,csum)
         else begin
-{$ifdef DEBUG}
+{$ifopt D+}
           csum:=csum and $7FFFFFFF;
           csum:=(csum shl 1);
           csum:=tID(int64(csum)-$A6734221);
@@ -525,7 +529,7 @@ var
 {$endif}
         end;
         if (b and $80)<>0 then inc(csum);
-{$ifdef DEBUG}
+{$ifopt D+}
         b:=b and $7F;
 {$endif}
         inc(b,b);
@@ -683,12 +687,13 @@ var
   DTXs : tObjectList;
   v : tVers;
   vs,vs2 : tVersszak;
-  i : integer;
+  i,n : integer;
   modfname : string;
-  FNames : tStringList;
+  FNames,FullNames : tStringList;
 
 begin
   FNames:=tStringList.Create;
+  FullNames:=tStringList.Create;
   try
     DTXs:=tObjectList.Create;
     modfname:='';
@@ -701,9 +706,7 @@ begin
             modfname:=dirs[i]+TXMODFILENAME;
           end else if FNames.IndexOf(sr.Name)<0 then begin
             FNames.Add(sr.Name);
-            kt:=tKotet.Create;
-            kt.Load(dirs[i]+sr.Name);
-            DTXs.Add(kt);
+            FullNames.Add(dirs[i]+sr.Name);
           end;
           fr:=FindNextUTF8(sr);
         end;
@@ -711,8 +714,16 @@ begin
         FindCloseUTF8(sr);
       end;
     end;
+    n:=FNames.Count;
+    for i:=0 to n-1 do begin
+      SplashForm.SetProgress(20+((60*i) div (n+1)),FNames[i]);
+      kt:=tKotet.Create;
+      kt.Load(FullNames[i]);
+      DTXs.Add(kt);
+    end;
   finally
     FNames.Free;
+    FullNames.Free;
   end;
 
   if DTXs.Count<=0 then begin
@@ -963,6 +974,18 @@ function tLiteralBase.GetText(Index : integer) : string;
   begin
     Result:=RemoveEscape(Lines[Index]);
   end;
+
+procedure tLiteralBase.TrimLines;
+var
+  idx : integer;
+begin
+  idx:=fLines.Count;
+  while idx>0 do begin
+    dec(idx);
+    if Trim(fLines[idx])>'' then exit;
+    fLines.Delete(idx);
+  end;
+end;
 
 {***********************************************}
 destructor tVersszak.Destroy;

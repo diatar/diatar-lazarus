@@ -4,9 +4,13 @@
     <Version Value="12"/>
     <General>
       <Flags>
+        <MainUnitHasCreateFormStatements Value="False"/>
+        <MainUnitHasTitleStatement Value="False"/>
+        <MainUnitHasScaledStatement Value="False"/>
         <LRSInOutputDirectory Value="False"/>
         <CompatibilityMode Value="True"/>
       </Flags>
+      <Title Value="lDiaEditor64"/>
       <UseXPManifest Value="True"/>
       <Icon Value="0"/>
     </General>
@@ -17,8 +21,99 @@
       <Language Value="040E"/>
       <StringTable ProductVersion="0.0.0.11"/>
     </VersionInfo>
-    <BuildModes Count="1">
+    <BuildModes Count="3" Active="Release">
       <Item1 Name="default" Default="True"/>
+      <Item2 Name="Debug">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="./lDiaEditor64"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="../Lib;/usr/share/fpcsrc/$(FPCVER)/packages/sndfile/src/;uoslib"/>
+            <UnitOutputDirectory Value="objLinux64ed"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+              <IncludeAssertionCode Value="True"/>
+              <UseAnsiStrings Value="False"/>
+              <CStyleMacros Value="True"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+            <VerifyObjMethodCallValidity Value="True"/>
+            <TargetCPU Value="x86_64"/>
+            <TargetOS Value="linux"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf3"/>
+              <UseHeaptrc Value="True"/>
+              <TrashVariables Value="True"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dDiaEditor -dUseCThreads"/>
+          </Other>
+        </CompilerOptions>
+      </Item2>
+      <Item3 Name="Release">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="./lDiaEditor64"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="../Lib;/usr/share/fpcsrc/$(FPCVER)/packages/sndfile/src/;uoslib"/>
+            <UnitOutputDirectory Value="objLinux64ed"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+              <UseAnsiStrings Value="False"/>
+              <CStyleMacros Value="True"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <TargetCPU Value="x86_64"/>
+            <TargetOS Value="linux"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <RunWithoutDebug Value="True"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dDiaEditor -dUseCThreads"/>
+          </Other>
+        </CompilerOptions>
+      </Item3>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
@@ -41,18 +136,19 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="57">
+    <Units Count="59">
       <Unit0>
-        <Filename Value="lDiaEditor.lpr"/>
+        <Filename Value="lDiaEditor64.lpr"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="MainForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="6"/>
-        <CursorPos X="33" Y="9"/>
-        <UsageCount Value="53"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="5"/>
+        <CursorPos X="31" Y="28"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="uedmain.pas"/>
@@ -61,12 +157,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEdMain"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="54"/>
-        <CursorPos X="20" Y="68"/>
-        <UsageCount Value="53"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="434"/>
+        <CursorPos X="37" Y="437"/>
+        <UsageCount Value="60"/>
       </Unit1>
       <Unit2>
         <Filename Value="uedkotetprop.pas"/>
@@ -77,7 +171,7 @@
         <UnitName Value="uEdKotetProp"/>
         <TopLine Value="121"/>
         <CursorPos X="17" Y="131"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="60"/>
       </Unit2>
       <Unit3>
         <Filename Value="uedversprop.pas"/>
@@ -86,7 +180,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEdVersProp"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="60"/>
       </Unit3>
       <Unit4>
         <Filename Value="uedvsprop.pas"/>
@@ -95,7 +189,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEdVSProp"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="60"/>
       </Unit4>
       <Unit5>
         <Filename Value="ueditorform.pas"/>
@@ -106,16 +200,15 @@
         <UnitName Value="uEditorForm"/>
         <TopLine Value="2097"/>
         <CursorPos X="10" Y="2117"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="60"/>
       </Unit5>
       <Unit6>
         <Filename Value="utxtar.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uTxTar"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="769"/>
-        <CursorPos X="12" Y="793"/>
-        <UsageCount Value="53"/>
+        <TopLine Value="771"/>
+        <CursorPos X="39" Y="773"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
       </Unit6>
       <Unit7>
@@ -123,20 +216,20 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uPaintResizedText"/>
         <CursorPos X="53" Y="17"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="60"/>
       </Unit7>
       <Unit8>
         <Filename Value="unetwork.pas"/>
         <UnitName Value="uNetwork"/>
         <TopLine Value="14"/>
         <CursorPos X="32" Y="32"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit8>
       <Unit9>
         <Filename Value="../Lib/uCaret.pas"/>
         <TopLine Value="38"/>
         <CursorPos X="17" Y="43"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit9>
       <Unit10>
         <Filename Value="usymbolform.pas"/>
@@ -147,133 +240,131 @@
         <UnitName Value="uSymbolForm"/>
         <TopLine Value="388"/>
         <CursorPos X="19" Y="402"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="60"/>
       </Unit10>
       <Unit11>
         <Filename Value="../../../../usr/share/fpcsrc/2.2.2/rtl/objpas/classes/classesh.inc"/>
         <TopLine Value="38"/>
         <CursorPos Y="62"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit11>
       <Unit12>
         <Filename Value="../../../../usr/share/fpcsrc/2.2.2/rtl/unix/classes.pp"/>
         <UnitName Value="Classes"/>
         <CursorPos X="28"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit12>
       <Unit13>
         <Filename Value="../../../../usr/share/fpcsrc/2.2.2/rtl/unix/cthreads.pp"/>
         <TopLine Value="94"/>
         <CursorPos Y="118"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit13>
       <Unit14>
         <Filename Value="usound.pas"/>
         <UnitName Value="uSound"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="334"/>
-        <CursorPos X="23" Y="356"/>
-        <UsageCount Value="22"/>
-        <Loaded Value="True"/>
+        <CursorPos X="15" Y="356"/>
+        <UsageCount Value="25"/>
       </Unit14>
       <Unit15>
         <Filename Value="../Lib/uRoutines.pas"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="107"/>
         <CursorPos X="10" Y="120"/>
-        <UsageCount Value="12"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="15"/>
       </Unit15>
       <Unit16>
         <Filename Value="../../../../usr/lib/lazarus/lcl/graphics.pp"/>
         <UnitName Value="Graphics"/>
         <CursorPos X="39" Y="28"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit16>
       <Unit17>
         <Filename Value="../../../../usr/lib/lazarus/lcl/lclintf.pas"/>
         <UnitName Value="LCLIntf"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit17>
       <Unit18>
         <Filename Value="../../../../usr/lib/lazarus/lcl/lcltype.pp"/>
         <UnitName Value="LCLType"/>
         <TopLine Value="950"/>
         <CursorPos X="39" Y="1193"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit18>
       <Unit19>
         <Filename Value="../../../../usr/share/fpcsrc/2.2.4/packages/sndfile/src/sndfile.pp"/>
         <TopLine Value="590"/>
         <CursorPos X="23" Y="599"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit19>
       <Unit20>
         <Filename Value="ueditorform.lrs"/>
         <TopLine Value="429"/>
         <CursorPos Y="457"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit20>
       <Unit21>
         <Filename Value="../../../../usr/lib/lazarus/0.9.28.2/lcl/include/winapih.inc"/>
         <TopLine Value="40"/>
         <CursorPos X="11" Y="54"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit21>
       <Unit22>
         <Filename Value="../../../../usr/lib/lazarus/0.9.28.2/lcl/include/intfbasewinapi.inc"/>
         <TopLine Value="117"/>
         <CursorPos X="3" Y="119"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit22>
       <Unit23>
         <Filename Value="../../../../usr/lib/lazarus/0.9.28.2/lcl/lcltype.pp"/>
         <UnitName Value="LCLType"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit23>
       <Unit24>
         <Filename Value="../../../../usr/lib/lazarus/0.9.28.2/lcl/include/wincontrol.inc"/>
         <TopLine Value="4907"/>
         <CursorPos Y="4921"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit24>
       <Unit25>
         <Filename Value="../../../../usr/lib/lazarus/0.9.28.2/lcl/include/control.inc"/>
         <TopLine Value="1499"/>
         <CursorPos Y="1594"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit25>
       <Unit26>
         <Filename Value="../../../../usr/lib/lazarus/0.9.28.2/lcl/lclmessageglue.pas"/>
         <UnitName Value="LCLMessageGlue"/>
         <TopLine Value="80"/>
         <CursorPos Y="121"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit26>
       <Unit27>
         <Filename Value="../../../../usr/lib/lazarus/0.9.28.2/lcl/interfaces/gtk/gtkproc.inc"/>
         <TopLine Value="3328"/>
         <CursorPos Y="3342"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit27>
       <Unit28>
         <Filename Value="../../../../usr/lib/lazarus/0.9.28.2/lcl/interfaces/gtk2/gtk2widgetset.inc"/>
         <TopLine Value="54"/>
         <CursorPos Y="68"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit28>
       <Unit29>
         <Filename Value="../../../../usr/lib/lazarus/0.9.28.2/lcl/interfaces/gtk/gtkproc.pp"/>
         <UnitName Value="GTKProc"/>
         <TopLine Value="404"/>
         <CursorPos X="11" Y="418"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit29>
       <Unit30>
         <Filename Value="uedmain.lrs"/>
         <TopLine Value="404"/>
         <CursorPos Y="432"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit30>
       <Unit31>
         <Filename Value="umain.pas"/>
@@ -283,48 +374,48 @@
         <UnitName Value="uMain"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="9"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit31>
       <Unit32>
         <Filename Value="Diatar.lpr"/>
         <UnitName Value="diatar"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit32>
       <Unit33>
         <Filename Value="../../../../usr/lib/lazarus/0.9.28.2/lcl/lclintf.pas"/>
         <UnitName Value="LCLIntf"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit33>
       <Unit34>
         <Filename Value="uglobals.pas"/>
         <UnitName Value="uGlobals"/>
         <TopLine Value="2062"/>
         <CursorPos X="5" Y="2090"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit34>
       <Unit35>
         <Filename Value="../../../../usr/lib/lazarus/0.9.28.2/lcl/forms.pp"/>
         <UnitName Value="Forms"/>
         <TopLine Value="1618"/>
         <CursorPos Y="1632"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit35>
       <Unit36>
         <Filename Value="../../../../usr/lib/lazarus/0.9.28.2/lcl/include/winapi.inc"/>
         <TopLine Value="381"/>
         <CursorPos Y="395"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit36>
       <Unit37>
         <Filename Value="lDiatar.lpr"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit37>
       <Unit38>
         <Filename Value="uakkord.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uAkkord"/>
-        <UsageCount Value="45"/>
+        <UsageCount Value="52"/>
       </Unit38>
       <Unit39>
         <Filename Value="uakkordform.pas"/>
@@ -335,51 +426,51 @@
         <UnitName Value="uAkkordForm"/>
         <TopLine Value="9"/>
         <CursorPos X="7" Y="28"/>
-        <UsageCount Value="45"/>
+        <UsageCount Value="52"/>
       </Unit39>
       <Unit40>
         <Filename Value="../../../../usr/share/fpcsrc/2.2.4/rtl/unix/sysutils.pp"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit40>
       <Unit41>
         <Filename Value="../../../../usr/share/fpcsrc/2.2.4/rtl/unix/classes.pp"/>
         <UnitName Value="Classes"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit41>
       <Unit42>
         <Filename Value="../lnet/lazaruspackage/lclnet.pas"/>
         <UnitName Value="LCLNet"/>
         <TopLine Value="21"/>
         <CursorPos X="12" Y="31"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit42>
       <Unit43>
         <Filename Value="../../../../usr/lib/lazarus/0.9.28.2/lcl/interfacebase.pp"/>
         <UnitName Value="InterfaceBase"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit43>
       <Unit44>
         <Filename Value="../../../../usr/lib/lazarus/0.9.28.2/lcl/interfaces/gtk2/interfaces.pas"/>
         <UnitName Value="Interfaces"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit44>
       <Unit45>
         <Filename Value="../../../../usr/lib/lazarus/lcl/interfacebase.pp"/>
         <UnitName Value="InterfaceBase"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit45>
       <Unit46>
         <Filename Value="unetbase.pas"/>
         <UnitName Value="uNetBase"/>
         <TopLine Value="23"/>
         <CursorPos X="5" Y="34"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit46>
       <Unit47>
         <Filename Value="../../../../usr/share/fpcsrc/2.4.2/rtl/objpas/sysutils/filutilh.inc"/>
         <TopLine Value="62"/>
         <CursorPos X="3" Y="72"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit47>
       <Unit48>
         <Filename Value="ukottaeditor.pas"/>
@@ -390,17 +481,17 @@
         <UnitName Value="uKottaEditor"/>
         <TopLine Value="977"/>
         <CursorPos X="29" Y="993"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="50"/>
       </Unit48>
       <Unit49>
         <Filename Value="ukottakepek.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="50"/>
       </Unit49>
       <Unit50>
         <Filename Value="ukottazo.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="50"/>
       </Unit50>
       <Unit51>
         <Filename Value="uedsetup.pas"/>
@@ -409,15 +500,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEdSetup"/>
-        <EditorIndex Value="1"/>
-        <UsageCount Value="41"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="48"/>
       </Unit51>
       <Unit52>
         <Filename Value="/usr/share/fpcsrc/3.0.4/packages/sndfile/src/sndfile.pp"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="10"/>
       </Unit52>
       <Unit53>
         <Filename Value="/usr/share/lazarus/1.8.0/components/lazutils/lazfileutils.pas"/>
@@ -425,20 +514,19 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="82"/>
         <CursorPos X="10" Y="96"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit53>
       <Unit54>
         <Filename Value="uoslib/uos_flat.pas"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="383"/>
         <CursorPos X="11" Y="383"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="13"/>
       </Unit54>
       <Unit55>
         <Filename Value="uappform.lfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit55>
       <Unit56>
@@ -447,136 +535,135 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="78"/>
         <CursorPos Y="101"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit56>
+      <Unit57>
+        <Filename Value="usplash.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="SplashForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uSplash"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="27"/>
+      </Unit57>
+      <Unit58>
+        <Filename Value="lDiaEditor32.lpr"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5"/>
+        <CursorPos Y="28"/>
+        <UsageCount Value="10"/>
+      </Unit58>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="25" HistoryIndex="24">
       <Position1>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1462" TopLine="1438"/>
+        <Caret Line="1465" Column="9" TopLine="1445"/>
       </Position1>
       <Position2>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1465" TopLine="1441"/>
+        <Caret Line="1426" TopLine="1413"/>
       </Position2>
       <Position3>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1466" TopLine="1442"/>
+        <Caret Line="1427" TopLine="1413"/>
       </Position3>
       <Position4>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1465" Column="9" TopLine="1445"/>
+        <Caret Line="1428" TopLine="1413"/>
       </Position4>
       <Position5>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="423" Column="20" TopLine="401"/>
+        <Filename Value="utxtar.pas"/>
+        <Caret Line="1433" TopLine="1413"/>
       </Position5>
       <Position6>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1426" TopLine="1413"/>
+        <Caret Line="1434" TopLine="1413"/>
       </Position6>
       <Position7>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1427" TopLine="1413"/>
+        <Caret Line="1435" TopLine="1413"/>
       </Position7>
       <Position8>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1428" TopLine="1413"/>
+        <Caret Line="1436" TopLine="1413"/>
       </Position8>
       <Position9>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1433" TopLine="1413"/>
+        <Caret Line="1437" TopLine="1413"/>
       </Position9>
       <Position10>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1434" TopLine="1413"/>
+        <Caret Line="1438" TopLine="1414"/>
       </Position10>
       <Position11>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1435" TopLine="1413"/>
+        <Caret Line="1465" TopLine="1443"/>
       </Position11>
       <Position12>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1436" TopLine="1413"/>
+        <Caret Line="1398" TopLine="1384"/>
       </Position12>
       <Position13>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1437" TopLine="1413"/>
+        <Caret Line="1399" TopLine="1384"/>
       </Position13>
       <Position14>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1438" TopLine="1414"/>
+        <Caret Line="1412" Column="37" TopLine="1396"/>
       </Position14>
       <Position15>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1465" TopLine="1443"/>
+        <Caret Line="1401" TopLine="1397"/>
       </Position15>
       <Position16>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1398" TopLine="1384"/>
+        <Caret Line="1468" TopLine="1456"/>
       </Position16>
       <Position17>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1399" TopLine="1384"/>
+        <Caret Line="1397" TopLine="1382"/>
       </Position17>
       <Position18>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1412" Column="37" TopLine="1396"/>
+        <Caret Line="1398" TopLine="1382"/>
       </Position18>
       <Position19>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1401" TopLine="1397"/>
+        <Caret Line="1399" TopLine="1382"/>
       </Position19>
       <Position20>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1468" TopLine="1456"/>
+        <Caret Line="1400" TopLine="1382"/>
       </Position20>
       <Position21>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1397" TopLine="1382"/>
+        <Caret Line="1404" TopLine="1382"/>
       </Position21>
       <Position22>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1398" TopLine="1382"/>
+        <Caret Line="1316" Column="9" TopLine="1302"/>
       </Position22>
       <Position23>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1399" TopLine="1382"/>
+        <Caret Line="722" Column="31" TopLine="715"/>
       </Position23>
       <Position24>
         <Filename Value="utxtar.pas"/>
-        <Caret Line="1400" TopLine="1382"/>
+        <Caret Line="793" Column="12" TopLine="769"/>
       </Position24>
       <Position25>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1404" TopLine="1382"/>
+        <Filename Value="lDiaEditor64.lpr"/>
+        <Caret Column="33"/>
       </Position25>
-      <Position26>
-        <Filename Value="uedmain.pas"/>
-        <Caret Line="247" Column="27" TopLine="233"/>
-      </Position26>
-      <Position27>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="1316" Column="9" TopLine="1302"/>
-      </Position27>
-      <Position28>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="722" Column="31" TopLine="715"/>
-      </Position28>
-      <Position29>
-        <Filename Value="utxtar.pas"/>
-        <Caret Line="793" Column="12" TopLine="769"/>
-      </Position29>
-      <Position30>
-        <Filename Value="usound.pas"/>
-        <Caret Line="345" Column="14" TopLine="335"/>
-      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>
     <Target>
-      <Filename Value="./diaeditor64"/>
+      <Filename Value="./lDiaEditor64"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
@@ -586,13 +673,16 @@
     <Parsing>
       <SyntaxOptions>
         <CStyleOperator Value="False"/>
-        <CStyleMacros Value="True"/>
         <UseAnsiStrings Value="False"/>
+        <CStyleMacros Value="True"/>
       </SyntaxOptions>
     </Parsing>
     <CodeGeneration>
       <TargetCPU Value="x86_64"/>
       <TargetOS Value="linux"/>
+      <Optimizations>
+        <OptimizationLevel Value="3"/>
+      </Optimizations>
     </CodeGeneration>
     <Linking>
       <Debugging>
