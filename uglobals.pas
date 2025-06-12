@@ -1873,6 +1873,9 @@ procedure tGlobals.SetStretchMode(NewValue : tStretchMode);
 begin
   if NewValue=fActProfil.StretchMode then exit;
   fActProfil.StretchMode:=NewValue;
+  GlobalVarModified;
+end;
+
 procedure tGlobals.SetMqttId(NewValue : integer);
 begin
   if NewValue=fV.fMqttId then exit;

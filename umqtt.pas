@@ -46,7 +46,7 @@ const
   mqttPINGREQ            = 12;
   mqttPINGRESP           = 13;
   mqttDISCONNECT         = 14;
-  mqttRESERVER15         = 15;
+  mqttRESERVED15         = 15;
 
 //known return codes
 const
@@ -104,7 +104,7 @@ type
     fUserNameFlag : boolean;
     fUserName : AnsiString;
     fPasswordFlag : boolean;
-    fPassword : tMQTT_Buffer;
+    fPassword : AnsiString;
     fKeepAlive : UInt16;
     fClientId : AnsiString;
     fSessionPresent : boolean;
@@ -115,6 +115,9 @@ type
     fFilters : tMQTT_Filter_Array;
     fSubAcks : tMQTT_SubAcks;
     fBufLen : integer;            //Decode() rutinhoz a header alapjan szamolt pufferhossz, ennyit szabad dekodolni
+
+    function GetMessageTypeStr : string;
+    function GetConnectReturnStr : string;
 
     //append string
     procedure StrToBuf(const str : AnsiString; var buf : tMQTT_Buffer);
@@ -153,6 +156,7 @@ type
     function UNSUBSCRIBE_FromBuf(const buf : tMQTT_Buffer; var bufpos : integer) : tMQTT_Error;
   public
     property MessageType : UInt8 read fMessageType write fMessageType;
+    property MessageTypeStr : string read GetMessageTypeStr;
     property QoS : UInt8 read fQoS write fQoS;
     property DUP : boolean read fDUP write fDUP;
     property RETAIN : boolean read fRETAIN write fRETAIN;
@@ -168,11 +172,12 @@ type
     property UserNameFlag : boolean read fUserNameFlag write fUserNameFlag;
     property UserName : AnsiString read fUserName write fUserName;
     property PasswordFlag : boolean read fPasswordFlag write fPasswordFlag;
-    property Password : tMQTT_Buffer read fPassword write fPassword;
+    property Password : AnsiString read fPassword write fPassword;
     property KeepAlive : UInt16 read fKeepAlive write fKeepAlive;
     property ClientId : AnsiString read fClientId write fClientId;
     property SessionPresent : boolean read fSessionPresent write fSessionPresent;
     property ConnectReturnCode : UInt8 read fConnectReturnCode write fConnectReturnCode;
+    property ConnectReturnStr : string read GetConnectReturnStr;
     property TopicName : AnsiString read fTopicName write fTopicName;
     property PacketId : UInt16 read fPacketId write fPacketId;
     property ApplicationMessage : tMQTT_Buffer read fApplicationMessage write fApplicationMessage;
@@ -184,6 +189,8 @@ type
     function Encode() : tMQTT_Buffer;
     function Decode(const buf : tMQTT_Buffer) : tMQTT_Error;
     procedure CalcRemLen();  //fRemainingLength kiszamitasa a tobbi mezo alapjan
+    function ConvertStrToBuf(const str : AnsiString) : tMQTT_Buffer;
+    function ConvertBufToStr(const buf : tMQTT_Buffer) : AnsiString;
   end;
 
 implementation
@@ -213,7 +220,7 @@ begin
   fUserNameFlag:=false;
   fUserName:='';
   fPasswordFlag:=false;
-  SetLength(fPassword,0);
+  fPassword:='';
   fKeepAlive:=0;
   fClientId:='';
   fSessionPresent:=false;
@@ -267,7 +274,7 @@ begin
   fQoS:=(buf[0] shr 1) and 3;
   case fMessageType of
     mqttRESERVED0,
-    mqttRESERVER15 : exit; //ezekrol semmi tobbet nem tudunk
+    mqttRESERVED15 : exit; //ezekrol semmi tobbet nem tudunk
     mqttPUBLISH : buf0_should_be:=$FF; //mindegy...
     mqttCONNECT,
     mqttCONNACK,
@@ -366,6 +373,53 @@ begin
     mqttDISCONNECT : fRemainingLength:=0;
     otherwise fRemainingLength:=0;
   end;
+end;
+
+function tMQTT_Message.GetMessageTypeStr : string;
+const
+  MsgStr : array[0..15] of string = (
+    'RESERVED0', 'CONNECT', 'CONNACK', 'PUBLISH',
+    'PUBACK', 'PUBREC', 'PUBREL', 'PUBCOMP',
+    'SUBSCRIBE', 'SUBACK', 'UNSUBSCRIBE', 'UNSUBACK',
+    'PINGREQ', 'PINGRESP', 'DISCONNECT', 'RESERVED15'
+  );
+begin
+  if fMessageType<=15 then
+    Result:=MsgStr[fMessageType]
+  else
+    Result:='UNKNOWN#'+IntToStr(fMessageType);
+end;
+
+function tMQTT_Message.GetConnectReturnStr : string;
+const
+   ConnackStr : array[0..5] of string = (
+     'ACCEPTED', 'PROTOCOL', 'CLIENTID', 'UNAVAILABLE', 'BADUSER', 'UNAUTHORIZED'
+   );
+begin
+  if fConnectReturnCode<=5 then
+    Result:=ConnackStr[fConnectReturnCode]
+  else
+    Result:='UNKNOWN#'+IntToStr(fConnectReturnCode);
+end;
+
+function tMQTT_Message.ConvertStrToBuf(const str : AnsiString) : tMQTT_Buffer;
+var
+  len : integer;
+begin
+  Result:=nil;
+  len:=Length(str);
+  SetLength(Result,len);
+  if len>0 then Move(str[1],Result[0],len);
+end;
+
+function tMQTT_Message.ConvertBufToStr(const buf : tMQTT_Buffer) : AnsiString;
+var
+  len : integer;
+begin
+  Result:='';
+  len:=Length(buf);
+  SetLength(Result,len);
+  if len>0 then Move(buf[0],Result[1],len);
 end;
 
 //////////////////////////////////////////////////////////////
@@ -528,7 +582,7 @@ begin
   if fUserNameFlag then begin
     //User Name
     StrToBuf(fUserName,Result);
-    if fPasswordFlag then BufToBuf(fPassword,Result);
+    if fPasswordFlag then StrToBuf(fPassword,Result);
   end;
 end;
 
@@ -807,7 +861,7 @@ begin
     if not StrFromBuf(buf,bufpos,fUserName) then exit(merrLENGTH);
   end;
   if fPasswordFlag then begin
-    if not BufFromBuf(buf,bufpos,fPassword) then exit(merrLENGTH);
+    if not StrFromBuf(buf,bufpos,fPassword) then exit(merrLENGTH);
   end;
 end;
 
