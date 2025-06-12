@@ -479,8 +479,8 @@ begin
     ProcessSerialOn;
 
   if Globals.MqttId>0 then begin
-    MQTT_IO.TopicNumber:=Globals.MqttId;
-    MQTT_IO.Open(IsMQTTSender);
+    MQTT_IO.ClientId:=Globals.MqttId;
+    if IsMQTTSender then MQTT_IO.Open(omSENDER) else MQTT_IO.Open(omRECEIVER);
   end else begin
     ShowError('Internet elérési hiba!');
   end;
