@@ -203,28 +203,14 @@ object MqttForm: TMqttForm
         Height = 23
         Top = 48
         Width = 248
+        MaxLength = 16
         TabOrder = 0
-      end
-      object Label8: TLabel
-        Left = 5
-        Height = 15
-        Top = 75
-        Width = 139
-        Alignment = taRightJustify
-        AutoSize = False
-        Caption = 'Teljes név:'
-      end
-      object RegNameEd: TEdit
-        Left = 152
-        Height = 23
-        Top = 72
-        Width = 248
-        TabOrder = 1
+        TextHint = 'Kovács János'
       end
       object Label9: TLabel
         Left = 5
         Height = 15
-        Top = 98
+        Top = 74
         Width = 139
         Alignment = taRightJustify
         AutoSize = False
@@ -233,14 +219,16 @@ object MqttForm: TMqttForm
       object RegEmailEd: TEdit
         Left = 152
         Height = 23
-        Top = 96
+        Top = 72
         Width = 248
-        TabOrder = 2
+        MaxLength = 50
+        TabOrder = 1
+        TextHint = 'jani123@gmail.com'
       end
       object Label10: TLabel
         Left = 5
         Height = 15
-        Top = 123
+        Top = 99
         Width = 139
         Alignment = taRightJustify
         AutoSize = False
@@ -249,16 +237,16 @@ object MqttForm: TMqttForm
       object RegPsw1: TEdit
         Left = 152
         Height = 23
-        Top = 120
+        Top = 96
         Width = 248
         EchoMode = emPassword
         PasswordChar = '*'
-        TabOrder = 3
+        TabOrder = 2
       end
       object Label11: TLabel
         Left = 5
         Height = 15
-        Top = 147
+        Top = 123
         Width = 139
         Alignment = taRightJustify
         AutoSize = False
@@ -267,33 +255,34 @@ object MqttForm: TMqttForm
       object RegPsw2: TEdit
         Left = 152
         Height = 23
-        Top = 144
+        Top = 120
         Width = 248
         EchoMode = emPassword
         PasswordChar = '*'
-        TabOrder = 4
+        TabOrder = 3
       end
       object RegShowPsw: TCheckBox
         Left = 184
         Height = 19
-        Top = 168
+        Top = 144
         Width = 124
         Caption = 'Jelszó megjelenítése'
-        TabOrder = 5
+        TabOrder = 4
         OnChange = RegShowPswChange
       end
       object RegSendCode: TButton
         Left = 32
         Height = 33
-        Top = 192
+        Top = 168
         Width = 345
         Caption = 'Regisztrációs kód küldése az email-címre'
-        TabOrder = 6
+        TabOrder = 5
+        OnClick = RegSendCodeClick
       end
       object Label12: TLabel
         Left = 5
         Height = 15
-        Top = 235
+        Top = 211
         Width = 139
         Alignment = taRightJustify
         AutoSize = False
@@ -302,9 +291,9 @@ object MqttForm: TMqttForm
       object RegCodeEd: TEdit
         Left = 152
         Height = 23
-        Top = 232
+        Top = 208
         Width = 248
-        TabOrder = 7
+        TabOrder = 6
       end
       object RegOkBtn: TBitBtn
         Left = 80
@@ -312,9 +301,10 @@ object MqttForm: TMqttForm
         Top = 264
         Width = 112
         Caption = 'Regisztráció'
+        Enabled = False
         Kind = bkOK
-        ModalResult = 1
-        TabOrder = 8
+        OnClick = RegOkBtnClick
+        TabOrder = 7
       end
       object RegCancelBtn: TBitBtn
         Left = 224
@@ -324,7 +314,7 @@ object MqttForm: TMqttForm
         DefaultCaption = True
         Kind = bkCancel
         ModalResult = 2
-        TabOrder = 9
+        TabOrder = 8
       end
       object Label14: TLabel
         Left = 8
