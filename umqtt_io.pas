@@ -29,12 +29,11 @@ uses
   uMQTT, lNet, lNetComponents, uTxTar;
 
 type
-  tOpenMode = (omRECEIVER,omSENDER, omUSERLIST);
+  tOpenMode = (omRECEIVER,omSENDER, omUSERLIST, omCREATEUSER);
 
 type
   tMqttUserRec = record
     Username : string;
-    Textname : string;
     Email : string;
   end;
   tMqttUserArray = array of tMqttUserRec;
@@ -53,6 +52,10 @@ type
       fTopicDynsec : string;          //security kuldes topic
       fUserName : string;
       fPassword : string;
+      fEmail : string;
+
+      fOnCmdFinished : tNotifyEvent;
+      fCmdResult : string;            //ures string ha hibatlan volt
 
       fMqttHost : string;
       fMqttPort : integer;
@@ -68,10 +71,13 @@ type
       fTmrSendPing : integer;         //szamlalo PING kuldeshez
       fTmrRecPing : integer;          //szamlalo PING varashoz
       fTmrReopen : integer;           //szamlalo ujrajkezdeshez
+      fTmrFinishCmd : integer;        //szamlalo egy cmd vegrehajtasahoz
 
       //fTmr esemeny es segedei
       procedure OnTmr(Sender : tObject);
       procedure TmrResetSendPing;     //fTmrSendPing alaphelyzetbe
+
+      procedure DoFinishCmd;          //notify hivasa
 
       //TCPComp esemenyei
       procedure TCPCompAccept(aSocket: TLSocket);
@@ -95,10 +101,11 @@ type
       procedure SendPing;
       procedure ProcessPublish(const mqtt : tMQTT_Message);
       procedure ProcessPublish_Dia(const mqtt : tMQTT_Message; len : integer);
-      procedure ProcessPublish_UserList(const mqtt : tMQTT_Message; len : integer);
+      procedure ProcessPublish_CmdResp(const mqtt : tMQTT_Message; len : integer);
       procedure CmdSend(const cmd : AnsiString);
       procedure CmdUserList;
       procedure CmdGetUser;
+      procedure CmdCreateUser;
 
       function ProcessJson(const jdata : tJSONData; iscont : boolean) : boolean;  //TRUE=folytatjuk
       function ProcessJsonLISTCLIENTS(const jdata : tJSONData; iscont : boolean) : boolean;
@@ -118,6 +125,10 @@ type
       property ClientId : integer read fClientId write fClientId;
       property UserName : string read fUserName write fUserName;
       property Password : string read fPassword write fPassword;
+      property Email : string read fEmail write fEmail;
+
+      property OnCmdFinished : tNotifyEvent read fOnCmdFinished write fOnCmdFinished;
+      property CmdResult : string read fCmdResult;
 
       property UserList : tMqttUserArray read fUserList;
 
@@ -128,7 +139,7 @@ type
       procedure Close;
       procedure Reopen;
 
-      function IsValidEmail(const email : string) : boolean;
+      function IsValidEmail(const testemail : string) : boolean;
 
       //Dia kuldes-fogadas
       procedure SendPic(const fname: string; isblankpic : boolean = false);
@@ -154,6 +165,7 @@ const
   TMR_SENDPING           = 5000; //ha semmi mas forgalom, PINGet kuldunk
   TMR_RECPING            = 1000; //PINGet kuldtunk, varjuk a valaszt
   TMR_REOPEN             = 1000; //nincs kommunikacio, ujrakezdjuk
+  TMR_FINISHCMD          = 1000; //ennyi ido alatt egy parancsot le kell zarni
 
 //dynsec beallito superuser
 const
@@ -184,7 +196,7 @@ begin
 
   fTmr:=tTimer.Create(nil);
   fTmr.OnTimer:=@OnTmr;
-  fTmr.Interval:=10;
+  fTmr.Interval:=20;
   fTmrLastTick:=GetTickCount64;
   TmrResetSendPing;
   fTmr.Enabled:=true;
@@ -203,13 +215,19 @@ end;
 //publikus megnyitas
 procedure tMQTT_IO.Open(om : tOpenMode);
 begin
-  fTmrReopen:=0;
   fOpenMode:=om;
+
+  fTmrReopen:=0;
+  fTmrFinishCmd:=0;
+  fCmdResult:='';
+  if fOpenMode in [omUSERLIST,omCREATEUSER] then fTmrFinishCmd:=TMR_FINISHCMD;
+
   fTopicGroup:='Diatar/'; // ideiglenesen kivesszuk!!!  +IntToStr(fClientId)+'/';
   fTopicMask:=fTopicGroup+'#';
   fTopicState:=fTopicGroup+'state';
   fTopicBlank:=fTopicGroup+'blank';
   fTopicDia:=fTopicGroup+'dia';
+
   MQTTOpen;
 end;
 
@@ -225,10 +243,10 @@ begin
   fTmrReopen:=TMR_REOPEN;
 end;
 
-function tMQTT_IO.IsValidEmail(const email : string) : boolean;
+function tMQTT_IO.IsValidEmail(const testemail : string) : boolean;
 begin
   try
-    Result:=fEmailRegex.Exec(email);
+    Result:=fEmailRegex.Exec(testemail);
   except
     Result:=false;
   end;
@@ -253,6 +271,14 @@ begin
     if fTmrReopen<=0 then Open(fOpenMode);
   end;
 
+  if fTmrFinishCmd>0 then begin
+    dec(fTmrFinishCmd,diff);
+    if fTmrFinishCmd<=0 then begin
+      Close;
+      DoFinishCmd;
+    end;
+  end;
+
   if fIsOpen then begin
     if fTmrRecPing>0 then begin
       dec(fTmrRecPing,diff);
@@ -270,6 +296,12 @@ begin
 end;
 
 
+procedure tMQTT_IO.DoFinishCmd;
+begin
+  fTmrFinishCmd:=0;
+  if Assigned(fOnCmdFinished) then fOnCmdFinished(Self);
+end;
+
 ///////////////////////////////////////////////////
 // TCP component callbacks
 ///////////////////////////////////////////////////
@@ -284,6 +316,8 @@ procedure tMQTT_IO.TCPCompConnect(aSocket: TLSocket);
 begin
   fIsOpen:=true;
   DebugLn('MQTT: Tcp Connected');
+
+  if fOpenMode in [omUSERLIST,omCREATEUSER] then fTmrFinishCmd:=TMR_FINISHCMD;
   SendConnect;
 end;
 
@@ -292,6 +326,10 @@ procedure tMQTT_IO.TCPCompDisconnect(aSocket: TLSocket);
 begin
   DebugLn('MQTT: Tcp Disconnected');
   fIsOpen:=false;
+  if fTmrFinishCmd>0 then begin
+    fCmdResult:='Tcp Disconnected';
+    DoFinishCmd;
+  end;
 end;
 
 //kommunikacios hiba tortent
@@ -299,6 +337,10 @@ procedure tMQTT_IO.TCPCompError(const msg: string; aSocket: TLSocket);
 begin
   MainForm.ShowError('MQTT TcpError: '+msg);
   DebugLn('MQTT: Tcp Error -> '+msg);
+  if fTmrFinishCmd>0 then begin
+    fCmdResult:='Tcp error: '+msg;
+    DoFinishCmd;
+  end;
 end;
 
 //adat erkezett
@@ -427,11 +469,13 @@ begin
     end;
     case fOpenMode of
       omRECEIVER: SendSubscribe;    //ha fogado vagyunk, feliratkozunk
+      omCREATEUSER,
       omUSERLIST: SendSubscribe;
     end;
     exit;
   end else if mqtt.MessageType=mqttSUBACK then begin   //elfogadtak a feliratkozast
-    if fOpenMode=omUSERLIST then CmdUserList;
+    if fOpenMode=omUSERLIST then CmdUserList
+    else if fOpenMode=omCREATEUSER then CmdCreateUser;
   end else if mqtt.MessageType=mqttPINGREQ then begin  //csak megszolitottak
     SendResp(mqttPINGRESP);
   end else if mqtt.MessageType=mqttPINGRESP then begin //valaszoltak a mi PINGunkre
@@ -467,7 +511,9 @@ begin
         mqtt.Password:=Password;
       end;
       omRECEIVER: ; //nem kell user/psw
-      omUSERLIST: begin
+
+      omUSERLIST,
+      omCREATEUSER: begin
         mqtt.UserNameFlag:=true;
         mqtt.UserName:=DYNSECUSER;
         mqtt.PasswordFlag:=true;
@@ -492,9 +538,11 @@ begin
   try
     mqtt.MessageType:=mqttSUBSCRIBE;
     mqtt.PacketId:=1;
+    f:=nil;
     SetLength(f,1);
     case fOpenMode of
       omRECEIVER: f[0].Topic:=fTopicMask;
+      omCREATEUSER,
       omUSERLIST: f[0].Topic:=fTopicDynsec+'/response';
     end;
     f[0].QoS:=0;
@@ -537,7 +585,8 @@ begin
   if len<=0 then exit;
   case fOpenMode of
     omRECEIVER: ProcessPublish_Dia(mqtt,len);
-    omUSERLIST: ProcessPublish_UserList(mqtt,len);
+    omCREATEUSER,
+    omUSERLIST: ProcessPublish_CmdResp(mqtt,len);
   end;
 end;
 
@@ -560,7 +609,7 @@ begin
   end;
 end;
 
-procedure tMQTT_IO.ProcessPublish_UserList(const mqtt : tMQTT_Message; len : integer);
+procedure tMQTT_IO.ProcessPublish_CmdResp(const mqtt : tMQTT_Message; len : integer);
 var
   txt : AnsiString;
   jdata,jresp : tJSONData;
@@ -569,7 +618,7 @@ var
   iscont : boolean;
 begin
   txt:=mqtt.ConvertBufToStr(mqtt.ApplicationMessage);
-  DebugLn('MQTT received userlist: '+txt);
+  DebugLn('MQTT received cmd response: '+txt);
 
   jdata:=nil;
   try
@@ -579,16 +628,25 @@ begin
       if not Assigned(jresp) or (jresp.JSONType<>jtArray) then begin
         MainForm.ShowError('Hibás input');
         MQTTClose;
+        if fTmrFinishCmd>0 then begin
+          fCmdResult:='Hibás szerver válasz!';
+          DoFinishCmd;
+        end;
         exit;
       end;
       jarr:=(jresp as tJSONArray);
       iscont:=false;
       for idx:=0 to jarr.Count-1 do
         if ProcessJson(jarr[idx], iscont) then iscont:=true;
-      if not iscont then MQTTClose;
+      if not iscont then begin
+        MQTTClose;
+        DoFinishCmd;
+      end;
     except
       MainForm.ShowError('Input nem dekódolható');
       MQTTClose;
+      fCmdResult:='Szerver válasz nem dekódolható!';
+      DoFinishCmd;
       exit;
     end;
   finally
@@ -612,6 +670,7 @@ begin
 
     mqtt.CalcRemLen();
     MQTTSend(mqtt);
+    fTmrFinishCmd:=TMR_FINISHCMD;
   finally
     mqtt.Free;
   end;
@@ -639,6 +698,19 @@ begin
   CmdSend(cmd);
 end;
 
+procedure tMQTT_IO.CmdCreateUser;
+var
+  cmd : AnsiString;
+begin
+  cmd:='{"commands": [{"command": "createClient"'+
+    ', "username": "'+fUserName+'"'+
+    ', "password": "'+fPassword+'"'+
+    ', "textname": "'+fEmail+'"'+
+    ', "roles": [{"rolename": "senders"}] '+
+    '}]}';
+  CmdSend(cmd);
+end;
+
 function tMQTT_IO.ProcessJson(const jdata : tJSONData; iscont : boolean) : boolean;
 var
   je : tJSONData;
@@ -648,18 +720,22 @@ begin
   je:=jdata.FindPath('error');
   if Assigned(je) then begin
     DebugLn('MQTT cmd error: '+je.AsString);
+    fCmdResult:='Parancshiba: '+je.AsString;
     exit;
   end;
   je:=jdata.FindPath('command');
   if not Assigned(je) then begin
     DebugLn('MQTT "command" not found!');
+    fCmdResult:='Hiányos válasz!';
     exit;
   end;
   cmd:=UpperCase(je.AsString);
   if cmd='LISTCLIENTS' then
     Result:=ProcessJsonLISTCLIENTS(jdata, iscont)
   else if cmd='GETCLIENT' then
-    Result:=ProcessJsonGETCLIENT(jdata, iscont);
+    Result:=ProcessJsonGETCLIENT(jdata, iscont)
+  else if cmd='CREATECLIENT' then
+    Result:=false;
 end;
 
 function tMQTT_IO.ProcessJsonLISTCLIENTS(const jdata : tJSONData; iscont : boolean) : boolean;
@@ -672,6 +748,7 @@ begin
   je:=jdata.FindPath('data.clients');
   if not Assigned(je) or (je.JSONType<>jtArray) then begin
     DebugLn('MQTT "data" not found!');
+    fCmdResult:='Nincs adat!';
     exit;
   end;
   jarr:=(je as tJSONArray);
@@ -696,12 +773,12 @@ begin
   SetLength(fUserList,len+1);
   fUserList[len].Username:=je.AsString;
   je:=jdata.FindPath('data.client.textname');
-  if Assigned(je) then fUserList[len].Textname:=je.AsString;
-  je:=jdata.FindPath('data.client.textdescription');
   if Assigned(je) then fUserList[len].Email:=je.AsString;
   if (fTmpUserListIdx<Length(fTmpUserList)) and not iscont then begin
     CmdGetUser;
     Result:=true;
+  end else begin
+    SetLength(fTmpUserList,0);
   end;
 end;
 
@@ -740,8 +817,8 @@ procedure tMQTT_IO.ProcessTxt(buf : pUInt8; size : Integer);
 var
   s,scholaline : AnsiString;
   Lit : tLiteral;
-  len : integer;
 begin
+  s:='';
   SetLength(s,size);
   if size>0 then Move(buf^,s[1],size);
   scholaline:='';
@@ -836,6 +913,7 @@ begin
   else
     s:=Txt.Title;
   s:=ScholaLine+#13+s+#13+Txt.Lines.Text;
+  msg:=nil;
   SetLength(msg,Length(s)+1);
   msg[0]:=ord('T');
   Move(s[1],msg[1],Length(s));
@@ -869,6 +947,7 @@ begin
     mqtt.MessageType:=mqttPUBLISH;
     mqtt.DUP:=false; mqtt.QoS:=0; mqtt.RETAIN:=true;
     mqtt.TopicName:=fTopicState;
+    msg:=nil;
     SetLength(msg,sizeof(buf));
     Move(buf,msg[0],sizeof(buf));
     mqtt.ApplicationMessage:=msg;
