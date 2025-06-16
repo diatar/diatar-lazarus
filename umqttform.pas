@@ -90,6 +90,7 @@ type
     procedure RegShowPswChange(Sender: TObject);
   private
     fRegCode,fRegName,fRegEmail,fRegPsw : string;
+    fWaitFor : (wfUSERLIST,wfCREATEUSER);
 
     procedure OnCmdFinished(Sender : tObject);
   public
@@ -102,7 +103,7 @@ var
 implementation
 
 uses
-  uRoutines, uMQTT_IO, fphttpclient,openssl,opensslsockets, HTTPprotocol;
+  uRoutines, uGlobals, uMQTT_IO, fphttpclient,openssl,opensslsockets, HTTPprotocol;
 
 var
   LastEmailTick : QWord = 0;
@@ -122,6 +123,7 @@ begin
   end;
 
   MQTT_IO.OnCmdFinished:=@OnCmdFinished;
+  fWaitFor:=wfUSERLIST;
   MQTT_IO.Open(omUSERLIST);
 end;
 
@@ -151,7 +153,9 @@ begin
   MQTT_IO.UserName:=fRegName;
   MQTT_IO.Password:=fRegPsw;
   MQTT_IO.Email:=fRegEmail;
+  fWaitFor:=wfCREATEUSER;
   MQTT_IO.Open(omCREATEUSER);
+  Pages.Enabled:=false;
 
   //ModalResult:=mrOK;
 end;
@@ -286,7 +290,10 @@ end;
 
 procedure tMqttForm.OnCmdFinished(Sender : tObject);
 begin
-  InfoBox('Ez kész! '+MQTT_IO.CmdResult);
+  if MQTT_IO.CmdResult>'' then begin
+    ErrorBox('Internet kapcsolati hiba:'#13+MQTT_IO.CmdResult);
+  end;
+  if fWaitFor=wfCREATEUSER then Pages.Enabled:=true;
 end;
 
 initialization
