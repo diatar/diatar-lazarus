@@ -642,6 +642,9 @@ type
     function AdjustRect(Form: TForm; const Rect: tRect): tRect;
     function MoveRectVisible(const R: tRect; ScrIndex : integer = -1): tRect;
     function GetFxxTitle(Index : integer): string;
+
+    function DecodePsw(const secret : string) : string;
+    function EncodePsw(const public : string) : string;
   end;
 
 var
@@ -3257,6 +3260,41 @@ begin
       Result:=Result+' (fő énekrend)';
   end else begin
     if Assigned(o) then Result:=Result+o.FullTitle;
+  end;
+end;
+
+function tGlobals.DecodePsw(const secret : string) : string;
+var
+  i,len,v1,v2 : integer;
+  c1,c2 : char;
+begin
+  Result:='';
+  len:=Length(secret);
+  i:=0;
+  while i<len do begin
+    inc(i);
+    c1:=secret[i];
+    if c1 in ['A','a'] then continue;
+    inc(i);
+    if i>len then break;
+    c2:=secret[i];
+    v1:=iif(c1>='c',ord(c1)-ord('c'),ord(c1)-ord('B'));
+    v2:=iif(c2>='c',ord(c2)-ord('c')-4,ord(c2)-ord('B')-4);
+    Result:=Result+char((v1 and 15)+((v2 and 15) shl 4));
+  end;
+end;
+
+function tGlobals.EncodePsw(const public : string) : string;
+var
+  i : integer;
+  ch,cb : char;
+begin
+  Result:='';
+  for i:=1 to Length(public) do begin
+    ch:=public[i];
+    if ((i xor ord(ch)) and 7)=0 then Result:=Result+iif((i and 1)=0,'A','a');
+    cb:=iif(((i xor ord(ch)) and 1)=0,'B','c');
+    Result:=Result+char(ord(cb)+(ord(ch) and 15))+char(ord(cb)+4+(ord(ch) shr 4));
   end;
 end;
 

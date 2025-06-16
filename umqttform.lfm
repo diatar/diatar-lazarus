@@ -15,9 +15,9 @@ object MqttForm: TMqttForm
     Height = 326
     Top = 0
     Width = 416
-    ActivePage = TabSheet3
+    ActivePage = TabSheet1
     Align = alClient
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Fogadás'
@@ -74,7 +74,7 @@ object MqttForm: TMqttForm
         Height = 30
         Top = 264
         Width = 75
-        DefaultCaption = True
+        Caption = 'Mégse'
         Kind = bkCancel
         ModalResult = 2
         TabOrder = 5
@@ -132,7 +132,7 @@ object MqttForm: TMqttForm
         Height = 30
         Top = 264
         Width = 75
-        DefaultCaption = True
+        Caption = 'Mégse'
         Kind = bkCancel
         ModalResult = 2
         TabOrder = 1
@@ -311,7 +311,7 @@ object MqttForm: TMqttForm
         Height = 30
         Top = 264
         Width = 75
-        DefaultCaption = True
+        Caption = 'Mégse'
         Kind = bkCancel
         ModalResult = 2
         TabOrder = 8
@@ -397,7 +397,7 @@ object MqttForm: TMqttForm
         Height = 30
         Top = 264
         Width = 75
-        DefaultCaption = True
+        Caption = 'Mégse'
         Kind = bkCancel
         ModalResult = 2
         TabOrder = 5
@@ -434,7 +434,7 @@ object MqttForm: TMqttForm
         Top = 264
         Width = 75
         Cancel = True
-        DefaultCaption = True
+        Caption = 'Mégse'
         Kind = bkCancel
         ModalResult = 2
         TabOrder = 1

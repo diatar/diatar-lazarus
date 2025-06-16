@@ -33,8 +33,10 @@ type
 
 type
   tMqttUserRec = record
-    Username : string;
-    Email : string;
+    Username : string;              //felhaszn.nev
+    Email : string;                 //email cim
+    SentForDetails : boolean;       //Username elkuldve reszletek celjabol
+    SendersGroup : boolean;         //normal kuldo felhasznalo
   end;
   tMqttUserArray = array of tMqttUserRec;
 
@@ -61,8 +63,6 @@ type
       fMqttPort : integer;
       fOpenMode : tOpenMode;
 
-      fTmpUserList : tStringArray;
-      fTmpUserListIdx : integer;
       fEmailRegex : tRegExpr;
       fUserList : tMqttUserArray;
 
@@ -104,7 +104,7 @@ type
       procedure ProcessPublish_CmdResp(const mqtt : tMQTT_Message; len : integer);
       procedure CmdSend(const cmd : AnsiString);
       procedure CmdUserList;
-      procedure CmdGetUser;
+      function CmdGetUser : boolean; //TRUE=kikuldott kerest
       procedure CmdCreateUser;
 
       function ProcessJson(const jdata : tJSONData; iscont : boolean) : boolean;  //TRUE=folytatjuk
@@ -167,9 +167,10 @@ const
   TMR_REOPEN             = 1000; //nincs kommunikacio, ujrakezdjuk
   TMR_FINISHCMD          = 1000; //ennyi ido alatt egy parancsot le kell zarni
 
-//dynsec beallito superuser
+//dynsec superuser
 const
-  DYNSECUSER = 'useradmin';
+  DYNSECSUPERUSER = 'GMfnGLDMCLFLOLlmqm';
+  DYNSECSUPERPSW  = 'ekhnenjmQLAPLKMdmaCIBIcjhi';
 
 ///////////////////////////////////////////////////
 // ctor/dtor and open/close
@@ -515,9 +516,9 @@ begin
       omUSERLIST,
       omCREATEUSER: begin
         mqtt.UserNameFlag:=true;
-        mqtt.UserName:=DYNSECUSER;
+        mqtt.UserName:=Globals.DecodePsw(DYNSECSUPERUSER);
         mqtt.PasswordFlag:=true;
-        mqtt.Password:=DYNSECPSW;
+        mqtt.Password:=Globals.DecodePsw(DYNSECSUPERPSW);
       end;
     end;
 
@@ -681,21 +682,24 @@ begin
     CmdSend('{"commands": [{"command": "listClients"}]}');
 end;
 
-procedure tMQTT_IO.CmdGetUser;
+function tMQTT_IO.CmdGetUser : boolean;
 var
   cmd : AnsiString;
-  i : integer;
+  i,cnt : integer;
 begin
   cmd:='{"commands": [';
-  for i:=1 to 10 do begin
-    if i>1 then cmd:=cmd+', ';
-    cmd:=cmd+'{"command": "getClient", "username": "'+fTmpUserList[fTmpUserListIdx]+'"}';
-
-    inc(fTmpUserListIdx);
-    if fTmpUserListIdx>=Length(fTmpUserList) then break;
+  cnt:=0;
+  for i:=0 to Length(fUserList)-1 do begin
+    if fUserList[i].SentForDetails then continue;
+    if cnt>0 then cmd:=cmd+', ';
+    cmd:=cmd+'{"command": "getClient", "username": "'+fUserList[i].Username+'"}';
+    fUserList[i].SentForDetails:=true;
+    inc(cnt);
+    if cnt>=10 then break;
   end;
   cmd:=cmd+']}';
-  CmdSend(cmd);
+  Result:=(cnt>0);
+  if Result then CmdSend(cmd);
 end;
 
 procedure tMQTT_IO.CmdCreateUser;
@@ -752,33 +756,51 @@ begin
     exit;
   end;
   jarr:=(je as tJSONArray);
-  SetLength(fTmpUserList,jarr.Count);
-  for idx:=0 to jarr.Count-1 do fTmpUserList[idx]:=jarr[idx].AsString;
-  fTmpUserListIdx:=0;
+  SetLength(fUserList,jarr.Count);
+  for idx:=0 to jarr.Count-1 do begin
+    fUserList[idx].Username:=jarr[idx].AsString;
+    fUserList[idx].Email:='';
+    fUserList[idx].SentForDetails:=false;
+    fUserList[idx].SendersGroup:=false;
+  end;
   if (jarr.Count>0) and not iscont then begin
-    CmdGetUser;
-    Result:=true;
+    Result:=CmdGetUser;
   end;
 end;
 
 function tMQTT_IO.ProcessJsonGETCLIENT(const jdata : tJSONData; iscont : boolean) : boolean;
 var
   je : tJSONData;
-  len : integer;
+  ja : TJSONArray;
+  idx,i : integer;
+  uname : string;
 begin
   Result:=false;
   je:=jdata.FindPath('data.client.username');
   if not Assigned(je) then exit;
-  len:=Length(fUserList);
-  SetLength(fUserList,len+1);
-  fUserList[len].Username:=je.AsString;
+  uname:=je.AsString;
+  idx:=Length(fUserList)-1;
+  while (idx>=0) and (fUserList[idx].Username<>uname) do dec(idx);
+  if idx<0 then begin   //elvileg ez nem lehet, de jatsszunk biztonsagosan!
+    idx:=Length(fUserList);
+    SetLength(fUserList,idx+1);
+    fUserList[idx].Username:=uname;
+    fUserList[idx].SentForDetails:=true;
+  end;
   je:=jdata.FindPath('data.client.textname');
-  if Assigned(je) then fUserList[len].Email:=je.AsString;
-  if (fTmpUserListIdx<Length(fTmpUserList)) and not iscont then begin
-    CmdGetUser;
-    Result:=true;
-  end else begin
-    SetLength(fTmpUserList,0);
+  if Assigned(je) then fUserList[idx].Email:=je.AsString;
+  je:=jdata.FindPath('data.client.roles');
+  fUserList[idx].SendersGroup:=false;
+  if Assigned(je) and (je.JSONType=jtArray) then begin
+    ja:=(je as TJSONArray);
+    for i:=0 to ja.Count-1 do begin
+      je:=ja[i].FindPath('rolename');
+      if Assigned(je) and (je.JSONType=jtString) and (je.Value='senders') then
+        fUserList[idx].SendersGroup:=true;
+    end;
+  end;
+  if not iscont then begin
+    Result:=CmdGetUser;
   end;
 end;
 
