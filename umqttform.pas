@@ -27,42 +27,13 @@ interface
 
 uses
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  ComCtrls, StdCtrls, Buttons;
+  ComCtrls, StdCtrls, Buttons, LCLType;
 
 type
 
   { tMqttForm }
 
   tMqttForm = class(TForm)
-    RecStayCb: TCheckBox;
-    RecUserLst: TListBox;
-    RecUserEd: TEdit;
-    RecOkBtn: TBitBtn;
-    LogoutCancelBtn: TBitBtn;
-    RecCancelBtn: TBitBtn;
-    SendOkBtn: TBitBtn;
-    SendCancelBtn: TBitBtn;
-    RegOkBtn: TBitBtn;
-    RegCancelBtn: TBitBtn;
-    LoginOkBtn: TBitBtn;
-    LoginCancelBtn: TBitBtn;
-    LogoutOkBtn: TBitBtn;
-    RegSendCode: TButton;
-    Button2: TButton;
-    Button3: TButton;
-    LoginShowPsw: TCheckBox;
-    RegShowPsw: TCheckBox;
-    LoginStayCb: TCheckBox;
-    SendChannelLst: TComboBox;
-    Label16: TLabel;
-    RecChannelLst: TComboBox;
-    LoginUserEd: TEdit;
-    LoginPswEd: TEdit;
-    RegUserEd: TEdit;
-    RegEmailEd: TEdit;
-    RegPsw1: TEdit;
-    RegPsw2: TEdit;
-    RegCodeEd: TEdit;
     Label1: TLabel;
     Label10: TLabel;
     Label11: TLabel;
@@ -70,6 +41,7 @@ type
     Label13: TLabel;
     Label14: TLabel;
     Label15: TLabel;
+    Label16: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -77,22 +49,62 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label9: TLabel;
+    LoginCancelBtn: TBitBtn;
+    LoginOkBtn: TBitBtn;
+    LoginPswEd: TEdit;
+    LoginShowPsw: TCheckBox;
+    LoginStayCb: TCheckBox;
+    LoginUserEd: TEdit;
+    LogoutCancelBtn: TBitBtn;
+    LogoutOkBtn: TBitBtn;
     Pages: TPageControl;
-    TabSheet1: TTabSheet;
-    TabSheet2: TTabSheet;
-    TabSheet3: TTabSheet;
-    TabSheet4: TTabSheet;
-    TabSheet5: TTabSheet;
+    LoggedState: TPanel;
+    RecCancelBtn: TBitBtn;
+    RecChannelLst: TComboBox;
+    RecOkBtn: TBitBtn;
+    RecStayCb: TCheckBox;
+    RecUserEd: TEdit;
+    RecUserLst: TListBox;
+    RegCancelBtn: TBitBtn;
+    RegCodeEd: TEdit;
+    RegEmailEd: TEdit;
+    RegOkBtn: TBitBtn;
+    RegPsw1: TEdit;
+    RegPsw2: TEdit;
+    RegSendCode: TButton;
+    RegShowPsw: TCheckBox;
+    RegUserEd: TEdit;
+    SendCancelBtn: TBitBtn;
+    SendChannelLst: TComboBox;
+    SendDelBtn: TButton;
+    SendOkBtn: TBitBtn;
+    SendRenBtn: TButton;
+    SendStayCb: TCheckBox;
+    TSLogin: TTabSheet;
+    TSLogout: TTabSheet;
+    TSRec: TTabSheet;
+    TSReg: TTabSheet;
+    TSSend: TTabSheet;
     procedure FormCreate(Sender: TObject);
+    procedure LoginOkBtnClick(Sender: TObject);
     procedure LoginShowPswChange(Sender: TObject);
+    procedure LogoutOkBtnClick(Sender: TObject);
     procedure RegOkBtnClick(Sender: TObject);
     procedure RegSendCodeClick(Sender: TObject);
     procedure RegShowPswChange(Sender: TObject);
+    procedure SendChannelLstChange(Sender: TObject);
+    procedure SendDelBtnClick(Sender: TObject);
+    procedure SendOkBtnClick(Sender: TObject);
+    procedure SendRenBtnClick(Sender: TObject);
   private
     fRegCode,fRegName,fRegEmail,fRegPsw : string;
-    fWaitFor : (wfUSERLIST,wfCREATEUSER);
+    fWaitFor : (wfUSERLIST,wfCREATEUSER,wfLOGIN,wfRENCHANNEL);
 
     procedure OnCmdFinished(Sender : tObject);
+    procedure FillSendChLst;
+    function RdSendChItem(idx : integer) : string;
+    procedure WrSendChItem(idx : integer; const txt : string);
+    procedure RefreshLoggedState;
   public
 
   end;
@@ -122,9 +134,41 @@ begin
     end;
   end;
 
+  LoginUserEd.Text:=MQTT_IO.UserName;
+  RefreshLoggedState;
+
+  MQTT_IO.Close;
   MQTT_IO.OnCmdFinished:=@OnCmdFinished;
   fWaitFor:=wfUSERLIST;
   MQTT_IO.Open(omUSERLIST);
+end;
+
+procedure tMqttForm.LoginOkBtnClick(Sender: TObject);
+var
+  username,psw,ret : string;
+begin
+  username:=Trim(LoginUserEd.Text);
+  psw:=LoginPswEd.Text;
+
+  ret:=MQTT_IO.ChkUsername(username);
+  if ret>'' then begin
+    LoginUserEd.SetFocus;
+    ErrorBox('Felhasználónév hiba: '+ret);
+    exit;
+  end;
+
+  ret:=MQTT_IO.ChkPsw(psw);
+  if ret>'' then begin
+    LoginPswEd.SetFocus;
+    ErrorBox('Jelszó hiba: '+ret);
+    exit;
+  end;
+
+  MQTT_IO.UserName:=username;
+  MQTT_IO.Password:=psw;
+  Pages.Enabled:=false;
+  fWaitFor:=wfLOGIN;
+  MQTT_IO.Open(omCHKLOGIN);
 end;
 
 procedure tMqttForm.RegShowPswChange(Sender: TObject);
@@ -138,9 +182,74 @@ begin
   end;
 end;
 
+procedure tMqttForm.SendChannelLstChange(Sender: TObject);
+begin
+  if MQTT_IO.UserName='' then begin
+    SendChannelLst.ItemIndex:=0;
+    ErrorBox('Először jelentkezzen be!');
+    exit;
+  end;
+  SendRenBtn.Enabled:=(SendChannelLst.ItemIndex>0);
+  SendDelBtn.Enabled:=(SendChannelLst.ItemIndex>0);
+  SendOkBtn.Enabled:=(SendChannelLst.ItemIndex>0);
+end;
+
+procedure tMqttForm.SendDelBtnClick(Sender: TObject);
+var
+  idx : integer;
+begin
+  idx:=SendChannelLst.ItemIndex;
+  if idx<=0 then exit;
+  WrSendChItem(idx,'');
+end;
+
+procedure tMqttForm.SendOkBtnClick(Sender: TObject);
+var
+  idx : integer;
+  s : string;
+begin
+  idx:=SendChannelLst.ItemIndex;
+  if idx<=0 then exit;
+  s:=RdSendChItem(idx);
+  if s='' then begin
+    SendRenBtn.Click;
+    exit;
+  end;
+  MQTT_IO.Channel:=s;
+  ModalResult:=mrOK;
+end;
+
+procedure tMqttForm.SendRenBtnClick(Sender: TObject);
+var
+  idx : integer;
+  s,sret : string;
+begin
+  if MQTT_IO.UserName='' then exit;
+  idx:=SendChannelLst.ItemIndex;
+  if idx<=0 then exit;
+  s:=RdSendChItem(idx);
+  sret:=InputBox('Adjon egyedi nevet a csatornának, hogy mások is megtalálják!',
+    'Max.30 betűs név:',s);
+  WrSendChItem(idx,sret);
+  sret:=RdSendChItem(idx);
+  if s=sret then exit;
+  //modositani kell a szerveren
+  if s=MQTT_IO.Channel then MQTT_IO.Channel:='';  //aktualis csatorna modosult
+  fWaitFor:=wfRENCHANNEL;
+  if MQTT_IO.RenameChannel(idx,sret) then Pages.Enabled:=false;
+end;
+
 procedure tMqttForm.LoginShowPswChange(Sender: TObject);
 begin
   LoginPswEd.PasswordChar:=iif(LoginShowPsw.Checked,#0,'*');
+end;
+
+procedure tMqttForm.LogoutOkBtnClick(Sender: TObject);
+begin
+  MQTT_IO.UserName:='';
+  MQTT_IO.Password:='';
+  MQTT_IO.Channel:='';
+  RefreshLoggedState;
 end;
 
 procedure tMqttForm.RegOkBtnClick(Sender: TObject);
@@ -156,28 +265,15 @@ begin
   fWaitFor:=wfCREATEUSER;
   MQTT_IO.Open(omCREATEUSER);
   Pages.Enabled:=false;
-
-  //ModalResult:=mrOK;
 end;
 
 procedure tMqttForm.RegSendCodeClick(Sender: TObject);
 var
   username,email,upname,upemail,ret : string;
-  psw1,psw2 : WideString;
-  len,i : integer;
+  psw1,psw2 : string;
+  i : integer;
   http : TFPHTTPClient;
   CurrTick : QWord;
-  kisbetu,nagybetu,szam : boolean;
-
-  function ChkPsw1(const w : WideString) : boolean;
-  var
-    i : integer;
-  begin
-    Result:=true;
-    for i:=1 to Length(w) do
-      if Pos(w[i],psw1)>0 then exit;
-    Result:=false;
-  end;
 
   function GenerateRegCode : string;
   var
@@ -190,39 +286,27 @@ var
 begin
   username:=Trim(RegUserEd.Text);
   email:=Trim(RegEmailEd.Text);
-  psw1:=UTF8ToString(RegPsw1.Text);
-  psw2:=UTF8ToString(RegPsw2.Text);
+  psw1:=RegPsw1.Text;
+  psw2:=RegPsw2.Text;
 
-  len:=Length(username);
-  if len<4 then begin
+  ret:=MQTT_IO.ChkUsername(username);
+  if ret>'' then begin
     RegUserEd.SetFocus;
-    ErrorBox('Adjon meg felhasználónevet, legalább négy karaktert!');
-    exit;
-  end;
-  if (Pos(':',username)>0) or (Pos('"',username)>0) then begin
-    RegUserEd.SetFocus;
-    ErrorBox('Sajnálom, technikai okokból nem lehet a névben kettőspont vagy idézőjel.');
+    ErrorBox('Felhasználónév hiba: '+ret);
     exit;
   end;
 
-  if not MQTT_IO.IsValidEmail(email) then begin
+  ret:=MQTT_IO.ChkEmail(email);
+  if ret>'' then begin
     RegEmailEd.SetFocus;
-    ErrorBox('Érvénytelen email formátum!');
+    ErrorBox('Email hiba: '+ret);
     exit;
   end;
 
-  len:=Length(psw1);
-  kisbetu:=false; nagybetu:=false; szam:=false;
-  for i:=1 to len do begin
-    if psw1[i] in ['0'..'9'] then szam:=true
-    else if psw1[i] in ['a'..'z'] then kisbetu:=true
-    else if psw1[i] in ['A'..'Z'] then nagybetu:=true;
-  end;
-  if not kisbetu then kisbetu:=ChkPsw1('áéíóöőúüű');
-  if not nagybetu then nagybetu:=ChkPsw1('ÁÉÍÓÖŐÚÜŰ');
-  if (len<6) or not kisbetu or not nagybetu or not szam then begin
+  ret:=MQTT_IO.ChkPsw(psw1);
+  if ret>'' then begin
     RegPsw1.SetFocus;
-    ErrorBox('A jelszó legalább 6 karakter, és legyen benne kisbetű, nagybetű és szám!');
+    ErrorBox('Jelszó hiba: '+ret);
     exit;
   end;
   if psw2<>psw1 then begin
@@ -255,7 +339,7 @@ begin
   fRegCode:=GenerateRegCode;
   fRegName:=username;
   fRegEmail:=email;
-  fRegPsw:=UTF8Encode(psw1);
+  fRegPsw:=psw1;
   http:=TFPHTTPClient.Create(Self);
   try
     try
@@ -288,13 +372,88 @@ begin
   end;
 end;
 
+procedure tMqttForm.FillSendChLst;
+var
+  rec : pMqttUserRec;
+  i : integer;
+  chname,s : string;
+begin
+  rec:=MQTT_IO.FindUserRec(MQTT_IO.UserName);
+  SendChannelLst.ItemIndex:=0;
+  chname:=MQTT_IO.Channel;
+  if chname='' then chname:=#13;   //ez biztos nem egyezik semmivel
+  s:='';
+  for i:=1 to 10 do begin
+    if Assigned(rec) then s:=rec^.Channels[i];
+    WrSendChItem(i,s);
+    if s=chname then SendChannelLst.ItemIndex:=i;
+  end;
+  SendRenBtn.Enabled:=(SendChannelLst.ItemIndex>0);
+  SendDelBtn.Enabled:=(SendChannelLst.ItemIndex>0);
+  SendOkBtn.Enabled:=(SendChannelLst.ItemIndex>0);
+end;
+
+function tMqttForm.RdSendChItem(idx : integer) : string;
+begin
+  if (idx<=0) or (idx>10) then exit('');
+  Result:=Trim(copy(SendChannelLst.Items[idx],4,999999));
+end;
+
+procedure tMqttForm.WrSendChItem(idx : integer; const txt : string);
+begin
+  if (idx<=0) or (idx>10) then exit;
+  SendChannelLst.Items[idx]:=IntToStr(idx)+'. '+LeftStr(Trim(txt),30);
+end;
+
+procedure tMqttForm.RefreshLoggedState;
+begin
+  if MQTT_IO.UserName='' then begin
+    LoggedState.Caption:='Kijelentkezve.';
+    LoggedState.Font.Color:=clPurple;
+  end else begin
+    LoggedState.Caption:='Bejelentkezve: '+MQTT_IO.UserName;
+    LoggedState.Font.Color:=clTeal;
+  end;
+end;
+
+//////////////////////////////////////////////////////////////////
+
 procedure tMqttForm.OnCmdFinished(Sender : tObject);
+var
+  stay : boolean;
 begin
   if MQTT_IO.CmdResult>'' then begin
-    ErrorBox('Internet kapcsolati hiba:'#13+MQTT_IO.CmdResult);
+    ErrorBox('Internet hiba:'#13+MQTT_IO.CmdResult);
   end;
-  if fWaitFor=wfCREATEUSER then Pages.Enabled:=true;
+  if fWaitFor in [wfCREATEUSER,wfLOGIN] then begin
+    if MQTT_IO.CmdResult>'' then begin
+      MQTT_IO.UserName:='';
+      MQTT_IO.Password:='';
+      MQTT_IO.Channel:='';
+    end else begin
+      if (fWaitFor=wfLOGIN) then begin
+        stay:=LoginStayCb.Checked;
+      end else begin
+        stay:=(QuestBox('A regisztráció sikerült.'#13+
+          'Legközelebbi programindításnál is bejelentkezve marad?')=IDYES);
+        LoginStayCb.Checked:=stay;
+      end;
+      Globals.MqttUser:=iif(stay,Globals.EncodePsw(MQTT_IO.UserName),'');
+      Globals.MqttPsw:=iif(stay,Globals.EncodePsw(MQTT_IO.Password),'');
+      Pages.ActivePage:=TSSend;
+      SendStayCb.Checked:=stay;
+    end;
+    RegPsw1.Clear;
+    RegPsw2.Clear;
+    LoginUserEd.Text:=MQTT_IO.UserName;
+    LoginPswEd.Clear;
+  end;
+  Pages.Enabled:=true;
+  RefreshLoggedState;
+  FillSendChLst;
 end;
+
+//////////////////////////////////////////////////////////////////
 
 initialization
   {$I umqttform.lrs}
