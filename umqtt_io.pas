@@ -29,12 +29,14 @@ uses
   uMQTT, lNet, lNetComponents, uTxTar;
 
 type
-  tOpenMode = (omRECEIVER,omSENDER, omUSERLIST, omCREATEUSER);
+  tOpenMode = (omRECEIVER,omSENDER, omUSERLIST, omCREATEUSER, omCHKLOGIN, omRENCHANNEL);
 
 type
+  pMqttUserRec = ^tMqttUserRec;
   tMqttUserRec = record
     Username : string;              //felhaszn.nev
     Email : string;                 //email cim
+    Channels : array[1..10] of string;  //csatornak neve
     SentForDetails : boolean;       //Username elkuldve reszletek celjabol
     SendersGroup : boolean;         //normal kuldo felhasznalo
   end;
@@ -54,6 +56,7 @@ type
       fTopicDynsec : string;          //security kuldes topic
       fUserName : string;
       fPassword : string;
+      fChannel : string;
       fEmail : string;
 
       fOnCmdFinished : tNotifyEvent;
@@ -106,10 +109,12 @@ type
       procedure CmdUserList;
       function CmdGetUser : boolean; //TRUE=kikuldott kerest
       procedure CmdCreateUser;
+      procedure CmdRenChannel;
 
       function ProcessJson(const jdata : tJSONData; iscont : boolean) : boolean;  //TRUE=folytatjuk
       function ProcessJsonLISTCLIENTS(const jdata : tJSONData; iscont : boolean) : boolean;
       function ProcessJsonGETCLIENT(const jdata : tJSONData; iscont : boolean) : boolean;
+      procedure FillChannels(idx : integer; const txt : string);
 
       //Dia kuldes-fogadas
       procedure ProcessPic(buf : pUInt8; size : Integer; isblankpic : boolean);
@@ -126,6 +131,7 @@ type
       property UserName : string read fUserName write fUserName;
       property Password : string read fPassword write fPassword;
       property Email : string read fEmail write fEmail;
+      property Channel : string read fChannel write fChannel;
 
       property OnCmdFinished : tNotifyEvent read fOnCmdFinished write fOnCmdFinished;
       property CmdResult : string read fCmdResult;
@@ -139,7 +145,11 @@ type
       procedure Close;
       procedure Reopen;
 
-      function IsValidEmail(const testemail : string) : boolean;
+      function ChkEmail(const testemail : string) : string;
+      function ChkUsername(const testname : string) : string;
+      function ChkPsw(const testpsw : string) : string;
+      function FindUserRec(const uname : string) : pMqttUserRec;
+      function RenameChannel(idx : integer; const newname : string) : boolean;
 
       //Dia kuldes-fogadas
       procedure SendPic(const fname: string; isblankpic : boolean = false);
@@ -221,7 +231,8 @@ begin
   fTmrReopen:=0;
   fTmrFinishCmd:=0;
   fCmdResult:='';
-  if fOpenMode in [omUSERLIST,omCREATEUSER] then fTmrFinishCmd:=TMR_FINISHCMD;
+  if fOpenMode in [omUSERLIST,omCREATEUSER,omCHKLOGIN,omRENCHANNEL] then
+    fTmrFinishCmd:=TMR_FINISHCMD;
 
   fTopicGroup:='Diatar/'; // ideiglenesen kivesszuk!!!  +IntToStr(fClientId)+'/';
   fTopicMask:=fTopicGroup+'#';
@@ -244,13 +255,85 @@ begin
   fTmrReopen:=TMR_REOPEN;
 end;
 
-function tMQTT_IO.IsValidEmail(const testemail : string) : boolean;
+function tMQTT_IO.ChkEmail(const testemail : string) : string;
 begin
+  Result:='';
   try
-    Result:=fEmailRegex.Exec(testemail);
+    if not fEmailRegex.Exec(testemail) then Result:='Érvénytelen email formátum!';
   except
+    Result:='Hibás email formátum!';
+  end;
+end;
+
+function tMQTT_IO.ChkUsername(const testname : string) : string;
+begin
+  Result:='';
+  if Length(testname)<4 then exit('Legalább 4 betűből álljon.');
+  if Length(testname)>30 then exit('Ne legyen hosszabb 30 betűnél.');
+  if Pos('"',testname)>0 then exit('Technikai okokból nem tartalmazhat idézőjelet.');
+  if Pos(':',testname)>0 then exit('Technikai okokból nem tartalmazhat kettőspontot.');
+end;
+
+function tMQTT_IO.ChkPsw(const testpsw : string) : string;
+var
+  i,len : integer;
+  kisbetu,nagybetu,szam : boolean;
+
+  function ChkU16(const w : WideString) : boolean;
+  var
+    i : integer;
+  begin
+    Result:=true;
+    for i:=1 to Length(w) do
+      if Pos(w[i],testpsw)>0 then exit;
     Result:=false;
   end;
+
+begin
+  Result:='';
+  len:=Length(testpsw);
+  if len<6 then exit('Legalább 6 karakterből álljon.');
+  if len>30 then exit('Ne legyen hosszabb, mint 30 karakter.');
+  if Pos('"',testpsw)>0 then exit('Technikai okokból nem tartalmazhat idézőjelet.');
+  kisbetu:=false; nagybetu:=false; szam:=false;
+  for i:=1 to len do begin
+    if testpsw[i] in ['0'..'9'] then szam:=true
+    else if testpsw[i] in ['a'..'z'] then kisbetu:=true
+    else if testpsw[i] in ['A'..'Z'] then nagybetu:=true;
+  end;
+  if not kisbetu then kisbetu:=ChkU16('áéíóöőúüű');
+  if not nagybetu then nagybetu:=ChkU16('ÁÉÍÓÖŐÚÜŰ');
+  if not kisbetu then exit('Nincs benne kisbetű.');
+  if not nagybetu then exit('Nincs benne nagybetű.');
+  if not szam then exit('Nincs benne szám.');
+end;
+
+function tMQTT_IO.FindUserRec(const uname : string) : pMqttUserRec;
+var
+  upname : string;
+  idx : integer;
+begin
+  Result:=nil;
+  upname:=UpperCase(Trim(uname));
+  if upname='' then exit;
+  idx:=Length(fUserList);
+  while idx>0 do begin
+    dec(idx);
+    if UpperCase(fUserList[idx].Username)=upname then exit(@fUserList[idx]);
+  end;
+end;
+
+function tMQTT_IO.RenameChannel(idx : integer; const newname : string) : boolean;
+var
+  rec : pMqttUserRec;
+begin
+  Result:=false;
+  if (idx<=0) or (idx>10) then exit;
+  rec:=FindUserRec(UserName);
+  if not Assigned(rec) then exit;
+  rec^.Channels[idx]:=Trim(LeftStr(newname,30));
+  Open(omRENCHANNEL);
+  Result:=true;
 end;
 
 ///////////////////////////////////////////////////
@@ -318,7 +401,8 @@ begin
   fIsOpen:=true;
   DebugLn('MQTT: Tcp Connected');
 
-  if fOpenMode in [omUSERLIST,omCREATEUSER] then fTmrFinishCmd:=TMR_FINISHCMD;
+  if fOpenMode in [omUSERLIST,omCREATEUSER,omCHKLOGIN,omRENCHANNEL] then
+    fTmrFinishCmd:=TMR_FINISHCMD;
   SendConnect;
 end;
 
@@ -380,7 +464,7 @@ end;
 procedure tMQTT_IO.MQTTClose;
 begin
   fIsOpen:=false;
-  fTCPComp.Disconnect();
+  if fTCPComp.Connected then fTCPComp.Disconnect();
 end;
 
 //MQTT szerverhez csatlakozzunk
@@ -400,6 +484,7 @@ var
   buf : tMQTT_Buffer;
   len : integer;
 begin
+  //if not fIsOpen then exit;
   buf:=mqtt.Encode();
   len:=Length(buf);
   if len>0 then begin
@@ -466,17 +551,27 @@ begin
   if mqtt.MessageType=mqttCONNACK then begin  //csatlakozas elfogadva
     if mqtt.ConnectReturnCode<>0 then begin
       DebugLn('MQTT: connection refused: '+mqtt.ConnectReturnStr);
+      fCmdResult:='Bejelentkezési hiba: '+mqtt.ConnectReturnStr;
+      DoFinishCmd;
+      MQTTClose;
       exit;
     end;
     case fOpenMode of
       omRECEIVER: SendSubscribe;    //ha fogado vagyunk, feliratkozunk
       omCREATEUSER,
+      omRENCHANNEL,
       omUSERLIST: SendSubscribe;
+      omCHKLOGIN: begin
+        fCmdResult:='';
+        DoFinishCmd;
+        MQTTClose;
+      end;
     end;
     exit;
   end else if mqtt.MessageType=mqttSUBACK then begin   //elfogadtak a feliratkozast
     if fOpenMode=omUSERLIST then CmdUserList
-    else if fOpenMode=omCREATEUSER then CmdCreateUser;
+    else if fOpenMode=omCREATEUSER then CmdCreateUser
+    else if fOpenMode=omRENCHANNEL then CmdRenChannel;
   end else if mqtt.MessageType=mqttPINGREQ then begin  //csak megszolitottak
     SendResp(mqttPINGRESP);
   end else if mqtt.MessageType=mqttPINGRESP then begin //valaszoltak a mi PINGunkre
@@ -505,15 +600,17 @@ begin
     mqtt.ClientId:=IntToStr(ClientId);
 
     case fOpenMode of
+      omCHKLOGIN,
       omSENDER: begin
-        //mqtt.UserNameFlag:=true;
+        mqtt.UserNameFlag:=true;
         mqtt.UserName:=UserName;
-        //mqtt.PasswordFlag:=true;
+        mqtt.PasswordFlag:=true;
         mqtt.Password:=Password;
       end;
       omRECEIVER: ; //nem kell user/psw
 
       omUSERLIST,
+      omRENCHANNEL,
       omCREATEUSER: begin
         mqtt.UserNameFlag:=true;
         mqtt.UserName:=Globals.DecodePsw(DYNSECSUPERUSER);
@@ -544,6 +641,7 @@ begin
     case fOpenMode of
       omRECEIVER: f[0].Topic:=fTopicMask;
       omCREATEUSER,
+      omRENCHANNEL,
       omUSERLIST: f[0].Topic:=fTopicDynsec+'/response';
     end;
     f[0].QoS:=0;
@@ -587,6 +685,7 @@ begin
   case fOpenMode of
     omRECEIVER: ProcessPublish_Dia(mqtt,len);
     omCREATEUSER,
+    omRENCHANNEL,
     omUSERLIST: ProcessPublish_CmdResp(mqtt,len);
   end;
 end;
@@ -679,7 +778,7 @@ end;
 
 procedure tMQTT_IO.CmdUserList;
 begin
-    CmdSend('{"commands": [{"command": "listClients"}]}');
+  CmdSend('{"commands": [{"command": "listClients"}]}');
 end;
 
 function tMQTT_IO.CmdGetUser : boolean;
@@ -715,10 +814,40 @@ begin
   CmdSend(cmd);
 end;
 
+procedure tMQTT_IO.CmdRenChannel;
+var
+  cmd,s : AnsiString;
+  rec : pMqttUserRec;
+  i,j : integer;
+begin
+  rec:=FindUserRec(UserName);
+  if not Assigned(rec) then begin
+    MQTTClose;
+    fCmdResult:='Felhasználó nem található.';
+    DoFinishCmd;
+    exit;
+  end;
+  cmd:='{"commands": [{"command": "modifyClient"'+
+    ', "username": "'+rec^.Username+'"'+
+    ', "textdescription": "';
+  for i:=1 to 10 do begin
+    if i>1 then cmd:=cmd+'|';
+    s:=Trim(rec^.Channels[i]);
+    if s='' then s:=' ';
+    for j:=1 to Length(s) do begin
+      if s[j]='|' then cmd:=cmd+'|';  //duplazzuk
+      if s[j]<>'"' then cmd:=cmd+s[j];
+    end;
+  end;
+  cmd:=cmd+'" }]}';
+  CmdSend(cmd);
+end;
+
 function tMQTT_IO.ProcessJson(const jdata : tJSONData; iscont : boolean) : boolean;
 var
   je : tJSONData;
   cmd : string;
+  idx : integer;
 begin
   Result:=false;
   je:=jdata.FindPath('error');
@@ -738,8 +867,17 @@ begin
     Result:=ProcessJsonLISTCLIENTS(jdata, iscont)
   else if cmd='GETCLIENT' then
     Result:=ProcessJsonGETCLIENT(jdata, iscont)
-  else if cmd='CREATECLIENT' then
+  else if cmd='CREATECLIENT' then begin
+    idx:=Length(fUserList);
+    SetLength(fUserList,idx+1);
+    fUserList[idx].Username:=fUserName;
+    fUserList[idx].Email:=fEmail;
+    fUserList[idx].SendersGroup:=true;
+    fUserList[idx].SentForDetails:=true;
     Result:=false;
+  end else if cmd='MODIFYCLIENT' then begin
+    Result:=false;
+  end;
 end;
 
 function tMQTT_IO.ProcessJsonLISTCLIENTS(const jdata : tJSONData; iscont : boolean) : boolean;
@@ -789,6 +927,8 @@ begin
   end;
   je:=jdata.FindPath('data.client.textname');
   if Assigned(je) then fUserList[idx].Email:=je.AsString;
+  je:=jdata.FindPath('data.client.textdescription');
+  if Assigned(je) then FillChannels(idx,je.AsString);
   je:=jdata.FindPath('data.client.roles');
   fUserList[idx].SendersGroup:=false;
   if Assigned(je) and (je.JSONType=jtArray) then begin
@@ -801,6 +941,36 @@ begin
   end;
   if not iscont then begin
     Result:=CmdGetUser;
+  end;
+end;
+
+procedure tMQTT_IO.FillChannels(idx : integer; const txt : string);
+var
+  i,len,arridx : integer;
+  s : string;
+  ch,prevch : char;
+begin
+  prevch:=' ';
+  arridx:=0;
+  s:='';
+  len:=Length(txt);
+  i:=0;
+  while i<len do begin
+    inc(i);
+    ch:=txt[i];
+    if ch='|' then begin
+      if (i<len) and (txt[i+1]='|') then begin
+        s:=s+'|';
+        inc(i);
+        continue;
+      end;
+      inc(arridx);
+      fUserList[idx].Channels[arridx]:=Trim(s);
+      if arridx>=10 then exit;
+      s:='';
+      continue;
+    end;
+    s:=s+ch;
   end;
 end;
 

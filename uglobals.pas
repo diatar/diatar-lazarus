@@ -48,9 +48,6 @@ const
   caUnderline = $04;
   caStrikeout = $08;
 
-var
-  IsMQTTSender : boolean = false;
-
 type
   tCharAttribs = byte;
 
@@ -295,6 +292,7 @@ type
     fKottaCnt : integer;                 //b0..2=hatter, b3..5=kotta. b6..9=hang
     fShutdownCmd : string;                            //linux shutdown parancs
     fMqttId : integer;                                //Diatar egyedi MQTT azonositoja
+    fMqttUser,fMqttPsw,fMqttCh : string;              //allando MQTT user+psw+csat
   end;
 
 //a tGlobals objektum osztaly:
@@ -474,6 +472,9 @@ type
     procedure SetAutoSave(NewValue : boolean);
     procedure SetStretchMode(NewValue : tStretchMode);
     procedure SetMqttId(NewValue : integer);
+    procedure SetMqttUser(const NewValue : string);
+    procedure SetMqttPsw(const NewValue : string);
+    procedure SetMqttCh(const NewValue : string);
   public
     property ProgDir : string read fProgDir;
     property DtxDir : string read fDtxDir;
@@ -613,6 +614,9 @@ type
     property AutoSave : boolean read fActProfil.AutoSave write SetAutoSave;
     property StretchMode : tStretchMode read fActProfil.StretchMode write SetStretchMode;
     property MqttId : integer read fV.fMqttId write SetMqttId;
+    property MqttUser : string read fV.fMqttUser write SetMqttUser;
+    property MqttPsw : string read fV.fMqttPsw write SetMqttPsw;
+    property MqttCh : string read fV.fMqttCh write SetMqttCh;
 
     property DtxFlags[Index: integer]: tDtxFlags read GetDtxFlags write SetDtxFlags;
     property DtxVisible[Index: integer]: boolean
@@ -1886,6 +1890,27 @@ begin
   GlobalVarModified;
 end;
 
+procedure tGlobals.SetMqttUser(const NewValue : string);
+begin
+  if NewValue=fV.fMqttUser then exit;
+  fV.fMqttUser:=NewValue;
+  GlobalVarModified;
+end;
+
+procedure tGlobals.SetMqttPsw(const NewValue : string);
+begin
+  if NewValue=fV.fMqttPsw then exit;
+  fV.fMqttPsw:=NewValue;
+  GlobalVarModified;
+end;
+
+procedure tGlobals.SetMqttCh(const NewValue : string);
+begin
+  if NewValue=fV.fMqttCh then exit;
+  fV.fMqttCh:=NewValue;
+  GlobalVarModified;
+end;
+
 {***** modify events ********************************}
 procedure tGlobals.ModEvent;
 begin
@@ -1975,6 +2000,9 @@ begin
   fV.fKottaCnt:=0;
   fV.fShutdownCmd:='shutdown -P now';
   fV.fMqttId:=0;
+  fV.fMqttUser:='';
+  fV.fMqttPsw:='';
+  fV.fMqttCh:='';
 
   fProfilCount := 1;
   SetLength(fProfiles, 1);
@@ -2701,6 +2729,9 @@ var
     if Reg.ValueExists('KorusMode') then KorusMode := Reg.ReadBool('KorusMode');
     if Reg.GetDataType('MqttId')=rdInteger then
       MqttId:=Reg.ReadInteger('MqttId');
+    if Reg.ValueExists('MqttU') then MqttUser:=LoadRegString('MqttU');
+    if Reg.ValueExists('MqttP') then MqttPsw:=LoadRegString('MqttP');
+    if Reg.ValueExists('MqttC') then MqttCh:=LoadRegString('MqttC');
 
     r := BorderRect;
     LoadRect(r, 'Border');
@@ -3155,6 +3186,9 @@ begin
       Reg.WriteBool('ScholaMode', ScholaMode);
       Reg.WriteBool('KorusMode', KorusMode);
       Reg.WriteInteger('MqttId', MqttId);
+      SaveRegString('MqttU', MqttUser);
+      SaveRegString('MqttP', MqttPsw);
+      SaveRegString('MqttC', MqttCh);
 
       i := 0;
       while Reg.KeyExists('Profil' + IntToStr(i)) do

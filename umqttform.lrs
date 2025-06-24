@@ -1,24 +1,27 @@
 { This is an automatically generated lazarus resource file }
 
 LazarusResources.Add('TMqttForm','FORMDATA',[
-  'TPF0'#9'TMqttForm'#8'MqttForm'#4'Left'#3#0#1#6'Height'#3'F'#1#3'Top'#3#145#0
+  'TPF0'#9'TMqttForm'#8'MqttForm'#4'Left'#3#0#1#6'Height'#3'['#1#3'Top'#3#145#0
   +#5'Width'#3#160#1#11'BorderStyle'#7#8'bsDialog'#7'Caption'#6#20'Internetes v'
-  +'et'#195#173't'#195#169's'#12'ClientHeight'#3'F'#1#11'ClientWidth'#3#160#1#8
-  +'OnCreate'#7#10'FormCreate'#8'ShowHint'#9#10'LCLVersion'#6#7'3.6.0.0'#0#12'T'
-  +'PageControl'#5'Pages'#4'Left'#2#0#6'Height'#3'F'#1#3'Top'#2#0#5'Width'#3#160
-  +#1#10'ActivePage'#7#9'TabSheet1'#5'Align'#7#8'alClient'#8'TabIndex'#2#0#8'Ta'
-  +'bOrder'#2#0#0#9'TTabSheet'#9'TabSheet1'#7'Caption'#6#8'Fogad'#195#161's'#12
-  +'ClientHeight'#3'*'#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label1'#4'Left'#2
-  +#8#6'Height'#2'('#3'Top'#2#8#5'Width'#3#136#1#7'Anchors'#11#5'akTop'#6'akLef'
-  +'t'#7'akRight'#0#8'AutoSize'#8#7'Caption'#6'pHa szeretne m'#195#161's vet'
-  +#195#173't'#195#169's'#195#169'hez kapcsol'#195#179'dni, itt '#195#161'll'
-  +#195#173'tsa be vagy keresse meg a k'#195#188'ld'#197#145' '#195#169's a csa'
-  +'torna nev'#195#169't:'#8'WordWrap'#9#0#0#6'TLabel'#6'Label2'#4'Left'#2#8#6
-  +'Height'#2#15#3'Top'#2'8'#5'Width'#2'H'#9'Alignment'#7#14'taRightJustify'#8
-  +'AutoSize'#8#7'Caption'#6#8'K'#195#188'ld'#197#145':'#0#0#6'TLabel'#6'Label3'
-  +#4'Left'#2#8#6'Height'#2#15#3'Top'#3#178#0#5'Width'#2'H'#9'Alignment'#7#14't'
-  +'aRightJustify'#8'AutoSize'#8#7'Caption'#6#9'Csatorna:'#0#0#9'TComboBox'#13
-  +'RecChannelLst'#4'Left'#2'X'#6'Height'#2#23#3'Top'#3#176#0#5'Width'#3'<'#1#10
+  +'et'#195#173't'#195#169's'#12'ClientHeight'#3'['#1#11'ClientWidth'#3#160#1#8
+  +'OnCreate'#7#10'FormCreate'#8'ShowHint'#9#10'LCLVersion'#6#7'3.6.0.0'#0#6'TP'
+  +'anel'#11'LoggedState'#4'Left'#2#0#6'Height'#2#24#3'Top'#2#0#5'Width'#3#160#1
+  +#5'Align'#7#5'alTop'#10'BevelOuter'#7#9'bvLowered'#7'Caption'#6#14'Kijelentk'
+  +'ezve.'#10'Font.Style'#11#6'fsBold'#0#10'ParentFont'#8#8'TabOrder'#2#0#0#0#12
+  +'TPageControl'#5'Pages'#4'Left'#2#0#6'Height'#3'C'#1#3'Top'#2#24#5'Width'#3
+  +#160#1#10'ActivePage'#7#5'TSReg'#5'Align'#7#8'alClient'#8'TabIndex'#2#2#8'Ta'
+  +'bOrder'#2#1#0#9'TTabSheet'#5'TSRec'#7'Caption'#6#8'Fogad'#195#161's'#12'Cli'
+  +'entHeight'#3''''#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label1'#4'Left'#2#8
+  +#6'Height'#2'('#3'Top'#2#8#5'Width'#3#136#1#7'Anchors'#11#5'akTop'#6'akLeft'
+  +#7'akRight'#0#8'AutoSize'#8#7'Caption'#6'pHa szeretne m'#195#161's vet'#195
+  +#173't'#195#169's'#195#169'hez kapcsol'#195#179'dni, itt '#195#161'll'#195
+  +#173'tsa be vagy keresse meg a k'#195#188'ld'#197#145' '#195#169's a csatorn'
+  +'a nev'#195#169't:'#8'WordWrap'#9#0#0#6'TLabel'#6'Label2'#4'Left'#2#8#6'Heig'
+  +'ht'#2#15#3'Top'#2'8'#5'Width'#2'H'#9'Alignment'#7#14'taRightJustify'#8'Auto'
+  +'Size'#8#7'Caption'#6#8'K'#195#188'ld'#197#145':'#0#0#6'TLabel'#6'Label3'#4
+  +'Left'#2#8#6'Height'#2#15#3'Top'#3#178#0#5'Width'#2'H'#9'Alignment'#7#14'taR'
+  +'ightJustify'#8'AutoSize'#8#7'Caption'#6#9'Csatorna:'#0#0#9'TComboBox'#13'Re'
+  +'cChannelLst'#4'Left'#2'X'#6'Height'#2#23#3'Top'#3#176#0#5'Width'#3'<'#1#10
   +'ItemHeight'#2#15#8'TabOrder'#2#2#0#0#7'TBitBtn'#8'RecOkBtn'#4'Left'#2'P'#6
   +'Height'#2#30#3'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#8'Fogad'#195#161's'#4
   +'Kind'#7#4'bkOK'#11'ModalResult'#2#1#8'TabOrder'#2#4#0#0#7'TBitBtn'#12'RecCa'
@@ -28,98 +31,104 @@ LazarusResources.Add('TMqttForm','FORMDATA',[
   +'th'#3'8'#1#8'TabOrder'#2#0#0#0#8'TListBox'#10'RecUserLst'#4'Left'#2'X'#6'He'
   +'ight'#2'W'#3'Top'#2'Q'#5'Width'#3'8'#1#10'ItemHeight'#2#0#8'TabOrder'#2#1#0
   +#0#9'TCheckBox'#9'RecStayCb'#4'Left'#3#144#0#6'Height'#2#19#3'Top'#3#232#0#5
-  +'Width'#3#130#0#7'Caption'#6#19'Csatlakozva maradok'#8'TabOrder'#2#3#0#0#0#9
-  +'TTabSheet'#9'TabSheet2'#7'Caption'#6#8'K'#195#188'ld'#195#169's'#12'ClientH'
-  +'eight'#3'*'#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label4'#4'Left'#2#8#6'H'
-  +'eight'#2'('#3'Top'#2#8#5'Width'#3#136#1#7'Anchors'#11#5'akTop'#6'akLeft'#7
-  +'akRight'#0#8'AutoSize'#8#7'Caption'#6'TK'#195#188'ld'#195#169'shez jelentke'
-  +'zzen be (ha m'#195#169'g nem tette, ehhez el'#197#145'sz'#195#182'r regiszt'
-  +'r'#195#161'lnia kell)'#8'WordWrap'#9#0#0#7'TBitBtn'#9'SendOkBtn'#4'Left'#2
-  +'P'#6'Height'#2#30#3'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#8'K'#195#188'ld'
-  +#195#169's'#4'Kind'#7#4'bkOK'#11'ModalResult'#2#1#8'TabOrder'#2#0#0#0#7'TBit'
-  +'Btn'#13'SendCancelBtn'#4'Left'#3#224#0#6'Height'#2#30#3'Top'#3#8#1#5'Width'
-  +#2'K'#7'Caption'#6#6'M'#195#169'gse'#4'Kind'#7#8'bkCancel'#11'ModalResult'#2
-  +#2#8'TabOrder'#2#1#0#0#6'TLabel'#7'Label16'#4'Left'#2#20#6'Height'#2#15#3'To'
-  +'p'#2'I'#5'Width'#2'_'#7'Caption'#6#21'K'#195#188'ld'#195#169's csatorn'#195
-  +#161'ja:'#0#0#9'TComboBox'#14'SendChannelLst'#4'Left'#2'x'#6'Height'#2#23#3
-  +'Top'#2'F'#5'Width'#3#24#1#10'ItemHeight'#2#15#9'ItemIndex'#2#0#13'Items.Str'
-  +'ings'#1#6#16'(nincs k'#195#188'ld'#195#169's)'#6#2'1.'#6#2'2.'#6#2'3.'#6#2
-  +'4.'#6#2'5.'#6#2'6.'#6#2'7.'#6#2'8.'#6#2'9.'#6#3'10.'#0#5'Style'#7#14'csDrop'
-  +'DownList'#8'TabOrder'#2#2#4'Text'#6#16'(nincs k'#195#188'ld'#195#169's)'#0#0
-  +#7'TButton'#7'Button2'#4'Left'#2'x'#6'Height'#2#25#3'Top'#2'h'#5'Width'#2'K'
-  +#7'Caption'#6#7'Elnevez'#8'TabOrder'#2#3#0#0#7'TButton'#7'Button3'#4'Left'#3
-  +#208#0#6'Height'#2#25#3'Top'#2'h'#5'Width'#2'K'#7'Caption'#6#7'T'#195#182'r'
-  +#195#182'l'#8'TabOrder'#2#4#0#0#0#9'TTabSheet'#9'TabSheet3'#7'Caption'#6#14
-  +'Regisztr'#195#161'ci'#195#179#12'ClientHeight'#3'*'#1#11'ClientWidth'#3#152
-  +#1#0#6'TLabel'#6'Label7'#4'Left'#2#5#6'Height'#2#15#3'Top'#2'3'#5'Width'#3
-  +#139#0#9'Alignment'#7#14'taRightJustify'#8'AutoSize'#8#7'Caption'#6#18'Felha'
-  +'szn'#195#161'l'#195#179'n'#195#169'v:'#0#0#5'TEdit'#9'RegUserEd'#4'Left'#3
-  +#152#0#6'Height'#2#23#3'Top'#2'0'#5'Width'#3#248#0#9'MaxLength'#2#16#8'TabOr'
-  +'der'#2#0#8'TextHint'#6#14'Kov'#195#161'cs J'#195#161'nos'#0#0#6'TLabel'#6'L'
-  +'abel9'#4'Left'#2#5#6'Height'#2#15#3'Top'#2'J'#5'Width'#3#139#0#9'Alignment'
-  +#7#14'taRightJustify'#8'AutoSize'#8#7'Caption'#6#11'Email-c'#195#173'm:'#0#0
-  +#5'TEdit'#10'RegEmailEd'#4'Left'#3#152#0#6'Height'#2#23#3'Top'#2'H'#5'Width'
-  +#3#248#0#9'MaxLength'#2'2'#8'TabOrder'#2#1#8'TextHint'#6#17'jani123@gmail.co'
-  +'m'#0#0#6'TLabel'#7'Label10'#4'Left'#2#5#6'Height'#2#15#3'Top'#2'c'#5'Width'
-  +#3#139#0#9'Alignment'#7#14'taRightJustify'#8'AutoSize'#8#7'Caption'#6#8'Jels'
-  +'z'#195#179':'#0#0#5'TEdit'#7'RegPsw1'#4'Left'#3#152#0#6'Height'#2#23#3'Top'
-  +#2'`'#5'Width'#3#248#0#8'EchoMode'#7#10'emPassword'#12'PasswordChar'#6#1'*'#8
-  +'TabOrder'#2#2#0#0#6'TLabel'#7'Label11'#4'Left'#2#5#6'Height'#2#15#3'Top'#2
-  ,'{'#5'Width'#3#139#0#9'Alignment'#7#14'taRightJustify'#8'AutoSize'#8#7'Capti'
-  +'on'#6#14'Jelsz'#195#179' '#195#186'jra:'#0#0#5'TEdit'#7'RegPsw2'#4'Left'#3
-  +#152#0#6'Height'#2#23#3'Top'#2'x'#5'Width'#3#248#0#8'EchoMode'#7#10'emPasswo'
-  +'rd'#12'PasswordChar'#6#1'*'#8'TabOrder'#2#3#0#0#9'TCheckBox'#10'RegShowPsw'
-  +#4'Left'#3#184#0#6'Height'#2#19#3'Top'#3#144#0#5'Width'#2'|'#7'Caption'#6#23
-  +'Jelsz'#195#179' megjelen'#195#173't'#195#169'se'#8'TabOrder'#2#4#8'OnChange'
-  +#7#16'RegShowPswChange'#0#0#7'TButton'#11'RegSendCode'#4'Left'#2' '#6'Height'
-  +#2'!'#3'Top'#3#168#0#5'Width'#3'Y'#1#7'Caption'#6'.Regisztr'#195#161'ci'#195
-  +#179's k'#195#179'd k'#195#188'ld'#195#169'se az email-c'#195#173'mre'#8'Tab'
-  +'Order'#2#5#7'OnClick'#7#16'RegSendCodeClick'#0#0#6'TLabel'#7'Label12'#4'Lef'
-  +'t'#2#5#6'Height'#2#15#3'Top'#3#211#0#5'Width'#3#139#0#9'Alignment'#7#14'taR'
-  +'ightJustify'#8'AutoSize'#8#7'Caption'#6#21'Regisztr'#195#161'ci'#195#179's '
-  +'k'#195#179'd:'#0#0#5'TEdit'#9'RegCodeEd'#4'Left'#3#152#0#6'Height'#2#23#3'T'
-  +'op'#3#208#0#5'Width'#3#248#0#8'TabOrder'#2#6#0#0#7'TBitBtn'#8'RegOkBtn'#4'L'
-  +'eft'#2'P'#6'Height'#2#30#3'Top'#3#8#1#5'Width'#2'p'#7'Caption'#6#14'Regiszt'
-  +'r'#195#161'ci'#195#179#7'Enabled'#8#4'Kind'#7#4'bkOK'#7'OnClick'#7#13'RegOk'
-  +'BtnClick'#8'TabOrder'#2#7#0#0#7'TBitBtn'#12'RegCancelBtn'#4'Left'#3#224#0#6
-  +'Height'#2#30#3'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#6'M'#195#169'gse'#4'Ki'
-  +'nd'#7#8'bkCancel'#11'ModalResult'#2#2#8'TabOrder'#2#8#0#0#6'TLabel'#7'Label'
-  +'14'#4'Left'#2#8#6'Height'#2'('#3'Top'#2#8#5'Width'#3#136#1#7'Anchors'#11#5
-  +'akTop'#6'akLeft'#7'akRight'#0#8'AutoSize'#8#7'Caption'#6'-Az els'#197#145' '
-  +'k'#195#188'ld'#195#169's el'#197#145'tt regisztr'#195#161'lnia kell.'#8'Wor'
-  +'dWrap'#9#0#0#0#9'TTabSheet'#9'TabSheet4'#7'Caption'#6#9'Bel'#195#169'p'#195
-  +#169's'#12'ClientHeight'#3'*'#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label5'
-  +#4'Left'#2#5#6'Height'#2#15#3'Top'#2'3'#5'Width'#3#139#0#9'Alignment'#7#14't'
-  +'aRightJustify'#8'AutoSize'#8#7'Caption'#6#18'Felhaszn'#195#161'l'#195#179'n'
-  +#195#169'v:'#0#0#5'TEdit'#11'LoginUserEd'#4'Left'#3#152#0#6'Height'#2#23#3'T'
-  +'op'#2'0'#5'Width'#3#248#0#8'TabOrder'#2#0#0#0#6'TLabel'#6'Label6'#4'Left'#2
-  +#5#6'Height'#2#15#3'Top'#2'['#5'Width'#3#139#0#9'Alignment'#7#14'taRightJust'
-  +'ify'#8'AutoSize'#8#7'Caption'#6#8'Jelsz'#195#179':'#0#0#5'TEdit'#10'LoginPs'
-  +'wEd'#4'Left'#3#152#0#6'Height'#2#23#3'Top'#2'['#5'Width'#3#248#0#8'EchoMode'
-  +#7#10'emPassword'#12'PasswordChar'#6#1'*'#8'TabOrder'#2#1#0#0#9'TCheckBox'#12
-  +'LoginShowPsw'#4'Left'#3#184#0#6'Height'#2#19#3'Top'#2'x'#5'Width'#2'|'#7'Ca'
-  +'ption'#6#23'Jelsz'#195#179' megjelen'#195#173't'#195#169'se'#8'TabOrder'#2#2
-  +#8'OnChange'#7#18'LoginShowPswChange'#0#0#9'TCheckBox'#11'LoginStayCb'#4'Lef'
-  +'t'#3#144#0#6'Height'#2#19#3'Top'#3#232#0#5'Width'#2'm'#7'Caption'#6#16'Bel'
-  +#195#169'pve maradok'#8'TabOrder'#2#3#0#0#7'TBitBtn'#10'LoginOkBtn'#4'Left'#2
-  +'P'#6'Height'#2#30#3'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#9'Bel'#195#169'p'
-  +#195#169's'#4'Kind'#7#4'bkOK'#11'ModalResult'#2#1#8'TabOrder'#2#4#0#0#7'TBit'
-  +'Btn'#14'LoginCancelBtn'#4'Left'#3#224#0#6'Height'#2#30#3'Top'#3#8#1#5'Width'
-  +#2'K'#7'Caption'#6#6'M'#195#169'gse'#4'Kind'#7#8'bkCancel'#11'ModalResult'#2
-  +#2#8'TabOrder'#2#5#0#0#6'TLabel'#7'Label15'#4'Left'#2#8#6'Height'#2'('#3'Top'
-  +#2#8#5'Width'#3#136#1#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#0#8'AutoSi'
-  +'ze'#8#7'Caption'#6'TK'#195#188'ld'#195#169'shez jelentkezzen be (ha m'#195
-  +#169'g nem tette, ehhez el'#197#145'sz'#195#182'r regisztr'#195#161'lnia kel'
-  +'l)'#8'WordWrap'#9#0#0#0#9'TTabSheet'#9'TabSheet5'#7'Caption'#6#9'Kil'#195
-  +#169'p'#195#169's'#12'ClientHeight'#3'*'#1#11'ClientWidth'#3#152#1#0#7'TBitB'
-  +'tn'#11'LogoutOkBtn'#4'Left'#2'P'#6'Height'#2#30#3'Top'#3#8#1#5'Width'#2'K'#7
-  +'Caption'#6#9'Kil'#195#169'p'#195#169's'#7'Default'#9#4'Kind'#7#4'bkOK'#11'M'
-  +'odalResult'#2#1#8'TabOrder'#2#0#0#0#7'TBitBtn'#15'LogoutCancelBtn'#4'Left'#3
-  +#224#0#6'Height'#2#30#3'Top'#3#8#1#5'Width'#2'K'#6'Cancel'#9#7'Caption'#6#6
-  +'M'#195#169'gse'#4'Kind'#7#8'bkCancel'#11'ModalResult'#2#2#8'TabOrder'#2#1#0
-  +#0#6'TLabel'#7'Label13'#4'Left'#2#8#6'Height'#2'('#3'Top'#2#8#5'Width'#3#136
-  +#1#7'Anchors'#11#5'akTop'#6'akLeft'#7'akRight'#0#8'AutoSize'#8#7'Caption'#6
-  +'hK'#195#188'ld'#195#169'shez be kell jelentkeznie.'#13#10'Ha m'#195#161'sok'
-  +' is hozz'#195#161'f'#195#169'rnek a g'#195#169'phez, k'#195#188'ld'#195#169
-  +'s ut'#195#161'n jelentkezzen ki.'#8'WordWrap'#9#0#0#0#0#0
+  +'Width'#3#163#0#7'Caption'#6#27'Csatlakozom legk'#195#182'zelebb is'#8'TabOr'
+  +'der'#2#3#0#0#0#9'TTabSheet'#6'TSSend'#7'Caption'#6#8'K'#195#188'ld'#195#169
+  +'s'#12'ClientHeight'#3''''#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label4'#4
+  +'Left'#2#8#6'Height'#2'('#3'Top'#2#8#5'Width'#3#136#1#7'Anchors'#11#5'akTop'
+  +#6'akLeft'#7'akRight'#0#8'AutoSize'#8#7'Caption'#6'TK'#195#188'ld'#195#169's'
+  +'hez jelentkezzen be (ha m'#195#169'g nem tette, ehhez el'#197#145'sz'#195
+  +#182'r regisztr'#195#161'lnia kell)'#8'WordWrap'#9#0#0#7'TBitBtn'#9'SendOkBt'
+  +'n'#4'Left'#2'P'#6'Height'#2#30#3'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#9'Ke'
+  +'zdj'#195#188'k!'#7'Enabled'#8#4'Kind'#7#4'bkOK'#7'OnClick'#7#14'SendOkBtnCl'
+  +'ick'#8'TabOrder'#2#0#0#0#7'TBitBtn'#13'SendCancelBtn'#4'Left'#3#224#0#6'Hei'
+  +'ght'#2#30#3'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#6'M'#195#169'gse'#4'Kind'
+  +#7#8'bkCancel'#11'ModalResult'#2#2#8'TabOrder'#2#1#0#0#6'TLabel'#7'Label16'#4
+  +'Left'#2#20#6'Height'#2#15#3'Top'#2'I'#5'Width'#2'_'#7'Caption'#6#21'K'#195
+  +#188'ld'#195#169's csatorn'#195#161'ja:'#0#0#9'TComboBox'#14'SendChannelLst'
+  +#4'Left'#2'x'#6'Height'#2#23#3'Top'#2'F'#5'Width'#3#24#1#10'ItemHeight'#2#15
+  +#9'ItemIndex'#2#0#13'Items.Strings'#1#6#16'(nincs k'#195#188'ld'#195#169's)'
+  +#6#2'1.'#6#2'2.'#6#2'3.'#6#2'4.'#6#2'5.'#6#2'6.'#6#2'7.'#6#2'8.'#6#2'9.'#6#3
+  +'10.'#0#5'Style'#7#14'csDropDownList'#8'TabOrder'#2#2#4'Text'#6#16'(nincs k'
+  +#195#188'ld'#195#169's)'#8'OnChange'#7#20'SendChannelLstChange'#0#0#7'TButto'
+  +'n'#10'SendRenBtn'#4'Left'#2'x'#6'Height'#2#25#3'Top'#2'h'#5'Width'#2'K'#7'C'
+  +'aption'#6#7'Elnevez'#7'Enabled'#8#8'TabOrder'#2#3#7'OnClick'#7#15'SendRenBt'
+  +'nClick'#0#0#7'TButton'#10'SendDelBtn'#4'Left'#3#208#0#6'Height'#2#25#3'Top'
+  +#2'h'#5'Width'#2'K'#7'Caption'#6#7'T'#195#182'r'#195#182'l'#7'Enabled'#8#8'T'
+  +'abOrder'#2#4#7'OnClick'#7#15'SendDelBtnClick'#0#0#9'TCheckBox'#10'SendStayC'
+  +'b'#4'Left'#3#144#0#6'Height'#2#19#3'Top'#3#232#0#5'Width'#3#130#0#7'Caption'
+  +#6#24'K'#195#188'ld'#195#169's legk'#195#182'zelebb is'#8'TabOrder'#2#5#0#0#0
+  +#9'TTabSheet'#5'TSReg'#7'Caption'#6#14'Regisztr'#195#161'ci'#195#179#12'Clie'
+  +'ntHeight'#3''''#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label7'#4'Left'#2#5
+  +#6'Height'#2#15#3'Top'#2'3'#5'Width'#3#139#0#9'Alignment'#7#14'taRightJustif'
+  +'y'#8'AutoSize'#8#7'Caption'#6#18'Felhaszn'#195#161'l'#195#179'n'#195#169'v:'
+  +#0#0#5'TEdit'#9'RegUserEd'#4'Left'#3#152#0#6'Height'#2#23#3'Top'#2'0'#5'Widt'
+  +'h'#3#248#0#9'MaxLength'#2#30#8'TabOrder'#2#0#8'TextHint'#6#14'Kov'#195#161
+  +'cs J'#195#161'nos'#0#0#6'TLabel'#6'Label9'#4'Left'#2#5#6'Height'#2#15#3'Top'
+  +#2'J'#5'Width'#3#139#0#9'Alignment'#7#14'taRightJustify'#8'AutoSize'#8#7'Cap'
+  ,'tion'#6#11'Email-c'#195#173'm:'#0#0#5'TEdit'#10'RegEmailEd'#4'Left'#3#152#0
+  +#6'Height'#2#23#3'Top'#2'H'#5'Width'#3#248#0#9'MaxLength'#2'2'#8'TabOrder'#2
+  +#1#8'TextHint'#6#17'jani123@gmail.com'#0#0#6'TLabel'#7'Label10'#4'Left'#2#5#6
+  +'Height'#2#15#3'Top'#2'c'#5'Width'#3#139#0#9'Alignment'#7#14'taRightJustify'
+  +#8'AutoSize'#8#7'Caption'#6#8'Jelsz'#195#179':'#0#0#5'TEdit'#7'RegPsw1'#4'Le'
+  +'ft'#3#152#0#6'Height'#2#23#3'Top'#2'`'#5'Width'#3#248#0#8'EchoMode'#7#10'em'
+  +'Password'#9'MaxLength'#2#30#12'PasswordChar'#6#1'*'#8'TabOrder'#2#2#0#0#6'T'
+  +'Label'#7'Label11'#4'Left'#2#5#6'Height'#2#15#3'Top'#2'{'#5'Width'#3#139#0#9
+  +'Alignment'#7#14'taRightJustify'#8'AutoSize'#8#7'Caption'#6#14'Jelsz'#195#179
+  +' '#195#186'jra:'#0#0#5'TEdit'#7'RegPsw2'#4'Left'#3#152#0#6'Height'#2#23#3'T'
+  +'op'#2'x'#5'Width'#3#248#0#8'EchoMode'#7#10'emPassword'#9'MaxLength'#2#30#12
+  +'PasswordChar'#6#1'*'#8'TabOrder'#2#3#0#0#9'TCheckBox'#10'RegShowPsw'#4'Left'
+  +#3#184#0#6'Height'#2#19#3'Top'#3#144#0#5'Width'#2'|'#7'Caption'#6#23'Jelsz'
+  +#195#179' megjelen'#195#173't'#195#169'se'#8'TabOrder'#2#4#8'OnChange'#7#16
+  +'RegShowPswChange'#0#0#7'TButton'#11'RegSendCode'#4'Left'#2' '#6'Height'#2'!'
+  +#3'Top'#3#168#0#5'Width'#3'Y'#1#7'Caption'#6'.Regisztr'#195#161'ci'#195#179
+  +'s k'#195#179'd k'#195#188'ld'#195#169'se az email-c'#195#173'mre'#8'TabOrde'
+  +'r'#2#5#7'OnClick'#7#16'RegSendCodeClick'#0#0#6'TLabel'#7'Label12'#4'Left'#2
+  +#5#6'Height'#2#15#3'Top'#3#211#0#5'Width'#3#139#0#9'Alignment'#7#14'taRightJ'
+  +'ustify'#8'AutoSize'#8#7'Caption'#6#21'Regisztr'#195#161'ci'#195#179's k'#195
+  +#179'd:'#0#0#5'TEdit'#9'RegCodeEd'#4'Left'#3#152#0#6'Height'#2#23#3'Top'#3
+  +#208#0#5'Width'#3#248#0#8'TabOrder'#2#6#0#0#7'TBitBtn'#8'RegOkBtn'#4'Left'#2
+  +'P'#6'Height'#2#30#3'Top'#3#8#1#5'Width'#2'p'#7'Caption'#6#14'Regisztr'#195
+  +#161'ci'#195#179#7'Enabled'#8#4'Kind'#7#4'bkOK'#7'OnClick'#7#13'RegOkBtnClic'
+  +'k'#8'TabOrder'#2#7#0#0#7'TBitBtn'#12'RegCancelBtn'#4'Left'#3#224#0#6'Height'
+  +#2#30#3'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#6'M'#195#169'gse'#4'Kind'#7#8
+  +'bkCancel'#11'ModalResult'#2#2#8'TabOrder'#2#8#0#0#6'TLabel'#7'Label14'#4'Le'
+  +'ft'#2#8#6'Height'#2'('#3'Top'#2#8#5'Width'#3#136#1#7'Anchors'#11#5'akTop'#6
+  +'akLeft'#7'akRight'#0#8'AutoSize'#8#7'Caption'#6'-Az els'#197#145' k'#195#188
+  +'ld'#195#169's el'#197#145'tt regisztr'#195#161'lnia kell.'#8'WordWrap'#9#0#0
+  +#0#9'TTabSheet'#7'TSLogin'#7'Caption'#6#9'Bel'#195#169'p'#195#169's'#12'Clie'
+  +'ntHeight'#3''''#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label5'#4'Left'#2#5
+  +#6'Height'#2#15#3'Top'#2'3'#5'Width'#3#139#0#9'Alignment'#7#14'taRightJustif'
+  +'y'#8'AutoSize'#8#7'Caption'#6#18'Felhaszn'#195#161'l'#195#179'n'#195#169'v:'
+  +#0#0#5'TEdit'#11'LoginUserEd'#4'Left'#3#152#0#6'Height'#2#23#3'Top'#2'0'#5'W'
+  +'idth'#3#248#0#8'TabOrder'#2#0#0#0#6'TLabel'#6'Label6'#4'Left'#2#5#6'Height'
+  +#2#15#3'Top'#2'['#5'Width'#3#139#0#9'Alignment'#7#14'taRightJustify'#8'AutoS'
+  +'ize'#8#7'Caption'#6#8'Jelsz'#195#179':'#0#0#5'TEdit'#10'LoginPswEd'#4'Left'
+  +#3#152#0#6'Height'#2#23#3'Top'#2'['#5'Width'#3#248#0#8'EchoMode'#7#10'emPass'
+  +'word'#12'PasswordChar'#6#1'*'#8'TabOrder'#2#1#0#0#9'TCheckBox'#12'LoginShow'
+  +'Psw'#4'Left'#3#184#0#6'Height'#2#19#3'Top'#2'x'#5'Width'#2'|'#7'Caption'#6
+  +#23'Jelsz'#195#179' megjelen'#195#173't'#195#169'se'#8'TabOrder'#2#2#8'OnCha'
+  +'nge'#7#18'LoginShowPswChange'#0#0#9'TCheckBox'#11'LoginStayCb'#4'Left'#3#144
+  +#0#6'Height'#2#19#3'Top'#3#232#0#5'Width'#3#136#0#7'Caption'#6#24'Bel'#195
+  +#169'pve legk'#195#182'zelebb is'#8'TabOrder'#2#3#0#0#7'TBitBtn'#10'LoginOkB'
+  +'tn'#4'Left'#2'P'#6'Height'#2#30#3'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#9'B'
+  +'el'#195#169'p'#195#169's'#4'Kind'#7#4'bkOK'#7'OnClick'#7#15'LoginOkBtnClick'
+  +#8'TabOrder'#2#4#0#0#7'TBitBtn'#14'LoginCancelBtn'#4'Left'#3#224#0#6'Height'
+  +#2#30#3'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#6'M'#195#169'gse'#4'Kind'#7#8
+  +'bkCancel'#11'ModalResult'#2#2#8'TabOrder'#2#5#0#0#6'TLabel'#7'Label15'#4'Le'
+  +'ft'#2#8#6'Height'#2'('#3'Top'#2#8#5'Width'#3#136#1#7'Anchors'#11#5'akTop'#6
+  +'akLeft'#7'akRight'#0#8'AutoSize'#8#7'Caption'#6'TK'#195#188'ld'#195#169'she'
+  +'z jelentkezzen be (ha m'#195#169'g nem tette, ehhez el'#197#145'sz'#195#182
+  +'r regisztr'#195#161'lnia kell)'#8'WordWrap'#9#0#0#0#9'TTabSheet'#8'TSLogout'
+  +#7'Caption'#6#9'Kil'#195#169'p'#195#169's'#12'ClientHeight'#3''''#1#11'Clien'
+  +'tWidth'#3#152#1#0#7'TBitBtn'#11'LogoutOkBtn'#4'Left'#2'P'#6'Height'#2#30#3
+  +'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#9'Kil'#195#169'p'#195#169's'#7'Defaul'
+  +'t'#9#4'Kind'#7#4'bkOK'#11'ModalResult'#2#1#7'OnClick'#7#16'LogoutOkBtnClick'
+  +#8'TabOrder'#2#0#0#0#7'TBitBtn'#15'LogoutCancelBtn'#4'Left'#3#224#0#6'Height'
+  +#2#30#3'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#6'M'#195#169'gse'#4'Kind'#7#8
+  +'bkCancel'#11'ModalResult'#2#2#8'TabOrder'#2#1#0#0#6'TLabel'#7'Label13'#4'Le'
+  +'ft'#2#8#6'Height'#2'('#3'Top'#2#8#5'Width'#3#136#1#7'Anchors'#11#5'akTop'#6
+  +'akLeft'#7'akRight'#0#8'AutoSize'#8#7'Caption'#6'hK'#195#188'ld'#195#169'she'
+  +'z be kell jelentkeznie.'#13#10'Ha m'#195#161'sok is hozz'#195#161'f'#195#169
+  ,'rnek a g'#195#169'phez, k'#195#188'ld'#195#169's ut'#195#161'n jelentkezzen'
+  +' ki.'#8'WordWrap'#9#0#0#0#0#0
 ]);

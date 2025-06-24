@@ -319,6 +319,7 @@ type
     procedure SkipEvent;
     procedure SelLstEvent(Index : integer);
     procedure MqttEvent;
+    procedure MqttOpen;
     procedure FillMenuFromLst(Index : integer; PPMenu : tPopupMenu);    //-1=DiaLst, 0.. =DtxLst index
     procedure MenuLstEvent(Index : integer);
     function IndexToTab(Index : integer) : string;     // forma: &1.
@@ -480,7 +481,10 @@ begin
 
   if Globals.MqttId>0 then begin
     MQTT_IO.ClientId:=Globals.MqttId;
-    if IsMQTTSender then MQTT_IO.Open(omSENDER) else MQTT_IO.Open(omRECEIVER);
+    MQTT_IO.UserName:=Globals.DecodePsw(Globals.MqttUser);
+    MQTT_IO.Password:=Globals.DecodePsw(Globals.MqttPsw);
+    MQTT_IO.Channel:=Globals.DecodePsw(Globals.MqttCh);
+    MqttOpen;
   end else begin
     ShowError('Internet elérési hiba!');
   end;
@@ -1152,6 +1156,13 @@ begin
     MqttForm.ShowModal;
   finally
     FreeAndNil(MqttForm);
+  end;
+end;
+
+procedure tMainForm.MqttOpen;
+begin
+  if (MQTT_IO.UserName>'') and (MQTT_IO.Channel>'') then begin
+    if MQTT_IO.Password>'' then MQTT_IO.Open(omSENDER) else MQTT_IO.Open(omRECEIVER);
   end;
 end;
 
