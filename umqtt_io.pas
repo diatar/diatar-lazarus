@@ -65,6 +65,7 @@ type
       fMqttHost : string;
       fMqttPort : integer;
       fOpenMode : tOpenMode;
+      fSecondError : boolean;
 
       fEmailRegex : tRegExpr;
       fUserList : tMqttUserArray;
@@ -191,6 +192,7 @@ begin
   inherited;
   fIsOpen:=false;
   fTCPComp:=tLTCPComponent.Create(nil);  //TCP-IP komponens
+  fTCPComp.Disconnect(true);
   fTCPComp.OnAccept:=@TCPCompAccept;               //esemeny rutinok
   fTCPComp.OnConnect:=@TCPCompConnect;
   fTCPComp.OnDisconnect:=@TCPCompDisconnect;
@@ -409,8 +411,8 @@ end;
 //kliens levalt
 procedure tMQTT_IO.TCPCompDisconnect(aSocket: TLSocket);
 begin
-  DebugLn('MQTT: Tcp Disconnected');
   fIsOpen:=false;
+  DebugLn('MQTT: Tcp Disconnected');
   if fTmrFinishCmd>0 then begin
     fCmdResult:='Tcp Disconnected';
     DoFinishCmd;
@@ -463,8 +465,8 @@ end;
 //MQTT szerverrel zarjuk a kapcsolatot
 procedure tMQTT_IO.MQTTClose;
 begin
-  fIsOpen:=false;
-  if fTCPComp.Connected then fTCPComp.Disconnect();
+  //fIsOpen:=false;
+  if fTCPComp.Connected then fTCPComp.Disconnect() else fIsOpen:=false;
 end;
 
 //MQTT szerverhez csatlakozzunk
@@ -484,7 +486,13 @@ var
   buf : tMQTT_Buffer;
   len : integer;
 begin
-  //if not fIsOpen then exit;
+  if not fTCPComp.Connected and not fSecondError then begin
+    fSecondError:=true;
+    DebugLn('TCP reopen...');
+    Reopen;
+    exit;
+  end;
+  DebugLn('MQTT Send: '+mqtt.MessageTypeStr);
   buf:=mqtt.Encode();
   len:=Length(buf);
   if len>0 then begin
@@ -549,9 +557,14 @@ begin
   if mqtt.MessageType=mqttPUBLISH then ProcessPublish(mqtt);
 
   if mqtt.MessageType=mqttCONNACK then begin  //csatlakozas elfogadva
-    if mqtt.ConnectReturnCode<>0 then begin
-      DebugLn('MQTT: connection refused: '+mqtt.ConnectReturnStr);
-      fCmdResult:='Bejelentkezési hiba: '+mqtt.ConnectReturnStr;
+    if not fIsOpen or (mqtt.ConnectReturnCode<>0) then begin
+      if fIsOpen then begin
+        DebugLn('MQTT: connection refused: '+mqtt.ConnectReturnStr);
+        fCmdResult:='Bejelentkezési hiba: '+mqtt.ConnectReturnStr;
+      end else begin
+        DebugLn('MQTT: connection closed.');
+        fCmdResult:='Bejelentkezés közben lezárva.';
+      end;
       DoFinishCmd;
       MQTTClose;
       exit;

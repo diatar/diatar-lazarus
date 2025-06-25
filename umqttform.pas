@@ -89,6 +89,9 @@ type
     procedure LoginOkBtnClick(Sender: TObject);
     procedure LoginShowPswChange(Sender: TObject);
     procedure LogoutOkBtnClick(Sender: TObject);
+    procedure RecOkBtnClick(Sender: TObject);
+    procedure RecUserEdChange(Sender: TObject);
+    procedure RecUserLstClick(Sender: TObject);
     procedure RegOkBtnClick(Sender: TObject);
     procedure RegSendCodeClick(Sender: TObject);
     procedure RegShowPswChange(Sender: TObject);
@@ -115,6 +118,7 @@ var
 implementation
 
 uses
+  Character,
   uRoutines, uGlobals, uMQTT_IO, fphttpclient,openssl,opensslsockets, HTTPprotocol;
 
 var
@@ -124,16 +128,6 @@ var
 
 procedure tMqttForm.FormCreate(Sender: TObject);
 begin
-  if not InitSSLInterface then begin
-{$IFNDEF windows}
-    //on linux we can simply change to openssl.3
-    DLLVersions[1]:='.3';
-{$ENDIF}
-    if not InitSSLInterface then begin
-      ErrorBox('Internet kapcsolat sikertelen!');
-    end;
-  end;
-
   LoginUserEd.Text:=MQTT_IO.UserName;
   RefreshLoggedState;
 
@@ -250,6 +244,72 @@ begin
   MQTT_IO.Password:='';
   MQTT_IO.Channel:='';
   RefreshLoggedState;
+end;
+
+procedure tMqttForm.RecOkBtnClick(Sender: TObject);
+var
+  idx : integer;
+begin
+  idx:=RecChannelLst.ItemIndex;
+  if idx<0 then begin
+    RecChannelLst.SetFocus;
+    ErrorBox('Válasszon egy küldőt és csatornát!');
+    exit;
+  end;
+  MQTT_IO.Channel:=RecChannelLst.Items[idx];
+  if RecStayCb.Checked then begin
+    Globals.MqttUser:=Globals.EncodePsw(MQTT_IO.UserName);
+    Globals.MqttCh:=Globals.EncodePsw(MQTT_IO.Channel);
+  end;
+  ModalResult:=mrOK;
+end;
+
+procedure tMqttForm.RecUserEdChange(Sender: TObject);
+var
+  txt1,txt2 : UnicodeString;
+  s : string;
+  i,p : integer;
+
+  function RemoveAccents(const s : UnicodeString) : UnicodeString;
+  var
+    K : TBytes;
+  begin
+    K:=TEncoding.Convert(tEncoding.Unicode, TEncoding.ASCII, TEncoding.Unicode.GetBytes(s));
+    Result:=StringOf(K);
+  end;
+
+begin
+  txt1:=UpperCase(RemoveAccents(UTF8Decode(Trim(RecUserEd.Text))));
+  RecUserLst.Clear;
+  RecChannelLst.Clear;
+  for i:=0 to Length(MQTT_IO.UserList)-1 do begin
+    if not MQTT_IO.UserList[i].SendersGroup then continue;
+    s:=MQTT_IO.UserList[i].Username;
+    txt2:=UpperCase(RemoveAccents(UTF8Decode(Trim(s))));
+    p:=Pos(txt1,txt2);
+    if p>0 then begin
+      RecUserLst.Items.Add(s);
+    end;
+  end;
+end;
+
+procedure tMqttForm.RecUserLstClick(Sender: TObject);
+var
+  i,idx : integer;
+  s : string;
+  rec : pMqttUserRec;
+begin
+  idx:=RecUserLst.ItemIndex;
+  if idx<0 then exit;
+  s:=RecUserLst.Items[idx];
+  rec:=MQTT_IO.FindUserRec(s);
+  if not Assigned(rec) then exit;
+  RecChannelLst.Clear;
+  for i:=1 to 10 do begin
+    s:=rec^.Channels[i];
+    if s>'' then RecChannelLst.Items.Add(s);
+  end;
+  if RecChannelLst.Items.Count>0 then RecChannelLst.ItemIndex:=0;
 end;
 
 procedure tMqttForm.RegOkBtnClick(Sender: TObject);
@@ -410,9 +470,12 @@ begin
   if MQTT_IO.UserName='' then begin
     LoggedState.Caption:='Kijelentkezve.';
     LoggedState.Font.Color:=clPurple;
-  end else begin
+  end else if MQTT_IO.Password>'' then begin
     LoggedState.Caption:='Bejelentkezve: '+MQTT_IO.UserName;
     LoggedState.Font.Color:=clTeal;
+  end else begin
+    LoggedState.Caption:='Fogadásra kész: '+MQTT_IO.UserName;
+    LoggedState.Font.Color:=clBlue;
   end;
 end;
 

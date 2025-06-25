@@ -1157,6 +1157,7 @@ begin
   finally
     FreeAndNil(MqttForm);
   end;
+  MqttOpen;
 end;
 
 procedure tMainForm.MqttOpen;

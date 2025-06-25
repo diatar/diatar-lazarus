@@ -162,7 +162,18 @@ begin
     SplashForm.Show;
     SplashForm.SetProgress(0,'Betöltés...');
     FillKottaBmps;
+
     SplashForm.SetProgress(10,'Hálózat...');
+    if not InitSSLInterface then begin
+  {$IFNDEF windows}
+      //on linux we can simply change to openssl.3
+      DLLVersions[1]:='.3';
+  {$ENDIF}
+      if not InitSSLInterface then begin
+        ErrorBox('Internet SSL kapcsolat sikertelen!');
+      end;
+    end;
+
     Network:=tNetwork.Create;
     MQTT_IO:=tMQTT_IO.Create;
     CommBtns:=tCommBtns.Create;

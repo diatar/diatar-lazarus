@@ -22,7 +22,7 @@ object MainForm: TMainForm
   OnResize = FormResize
   OnUTF8KeyPress = FormUTF8KeyPress
   OnWindowStateChange = FormWindowStateChange
-  LCLVersion = '2.2.0.4'
+  LCLVersion = '3.6.0.0'
   object FxxPanel: TPanel
     Left = 0
     Height = 82
@@ -403,10 +403,10 @@ object MainForm: TMainForm
         Font.CharSet = 4
         Font.Height = -13
         Font.Name = 'Sans'
-        OnClick = PicBtnClick
         ParentFont = False
         State = cbChecked
         TabOrder = 1
+        OnClick = PicBtnClick
       end
       object PicDownBtn: TSpeedButton
         Left = 204
