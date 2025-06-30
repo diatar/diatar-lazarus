@@ -236,7 +236,7 @@ begin
   if fOpenMode in [omUSERLIST,omCREATEUSER,omCHKLOGIN,omRENCHANNEL] then
     fTmrFinishCmd:=TMR_FINISHCMD;
 
-  fTopicGroup:='Diatar/'; // ideiglenesen kivesszuk!!!  +IntToStr(fClientId)+'/';
+  fTopicGroup:='Diatar/'+Username+'/'+Channel+'/';
   fTopicMask:=fTopicGroup+'#';
   fTopicState:=fTopicGroup+'state';
   fTopicBlank:=fTopicGroup+'blank';
