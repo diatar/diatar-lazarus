@@ -150,7 +150,7 @@
         <UnitName Value="uEdMain"/>
         <IsVisibleTab Value="True"/>
         <TopLine Value="49"/>
-        <CursorPos X="32" Y="55"/>
+        <CursorPos X="24" Y="63"/>
         <UsageCount Value="53"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -536,7 +536,6 @@
       </Unit56>
       <Unit57>
         <Filename Value="usplash.pas"/>
-        <IsPartOfProject Value="True"/>
         <ComponentName Value="SplashForm"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uSplash"/>
