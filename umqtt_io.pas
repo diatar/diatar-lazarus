@@ -82,6 +82,7 @@ type
       procedure TmrResetSendPing;     //fTmrSendPing alaphelyzetbe
 
       procedure DoFinishCmd;          //notify hivasa
+      procedure DoFinishCmdInMain;    //notify hivasa a foszalban
 
       //TCPComp esemenyei
       procedure TCPCompAccept(aSocket: TLSocket);
@@ -385,6 +386,11 @@ end;
 procedure tMQTT_IO.DoFinishCmd;
 begin
   fTmrFinishCmd:=0;
+  if Assigned(fOnCmdFinished) then tThread.Queue(nil,@DoFinishCmdInMain);
+end;
+
+procedure tMQTT_IO.DoFinishCmdInMain;
+begin
   if Assigned(fOnCmdFinished) then fOnCmdFinished(Self);
 end;
 
