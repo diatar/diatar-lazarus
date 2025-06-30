@@ -1,0 +1,8 @@
+*.zip
+backup/**
+DTXs/**
+obj*/**
+uoslib/**
+rdiatar64
+rdiaeditor64
+*.dbg

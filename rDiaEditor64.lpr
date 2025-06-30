@@ -9,7 +9,7 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, uEdMain, uPaintResizedText, uEditorForm,
   uEdVSProp, uEdVersProp, uEdKotetProp, uTxTar, uSymbolForm, uAkkordForm,
-  uAkkord, ukottaeditor, ukottakepek, ukottazo, uEdSetup, uSplash;
+  uAkkord, ukottaeditor, ukottakepek, ukottazo, uEdSetup;
 
 {$IFDEF WINDOWS}{$R lDiaEditor.rc}{$ENDIF}
 
