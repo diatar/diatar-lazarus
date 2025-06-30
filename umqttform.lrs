@@ -1,17 +1,17 @@
 { This is an automatically generated lazarus resource file }
 
 LazarusResources.Add('TMqttForm','FORMDATA',[
-  'TPF0'#9'TMqttForm'#8'MqttForm'#4'Left'#3#0#1#6'Height'#3'['#1#3'Top'#3#145#0
+  'TPF0'#9'TMqttForm'#8'MqttForm'#4'Left'#3#0#1#6'Height'#3'h'#1#3'Top'#3#145#0
   +#5'Width'#3#160#1#11'BorderStyle'#7#8'bsDialog'#7'Caption'#6#20'Internetes v'
-  +'et'#195#173't'#195#169's'#12'ClientHeight'#3'['#1#11'ClientWidth'#3#160#1#8
+  +'et'#195#173't'#195#169's'#12'ClientHeight'#3'h'#1#11'ClientWidth'#3#160#1#8
   +'OnCreate'#7#10'FormCreate'#8'ShowHint'#9#10'LCLVersion'#6#7'3.6.0.0'#0#6'TP'
   +'anel'#11'LoggedState'#4'Left'#2#0#6'Height'#2#24#3'Top'#2#0#5'Width'#3#160#1
   +#5'Align'#7#5'alTop'#10'BevelOuter'#7#9'bvLowered'#7'Caption'#6#14'Kijelentk'
   +'ezve.'#10'Font.Style'#11#6'fsBold'#0#10'ParentFont'#8#8'TabOrder'#2#0#0#0#12
-  +'TPageControl'#5'Pages'#4'Left'#2#0#6'Height'#3'C'#1#3'Top'#2#24#5'Width'#3
+  +'TPageControl'#5'Pages'#4'Left'#2#0#6'Height'#3'P'#1#3'Top'#2#24#5'Width'#3
   +#160#1#10'ActivePage'#7#5'TSRec'#5'Align'#7#8'alClient'#8'TabIndex'#2#0#8'Ta'
   +'bOrder'#2#1#0#9'TTabSheet'#5'TSRec'#7'Caption'#6#8'Fogad'#195#161's'#12'Cli'
-  +'entHeight'#3''''#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label1'#4'Left'#2#8
+  +'entHeight'#3'4'#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label1'#4'Left'#2#8
   +#6'Height'#2'('#3'Top'#2#8#5'Width'#3#136#1#7'Anchors'#11#5'akTop'#6'akLeft'
   +#7'akRight'#0#8'AutoSize'#8#7'Caption'#6'pHa szeretne m'#195#161's vet'#195
   +#173't'#195#169's'#195#169'hez kapcsol'#195#179'dni, itt '#195#161'll'#195
@@ -34,7 +34,7 @@ LazarusResources.Add('TMqttForm','FORMDATA',[
   +#9'TCheckBox'#9'RecStayCb'#4'Left'#3#144#0#6'Height'#2#19#3'Top'#3#232#0#5'W'
   +'idth'#3#163#0#7'Caption'#6#27'Csatlakozom legk'#195#182'zelebb is'#8'TabOrd'
   +'er'#2#3#0#0#0#9'TTabSheet'#6'TSSend'#7'Caption'#6#8'K'#195#188'ld'#195#169
-  +'s'#12'ClientHeight'#3''''#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label4'#4
+  +'s'#12'ClientHeight'#3'4'#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label4'#4
   +'Left'#2#8#6'Height'#2'('#3'Top'#2#8#5'Width'#3#136#1#7'Anchors'#11#5'akTop'
   +#6'akLeft'#7'akRight'#0#8'AutoSize'#8#7'Caption'#6'TK'#195#188'ld'#195#169's'
   +'hez jelentkezzen be (ha m'#195#169'g nem tette, ehhez el'#197#145'sz'#195
@@ -59,16 +59,16 @@ LazarusResources.Add('TMqttForm','FORMDATA',[
   +'b'#4'Left'#3#144#0#6'Height'#2#19#3'Top'#3#232#0#5'Width'#3#130#0#7'Caption'
   +#6#24'K'#195#188'ld'#195#169's legk'#195#182'zelebb is'#8'TabOrder'#2#5#0#0#0
   +#9'TTabSheet'#5'TSReg'#7'Caption'#6#14'Regisztr'#195#161'ci'#195#179#12'Clie'
-  +'ntHeight'#3''''#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label7'#4'Left'#2#5
-  +#6'Height'#2#15#3'Top'#2'3'#5'Width'#3#139#0#9'Alignment'#7#14'taRightJustif'
-  +'y'#8'AutoSize'#8#7'Caption'#6#18'Felhaszn'#195#161'l'#195#179'n'#195#169'v:'
-  +#0#0#5'TEdit'#9'RegUserEd'#4'Left'#3#152#0#6'Height'#2#23#3'Top'#2'0'#5'Widt'
-  +'h'#3#248#0#9'MaxLength'#2#30#8'TabOrder'#2#0#8'TextHint'#6#14'Kov'#195#161
-  +'cs J'#195#161'nos'#0#0#6'TLabel'#6'Label9'#4'Left'#2#5#6'Height'#2#15#3'Top'
-  ,#2'J'#5'Width'#3#139#0#9'Alignment'#7#14'taRightJustify'#8'AutoSize'#8#7'Cap'
-  +'tion'#6#11'Email-c'#195#173'm:'#0#0#5'TEdit'#10'RegEmailEd'#4'Left'#3#152#0
-  +#6'Height'#2#23#3'Top'#2'H'#5'Width'#3#248#0#9'MaxLength'#2'2'#8'TabOrder'#2
-  +#1#8'TextHint'#6#17'jani123@gmail.com'#0#0#6'TLabel'#7'Label10'#4'Left'#2#5#6
+  +'ntHeight'#3'4'#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label7'#4'Left'#2#5#6
+  +'Height'#2#15#3'Top'#2'3'#5'Width'#3#139#0#9'Alignment'#7#14'taRightJustify'
+  +#8'AutoSize'#8#7'Caption'#6#18'Felhaszn'#195#161'l'#195#179'n'#195#169'v:'#0
+  +#0#5'TEdit'#9'RegUserEd'#4'Left'#3#152#0#6'Height'#2#23#3'Top'#2'0'#5'Width'
+  +#3#248#0#9'MaxLength'#2#30#8'TabOrder'#2#0#8'TextHint'#6#14'Kov'#195#161'cs '
+  +'J'#195#161'nos'#0#0#6'TLabel'#6'Label9'#4'Left'#2#5#6'Height'#2#15#3'Top'#2
+  ,'J'#5'Width'#3#139#0#9'Alignment'#7#14'taRightJustify'#8'AutoSize'#8#7'Capti'
+  +'on'#6#11'Email-c'#195#173'm:'#0#0#5'TEdit'#10'RegEmailEd'#4'Left'#3#152#0#6
+  +'Height'#2#23#3'Top'#2'H'#5'Width'#3#248#0#9'MaxLength'#2'2'#8'TabOrder'#2#1
+  +#8'TextHint'#6#17'jani123@gmail.com'#0#0#6'TLabel'#7'Label10'#4'Left'#2#5#6
   +'Height'#2#15#3'Top'#2'c'#5'Width'#3#139#0#9'Alignment'#7#14'taRightJustify'
   +#8'AutoSize'#8#7'Caption'#6#8'Jelsz'#195#179':'#0#0#5'TEdit'#7'RegPsw1'#4'Le'
   +'ft'#3#152#0#6'Height'#2#23#3'Top'#2'`'#5'Width'#3#248#0#8'EchoMode'#7#10'em'
@@ -97,39 +97,39 @@ LazarusResources.Add('TMqttForm','FORMDATA',[
   +'akLeft'#7'akRight'#0#8'AutoSize'#8#7'Caption'#6'-Az els'#197#145' k'#195#188
   +'ld'#195#169's el'#197#145'tt regisztr'#195#161'lnia kell.'#8'WordWrap'#9#0#0
   +#0#9'TTabSheet'#7'TSLogin'#7'Caption'#6#9'Bel'#195#169'p'#195#169's'#12'Clie'
-  +'ntHeight'#3''''#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label5'#4'Left'#2#5
-  +#6'Height'#2#15#3'Top'#2'3'#5'Width'#3#139#0#9'Alignment'#7#14'taRightJustif'
-  +'y'#8'AutoSize'#8#7'Caption'#6#18'Felhaszn'#195#161'l'#195#179'n'#195#169'v:'
-  +#0#0#5'TEdit'#11'LoginUserEd'#4'Left'#3#152#0#6'Height'#2#23#3'Top'#2'0'#5'W'
-  +'idth'#3#248#0#8'TabOrder'#2#0#0#0#6'TLabel'#6'Label6'#4'Left'#2#5#6'Height'
-  +#2#15#3'Top'#2'['#5'Width'#3#139#0#9'Alignment'#7#14'taRightJustify'#8'AutoS'
-  +'ize'#8#7'Caption'#6#8'Jelsz'#195#179':'#0#0#5'TEdit'#10'LoginPswEd'#4'Left'
-  +#3#152#0#6'Height'#2#23#3'Top'#2'['#5'Width'#3#248#0#8'EchoMode'#7#10'emPass'
-  +'word'#12'PasswordChar'#6#1'*'#8'TabOrder'#2#1#0#0#9'TCheckBox'#12'LoginShow'
-  +'Psw'#4'Left'#3#184#0#6'Height'#2#19#3'Top'#2'x'#5'Width'#2'|'#7'Caption'#6
-  +#23'Jelsz'#195#179' megjelen'#195#173't'#195#169'se'#8'TabOrder'#2#2#8'OnCha'
-  +'nge'#7#18'LoginShowPswChange'#0#0#9'TCheckBox'#11'LoginStayCb'#4'Left'#3#144
-  +#0#6'Height'#2#19#3'Top'#3#232#0#5'Width'#3#136#0#7'Caption'#6#24'Bel'#195
-  +#169'pve legk'#195#182'zelebb is'#8'TabOrder'#2#3#0#0#7'TBitBtn'#10'LoginOkB'
-  +'tn'#4'Left'#2'P'#6'Height'#2#30#3'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#9'B'
-  +'el'#195#169'p'#195#169's'#4'Kind'#7#4'bkOK'#7'OnClick'#7#15'LoginOkBtnClick'
-  +#8'TabOrder'#2#4#0#0#7'TBitBtn'#14'LoginCancelBtn'#4'Left'#3#224#0#6'Height'
-  +#2#30#3'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#6'M'#195#169'gse'#4'Kind'#7#8
-  +'bkCancel'#11'ModalResult'#2#2#8'TabOrder'#2#5#0#0#6'TLabel'#7'Label15'#4'Le'
-  +'ft'#2#8#6'Height'#2'('#3'Top'#2#8#5'Width'#3#136#1#7'Anchors'#11#5'akTop'#6
-  +'akLeft'#7'akRight'#0#8'AutoSize'#8#7'Caption'#6'TK'#195#188'ld'#195#169'she'
-  +'z jelentkezzen be (ha m'#195#169'g nem tette, ehhez el'#197#145'sz'#195#182
-  +'r regisztr'#195#161'lnia kell)'#8'WordWrap'#9#0#0#0#9'TTabSheet'#8'TSLogout'
-  +#7'Caption'#6#9'Kil'#195#169'p'#195#169's'#12'ClientHeight'#3''''#1#11'Clien'
-  +'tWidth'#3#152#1#0#7'TBitBtn'#11'LogoutOkBtn'#4'Left'#2'P'#6'Height'#2#30#3
-  +'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#9'Kil'#195#169'p'#195#169's'#7'Defaul'
-  +'t'#9#4'Kind'#7#4'bkOK'#11'ModalResult'#2#1#7'OnClick'#7#16'LogoutOkBtnClick'
-  +#8'TabOrder'#2#0#0#0#7'TBitBtn'#15'LogoutCancelBtn'#4'Left'#3#224#0#6'Height'
-  +#2#30#3'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#6'M'#195#169'gse'#4'Kind'#7#8
-  +'bkCancel'#11'ModalResult'#2#2#8'TabOrder'#2#1#0#0#6'TLabel'#7'Label13'#4'Le'
-  +'ft'#2#8#6'Height'#2'('#3'Top'#2#8#5'Width'#3#136#1#7'Anchors'#11#5'akTop'#6
-  +'akLeft'#7'akRight'#0#8'AutoSize'#8#7'Caption'#6'hK'#195#188'ld'#195#169'she'
-  ,'z be kell jelentkeznie.'#13#10'Ha m'#195#161'sok is hozz'#195#161'f'#195#169
-  +'rnek a g'#195#169'phez, k'#195#188'ld'#195#169's ut'#195#161'n jelentkezzen'
-  +' ki.'#8'WordWrap'#9#0#0#0#0#0
+  +'ntHeight'#3'4'#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label5'#4'Left'#2#5#6
+  +'Height'#2#15#3'Top'#2'3'#5'Width'#3#139#0#9'Alignment'#7#14'taRightJustify'
+  +#8'AutoSize'#8#7'Caption'#6#18'Felhaszn'#195#161'l'#195#179'n'#195#169'v:'#0
+  +#0#5'TEdit'#11'LoginUserEd'#4'Left'#3#152#0#6'Height'#2#23#3'Top'#2'0'#5'Wid'
+  +'th'#3#248#0#8'TabOrder'#2#0#0#0#6'TLabel'#6'Label6'#4'Left'#2#5#6'Height'#2
+  +#15#3'Top'#2'['#5'Width'#3#139#0#9'Alignment'#7#14'taRightJustify'#8'AutoSiz'
+  +'e'#8#7'Caption'#6#8'Jelsz'#195#179':'#0#0#5'TEdit'#10'LoginPswEd'#4'Left'#3
+  +#152#0#6'Height'#2#23#3'Top'#2'['#5'Width'#3#248#0#8'EchoMode'#7#10'emPasswo'
+  +'rd'#12'PasswordChar'#6#1'*'#8'TabOrder'#2#1#0#0#9'TCheckBox'#12'LoginShowPs'
+  +'w'#4'Left'#3#184#0#6'Height'#2#19#3'Top'#2'x'#5'Width'#2'|'#7'Caption'#6#23
+  +'Jelsz'#195#179' megjelen'#195#173't'#195#169'se'#8'TabOrder'#2#2#8'OnChange'
+  +#7#18'LoginShowPswChange'#0#0#9'TCheckBox'#11'LoginStayCb'#4'Left'#3#144#0#6
+  +'Height'#2#19#3'Top'#3#232#0#5'Width'#3#136#0#7'Caption'#6#24'Bel'#195#169'p'
+  +'ve legk'#195#182'zelebb is'#8'TabOrder'#2#3#0#0#7'TBitBtn'#10'LoginOkBtn'#4
+  +'Left'#2'P'#6'Height'#2#30#3'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#9'Bel'#195
+  +#169'p'#195#169's'#4'Kind'#7#4'bkOK'#7'OnClick'#7#15'LoginOkBtnClick'#8'TabO'
+  +'rder'#2#4#0#0#7'TBitBtn'#14'LoginCancelBtn'#4'Left'#3#224#0#6'Height'#2#30#3
+  +'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#6'M'#195#169'gse'#4'Kind'#7#8'bkCance'
+  +'l'#11'ModalResult'#2#2#8'TabOrder'#2#5#0#0#6'TLabel'#7'Label15'#4'Left'#2#8
+  +#6'Height'#2'('#3'Top'#2#8#5'Width'#3#136#1#7'Anchors'#11#5'akTop'#6'akLeft'
+  +#7'akRight'#0#8'AutoSize'#8#7'Caption'#6'TK'#195#188'ld'#195#169'shez jelent'
+  +'kezzen be (ha m'#195#169'g nem tette, ehhez el'#197#145'sz'#195#182'r regis'
+  +'ztr'#195#161'lnia kell)'#8'WordWrap'#9#0#0#0#9'TTabSheet'#8'TSLogout'#7'Cap'
+  +'tion'#6#9'Kil'#195#169'p'#195#169's'#12'ClientHeight'#3'4'#1#11'ClientWidth'
+  +#3#152#1#0#7'TBitBtn'#11'LogoutOkBtn'#4'Left'#2'P'#6'Height'#2#30#3'Top'#3#8
+  +#1#5'Width'#2'K'#7'Caption'#6#9'Kil'#195#169'p'#195#169's'#7'Default'#9#4'Ki'
+  +'nd'#7#4'bkOK'#11'ModalResult'#2#1#7'OnClick'#7#16'LogoutOkBtnClick'#8'TabOr'
+  +'der'#2#0#0#0#7'TBitBtn'#15'LogoutCancelBtn'#4'Left'#3#224#0#6'Height'#2#30#3
+  +'Top'#3#8#1#5'Width'#2'K'#7'Caption'#6#6'M'#195#169'gse'#4'Kind'#7#8'bkCance'
+  +'l'#11'ModalResult'#2#2#8'TabOrder'#2#1#0#0#6'TLabel'#7'Label13'#4'Left'#2#8
+  +#6'Height'#2'('#3'Top'#2#8#5'Width'#3#136#1#7'Anchors'#11#5'akTop'#6'akLeft'
+  +#7'akRight'#0#8'AutoSize'#8#7'Caption'#6'hK'#195#188'ld'#195#169'shez be kel'
+  ,'l jelentkeznie.'#13#10'Ha m'#195#161'sok is hozz'#195#161'f'#195#169'rnek a'
+  +' g'#195#169'phez, k'#195#188'ld'#195#169's ut'#195#161'n jelentkezzen ki.'#8
+  +'WordWrap'#9#0#0#0#0#0
 ]);

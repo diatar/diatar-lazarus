@@ -248,17 +248,21 @@ end;
 
 procedure tMqttForm.RecOkBtnClick(Sender: TObject);
 var
-  idx : integer;
+  chidx,useridx : integer;
 begin
-  idx:=RecChannelLst.ItemIndex;
-  if idx<0 then begin
+  useridx:=RecUserLst.ItemIndex;
+  chidx:=RecChannelLst.ItemIndex;
+  if (useridx<0) or (chidx<0) then begin
     RecChannelLst.SetFocus;
     ErrorBox('Válasszon egy küldőt és csatornát!');
     exit;
   end;
-  MQTT_IO.Channel:=RecChannelLst.Items[idx];
+  MQTT_IO.UserName:=RecUserLst.Items[useridx];
+  MQTT_IO.Password:='';
+  MQTT_IO.Channel:=RecChannelLst.Items[chidx];
   if RecStayCb.Checked then begin
     Globals.MqttUser:=Globals.EncodePsw(MQTT_IO.UserName);
+    Globals.MqttPsw:='';
     Globals.MqttCh:=Globals.EncodePsw(MQTT_IO.Channel);
   end;
   ModalResult:=mrOK;
@@ -485,6 +489,7 @@ procedure tMqttForm.OnCmdFinished(Sender : tObject);
 var
   stay : boolean;
 begin
+  Pages.Enabled:=true;
   if MQTT_IO.CmdResult>'' then begin
     ErrorBox('Internet hiba:'#13+MQTT_IO.CmdResult);
   end;
@@ -511,7 +516,6 @@ begin
     LoginUserEd.Text:=MQTT_IO.UserName;
     LoginPswEd.Clear;
   end;
-  Pages.Enabled:=true;
   RefreshLoggedState;
   FillSendChLst;
 end;

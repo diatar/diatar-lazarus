@@ -1,11 +1,11 @@
 object MqttForm: TMqttForm
   Left = 256
-  Height = 347
+  Height = 360
   Top = 145
   Width = 416
   BorderStyle = bsDialog
   Caption = 'Internetes vetítés'
-  ClientHeight = 347
+  ClientHeight = 360
   ClientWidth = 416
   OnCreate = FormCreate
   ShowHint = True
@@ -24,7 +24,7 @@ object MqttForm: TMqttForm
   end
   object Pages: TPageControl
     Left = 0
-    Height = 323
+    Height = 336
     Top = 24
     Width = 416
     ActivePage = TSRec
@@ -33,7 +33,7 @@ object MqttForm: TMqttForm
     TabOrder = 1
     object TSRec: TTabSheet
       Caption = 'Fogadás'
-      ClientHeight = 295
+      ClientHeight = 308
       ClientWidth = 408
       object Label1: TLabel
         Left = 8
@@ -119,7 +119,7 @@ object MqttForm: TMqttForm
     end
     object TSSend: TTabSheet
       Caption = 'Küldés'
-      ClientHeight = 295
+      ClientHeight = 308
       ClientWidth = 408
       object Label4: TLabel
         Left = 8
@@ -215,7 +215,7 @@ object MqttForm: TMqttForm
     end
     object TSReg: TTabSheet
       Caption = 'Regisztráció'
-      ClientHeight = 295
+      ClientHeight = 308
       ClientWidth = 408
       object Label7: TLabel
         Left = 5
@@ -359,7 +359,7 @@ object MqttForm: TMqttForm
     end
     object TSLogin: TTabSheet
       Caption = 'Belépés'
-      ClientHeight = 295
+      ClientHeight = 308
       ClientWidth = 408
       object Label5: TLabel
         Left = 5
@@ -445,7 +445,7 @@ object MqttForm: TMqttForm
     end
     object TSLogout: TTabSheet
       Caption = 'Kilépés'
-      ClientHeight = 295
+      ClientHeight = 308
       ClientWidth = 408
       object LogoutOkBtn: TBitBtn
         Left = 80
