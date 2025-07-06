@@ -12,7 +12,8 @@ uses
   uMonitors, uShutdown, uEditorForm, uNetwork, uDtxLst, uKeys, uNetQueue,
   uNetBase, uSymbolForm, uSerialIO, uSearchForm, uSound, uhowtosaveform,
   ukottaeditor, ukottakepek, ukottazo, userialioform, uappform, uKeyInputForm,
-  uSelectProfil, uLinuxRegistry, uDiatarIniLoader, uPropEdit, uSplash;
+  uSelectProfil, uLinuxRegistry, uDiatarIniLoader, uPropEdit, uSplash,
+  uMqttForm, uMQTT_IO;
 
 {$IFDEF WINDOWS}{$R project1.rc}{$ENDIF}
 

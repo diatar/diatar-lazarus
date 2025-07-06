@@ -204,6 +204,12 @@ var
 begin
   idx:=SendChannelLst.ItemIndex;
   if idx<=0 then exit;
+  if MQTT_IO.Password='' then begin
+    Pages.ActivePage:=TSLogin;
+    LoginUserEd.SetFocus;
+    ErrorBox('Küldéshez jelentkezzen be!');
+    exit;
+  end;
   s:=RdSendChItem(idx);
   if s='' then begin
     SendRenBtn.Click;
