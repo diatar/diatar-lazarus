@@ -46,7 +46,7 @@ type
   tMQTT_IO = class
     private
       fTCPComp : tLTCPComponent;
-      fIsOpen : boolean;
+      fIsOpen,fIsClosed : boolean;
       fClientId : integer;            //kliens azonositoja
       fTopicGroup : string;           //teljes csatorna neve
       fTopicMask : string;            //csatorna maszk
@@ -191,7 +191,7 @@ const
 constructor tMQTT_IO.Create;
 begin
   inherited;
-  fIsOpen:=false;
+  fIsOpen:=false; fIsClosed:=true;
   fTCPComp:=tLTCPComponent.Create(nil);  //TCP-IP komponens
   fTCPComp.Disconnect(true);
   fTCPComp.OnAccept:=@TCPCompAccept;               //esemeny rutinok
@@ -230,6 +230,7 @@ end;
 procedure tMQTT_IO.Open(om : tOpenMode);
 begin
   fOpenMode:=om;
+  fIsClosed:=false;
 
   fTmrReopen:=0;
   fTmrFinishCmd:=0;
@@ -249,12 +250,13 @@ end;
 //publikus lezaras
 procedure tMQTT_IO.Close;
 begin
+  fIsClosed:=true;
   MQTTClose;
 end;
 
 procedure tMQTT_IO.Reopen;
 begin
-  Close;
+  MQTTClose;
   fTmrReopen:=TMR_REOPEN;
 end;
 
@@ -422,6 +424,8 @@ begin
   if fTmrFinishCmd>0 then begin
     fCmdResult:='Tcp Disconnected';
     DoFinishCmd;
+  end else if not fIsClosed then begin
+    MQTTTimeOut;
   end;
 end;
 
@@ -572,7 +576,7 @@ begin
         fCmdResult:='Bejelentkezés közben lezárva.';
       end;
       DoFinishCmd;
-      MQTTClose;
+      Close;
       exit;
     end;
     case fOpenMode of
@@ -583,7 +587,7 @@ begin
       omCHKLOGIN: begin
         fCmdResult:='';
         DoFinishCmd;
-        MQTTClose;
+        Close;
       end;
     end;
     exit;
@@ -626,7 +630,12 @@ begin
         mqtt.PasswordFlag:=true;
         mqtt.Password:=Password;
       end;
-      omRECEIVER: ; //nem kell user/psw
+      omRECEIVER: begin
+        mqtt.UserNameFlag:=true;
+        mqtt.UserName:='receiver';
+        mqtt.PasswordFlag:=true;
+        mqtt.Password:='receiverpsw';
+      end;
 
       omUSERLIST,
       omRENCHANNEL,
@@ -746,7 +755,7 @@ begin
       jresp:=jdata.FindPath('responses');
       if not Assigned(jresp) or (jresp.JSONType<>jtArray) then begin
         MainForm.ShowError('Hibás input');
-        MQTTClose;
+        Close;
         if fTmrFinishCmd>0 then begin
           fCmdResult:='Hibás szerver válasz!';
           DoFinishCmd;
@@ -758,12 +767,12 @@ begin
       for idx:=0 to jarr.Count-1 do
         if ProcessJson(jarr[idx], iscont) then iscont:=true;
       if not iscont then begin
-        MQTTClose;
+        Close;
         DoFinishCmd;
       end;
     except
       MainForm.ShowError('Input nem dekódolható');
-      MQTTClose;
+      Close;
       fCmdResult:='Szerver válasz nem dekódolható!';
       DoFinishCmd;
       exit;
@@ -841,7 +850,7 @@ var
 begin
   rec:=FindUserRec(UserName);
   if not Assigned(rec) then begin
-    MQTTClose;
+    Close;
     fCmdResult:='Felhasználó nem található.';
     DoFinishCmd;
     exit;
