@@ -7,5 +7,5 @@ LazarusResources.Add('TAppForm','FORMDATA',[
   +#10'KeyPreview'#9#10'OnActivate'#7#12'FormActivate'#8'OnCreate'#7#10'FormCre'
   +'ate'#9'OnDestroy'#7#11'FormDestroy'#19'OnWindowStateChange'#7#21'FormWindow'
   +'StateChange'#8'Position'#7#9'poDefault'#13'ShowInTaskBar'#7#7'stNever'#10'L'
-  +'CLVersion'#6#7'3.4.0.0'#0#0
+  +'CLVersion'#6#7'3.6.0.0'#0#0
 ]);

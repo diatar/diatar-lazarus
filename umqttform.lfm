@@ -8,6 +8,7 @@ object MqttForm: TMqttForm
   ClientHeight = 360
   ClientWidth = 416
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   ShowHint = True
   LCLVersion = '3.6.0.0'
   object LoggedState: TPanel
@@ -19,6 +20,8 @@ object MqttForm: TMqttForm
     BevelOuter = bvLowered
     Caption = 'Kijelentkezve.'
     Font.Style = [fsBold]
+    ParentBackground = False
+    ParentColor = False
     ParentFont = False
     TabOrder = 0
   end
@@ -27,9 +30,9 @@ object MqttForm: TMqttForm
     Height = 336
     Top = 24
     Width = 416
-    ActivePage = TSSend
+    ActivePage = TSProfil
     Align = alClient
-    TabIndex = 1
+    TabIndex = 4
     TabOrder = 1
     object TSRec: TTabSheet
       Caption = 'Fogadás'
@@ -75,7 +78,7 @@ object MqttForm: TMqttForm
         Left = 80
         Height = 30
         Top = 264
-        Width = 75
+        Width = 100
         Caption = 'Fogadás'
         Kind = bkOK
         OnClick = RecOkBtnClick
@@ -85,7 +88,7 @@ object MqttForm: TMqttForm
         Left = 224
         Height = 30
         Top = 264
-        Width = 75
+        Width = 100
         Caption = 'Mégse'
         Kind = bkCancel
         ModalResult = 2
@@ -135,7 +138,7 @@ object MqttForm: TMqttForm
         Left = 80
         Height = 30
         Top = 264
-        Width = 75
+        Width = 100
         Caption = 'Kezdjük!'
         Enabled = False
         Kind = bkOK
@@ -146,7 +149,7 @@ object MqttForm: TMqttForm
         Left = 224
         Height = 30
         Top = 264
-        Width = 75
+        Width = 100
         Caption = 'Mégse'
         Kind = bkCancel
         ModalResult = 2
@@ -300,51 +303,25 @@ object MqttForm: TMqttForm
         TabOrder = 4
         OnChange = RegShowPswChange
       end
-      object RegSendCode: TButton
-        Left = 32
-        Height = 33
-        Top = 168
-        Width = 345
-        Caption = 'Regisztrációs kód küldése az email-címre'
-        TabOrder = 5
-        OnClick = RegSendCodeClick
-      end
-      object Label12: TLabel
-        Left = 5
-        Height = 15
-        Top = 211
-        Width = 139
-        Alignment = taRightJustify
-        AutoSize = False
-        Caption = 'Regisztrációs kód:'
-      end
-      object RegCodeEd: TEdit
-        Left = 152
-        Height = 23
-        Top = 208
-        Width = 248
-        TabOrder = 6
-      end
       object RegOkBtn: TBitBtn
         Left = 80
         Height = 30
         Top = 264
         Width = 112
         Caption = 'Regisztráció'
-        Enabled = False
         Kind = bkOK
         OnClick = RegOkBtnClick
-        TabOrder = 7
+        TabOrder = 5
       end
       object RegCancelBtn: TBitBtn
         Left = 224
         Height = 30
         Top = 264
-        Width = 75
+        Width = 100
         Caption = 'Mégse'
         Kind = bkCancel
         ModalResult = 2
-        TabOrder = 8
+        TabOrder = 6
       end
       object Label14: TLabel
         Left = 8
@@ -410,27 +387,27 @@ object MqttForm: TMqttForm
         Top = 232
         Width = 136
         Caption = 'Belépve legközelebb is'
-        TabOrder = 3
+        TabOrder = 4
       end
       object LoginOkBtn: TBitBtn
         Left = 80
         Height = 30
         Top = 264
-        Width = 75
+        Width = 100
         Caption = 'Belépés'
         Kind = bkOK
         OnClick = LoginOkBtnClick
-        TabOrder = 4
+        TabOrder = 5
       end
       object LoginCancelBtn: TBitBtn
         Left = 224
         Height = 30
         Top = 264
-        Width = 75
+        Width = 100
         Caption = 'Mégse'
         Kind = bkCancel
         ModalResult = 2
-        TabOrder = 5
+        TabOrder = 6
       end
       object Label15: TLabel
         Left = 8
@@ -442,32 +419,40 @@ object MqttForm: TMqttForm
         Caption = 'Küldéshez jelentkezzen be (ha még nem tette, ehhez először regisztrálnia kell)'
         WordWrap = True
       end
+      object LostPswBtn: TButton
+        Left = 152
+        Height = 33
+        Top = 160
+        Width = 216
+        Caption = 'Elfelejtettem a jelszavam'
+        TabOrder = 3
+        OnClick = LostPswBtnClick
+      end
     end
-    object TSLogout: TTabSheet
-      Caption = 'Kilépés'
+    object TSProfil: TTabSheet
+      Caption = 'Profil'
       ClientHeight = 308
       ClientWidth = 408
       object LogoutOkBtn: TBitBtn
         Left = 80
         Height = 30
         Top = 264
-        Width = 75
-        Caption = 'Kilépés'
-        Default = True
-        Kind = bkOK
-        ModalResult = 1
+        Width = 112
+        Cancel = True
+        Caption = 'Kijelentkezés'
+        Kind = bkNo
         OnClick = LogoutOkBtnClick
-        TabOrder = 0
+        TabOrder = 4
       end
       object LogoutCancelBtn: TBitBtn
         Left = 224
         Height = 30
         Top = 264
-        Width = 75
+        Width = 100
         Caption = 'Mégse'
         Kind = bkCancel
         ModalResult = 2
-        TabOrder = 1
+        TabOrder = 5
       end
       object Label13: TLabel
         Left = 8
@@ -478,6 +463,42 @@ object MqttForm: TMqttForm
         AutoSize = False
         Caption = 'Küldéshez be kell jelentkeznie.'#13#10'Ha mások is hozzáférnek a géphez, küldés után jelentkezzen ki.'
         WordWrap = True
+      end
+      object ModPswBtn: TButton
+        Left = 128
+        Height = 33
+        Top = 56
+        Width = 144
+        Caption = 'Jelszó módosítás'
+        TabOrder = 0
+        OnClick = ModPswBtnClick
+      end
+      object ModEmailBtn: TButton
+        Left = 128
+        Height = 33
+        Top = 96
+        Width = 144
+        Caption = 'Email módosítás'
+        TabOrder = 1
+        OnClick = ModEmailBtnClick
+      end
+      object ModNameBtn: TButton
+        Left = 128
+        Height = 33
+        Top = 136
+        Width = 144
+        Caption = 'Felh.név módosítás'
+        TabOrder = 2
+        OnClick = ModNameBtnClick
+      end
+      object DelName: TButton
+        Left = 128
+        Height = 33
+        Top = 176
+        Width = 144
+        Caption = 'FELH. TÖRLÉSE'
+        TabOrder = 3
+        OnClick = DelNameClick
       end
     end
   end
