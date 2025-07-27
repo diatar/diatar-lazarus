@@ -102,7 +102,7 @@ uses
   Forms, Controls, Graphics, Dialogs;
 
 const
-  VERSION = 'v13.1 - α3';
+  VERSION = 'v13.1 - α4';
   VERSIONDATE = '2005-25';
 
 type

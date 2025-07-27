@@ -34,10 +34,14 @@ type
   { tMqttForm }
 
   tMqttForm = class(TForm)
+    LostPswBtn: TButton;
+    ModPswBtn: TButton;
+    ModEmailBtn: TButton;
+    ModNameBtn: TButton;
+    DelName: TButton;
     Label1: TLabel;
     Label10: TLabel;
     Label11: TLabel;
-    Label12: TLabel;
     Label13: TLabel;
     Label14: TLabel;
     Label15: TLabel;
@@ -49,6 +53,7 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label9: TLabel;
+    LoggedState: TPanel;
     LoginCancelBtn: TBitBtn;
     LoginOkBtn: TBitBtn;
     LoginPswEd: TEdit;
@@ -58,7 +63,6 @@ type
     LogoutCancelBtn: TBitBtn;
     LogoutOkBtn: TBitBtn;
     Pages: TPageControl;
-    LoggedState: TPanel;
     RecCancelBtn: TBitBtn;
     RecChannelLst: TComboBox;
     RecOkBtn: TBitBtn;
@@ -66,12 +70,10 @@ type
     RecUserEd: TEdit;
     RecUserLst: TListBox;
     RegCancelBtn: TBitBtn;
-    RegCodeEd: TEdit;
     RegEmailEd: TEdit;
     RegOkBtn: TBitBtn;
     RegPsw1: TEdit;
     RegPsw2: TEdit;
-    RegSendCode: TButton;
     RegShowPsw: TCheckBox;
     RegUserEd: TEdit;
     SendCancelBtn: TBitBtn;
@@ -81,10 +83,16 @@ type
     SendRenBtn: TButton;
     SendStayCb: TCheckBox;
     TSLogin: TTabSheet;
-    TSLogout: TTabSheet;
+    TSProfil: TTabSheet;
     TSRec: TTabSheet;
     TSReg: TTabSheet;
     TSSend: TTabSheet;
+    procedure DelNameClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure LostPswBtnClick(Sender: TObject);
+    procedure ModEmailBtnClick(Sender: TObject);
+    procedure ModNameBtnClick(Sender: TObject);
+    procedure ModPswBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure LoginOkBtnClick(Sender: TObject);
     procedure LoginShowPswChange(Sender: TObject);
@@ -93,21 +101,22 @@ type
     procedure RecUserEdChange(Sender: TObject);
     procedure RecUserLstClick(Sender: TObject);
     procedure RegOkBtnClick(Sender: TObject);
-    procedure RegSendCodeClick(Sender: TObject);
     procedure RegShowPswChange(Sender: TObject);
     procedure SendChannelLstChange(Sender: TObject);
     procedure SendDelBtnClick(Sender: TObject);
     procedure SendOkBtnClick(Sender: TObject);
     procedure SendRenBtnClick(Sender: TObject);
   private
-    fRegCode,fRegName,fRegEmail,fRegPsw : string;
-    fWaitFor : (wfUSERLIST,wfCREATEUSER,wfLOGIN,wfRENCHANNEL);
+    fWaitFor : (wfUSERLIST,wfCREATEUSER,wfLOGIN,wfRENCHANNEL,wfMODPSW,wfMODEMAIL,wfMODUSER,wfDELUSER);
+    fLoginState : (lsLOGOUT,lsLOGIN,lsSEND,lsRECEIVE);
+    fWasOpen : boolean;
 
     procedure OnCmdFinished(Sender : tObject);
     procedure FillSendChLst;
     function RdSendChItem(idx : integer) : string;
     procedure WrSendChItem(idx : integer; const txt : string);
     procedure RefreshLoggedState;
+    function EmailCodeCheck(mailtype : integer; const username, email : string) : boolean;
   public
 
   end;
@@ -118,8 +127,16 @@ var
 implementation
 
 uses
-  Character,
+  uMqttPsw,
   uRoutines, uGlobals, uMQTT_IO, fphttpclient,openssl,opensslsockets, HTTPprotocol;
+
+//MailType
+const
+  mtREGISTRATION     = 0;
+  mtLOSTPSW          = 1;
+  mtNEWEMAIL         = 2;
+  mtRENUSER          = 3;
+  mtDELUSER          = 4;
 
 var
   LastEmailTick : QWord = 0;
@@ -128,13 +145,186 @@ var
 
 procedure tMqttForm.FormCreate(Sender: TObject);
 begin
+  fWasOpen:=MQTT_IO.IsOpen;
   LoginUserEd.Text:=MQTT_IO.UserName;
   RefreshLoggedState;
 
   MQTT_IO.Close;
+  if Globals.MqttPsw>'' then begin
+    LoginStayCb.Checked:=(Globals.MqttUser>'');
+    SendStayCb.Checked:=LoginStayCb.Checked and (Globals.MqttCh>'');
+  end else begin
+    RecStayCb.Checked:=(Globals.MqttUser>'') and (Globals.MqttCh>'');
+  end;
   MQTT_IO.OnCmdFinished:=@OnCmdFinished;
   fWaitFor:=wfUSERLIST;
   MQTT_IO.Open(omUSERLIST);
+end;
+
+procedure tMqttForm.FormDestroy(Sender: TObject);
+begin
+  MQTT_IO.OnCmdFinished:=nil;
+end;
+
+procedure tMqttForm.DelNameClick(Sender: TObject);
+var
+  rec : pMqttUserRec;
+begin
+  if not (fLoginState in [lsLOGIN,lsSEND]) then begin
+    Pages.ActivePage:=TSProfil;
+    LogoutOkBtn.SetFocus;
+    InfoBox('Felhasználó törléséhez először jelentkezzen be, majd írja be a felhasználónevet!');
+    exit;
+  end;
+  rec:=MQTT_IO.FindUserRec(MQTT_IO.UserName);
+  if not Assigned(rec) then begin
+    ErrorBox('A felhasználónév "'+MQTT_IO.UserName+'" nem található!');
+    exit;
+  end;
+
+  if not EmailCodeCheck(mtDELUSER, rec^.Username, rec^.Email) then exit;
+
+  Pages.Enabled:=false;
+  fWaitFor:=wfDELUSER;
+  MQTT_IO.Open(omDELUSER);
+end;
+
+procedure tMqttForm.LostPswBtnClick(Sender: TObject);
+var
+  username : string;
+  rec : pMqttUserRec;
+  newpsw : string;
+begin
+  if fLoginState in [lsLOGIN,lsSEND] then begin
+    Pages.ActivePage:=TSProfil;
+    LogoutOkBtn.SetFocus;
+    InfoBox('Elveszett jelszó kereséséhez először jelentkezzen ki, majd írja be a felhasználónevet!');
+    exit;
+  end;
+  rec:=MQTT_IO.FindUserRec(LoginUserEd.Text);
+  if not Assigned(rec) then begin
+    ErrorBox('A felhasználónév "'+LoginUserEd.Text+'" nem található!');
+    exit;
+  end;
+
+  if not EmailCodeCheck(mtLOSTPSW, rec^.Username, rec^.Email) then exit;
+
+  newpsw:=tMqttPsw.Execute(Self,false);
+  if newpsw='' then exit;
+
+  MQTT_IO.UserName:=rec^.Username;
+  MQTT_IO.Password:=newpsw;
+  Pages.Enabled:=false;
+  fWaitFor:=wfMODPSW;
+  MQTT_IO.Open(omNEWPSW);
+end;
+
+procedure tMqttForm.ModEmailBtnClick(Sender: TObject);
+var
+  rec : pMqttUserRec;
+  err,email,psw : string;
+  i : integer;
+begin
+  if not (fLoginState in [lsLOGIN,lsSEND]) then begin
+    Pages.ActivePage:=TSLogin;
+    LoginUserEd.SetFocus;
+    ErrorBox('Email változtatáshoz először jelentkezzen be!');
+    exit;
+  end;
+  rec:=MQTT_IO.FindUserRec(MQTT_IO.UserName);
+  if not Assigned(rec) then begin
+    ErrorBox('Felhasználó nem található!');
+    exit;
+  end;
+
+  psw:=PasswordBox('Bejelentkezési jelszó','Biztonsági okból adja meg a jelszavát:');
+  if psw<>MQTT_IO.Password then begin
+    if psw>'' then ErrorBox('Hibás jelszó!');
+    exit;
+  end;
+
+  email:=Trim(InputBox('Email változtatás','Adja meg az új email-címet:',''));
+  if (email='') or (email=rec^.Email) then exit;
+  err:=MQTT_IO.ChkEmail(email);
+  if err>'' then begin
+    ErrorBox('Email hiba: '+email);
+    exit;
+  end;
+
+  for i:=0 to Length(MQTT_IO.UserList)-1 do begin
+    if email=MQTT_IO.UserList[i].Email then begin
+      ErrorBox('Ez az email már a rendszerben van. Adjon meg másikat!');
+      exit;
+    end;
+  end;
+
+  if not EmailCodeCheck(mtNEWEMAIL, rec^.Username, email) then exit;
+
+  rec^.Email:=email;
+  MQTT_IO.Email:=email;
+  Pages.Enabled:=false;
+  fWaitFor:=wfMODEMAIL;
+  MQTT_IO.Open(omNEWEMAIL);
+end;
+
+procedure tMqttForm.ModNameBtnClick(Sender: TObject);
+var
+  err,newname : string;
+  rec : pMqttUserRec;
+begin
+  if not (fLoginState in [lsLOGIN,lsSEND]) then begin
+    Pages.ActivePage:=TSLogin;
+    LoginUserEd.SetFocus;
+    ErrorBox('Felhasználónév változtatáshoz először jelentkezzen be!');
+    exit;
+  end;
+  rec:=MQTT_IO.FindUserRec(MQTT_IO.UserName);
+  if not Assigned(rec) then begin
+    ErrorBox('A felhasználónév nem található a rendszerben!?');
+    exit;
+  end;
+
+  newname:=Trim(InputBox('Felhasználónév változtatás',
+    'FIGYELEM! A név megváltoztatása után a vetítést fogadókat újra be kell állítani az új névre!',
+    MQTT_IO.UserName));
+  if (newname='') or (newname=MQTT_IO.UserName) then exit;
+
+  err:=MQTT_IO.ChkUsername(newname);
+  if err>'' then begin
+    ErrorBox('Névhiba: '+err);
+    exit;
+  end;
+
+  if Assigned(MQTT_IO.FindUserRec(newname)) then begin
+    ErrorBox('Ez a felhasználónév már foglalt!');
+    exit;
+  end;
+
+  if not EmailCodeCheck(mtRENUSER, newname, rec^.Email) then exit;
+
+  MQTT_IO.NewUserName:=newname;
+  Pages.Enabled:=false;
+  fWaitFor:=wfMODUSER;
+  MQTT_IO.Open(omMODUSER);
+end;
+
+procedure tMqttForm.ModPswBtnClick(Sender: TObject);
+var
+  newpsw : string;
+begin
+  if not (fLoginState in [lsLOGIN,lsSEND]) then begin
+    Pages.ActivePage:=TSLogin;
+    LoginUserEd.SetFocus;
+    ErrorBox('Jelszóváltoztatáshoz először jelentkezzen be!');
+    exit;
+  end;
+  newpsw:=tMqttPsw.Execute(Self,true);
+  if newpsw='' then exit;
+
+  MQTT_IO.Password:=newpsw;
+  Pages.Enabled:=false;
+  fWaitFor:=wfMODPSW;
+  MQTT_IO.Open(omNEWPSW);
 end;
 
 procedure tMqttForm.LoginOkBtnClick(Sender: TObject);
@@ -249,6 +439,7 @@ begin
   MQTT_IO.UserName:='';
   MQTT_IO.Password:='';
   MQTT_IO.Channel:='';
+  fWasOpen:=false;
   RefreshLoggedState;
 end;
 
@@ -323,35 +514,10 @@ begin
 end;
 
 procedure tMqttForm.RegOkBtnClick(Sender: TObject);
-begin
-  if RegCodeEd.Text<>fRegCode then begin
-    ErrorBox('A regisztrációs kód nem egyezik.');
-    exit;
-  end;
-
-  MQTT_IO.UserName:=fRegName;
-  MQTT_IO.Password:=fRegPsw;
-  MQTT_IO.Email:=fRegEmail;
-  fWaitFor:=wfCREATEUSER;
-  MQTT_IO.Open(omCREATEUSER);
-  Pages.Enabled:=false;
-end;
-
-procedure tMqttForm.RegSendCodeClick(Sender: TObject);
 var
   username,email,upname,upemail,ret : string;
   psw1,psw2 : string;
   i : integer;
-  http : TFPHTTPClient;
-  CurrTick : QWord;
-
-  function GenerateRegCode : string;
-  var
-    xval : DWord;
-  begin
-    xval:=(CurrTick and $FFFFFFFF) xor (CurrTick shr 32);
-    Result:=RightStr('000000'+IntToStr(xval),6);
-  end;
 
 begin
   username:=Trim(RegUserEd.Text);
@@ -400,46 +566,14 @@ begin
     end;
   end;
 
-  CurrTick:=GetTickCount64;
-  if (LastEmailTick>0) and (CurrTick-LastEmailTick<60000) then begin
-    ErrorBox('Várjon egy percet újabb email küldése előtt!');
-    exit;
-  end;
+  if not EmailCodeCheck(mtREGISTRATION, username, email) then exit;
 
-  fRegCode:=GenerateRegCode;
-  fRegName:=username;
-  fRegEmail:=email;
-  fRegPsw:=psw1;
-  http:=TFPHTTPClient.Create(Self);
-  try
-    try
-      http.ConnectTimeout:=3000;
-      http.IOTimeout:=15000;
-      http.AllowRedirect:=true;
-      http.AddHeader('User-Agent','Mozilla/5.0 (compatible; fpweb)');
-      ret:=http.Get('https://diatar.eu/mqtt/sendmail.php'+
-        '?to='+HTTPEncode(email)+
-        '&msg='+fRegCode+
-        '&name='+HTTPEncode(username));
-      if ret='SENT' then begin
-        LastEmailTick:=CurrTick;
-        RegUserEd.Enabled:=false;
-        RegEmailEd.Enabled:=false;
-        RegPsw1.Enabled:=false;
-        RegPsw2.Enabled:=false;
-        RegOkBtn.Enabled:=true;
-        InfoBox('Email üzenet elküldve, kérem ellenőrizze a bejövő postáját'#13+
-          'A megkapott kódot másolja be a lenti mezőbe.');
-      end else begin
-        ErrorBox(UTF8Encode('Email küldési hiba! '#13+UTF8Decode(ret)));
-      end;
-    except
-      ErrorBox('Internet kapcsolat hiba! ('+IntToStr(http.ResponseStatusCode)+') '+http.ResponseStatusText);
-      exit;
-    end;
-  finally
-    http.Free;
-  end;
+  MQTT_IO.UserName:=username;
+  MQTT_IO.Password:=psw1;
+  MQTT_IO.Email:=email;
+  fWaitFor:=wfCREATEUSER;
+  MQTT_IO.Open(omCREATEUSER);
+  Pages.Enabled:=false;
 end;
 
 procedure tMqttForm.FillSendChLst;
@@ -475,17 +609,85 @@ begin
   SendChannelLst.Items[idx]:=IntToStr(idx)+'. '+LeftStr(Trim(txt),30);
 end;
 
-procedure tMqttForm.RefreshLoggedState;
+function tMqttForm.EmailCodeCheck(mailtype : integer; const username, email : string) : boolean;
+var
+  http : TFPHTTPClient;
+  CurrTick : QWord;
+  regcode,ret : string;
+  emailmask : string;
+  i1,i2 : integer;
+  ok : boolean;
+
+  function GenerateRegCode : string;
+  var
+    xval : DWord;
+  begin
+    xval:=(CurrTick and $FFFFFFFF) xor (CurrTick shr 32);
+    Result:=RightStr('13254'+IntToStr(xval),6);
+  end;
+
 begin
-  if MQTT_IO.UserName='' then begin
-    LoggedState.Caption:='Kijelentkezve.';
-    LoggedState.Font.Color:=clPurple;
-  end else if MQTT_IO.Password>'' then begin
-    LoggedState.Caption:='Bejelentkezve: '+MQTT_IO.UserName;
-    LoggedState.Font.Color:=clTeal;
-  end else begin
-    LoggedState.Caption:='Fogadásra kész: '+MQTT_IO.UserName;
-    LoggedState.Font.Color:=clBlue;
+  Result:=false;
+  CurrTick:=GetTickCount64;
+  if (LastEmailTick>0) and (CurrTick-LastEmailTick<60000) then begin
+    ErrorBox('Várjon egy percet újabb email küldése előtt!');
+    exit;
+  end;
+
+  regcode:=GenerateRegCode;
+
+  http:=TFPHTTPClient.Create(Self);
+  try
+    try
+      http.ConnectTimeout:=3000;
+      http.IOTimeout:=15000;
+      http.AllowRedirect:=true;
+      http.AddHeader('User-Agent','Mozilla/5.0 (compatible; fpweb)');
+      ret:=http.Get('https://diatar.eu/mqtt/sendmail.php'+
+        '?to='+HTTPEncode(email)+
+        '&msg='+regcode+
+        '&type='+IntToStr(mailtype)+
+        '&name='+HTTPEncode(username));
+      if ret<>'SENT' then begin
+        ErrorBox(UTF8Encode('Email küldési hiba! '#13+UTF8Decode(ret)));
+        exit;
+      end;
+    except
+      ErrorBox('Internet kapcsolat hiba! ('+IntToStr(http.ResponseStatusCode)+') '+http.ResponseStatusText);
+      exit;
+    end;
+  finally
+    http.Free;
+  end;
+
+  emailmask:=email;
+  ok:=false;
+  i1:=2; i2:=Length(emailmask);
+  while (i1<=i2) and (emailmask[i1]<>'@') do begin
+    ok:=true;
+    emailmask[i1]:='*';
+    inc(i1);
+  end;
+  inc(i1,1); // kukac utani poz.
+  while (i2>0) and (emailmask[i2]<>'.') do dec(i2);
+  dec(i2); // utolso pont elott
+  while i1<i2 do begin
+    ok:=true;
+    emailmask[i2]:='*';
+    dec(i2);
+  end;
+  if not ok then emailmask:='*@*'+copy(emailmask,i2+1,99999999);
+
+  LastEmailTick:=CurrTick;
+  ret:='';
+  while true do begin
+    ret:=Trim(InputBox('Email üzenetet küldtünk '+emailmask+' címre',
+    'Kérem ellenőrizze a bejövő postáját!'#13'A kapott kódot másolja ide:',''));
+    if ret='' then exit; //kileptek
+    if ret=regcode then exit(true);  //jo a kapott kod
+    Sleep(200);
+    if MsgBox('A kód nem egyezik! Újrapróbálja?','Ellenőrzési hiba',mbOC)<>MB_OK then exit;
+    Sleep(200);
   end;
 end;
 
@@ -493,37 +695,78 @@ end;
 
 procedure tMqttForm.OnCmdFinished(Sender : tObject);
 var
-  stay : boolean;
+  iserr,stay : boolean;
 begin
   Pages.Enabled:=true;
-  if MQTT_IO.CmdResult>'' then begin
+  iserr:=(MQTT_IO.CmdResult>'');
+  if iserr then begin
     ErrorBox('Internet hiba:'#13+MQTT_IO.CmdResult);
   end;
-  if fWaitFor in [wfCREATEUSER,wfLOGIN] then begin
-    if MQTT_IO.CmdResult>'' then begin
+  if fWaitFor in [wfCREATEUSER,wfLOGIN,wfMODPSW] then begin
+    if iserr then begin //hiba volt
       MQTT_IO.UserName:='';
       MQTT_IO.Password:='';
-      MQTT_IO.Channel:='';
-    end else begin
-      if (fWaitFor=wfLOGIN) then begin
-        stay:=LoginStayCb.Checked;
-      end else begin
+      //MQTT_IO.Channel:='';
+      fWasOpen:=false;
+    end else begin                     //nem volt hiba
+      if fWaitFor=wfCREATEUSER then begin
         stay:=(QuestBox('A regisztráció sikerült.'#13+
           'Legközelebbi programindításnál is bejelentkezve marad?')=IDYES);
         LoginStayCb.Checked:=stay;
+      end else begin
+        stay:=LoginStayCb.Checked;
       end;
       Globals.MqttUser:=iif(stay,Globals.EncodePsw(MQTT_IO.UserName),'');
       Globals.MqttPsw:=iif(stay,Globals.EncodePsw(MQTT_IO.Password),'');
       Pages.ActivePage:=TSSend;
       SendStayCb.Checked:=stay;
+      if fWaitFor=wfMODPSW then InfoBox('Jelszó sikeresen megváltoztatva.');
+      fWasOpen:=true;
     end;
     RegPsw1.Clear;
     RegPsw2.Clear;
     LoginUserEd.Text:=MQTT_IO.UserName;
     LoginPswEd.Clear;
   end;
+  if not iserr and (fWaitFor=wfMODEMAIL) then InfoBox('Email sikeresen megváltoztatva.');
+  if not iserr and (fWaitFor=wfMODUSER) then begin
+    InfoBox('Felhasználónév sikeresen megváltoztatva.');
+    LoginUserEd.Text:=MQTT_IO.UserName;
+    if Globals.MqttUser>'' then Globals.MqttUser:=Globals.EncodePsw(MQTT_IO.UserName);
+  end;
+  if not iserr and (fWaitFor=wfDELUSER) then begin
+    InfoBox('Felhasználónév sikeresen törölve.');
+    Globals.MqttUser:='';
+    Globals.MqttCh:='';
+    Globals.MqttPsw:='';
+  end;
   RefreshLoggedState;
   FillSendChLst;
+end;
+
+procedure tMqttForm.RefreshLoggedState;
+begin
+  if not fWasOpen or (MQTT_IO.UserName='') then begin
+    LoggedState.Caption:='Kijelentkezve.';
+    LoggedState.Font.Color:=clPurple;
+    fLoginState:=lsLOGOUT;
+  end else if MQTT_IO.Password>'' then begin
+    if MQTT_IO.Channel>'' then begin
+      LoggedState.Caption:='Küld: '+MQTT_IO.UserName+'/'+MQTT_IO.Channel;
+      LoggedState.Font.Color:=clTeal;
+      fLoginState:=lsSEND;
+    end else begin
+      LoggedState.Caption:='Bejelentkezve: '+MQTT_IO.UserName;
+      LoggedState.Font.Color:=clOlive;
+      fLoginState:=lsLOGIN;
+    end;
+  end else begin
+    LoggedState.Caption:='Fogadásra kész: '+MQTT_IO.UserName+'/'+MQTT_IO.Channel;
+    LoggedState.Font.Color:=clBlue;
+    fLoginState:=lsRECEIVE;
+  end;
+
+  LostPswBtn.Enabled:=not (fLoginState in [lsLOGIN,lsSEND]);
 end;
 
 //////////////////////////////////////////////////////////////////
