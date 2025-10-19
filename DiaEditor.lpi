@@ -141,8 +141,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uEdMain"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="245"/>
-        <CursorPos X="38" Y="266"/>
+        <TopLine Value="49"/>
+        <CursorPos X="24" Y="71"/>
         <UsageCount Value="100"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -154,7 +154,7 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="307"/>
-        <CursorPos X="14" Y="317"/>
+        <CursorPos X="19" Y="319"/>
         <UsageCount Value="99"/>
         <Loaded Value="True"/>
       </Unit2>
@@ -766,8 +766,8 @@
         <Filename Value="uappform.pas"/>
         <UnitName Value="uAppForm"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="137"/>
-        <CursorPos Y="158"/>
+        <TopLine Value="81"/>
+        <CursorPos Y="81"/>
         <UsageCount Value="10"/>
       </Unit93>
       <Unit94>
@@ -903,7 +903,7 @@
         <UsageCount Value="20"/>
       </Unit110>
     </Units>
-    <JumpHistory Count="3" HistoryIndex="2">
+    <JumpHistory Count="4" HistoryIndex="3">
       <Position1>
         <Filename Value="uedmain.pas"/>
         <Caret Line="245" Column="37" TopLine="236"/>
@@ -916,6 +916,10 @@
         <Filename Value="uedmain.pas"/>
         <Caret Line="266" Column="39" TopLine="245"/>
       </Position3>
+      <Position4>
+        <Filename Value="uedmain.pas"/>
+        <Caret Line="260" Column="26" TopLine="245"/>
+      </Position4>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
