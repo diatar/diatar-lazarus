@@ -913,7 +913,7 @@ var
   NQBuf : tNQBuffer;
 begin
   fullbuf:=nil;
-  if not Assigned(@FName) or (FName='') then exit;
+  if not Assigned(@FName) or (Length(FName)=0) then exit;
   f:=FileOpen(UTF8ToSys(FName),fmOpenRead or fmShareDenyWrite);
   if f<=0 then exit;
   try
