@@ -117,6 +117,7 @@ type
     procedure WrSendChItem(idx : integer; const txt : string);
     procedure RefreshLoggedState;
     function EmailCodeCheck(mailtype : integer; const username, email : string) : boolean;
+    function IsLoggedIn : boolean;
   public
 
   end;
@@ -166,14 +167,19 @@ begin
   MQTT_IO.OnCmdFinished:=nil;
 end;
 
+function tMqttForm.IsLoggedIn : boolean; inline;
+begin
+  Result:=(fLoginState in [lsLOGIN,lsSEND]);
+end;
+
 procedure tMqttForm.DelNameClick(Sender: TObject);
 var
   rec : pMqttUserRec;
 begin
-  if not (fLoginState in [lsLOGIN,lsSEND]) then begin
-    Pages.ActivePage:=TSProfil;
-    LogoutOkBtn.SetFocus;
-    InfoBox('Felhasználó törléséhez először jelentkezzen be, majd írja be a felhasználónevet!');
+  if not IsLoggedIn() then begin
+    Pages.ActivePage:=TSLogin;
+    LoginUserEd.SetFocus;
+    InfoBox('Felhasználó törléséhez először jelentkezzen be!');
     exit;
   end;
   rec:=MQTT_IO.FindUserRec(MQTT_IO.UserName);
@@ -195,10 +201,11 @@ var
   rec : pMqttUserRec;
   newpsw : string;
 begin
-  if fLoginState in [lsLOGIN,lsSEND] then begin
+  if IsLoggedIn() then begin
     Pages.ActivePage:=TSProfil;
     LogoutOkBtn.SetFocus;
-    InfoBox('Elveszett jelszó kereséséhez először jelentkezzen ki, majd írja be a felhasználónevet!');
+    InfoBox('Elveszett jelszó kereséséhez először jelentkezzen ki,'#13+
+      'majd írja be az elfelejtett jelszóhoz tartozó felhasználónevet!');
     exit;
   end;
   rec:=MQTT_IO.FindUserRec(LoginUserEd.Text);
@@ -225,7 +232,7 @@ var
   err,email,psw : string;
   i : integer;
 begin
-  if not (fLoginState in [lsLOGIN,lsSEND]) then begin
+  if not IsLoggedIn() then begin
     Pages.ActivePage:=TSLogin;
     LoginUserEd.SetFocus;
     ErrorBox('Email változtatáshoz először jelentkezzen be!');
@@ -272,7 +279,7 @@ var
   err,newname : string;
   rec : pMqttUserRec;
 begin
-  if not (fLoginState in [lsLOGIN,lsSEND]) then begin
+  if not IsLoggedIn() then begin
     Pages.ActivePage:=TSLogin;
     LoginUserEd.SetFocus;
     ErrorBox('Felhasználónév változtatáshoz először jelentkezzen be!');
@@ -312,7 +319,7 @@ procedure tMqttForm.ModPswBtnClick(Sender: TObject);
 var
   newpsw : string;
 begin
-  if not (fLoginState in [lsLOGIN,lsSEND]) then begin
+  if not IsLoggedIn() then begin
     Pages.ActivePage:=TSLogin;
     LoginUserEd.SetFocus;
     ErrorBox('Jelszóváltoztatáshoz először jelentkezzen be!');
@@ -368,7 +375,7 @@ end;
 
 procedure tMqttForm.SendChannelLstChange(Sender: TObject);
 begin
-  if MQTT_IO.UserName='' then begin
+  if not IsLoggedIn() then begin
     SendChannelLst.ItemIndex:=0;
     ErrorBox('Először jelentkezzen be!');
     exit;
@@ -381,10 +388,17 @@ end;
 procedure tMqttForm.SendDelBtnClick(Sender: TObject);
 var
   idx : integer;
+  s : string;
 begin
   idx:=SendChannelLst.ItemIndex;
   if idx<=0 then exit;
+  s:=RdSendChItem(idx);
+  if s='' then exit;
   WrSendChItem(idx,'');
+  //modositani kell a szerveren
+  if s=MQTT_IO.Channel then MQTT_IO.Channel:='';  //aktualis csatorna modosult
+  fWaitFor:=wfRENCHANNEL;
+  if MQTT_IO.RenameChannel(idx,'') then Pages.Enabled:=false;
 end;
 
 procedure tMqttForm.SendOkBtnClick(Sender: TObject);
@@ -394,7 +408,7 @@ var
 begin
   idx:=SendChannelLst.ItemIndex;
   if idx<=0 then exit;
-  if MQTT_IO.Password='' then begin
+  if not IsLoggedIn() then begin
     Pages.ActivePage:=TSLogin;
     LoginUserEd.SetFocus;
     ErrorBox('Küldéshez jelentkezzen be!');
@@ -406,6 +420,13 @@ begin
     exit;
   end;
   MQTT_IO.Channel:=s;
+  if SendStayCb.Checked then begin
+    Globals.MqttUser:=Globals.EncodePsw(MQTT_IO.UserName);
+    Globals.MqttPsw:=Globals.EncodePsw(MQTT_IO.Password);
+    Globals.MqttCh:=Globals.EncodePsw(s);
+  end else begin
+    Globals.MqttCh:='';
+  end;
   ModalResult:=mrOK;
 end;
 
@@ -414,7 +435,7 @@ var
   idx : integer;
   s,sret : string;
 begin
-  if MQTT_IO.UserName='' then exit;
+  if not IsLoggedIn() then exit;
   idx:=SendChannelLst.ItemIndex;
   if idx<=0 then exit;
   s:=RdSendChItem(idx);
@@ -461,6 +482,10 @@ begin
     Globals.MqttUser:=Globals.EncodePsw(MQTT_IO.UserName);
     Globals.MqttPsw:='';
     Globals.MqttCh:=Globals.EncodePsw(MQTT_IO.Channel);
+  end else begin
+    Globals.MqttUser:='';
+    Globals.MqttPsw:='';
+    Globals.MqttCh:='';
   end;
   ModalResult:=mrOK;
 end;
@@ -487,7 +512,10 @@ begin
     if not MQTT_IO.UserList[i].SendersGroup then continue;
     s:=MQTT_IO.UserList[i].Username;
     txt2:=UpperCase(RemoveAccents(UTF8Decode(Trim(s))));
-    p:=Pos(txt1,txt2);
+    if Length(txt1)>1 then
+      p:=Pos(txt1,txt2)
+    else
+      p:=iif(LeftStr(txt2,1)=txt1,1,0);
     if p>0 then begin
       RecUserLst.Items.Add(s);
     end;
@@ -528,7 +556,7 @@ begin
   ret:=MQTT_IO.ChkUsername(username);
   if ret>'' then begin
     RegUserEd.SetFocus;
-    ErrorBox('Felhasználónév hiba: '+ret);
+    ErrorBox(AnsiString('Felhasználónév hiba: ')+ret);
     exit;
   end;
 
@@ -542,7 +570,7 @@ begin
   ret:=MQTT_IO.ChkPsw(psw1);
   if ret>'' then begin
     RegPsw1.SetFocus;
-    ErrorBox('Jelszó hiba: '+ret);
+    ErrorBox(AnsiString('Jelszó hiba: ')+ret);
     exit;
   end;
   if psw2<>psw1 then begin
@@ -681,7 +709,7 @@ begin
   LastEmailTick:=CurrTick;
   ret:='';
   while true do begin
-    ret:=Trim(InputBox('Email üzenetet küldtünk '+emailmask+' címre',
+    ret:=Trim(InputBox(AnsiString('Email üzenetet küldtünk ')+emailmask+AnsiString(' címre'),
     'Kérem ellenőrizze a bejövő postáját!'#13'A kapott kódot másolja ide:',''));
     if ret='' then exit; //kileptek
     if ret=regcode then exit(true);  //jo a kapott kod
@@ -741,7 +769,7 @@ begin
     Globals.MqttPsw:='';
   end;
   RefreshLoggedState;
-  FillSendChLst;
+  if fWaitFor<>wfRENCHANNEL then FillSendChLst;
 end;
 
 procedure tMqttForm.RefreshLoggedState;
@@ -752,7 +780,7 @@ begin
     fLoginState:=lsLOGOUT;
   end else if MQTT_IO.Password>'' then begin
     if MQTT_IO.Channel>'' then begin
-      LoggedState.Caption:='Küld: '+MQTT_IO.UserName+'/'+MQTT_IO.Channel;
+      LoggedState.Caption:=AnsiString('Küld: ')+MQTT_IO.UserName+'/'+MQTT_IO.Channel;
       LoggedState.Font.Color:=clTeal;
       fLoginState:=lsSEND;
     end else begin
@@ -761,7 +789,7 @@ begin
       fLoginState:=lsLOGIN;
     end;
   end else begin
-    LoggedState.Caption:='Fogadásra kész: '+MQTT_IO.UserName+'/'+MQTT_IO.Channel;
+    LoggedState.Caption:=AnsiString('Fogadásra kész: ')+MQTT_IO.UserName+'/'+MQTT_IO.Channel;
     LoggedState.Font.Color:=clBlue;
     fLoginState:=lsRECEIVE;
   end;
