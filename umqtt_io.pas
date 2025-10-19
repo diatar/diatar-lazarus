@@ -1023,18 +1023,20 @@ begin
   Result:=false;
 end;
 
+//omCREATEUSER, omMODUSER, omNEWEMAIL
 function tMQTT_IO.ProcessJsonMODIFYCLIENT(const jdata : tJSONData; iscont : boolean) : boolean;
 var
   idx : integer;
   rec : pMqttUserRec;
 begin
-  if fOpenMode=omMODUSER then begin
+  if fOpenMode in [omMODUSER,omNEWEMAIL] then begin
     rec:=FindUserRec(fUserName);
     if not Assigned(rec) then begin
       fCmdResult:='A felhasználó nem található!';
       exit(false);
     end;
-    rec^.UserName:=fNewUserName;
+    if fOpenMode=omMODUSER then rec^.UserName:=fNewUserName;
+    if fOpenMode=omNEWEMAIL then rec^.Email:=fEmail;
     exit(false);
   end;
   idx:=Length(fUserList);
