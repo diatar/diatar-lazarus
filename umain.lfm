@@ -22,7 +22,7 @@ object MainForm: TMainForm
   OnResize = FormResize
   OnUTF8KeyPress = FormUTF8KeyPress
   OnWindowStateChange = FormWindowStateChange
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.2.0.0'
   object FxxPanel: TPanel
     Left = 0
     Height = 82
@@ -311,7 +311,7 @@ object MainForm: TMainForm
       ClientWidth = 321
       TabOrder = 0
       object SetupBtn: TSpeedButton
-        Left = 218
+        Left = 208
         Height = 22
         Top = 2
         Width = 50
@@ -324,7 +324,7 @@ object MainForm: TMainForm
         ParentFont = False
       end
       object EndBtn: TSpeedButton
-        Left = 268
+        Left = 264
         Height = 22
         Top = 2
         Width = 50
@@ -406,7 +406,7 @@ object MainForm: TMainForm
         ParentFont = False
       end
       object PicBtn: TToggleBox
-        Left = 144
+        Left = 128
         Height = 22
         Top = 2
         Width = 62
@@ -416,29 +416,13 @@ object MainForm: TMainForm
         Font.CharSet = 4
         Font.Height = -13
         Font.Name = 'Sans'
-        OnClick = PicBtnClick
         ParentFont = False
         State = cbChecked
         TabOrder = 1
+        OnClick = PicBtnClick
       end
       object PicDownBtn: TSpeedButton
-        Left = 204
-        Height = 22
-        Top = 2
-        Width = 12
-        Glyph.Data = {
-          C6000000424DC600000000000000360000002800000005000000090000000100
-          1800000000009000000064000000640000000000000000000000FFFFFFFFFFFF
-          A9A9A9FFFFFFFFFFFF00FFFFFFFFFFFF575757FFFFFFFFFFFF00FFFFFFFFFFFF
-          000000FFFFFFFFFFFF00FFFFFFA9A9A9000000A9A9A9FFFFFF00FFFFFF575757
-          000000575757FFFFFF00FFFFFF000000000000000000FFFFFF00A9A9A9000000
-          000000000000A9A9A90057575700000000000000000057575700000000000000
-          00000000000000000000
-        }
-        OnClick = DownBtnClick
-      end
-      object ProjDownBtn: TSpeedButton
-        Left = 124
+        Left = 190
         Height = 22
         Top = 2
         Width = 12

@@ -22,9 +22,13 @@ type
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
+    procedure FormDestroy(Sender: TObject);
     procedure OkBtnClick(Sender: TObject);
     procedure ShowPswCkChange(Sender: TObject);
   private
+    fChkOldPsw : boolean;
+    procedure EnableAll(newval : boolean);
+    procedure OnCmdFinished(Sender : tObject);
   public
     class function Execute(myowner : tComponent; chkoldpsw : boolean) : string;
   end;
@@ -46,6 +50,7 @@ begin
   Result:='';
   MqttPsw:=tMqttPsw.Create(myowner);
   try
+    MqttPsw.fChkOldPsw:=chkoldpsw;
     if not chkoldpsw then begin
       MqttPsw.PswOldEd.Enabled:=false;
       MqttPsw.PswOldEd.Text:='******';
@@ -97,6 +102,37 @@ begin
     exit;
   end;
 
+  MQTT_IO.Password:=pnew1;
+  EnableAll(false);
+  MQTT_IO.OnCmdFinished:=@OnCmdFinished;
+  MQTT_IO.Open(omNEWPSW);
+end;
+
+procedure tMqttPsw.FormDestroy(Sender: TObject);
+begin
+  MQTT_IO.OnCmdFinished:=nil;
+end;
+
+procedure tMqttPsw.EnableAll(newval : boolean);
+begin
+  PswOldEd.Enabled:=fChkOldPsw and newval;
+  PswNew1Ed.Enabled:=newval;
+  PswNew2Ed.Enabled:=newval;
+  ShowPswCk.Enabled:=newval;
+  OkBtn.Enabled:=newval;
+end;
+
+procedure tMqttPsw.OnCmdFinished(Sender : tObject);
+begin
+  MQTT_IO.OnCmdFinished:=nil;
+  EnableAll(true);
+  if MQTT_IO.CmdResult>'' then begin
+    MQTT_IO.UserName:='';
+    MQTT_IO.Password:='';
+    ErrorBox('Jelszóváltás nem sikerült!'#13+MQTT_IO.CmdResult);
+    exit;
+  end;
+  InfoBox('Jelszó sikeresen megváltoztatva.');
   ModalResult:=mrOK;
 end;
 

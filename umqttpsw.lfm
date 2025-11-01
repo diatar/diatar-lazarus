@@ -1,12 +1,13 @@
 object MqttPsw: TMqttPsw
-  Left = 705
+  Left = 471
   Height = 240
-  Top = 275
+  Top = 328
   Width = 320
   BorderStyle = bsDialog
   Caption = 'Jelszó módosítás'
   ClientHeight = 240
   ClientWidth = 320
+  OnDestroy = FormDestroy
   Position = poOwnerFormCenter
   LCLVersion = '3.6.0.0'
   object Label1: TLabel
