@@ -1,0 +1,78 @@
+object MqttLogin: TMqttLogin
+  Left = 256
+  Height = 151
+  Top = 145
+  Width = 320
+  BorderStyle = bsDialog
+  Caption = 'Internet bejelentkezés'
+  ClientHeight = 151
+  ClientWidth = 320
+  OnDestroy = FormDestroy
+  Position = poOwnerFormCenter
+  LCLVersion = '3.6.0.0'
+  object Label1: TLabel
+    Left = 12
+    Height = 15
+    Top = 13
+    Width = 64
+    Alignment = taRightJustify
+    AutoSize = False
+    Caption = '&Név:'
+  end
+  object UserEd: TEdit
+    Left = 87
+    Height = 23
+    Top = 10
+    Width = 225
+    TabOrder = 0
+  end
+  object Label2: TLabel
+    Left = 12
+    Height = 15
+    Top = 43
+    Width = 64
+    Alignment = taRightJustify
+    AutoSize = False
+    Caption = '&Jelszó:'
+  end
+  object PswEd: TEdit
+    Left = 87
+    Height = 23
+    Top = 40
+    Width = 225
+    EchoMode = emPassword
+    PasswordChar = '*'
+    TabOrder = 1
+  end
+  object ShowPswCk: TCheckBox
+    Left = 88
+    Height = 19
+    Top = 75
+    Width = 124
+    Caption = 'Jelszó &megjelenítése'
+    TabOrder = 2
+    OnChange = ShowPswCkChange
+  end
+  object LoginBtn: TBitBtn
+    Left = 29
+    Height = 30
+    Top = 112
+    Width = 115
+    Caption = '&Login'
+    Default = True
+    Kind = bkOK
+    OnClick = LoginBtnClick
+    TabOrder = 3
+  end
+  object CancelBtn: TBitBtn
+    Left = 176
+    Height = 30
+    Top = 112
+    Width = 115
+    Cancel = True
+    Caption = 'Még&sem'
+    Kind = bkCancel
+    ModalResult = 2
+    TabOrder = 4
+  end
+end

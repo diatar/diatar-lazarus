@@ -28,6 +28,14 @@ uses
   Classes, SysUtils, Forms, ExtCtrls, fpjson, jsonparser, RegExpr,
   uMQTT, lNet, lNetComponents, uTxTar;
 
+//MailType
+const
+  mtREGISTRATION     = 0;
+  mtLOSTPSW          = 1;
+  mtNEWEMAIL         = 2;
+  mtRENUSER          = 3;
+  mtDELUSER          = 4;
+
 type
   tOpenMode = (
   //normal user mod:
@@ -91,6 +99,7 @@ type
 
       fEmailRegex : tRegExpr;
       fUserList : tMqttUserArray;
+      fLastEmailTick : QWord;
 
       fTmr : tTimer;
       fTmrLastTick : QWord;           //utolso GetTickCount64
@@ -184,6 +193,7 @@ type
       function FindUserRec(const uname : string) : pMqttUserRec;
       function FindUserIdx(const uname : string) : integer;
       function RenameChannel(idx : integer; const newname : string) : boolean;
+      function EmailCodeCheck(mailtype : integer; const ausername, aemail : string) : boolean;
 
       //Dia kuldes-fogadas
       procedure SendPic(const fname: string; isblankpic : boolean = false);
@@ -197,7 +207,8 @@ var
 
 implementation
 
-uses uMain, uNetBase, uNetwork, uGlobals,
+uses uMain, uNetBase, uNetwork, uGlobals, uRoutines, Dialogs, LCLType,
+  fphttpclient,openssl,opensslsockets, HTTPprotocol,
   LazUTF8, LazLoggerBase;
 
 //fogado puffert ekkora lepesekben noveljuk
@@ -1139,6 +1150,88 @@ begin
       continue;
     end;
     s:=s+ch;
+  end;
+end;
+
+function tMQTT_IO.EmailCodeCheck(mailtype : integer; const ausername, aemail : string) : boolean;
+var
+  http : TFPHTTPClient;
+  CurrTick : QWord;
+  regcode,ret : string;
+  emailmask : string;
+  i1,i2 : integer;
+  ok : boolean;
+
+  function GenerateRegCode : string;
+  var
+    xval : DWord;
+  begin
+    xval:=(CurrTick and $FFFFFFFF) xor (CurrTick shr 32);
+    Result:=RightStr('13254'+IntToStr(xval),6);
+  end;
+
+begin
+  Result:=false;
+  CurrTick:=GetTickCount64;
+  if (fLastEmailTick>0) and (CurrTick-fLastEmailTick<60000) then begin
+    ErrorBox('Várjon egy percet újabb email küldése előtt!');
+    exit;
+  end;
+
+  regcode:=GenerateRegCode;
+
+  http:=TFPHTTPClient.Create(MainForm);
+  try
+    try
+      http.ConnectTimeout:=3000;
+      http.IOTimeout:=15000;
+      http.AllowRedirect:=true;
+      http.AddHeader('User-Agent','Mozilla/5.0 (compatible; fpweb)');
+      ret:=http.Get('https://diatar.eu/mqtt/sendmail.php'+
+        '?to='+HTTPEncode(aemail)+
+        '&msg='+regcode+
+        '&type='+IntToStr(mailtype)+
+        '&name='+HTTPEncode(ausername));
+      if ret<>'SENT' then begin
+        ErrorBox(UTF8Encode('Email küldési hiba! '#13+UTF8Decode(ret)));
+        exit;
+      end;
+    except
+      ErrorBox('Internet kapcsolat hiba! ('+IntToStr(http.ResponseStatusCode)+') '+http.ResponseStatusText);
+      exit;
+    end;
+  finally
+    http.Free;
+  end;
+
+  emailmask:=aemail;
+  ok:=false;
+  i1:=2; i2:=Length(emailmask);
+  while (i1<=i2) and (emailmask[i1]<>'@') do begin
+    ok:=true;
+    emailmask[i1]:='*';
+    inc(i1);
+  end;
+  inc(i1,1); // kukac utani poz.
+  while (i2>0) and (emailmask[i2]<>'.') do dec(i2);
+  dec(i2); // utolso pont elott
+  while i1<i2 do begin
+    ok:=true;
+    emailmask[i2]:='*';
+    dec(i2);
+  end;
+  if not ok then emailmask:='*@*'+copy(emailmask,i2+1,99999999);
+
+  fLastEmailTick:=CurrTick;
+  ret:='';
+  while true do begin
+    ret:=Trim(InputBox(AnsiString('Email üzenetet küldtünk ')+emailmask+AnsiString(' címre'),
+    'Kérem ellenőrizze a bejövő postáját!'#13'A kapott kódot másolja ide:',''));
+    if ret='' then exit; //kileptek
+    if ret=regcode then exit(true);  //jo a kapott kod
+    Sleep(200);
+    if MsgBox('A kód nem egyezik! Újrapróbálja?','Ellenőrzési hiba',mbOC)<>MB_OK then exit;
+    Sleep(200);
   end;
 end;
 

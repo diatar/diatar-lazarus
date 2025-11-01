@@ -30,9 +30,9 @@ object MqttForm: TMqttForm
     Height = 336
     Top = 24
     Width = 416
-    ActivePage = TSSend
+    ActivePage = TSProfil
     Align = alClient
-    TabIndex = 1
+    TabIndex = 4
     TabOrder = 1
     object TSRec: TTabSheet
       Caption = 'Fogadás'
