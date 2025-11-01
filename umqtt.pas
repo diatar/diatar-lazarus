@@ -393,13 +393,15 @@ end;
 function tMQTT_Message.GetConnectReturnStr : string;
 const
    ConnackStr : array[0..5] of string = (
-     'ACCEPTED', 'PROTOCOL', 'CLIENTID', 'UNAVAILABLE', 'BADUSER', 'UNAUTHORIZED'
+//     'ACCEPTED', 'PROTOCOL', 'CLIENTID', 'UNAVAILABLE', 'BADUSER', 'UNAUTHORIZED'
+       'ELFOGADVA', 'PROTOKOLL', 'AZONOSÍTÓ', 'NEM ELÉRHETŐ', 'HIBÁS FELHASZNÁLÓ', 'TÉVES ADATOK'
    );
 begin
   if fConnectReturnCode<=5 then
     Result:=ConnackStr[fConnectReturnCode]
   else
-    Result:='UNKNOWN#'+IntToStr(fConnectReturnCode);
+    //Result:='UNKNOWN#'+IntToStr(fConnectReturnCode);
+    Result:='ISMERETLEN#'+IntToStr(fConnectReturnCode);
 end;
 
 function tMQTT_Message.ConvertStrToBuf(const str : AnsiString) : tMQTT_Buffer;

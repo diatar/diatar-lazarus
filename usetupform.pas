@@ -44,198 +44,102 @@ type
 
   tSetupForm = class(TForm)
     AkkordCk: TCheckBox;
-    BgModeLst: TComboBox;
+    AkkordPercLst: TComboBox;
     AlwaysDiaTabCk: TCheckBox;
+    AskProfilBtn: TRadioButton;
+    AutoLoadDiaCk: TCheckBox;
     AutoSave: TCheckBox;
-    Label56: TLabel;
-    StretchModeLst: TComboBox;
-    UseBRectCk: TCheckBox;
-    DiatarLbl3: TLabel;
-    DiaLstSetBtn: TButton;
+    AutoSndFwdCk: TCheckBox;
+    BackTransPercLst: TComboBox;
+    BBorderEd: TSpinEdit;
+    BgModeLst: TComboBox;
+    BkColor: TPanel;
+    BkPicBtn: TButton;
+    BkPicEd: TEdit;
+    BlankTransPercLst: TComboBox;
+    BoldCk: TCheckBox;
+    ColorDlg: TColorDialog;
+    DblDiaCk: TCheckBox;
+    DelProfilBtn: TBitBtn;
+    DiaDir2Btn: TButton;
+    DiaDir2Ed: TEdit;
+    DiaDirBtn: TButton;
+    DiaDirEd: TEdit;
+    DiaLst: TListBox;
     DiaLstDelBtn: TButton;
+    DiaLstSetBtn: TButton;
+    DiatarArrows: TPaintBox;
+    DiatarLbl1: TLabel;
+    DiatarLbl2: TLabel;
+    DiatarLbl3: TLabel;
+    DiatarPanel: TPanel;
+    DirEd: TEdit;
+    DirSelBtn: TButton;
+    DualOnControlCk: TCheckBox;
+    EndProjCk: TCheckBox;
+    EpAsk1Ck: TCheckBox;
+    EpAsk2Ck: TCheckBox;
+    FontLst: TComboBox;
+    FontSize: TSpinEdit;
+    FotoModeLst: TComboBox;
+    FxBtn: TBitBtn;
+    FxCk: TCheckBox;
+    FxKotetBtn: TBitBtn;
+    FxLst: TListBox;
+    GroupBox1: TGroupBox;
+    GroupBox2: TGroupBox;
+    GroupBox3: TGroupBox;
+    GroupBox4: TGroupBox;
+    HCenterCk: TCheckBox;
+    HiColor: TPanel;
+    HideCursorCk: TCheckBox;
+    HideFxxCk: TCheckBox;
+    HideMainCk: TCheckBox;
+    HideTitleCk: TCheckBox;
+    Hint1Ed: TSpinEdit;
+    Hint2Ed: TSpinEdit;
+    HintCk: TCheckBox;
+    HKeyEd: TSpinEdit;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    IndentEd: TSpinEdit;
+    IndentedLstCk: TCheckBox;
+    InverzKottaCk: TCheckBox;
+    IpNumEd1: TEdit;
     IpNumEd2: TEdit;
     IpNumEd3: TEdit;
     IpNumEd4: TEdit;
     IpNumEd5: TEdit;
     IpNumEd6: TEdit;
+    IpPortEd1: TEdit;
     IpPortEd2: TEdit;
     IpPortEd3: TEdit;
     IpPortEd4: TEdit;
-    AkkordPercLst: TComboBox;
-    BackTransPercLst: TComboBox;
-    BlankTransPercLst: TComboBox;
     IpPortEd5: TEdit;
     IpPortEd6: TEdit;
-    Label52: TLabel;
-    Label53: TLabel;
-    Label54: TLabel;
-    Label55: TLabel;
-    LinuxCmdEd: TEdit;
-    FotoModeLst: TComboBox;
-    HideCursorCk: TCheckBox;
-    Image3: TImage;
-    Label31: TLabel;
-    Label32: TLabel;
-    Label44: TLabel;
-    Label47: TLabel;
-    Label51: TLabel;
-    LinuxCmdLbl: TLabel;
-    DiaLst: TListBox;
-    MaxTransEd: TSpinEdit;
-    KottaCk: TCheckBox;
-    Label43: TLabel;
-    HideTitleCk: TCheckBox;
-    InverzKottaCk: TCheckBox;
-    ProjSyncCk: TCheckBox;
-    ScrCtrlLst: TComboBox;
-    ScrFotoLst: TComboBox;
-    ScrollLockCk: TCheckBox;
-    HideMainCk: TCheckBox;
-    ScrProjLst: TComboBox;
-    SerialNetAskOnCk: TCheckBox;
-    SerialOnProjCk: TCheckBox;
-    SerPages: TPageControl;
-    SerialAskOnCk: TCheckBox;
-    SerialAskOffCk: TCheckBox;
-    SerialFlowCk: TCheckBox;
-    Label50: TLabel;
-    LstLimCk2: TCheckBox;
-    BkColor: TPanel;
-    DiaDir2Btn: TButton;
-    DiaDir2Ed: TEdit;
-    GroupBox2: TGroupBox;
-    HideFxxCk: TCheckBox;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label45: TLabel;
-    Label46: TLabel;
-    Label48: TLabel;
-    Label49: TLabel;
-    OffColor: TPanel;
-    LstLimCk1: TCheckBox;
-    SerOffEd: TMemo;
-    SerProjEd: TMemo;
-    SerBlankEd: TMemo;
-    SerOnEd: TMemo;
-    SerTestBtn: TButton;
-    LargeBtnsCk: TCheckBox;
-    NDiaEd: TSpinEdit;
-    KottaPercLst: TComboBox;
-    TabSheet1: TTabSheet;
-    TabSheet2: TTabSheet;
-    TabSheet3: TTabSheet;
-    TabSheet4: TTabSheet;
-    TabSheet5: TTabSheet;
-    TavKottaCk: TCheckBox;
-    TransCk: TCheckBox;
-    StrikeProjCk: TCheckBox;
-    PgDia: TTabSheet;
-    UseTxHibaCk: TCheckBox;
-    TavAkkordCk: TCheckBox;
-    SerialNetAskOffCk: TCheckBox;
-    SerialOffProjCk: TCheckBox;
-    SongLstCk: TCheckBox;
-    ScholaCk: TCheckBox;
-    KorusCk: TCheckBox;
-    HCenterCk: TCheckBox;
-    AutoSndFwdCk: TCheckBox;
-    DiatarLbl2: TLabel;
-    DiatarPanel: TPanel;
-    DiatarArrows: TPaintBox;
-    DualOnControlCk: TCheckBox;
-    Label17: TLabel;
-    Label41: TLabel;
-    Label42: TLabel;
-    Panel1: TPanel;
-    PgSer: TTabSheet;
-    SerPortLst: TListBox;
-    SerBaudLst: TListBox;
-    TxtColor: TPanel;
-    HiColor: TPanel;
-    UseTxHibaMsgCk: TCheckBox;
-    VCenterCk: TCheckBox;
-    FxKotetBtn: TBitBtn;
-    FxLst: TListBox;
-    SoundCk: TCheckBox;
-    KbResetBtn: TButton;
-    KbNoModBtn: TButton;
-    ColorDlg: TColorDialog;
-    Image2: TImage;
-    DblDiaCk: TCheckBox;
-    Label39: TLabel;
-    HKeyEd: TSpinEdit;
-    Label40: TLabel;
-    KbFuncLbl: TLabel;
-    KbKeyLbl: TLabel;
-    KbShLbl: TLabel;
-    KbCtlLbl: TLabel;
     KbAltLbl: TLabel;
-    LptErrPanel: TPanel;
-    ListName: TComboBox;
-    Image1: TImage;
-    Label38: TLabel;
-    IndentedLstCk: TCheckBox;
-    NoTxtTitleCk: TCheckBox;
-    AutoLoadDiaCk: TCheckBox;
+    KbCtlLbl: TLabel;
+    KbFuncLbl: TLabel;
     KbHdrPanel: TPanel;
-    Panel2: TPanel;
-    ProjTestTxt: TPaintBox;
-    ProfilChangedGrp: TPanel;
-    PortRep: TComboBox;
-    FxBtn: TBitBtn;
-    NewProfilBtn: TBitBtn;
-    ModProfilBtn: TBitBtn;
-    DelProfilBtn: TBitBtn;
-    BkPicBtn: TButton;
-    BkPicEd: TEdit;
-    BoldCk: TCheckBox;
-    DirSelBtn: TButton;
-    PortRep1: TComboBox;
-    ProfilChangedLbl: TLabel;
-    EndProjCk: TCheckBox;
-    EpAsk1Ck: TCheckBox;
-    ListTestTxt: TPaintBox;
-    ScrollBox1: TScrollBox;
-    ScrollBox2: TScrollBox;
+    KbKeyLbl: TLabel;
+    KbNoModBtn: TButton;
+    KbResetBtn: TButton;
     KbScrollBox: TScrollBox;
-    ShutdownCk: TCheckBox;
-    EpAsk2Ck: TCheckBox;
-    MirrorCk: TCheckBox;
-    HintCk: TCheckBox;
-    LstSearchCk: TCheckBox;
-    FxCk: TCheckBox;
-    PressingCk: TCheckBox;
-    PortBtn8: TComboBox;
-    PortSign1: TComboBox;
-    PortSign2: TComboBox;
-    PgKeys: TTabSheet;
-    ThisProfilLst: TComboBox;
-    PortBtn1: TComboBox;
-    PortBtn2: TComboBox;
-    PortBtn3: TComboBox;
-    PortBtn4: TComboBox;
-    PortBtn5: TComboBox;
-    PortBtn6: TComboBox;
-    PortBtn7: TComboBox;
-    DiaDirBtn: TButton;
-    DiaDirEd: TEdit;
-    DirEd: TEdit;
-    IpNumEd1: TEdit;
-    IpPortEd1: TEdit;
-    FontLst: TComboBox;
-    GroupBox1: TGroupBox;
-    StartProfilGrp: TGroupBox;
-    IndentEd: TSpinEdit;
+    KbShLbl: TLabel;
+    KorusCk: TCheckBox;
+    KottaCk: TCheckBox;
+    KottaPercLst: TComboBox;
     Label10: TLabel;
     Label11: TLabel;
     Label12: TLabel;
     Label13: TLabel;
     Label14: TLabel;
     Label15: TLabel;
-    DiatarLbl1: TLabel;
+    Label17: TLabel;
     Label18: TLabel;
     Label19: TLabel;
+    Label2: TLabel;
     Label20: TLabel;
     Label21: TLabel;
     Label22: TLabel;
@@ -246,61 +150,170 @@ type
     Label27: TLabel;
     Label28: TLabel;
     Label29: TLabel;
+    Label3: TLabel;
     Label30: TLabel;
+    Label31: TLabel;
+    Label32: TLabel;
     Label33: TLabel;
     Label34: TLabel;
     Label35: TLabel;
     Label36: TLabel;
     Label37: TLabel;
+    Label38: TLabel;
+    Label39: TLabel;
+    Label4: TLabel;
+    Label40: TLabel;
+    Label41: TLabel;
+    Label42: TLabel;
+    Label43: TLabel;
+    Label44: TLabel;
+    Label45: TLabel;
+    Label46: TLabel;
+    Label47: TLabel;
+    Label48: TLabel;
+    Label49: TLabel;
     Label5: TLabel;
+    Label50: TLabel;
+    Label51: TLabel;
+    Label52: TLabel;
+    Label53: TLabel;
+    Label54: TLabel;
+    Label55: TLabel;
+    Label56: TLabel;
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
-    PortLst: TListBox;
-    NoQueryCk: TCheckBox;
-    PgFrm: TPageControl;
-    Label16: TLabel;
-    ScrBox: TPaintBox;
-    Panel4: TPanel;
+    LargeBtnsCk: TCheckBox;
+    LBorderEd: TSpinEdit;
+    LinuxCmdEd: TEdit;
+    LinuxCmdLbl: TLabel;
+    ListName: TComboBox;
+    ListSize: TSpinEdit;
+    ListTestTxt: TPaintBox;
+    LptErrPanel: TPanel;
+    LstLimCk1: TCheckBox;
+    LstLimCk2: TCheckBox;
+    LstSearchCk: TCheckBox;
+    MaxTransEd: TSpinEdit;
+    MirrorCk: TCheckBox;
+    ModeBtn: TRadioGroup;
+    ModProfilBtn: TBitBtn;
+    MqttLoginBtn: TButton;
+    MqttLogoutBtn: TButton;
+    MqttLostPsw: TButton;
+    MqttProfilBtn: TButton;
+    MqttRegBtn: TButton;
+    MqttSelSenderBtn: TButton;
+    MqttState: TLabel;
+    NDiaEd: TSpinEdit;
     NetDirBtn: TRadioButton;
     NetIpBtn: TRadioButton;
-    Rot0Ck: TRadioButton;
-    Rot90Ck: TRadioButton;
-    Rot180Ck: TRadioButton;
-    Rot270Ck: TRadioButton;
-    AskProfilBtn: TRadioButton;
-    ThisProfilBtn: TRadioButton;
-    PortType: TRadioGroup;
-    ModeBtn: TRadioGroup;
-    ResizeCk: TCheckBox;
-    FontSize: TSpinEdit;
-    TitleSize: TSpinEdit;
-    SpacingLst: TComboBox;
-    RBorderEd: TSpinEdit;
-    TBorderEd: TSpinEdit;
-    BBorderEd: TSpinEdit;
-    Hint1Ed: TSpinEdit;
-    Hint2Ed: TSpinEdit;
-    ListSize: TSpinEdit;
-    LBorderEd: TSpinEdit;
-    PgShow: TTabSheet;
-    PgRot: TTabSheet;
+    NewProfilBtn: TBitBtn;
+    NoQueryCk: TCheckBox;
+    NoTxtTitleCk: TCheckBox;
+    OffColor: TPanel;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel4: TPanel;
+    PgDia: TTabSheet;
+    PgDtx: TTabSheet;
+    PgFrm: TPageControl;
+    PgFxx: TTabSheet;
+    PgKeys: TTabSheet;
+    PgLst: TTabSheet;
+    PgMode: TTabSheet;
+    PgMqtt: TTabSheet;
+    PgNet: TTabSheet;
+    PgPort: TTabSheet;
     PgProfil: TTabSheet;
     PgProj: TTabSheet;
-    PgLst: TTabSheet;
-    PgFxx: TTabSheet;
-    PgDtx: TTabSheet;
-    PgPort: TTabSheet;
+    PgRot: TTabSheet;
+    PgScr: TTabSheet;
+    PgSer: TTabSheet;
+    PgShow: TTabSheet;
     PgSign: TTabSheet;
-    PgMode: TTabSheet;
-    PgNet: TTabSheet;
+    PortBtn1: TComboBox;
+    PortBtn2: TComboBox;
+    PortBtn3: TComboBox;
+    PortBtn4: TComboBox;
+    PortBtn5: TComboBox;
+    PortBtn6: TComboBox;
+    PortBtn7: TComboBox;
+    PortBtn8: TComboBox;
+    PortLst: TListBox;
+    PortRep: TComboBox;
+    PortRep1: TComboBox;
+    PortSign1: TComboBox;
+    PortSign2: TComboBox;
+    PortType: TRadioGroup;
+    PressingCk: TCheckBox;
+    ProfilChangedGrp: TPanel;
+    ProfilChangedLbl: TLabel;
+    Label16: TLabel;
+    ProjSyncCk: TCheckBox;
+    ProjTestTxt: TPaintBox;
+    MqttNoCk: TRadioButton;
+    MqttSendCk: TRadioButton;
+    MqttRecCk: TRadioButton;
+    RBorderEd: TSpinEdit;
+    ResizeCk: TCheckBox;
+    Rot0Ck: TRadioButton;
+    Rot180Ck: TRadioButton;
+    Rot270Ck: TRadioButton;
+    Rot90Ck: TRadioButton;
+    ScholaCk: TCheckBox;
+    ScrBox: TPaintBox;
+    ScrCtrlLst: TComboBox;
+    ScrFotoLst: TComboBox;
+    ScrollBox1: TScrollBox;
+    ScrollBox2: TScrollBox;
+    ScrollLockCk: TCheckBox;
+    ScrProjLst: TComboBox;
+    SerBaudLst: TListBox;
+    SerBlankEd: TMemo;
+    SerialAskOffCk: TCheckBox;
+    SerialAskOnCk: TCheckBox;
+    SerialFlowCk: TCheckBox;
+    SerialNetAskOffCk: TCheckBox;
+    SerialNetAskOnCk: TCheckBox;
+    SerialOffProjCk: TCheckBox;
+    SerialOnProjCk: TCheckBox;
+    SerOffEd: TMemo;
+    SerOnEd: TMemo;
+    SerPages: TPageControl;
+    SerPortLst: TListBox;
+    SerProjEd: TMemo;
+    SerTestBtn: TButton;
+    ShutdownCk: TCheckBox;
+    SongLstCk: TCheckBox;
+    SoundCk: TCheckBox;
+    SpacingLst: TComboBox;
+    StartProfilGrp: TGroupBox;
+    StretchModeLst: TComboBox;
+    StrikeProjCk: TCheckBox;
     SwitchBtn: TBitBtn;
     OkBtn: TBitBtn;
     CancelBtn: TBitBtn;
     ProfilLst: TComboBox;
     Label1: TLabel;
     CategLst: TTreeView;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
+    TabSheet4: TTabSheet;
+    TavAkkordCk: TCheckBox;
+    TavKottaCk: TCheckBox;
+    TBorderEd: TSpinEdit;
+    ThisProfilBtn: TRadioButton;
+    ThisProfilLst: TComboBox;
+    TitleSize: TSpinEdit;
+    TransCk: TCheckBox;
+    TxtColor: TPanel;
+    UseBRectCk: TCheckBox;
+    UseTxHibaCk: TCheckBox;
+    UseTxHibaMsgCk: TCheckBox;
+    VCenterCk: TCheckBox;
     procedure AutoLoadDiaCkClick(Sender: TObject);
     procedure DiaDir2BtnClick(Sender: TObject);
     procedure DiaLstDblClick(Sender: TObject);
@@ -314,6 +327,13 @@ type
     procedure KbResetBtnClick(Sender: TObject);
     procedure KbScrollBoxMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+    procedure MqttLoginBtnClick(Sender: TObject);
+    procedure MqttLogoutBtnClick(Sender: TObject);
+    procedure MqttLostPswClick(Sender: TObject);
+    procedure MqttCkClick(Sender: TObject);
+    procedure MqttProfilBtnClick(Sender: TObject);
+    procedure MqttRegBtnClick(Sender: TObject);
+    procedure MqttSelSenderBtnClick(Sender: TObject);
     procedure NDiaEdChange(Sender: TObject);
     procedure PunkosdPaint(Sender: TObject);
     procedure SerTestBtnClick(Sender: TObject);
@@ -362,6 +382,10 @@ type
     FxIsK : array[1..MAXFXX] of boolean;
     DiatarLst : tDtxFlagsList;
     fBetoltes : boolean;
+    fMqttUser,fMqttPsw,fMqttCh : string;  //eredeti Mqtt adatok
+    fMqttLoginState : (lsLOGOUT,lsLOGIN,lsSEND,lsRECEIVE);
+    fMqttLoaded : boolean; //felhasznalolista betoltve
+    fMqttWasOpen : boolean; //eredetileg volt kapcsolat
 
     function GetScrRot : tScrRot;
     procedure ResizeScr(X,Y : integer);
@@ -386,6 +410,10 @@ type
     function GetHintStop : integer;
     procedure SetHintStart(NewValue : integer);
     procedure SetHintStop(NewValue : integer);
+
+    procedure SetMqttState;
+    function MqttIsLoggedIn : boolean;
+    procedure OnMqttFinished(Sender : tObject);
   public
     { public declarations }
     property HintStart : integer read GetHintStart write SetHintStart;
@@ -402,7 +430,9 @@ var
 
 implementation
 
-uses uMonitors,uRotateBmp,uSerialIOForm,uMain;
+uses uMonitors,uRotateBmp,uSerialIOForm,uMain,
+  uMQTT_IO, uMqttLogin, uMqttPsw,
+  uMqttRegistration, uMqttProfil, uMqttReceiver;
 
 var
   CategIndex : integer = 0;
@@ -1214,6 +1244,7 @@ end;
 procedure tSetupForm.FormDestroy(Sender: TObject);
 begin
   CategIndex:=CategLst.Selected.AbsoluteIndex;
+  MQTT_IO.OnCmdFinished:=nil;
 end;
 
 procedure tSetupForm.KbResetBtnClick(Sender: TObject);
@@ -1234,6 +1265,110 @@ begin
     if (ActiveControl as tScrComboBox).DroppedDown then exit;
   end;
   KbScrollBox.VertScrollBar.Position:=KbScrollBox.VertScrollBar.Position-(KbScrollBox.VertScrollBar.Increment*WheelDelta) div 20;
+end;
+
+procedure tSetupForm.MqttLoginBtnClick(Sender: TObject);
+var
+  dlg : tMqttLogin;
+begin
+  dlg:=tMqttLogin.Create(Self);
+  try
+    if dlg.ShowModal=mrOK then begin
+      fMqttWasOpen:=true;
+    end;
+    SetMqttState;
+  finally
+    dlg.Free;
+  end;
+end;
+
+procedure tSetupForm.MqttLogoutBtnClick(Sender: TObject);
+begin
+  MQTT_IO.UserName:='';
+  MQTT_IO.Password:='';
+  MQTT_IO.Channel:='';
+  fMqttWasOpen:=false;
+  SetMqttState;
+end;
+
+procedure tSetupForm.MqttLostPswClick(Sender: TObject);
+var
+  username : string;
+  rec : pMqttUserRec;
+begin
+  if MqttIsLoggedIn() then begin
+    MqttLogoutBtn.SetFocus;
+    InfoBox('Elveszett jelszó kereséséhez először jelentkezzen ki!');
+    exit;
+  end;
+  username:=InputBox('Elfelejtett jelszó','Felhasználónév:','');
+  if username='' then exit;
+  rec:=MQTT_IO.FindUserRec(username);
+  if not Assigned(rec) then begin
+    ErrorBox('A felhasználónév "'+username+'" nem található!');
+    exit;
+  end;
+
+  if not MQTT_IO.EmailCodeCheck(mtLOSTPSW, rec^.Username, rec^.Email) then exit;
+
+  MQTT_IO.UserName:=rec^.Username;
+  if tMqttPsw.Execute(Self,false)='' then MQTT_IO.UserName:='' else fMqttWasOpen:=true;
+  SetMqttState;
+end;
+
+procedure tSetupForm.MqttCkClick(Sender: TObject);
+begin
+  if Sender=MqttNoCk then begin
+    MQTT_IO.UserName:='';
+    MQTT_IO.Password:='';
+    MQTT_IO.Channel:='';
+    SetMqttState;
+    exit;
+  end;
+  if Sender=MqttSendCk then begin
+    if not MqttIsLoggedIn() then MqttLoginBtn.Click;
+    exit;
+  end;
+  if Sender=MqttRecCk then begin
+    if fMqttLoginState<>lsRECEIVE then MqttSelSenderBtn.Click;
+  end;
+end;
+
+procedure tSetupForm.MqttProfilBtnClick(Sender: TObject);
+var
+  dlg : tMqttProfil;
+begin
+  dlg:=tMqttProfil.Create(Self);
+  try
+    dlg.ShowModal;
+    SetMqttState;
+  finally
+    dlg.Free;
+  end;
+end;
+
+procedure tSetupForm.MqttRegBtnClick(Sender: TObject);
+var
+  dlg : tMqttRegistration;
+begin
+  dlg:=tMqttRegistration.Create(Self);
+  if dlg.ShowModal=mrOK then begin
+    fMqttWasOpen:=true;
+  end;
+  SetMqttState;
+end;
+
+procedure tSetupForm.MqttSelSenderBtnClick(Sender: TObject);
+var
+  dlg : tMqttReceiver;
+begin
+  dlg:=tMqttReceiver.Create(Self);
+  try
+    if dlg.ShowModal=mrOK then fMqttWasOpen:=true;
+    SetMqttState;
+  finally
+    dlg.Free;
+  end;
 end;
 
 procedure tSetupForm.NDiaEdChange(Sender: TObject);
@@ -1903,6 +2038,64 @@ begin
   ProjTestTxt.Invalidate;
 end;
 
+procedure tSetupForm.SetMqttState;
+var
+  isloggedin : boolean;
+begin
+  if not fMqttWasOpen or (MQTT_IO.UserName='') then begin
+    MqttState.Caption:='Kijelentkezve.';
+    MqttState.Font.Color:=clPurple;
+    fMqttLoginState:=lsLOGOUT;
+  end else if MQTT_IO.Password>'' then begin
+    MQTT_IO.Channel:='1';
+    if MQTT_IO.Channel>'' then begin
+      MqttState.Caption:=AnsiString('Küldő: ')+MQTT_IO.UserName; //+'/'+MQTT_IO.Channel;
+      MqttState.Font.Color:=clTeal;
+      fMqttLoginState:=lsSEND;
+    end else begin
+      MqttState.Caption:='Bejelentkezve: '+MQTT_IO.UserName;
+      MqttState.Font.Color:=clOlive;
+      fMqttLoginState:=lsLOGIN;
+    end;
+  end else begin
+    MqttState.Caption:=AnsiString('Fogadásra kész: ')+MQTT_IO.UserName; //+'/'+MQTT_IO.Channel;
+    MqttState.Font.Color:=clBlue;
+    fMqttLoginState:=lsRECEIVE;
+  end;
+  if not fMqttLoaded then begin
+    MqttState.Caption:='Kapcsolatra várunk...';
+    MqttState.Font.Color:=clBlack;
+  end;
+
+  isloggedin:=MqttIsLoggedIn;
+  MqttLoginBtn.Enabled:=fMqttLoaded and not isloggedin;
+  MqttRegBtn.Enabled:=fMqttLoaded and not isloggedin;
+  MqttProfilBtn.Enabled:=fMqttLoaded and isloggedin;
+  MqttLostPsw.Enabled:=fMqttLoaded and not isloggedin;
+  MqttLogoutBtn.Enabled:=fMqttLoaded and isloggedin;
+  MqttSelSenderBtn.Enabled:=fMqttLoaded;
+
+  MqttNoCk.Checked:=(fMqttLoginState=lsLOGOUT);
+  MqttSendCk.Checked:=isloggedin;
+  MqttRecCk.Checked:=(fMqttLoginState=lsRECEIVE);
+end;
+
+function tSetupForm.MqttIsLoggedIn : boolean;
+begin
+  Result:=(fMqttLoginState in [lsLOGIN,lsSEND]);
+end;
+
+procedure tSetupForm.OnMqttFinished(Sender : tObject);
+begin
+  MQTT_IO.OnCmdFinished:=nil;
+  if MQTT_IO.CmdResult>'' then begin
+    ErrorBox('Internet probléma van!'#13+MQTT_IO.CmdResult);
+    exit;
+  end;
+  fMqttLoaded:=true;
+  SetMqttState;
+end;
+
 {***** publikus rutinok ***************************************}
 function tSetupForm.Execute : boolean;
 var
@@ -1935,6 +2128,14 @@ begin
     ProfilLst.Items.Add(p.Name);
     ThisProfilLst.Items.Add(p.Name);
   end;
+  fMqttUser:=MQTT_IO.UserName;
+  fMqttPsw:=MQTT_IO.Password;
+  fMqttCh:=MQTT_IO.Channel;
+  fMqttWasOpen:=MQTT_IO.IsOpen;
+  fMqttLoaded:=false;
+  SetMqttState;
+  MQTT_IO.OnCmdFinished:=@OnMqttFinished;
+  MQTT_IO.Open(omUSERLIST);
 
   MainForm.ShowPercent(85);
   SetFormCaption;
@@ -2044,7 +2245,11 @@ begin
 
   MainForm.ShowPercent(100);
   {***}
-  if ShowModal=mrOk then begin
+  if ShowModal<>mrOk then begin
+    MQTT_IO.UserName:=fMqttUser;
+    MQTT_IO.Password:=fMqttPsw;
+    MQTT_IO.Channel:=fMqttCh;
+  end else begin
   {***}
 
     SaveKbControls;
@@ -2149,6 +2354,11 @@ begin
         Globals.StartProfilIndex:=ThisProfilLst.ItemIndex;
 
       if Globals.ScrMode<>smProject then Globals.SaveSetup;
+
+      Globals.MqttUser:=MQTT_IO.UserName;
+      Globals.MqttPsw:=MQTT_IO.Password;
+      Globals.MqttCh:=MQTT_IO.Channel;
+
     finally
       Globals.Unlock;
     end;

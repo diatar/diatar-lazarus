@@ -1,0 +1,118 @@
+object MqttRegistration: TMqttRegistration
+  Left = 256
+  Height = 205
+  Top = 145
+  Width = 320
+  BorderStyle = bsDialog
+  Caption = 'Internet regisztráció'
+  ClientHeight = 205
+  ClientWidth = 320
+  OnDestroy = FormDestroy
+  Position = poOwnerFormCenter
+  LCLVersion = '3.6.0.0'
+  object Label1: TLabel
+    Left = 12
+    Height = 15
+    Top = 13
+    Width = 68
+    Alignment = taRightJustify
+    AutoSize = False
+    Caption = '&Név:'
+  end
+  object UserEd: TEdit
+    Left = 87
+    Height = 23
+    Top = 10
+    Width = 225
+    MaxLength = 30
+    TabOrder = 0
+    TextHint = 'Kovács János'
+  end
+  object Label2: TLabel
+    Left = 12
+    Height = 15
+    Top = 43
+    Width = 68
+    Alignment = taRightJustify
+    AutoSize = False
+    Caption = '&Email:'
+  end
+  object EmailEd: TEdit
+    Left = 87
+    Height = 23
+    Top = 40
+    Width = 225
+    MaxLength = 50
+    TabOrder = 1
+    TextHint = 'jani123@nomail.com'
+  end
+  object Label3: TLabel
+    Left = 12
+    Height = 15
+    Top = 71
+    Width = 68
+    Alignment = taRightJustify
+    AutoSize = False
+    Caption = '&Jelszó:'
+  end
+  object Psw1Ed: TEdit
+    Left = 87
+    Height = 23
+    Top = 68
+    Width = 225
+    EchoMode = emPassword
+    MaxLength = 30
+    PasswordChar = '*'
+    TabOrder = 2
+  end
+  object Label4: TLabel
+    Left = 12
+    Height = 15
+    Top = 99
+    Width = 68
+    Alignment = taRightJustify
+    AutoSize = False
+    Caption = 'Jelszó &újra:'
+  end
+  object Psw2Ed: TEdit
+    Left = 87
+    Height = 23
+    Top = 96
+    Width = 225
+    EchoMode = emPassword
+    MaxLength = 30
+    PasswordChar = '*'
+    TabOrder = 3
+  end
+  object ShowPswCk: TCheckBox
+    Left = 88
+    Height = 19
+    Top = 128
+    Width = 124
+    Caption = 'Jelszó &megjelenítése'
+    TabOrder = 4
+    OnChange = ShowPswCkChange
+  end
+  object RegBtn: TBitBtn
+    Left = 16
+    Height = 30
+    Top = 160
+    Width = 120
+    Caption = '&Regisztráció'
+    Default = True
+    Kind = bkOK
+    OnClick = RegBtnClick
+    TabOrder = 5
+  end
+  object CancelBtn: TBitBtn
+    Left = 154
+    Height = 30
+    Top = 160
+    Width = 120
+    Cancel = True
+    Caption = 'Még&sem'
+    Kind = bkCancel
+    ModalResult = 2
+    TabOrder = 6
+  end
+end

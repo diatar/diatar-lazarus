@@ -1,0 +1,24 @@
+{ This is an automatically generated lazarus resource file }
+
+LazarusResources.Add('TMqttLogin','FORMDATA',[
+  'TPF0'#10'TMqttLogin'#9'MqttLogin'#4'Left'#3#0#1#6'Height'#3#151#0#3'Top'#3
+  +#145#0#5'Width'#3'@'#1#11'BorderStyle'#7#8'bsDialog'#7'Caption'#6#23'Interne'
+  +'t bejelentkez'#195#169's'#12'ClientHeight'#3#151#0#11'ClientWidth'#3'@'#1#9
+  +'OnDestroy'#7#11'FormDestroy'#8'Position'#7#17'poOwnerFormCenter'#10'LCLVers'
+  +'ion'#6#7'3.6.0.0'#0#6'TLabel'#6'Label1'#4'Left'#2#12#6'Height'#2#15#3'Top'#2
+  +#13#5'Width'#2'@'#9'Alignment'#7#14'taRightJustify'#8'AutoSize'#8#7'Caption'
+  +#6#6'&N'#195#169'v:'#0#0#5'TEdit'#6'UserEd'#4'Left'#2'W'#6'Height'#2#23#3'To'
+  +'p'#2#10#5'Width'#3#225#0#8'TabOrder'#2#0#0#0#6'TLabel'#6'Label2'#4'Left'#2
+  +#12#6'Height'#2#15#3'Top'#2'+'#5'Width'#2'@'#9'Alignment'#7#14'taRightJustif'
+  +'y'#8'AutoSize'#8#7'Caption'#6#9'&Jelsz'#195#179':'#0#0#5'TEdit'#5'PswEd'#4
+  +'Left'#2'W'#6'Height'#2#23#3'Top'#2'('#5'Width'#3#225#0#8'EchoMode'#7#10'emP'
+  +'assword'#12'PasswordChar'#6#1'*'#8'TabOrder'#2#1#0#0#9'TCheckBox'#9'ShowPsw'
+  +'Ck'#4'Left'#2'X'#6'Height'#2#19#3'Top'#2'K'#5'Width'#2'|'#7'Caption'#6#24'J'
+  +'elsz'#195#179' &megjelen'#195#173't'#195#169'se'#8'TabOrder'#2#2#8'OnChange'
+  +#7#15'ShowPswCkChange'#0#0#7'TBitBtn'#8'LoginBtn'#4'Left'#2#29#6'Height'#2#30
+  +#3'Top'#2'p'#5'Width'#2's'#7'Caption'#6#6'&Login'#7'Default'#9#4'Kind'#7#4'b'
+  +'kOK'#7'OnClick'#7#13'LoginBtnClick'#8'TabOrder'#2#3#0#0#7'TBitBtn'#9'Cancel'
+  +'Btn'#4'Left'#3#176#0#6'Height'#2#30#3'Top'#2'p'#5'Width'#2's'#6'Cancel'#9#7
+  +'Caption'#6#8'M'#195#169'g&sem'#4'Kind'#7#8'bkCancel'#11'ModalResult'#2#2#8
+  +'TabOrder'#2#4#0#0#0
+]);

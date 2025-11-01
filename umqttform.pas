@@ -131,14 +131,6 @@ uses
   uMqttPsw,
   uRoutines, uGlobals, uMQTT_IO, fphttpclient,openssl,opensslsockets, HTTPprotocol;
 
-//MailType
-const
-  mtREGISTRATION     = 0;
-  mtLOSTPSW          = 1;
-  mtNEWEMAIL         = 2;
-  mtRENUSER          = 3;
-  mtDELUSER          = 4;
-
 var
   LastEmailTick : QWord = 0;
 

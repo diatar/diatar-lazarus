@@ -10,7 +10,7 @@ object MqttForm: TMqttForm
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   ShowHint = True
-  LCLVersion = '3.6.0.0'
+  LCLVersion = '3.2.0.0'
   object LoggedState: TPanel
     Left = 0
     Height = 24
@@ -30,9 +30,9 @@ object MqttForm: TMqttForm
     Height = 336
     Top = 24
     Width = 416
-    ActivePage = TSSend
+    ActivePage = TSRec
     Align = alClient
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 1
     object TSRec: TTabSheet
       Caption = 'Fogadás'

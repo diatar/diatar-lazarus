@@ -5,14 +5,14 @@ LazarusResources.Add('TMqttForm','FORMDATA',[
   +#5'Width'#3#160#1#11'BorderStyle'#7#8'bsDialog'#7'Caption'#6#20'Internetes v'
   +'et'#195#173't'#195#169's'#12'ClientHeight'#3'h'#1#11'ClientWidth'#3#160#1#8
   +'OnCreate'#7#10'FormCreate'#9'OnDestroy'#7#11'FormDestroy'#8'ShowHint'#9#10
-  +'LCLVersion'#6#7'3.6.0.0'#0#6'TPanel'#11'LoggedState'#4'Left'#2#0#6'Height'#2
+  +'LCLVersion'#6#7'3.2.0.0'#0#6'TPanel'#11'LoggedState'#4'Left'#2#0#6'Height'#2
   +#24#3'Top'#2#0#5'Width'#3#160#1#5'Align'#7#5'alTop'#10'BevelOuter'#7#9'bvLow'
   +'ered'#7'Caption'#6#14'Kijelentkezve.'#10'Font.Style'#11#6'fsBold'#0#16'Pare'
   +'ntBackground'#8#11'ParentColor'#8#10'ParentFont'#8#8'TabOrder'#2#0#0#0#12'T'
   +'PageControl'#5'Pages'#4'Left'#2#0#6'Height'#3'P'#1#3'Top'#2#24#5'Width'#3
-  +#160#1#10'ActivePage'#7#6'TSSend'#5'Align'#7#8'alClient'#8'TabIndex'#2#1#8'T'
-  +'abOrder'#2#1#0#9'TTabSheet'#5'TSRec'#7'Caption'#6#8'Fogad'#195#161's'#12'Cl'
-  +'ientHeight'#3'4'#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label1'#4'Left'#2#8
+  +#160#1#10'ActivePage'#7#5'TSRec'#5'Align'#7#8'alClient'#8'TabIndex'#2#0#8'Ta'
+  +'bOrder'#2#1#0#9'TTabSheet'#5'TSRec'#7'Caption'#6#8'Fogad'#195#161's'#12'Cli'
+  +'entHeight'#3'4'#1#11'ClientWidth'#3#152#1#0#6'TLabel'#6'Label1'#4'Left'#2#8
   +#6'Height'#2'('#3'Top'#2#8#5'Width'#3#136#1#7'Anchors'#11#5'akTop'#6'akLeft'
   +#7'akRight'#0#8'AutoSize'#8#7'Caption'#6'pHa szeretne m'#195#161's vet'#195
   +#173't'#195#169's'#195#169'hez kapcsol'#195#179'dni, itt '#195#161'll'#195

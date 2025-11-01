@@ -1,0 +1,59 @@
+object MqttProfil: TMqttProfil
+  Left = 256
+  Height = 209
+  Top = 145
+  Width = 249
+  BorderStyle = bsDialog
+  Caption = 'Profil módosítás'
+  ClientHeight = 209
+  ClientWidth = 249
+  OnDestroy = FormDestroy
+  Position = poOwnerFormCenter
+  LCLVersion = '3.6.0.0'
+  object ModPswBtn: TButton
+    Left = 32
+    Height = 25
+    Top = 8
+    Width = 176
+    Caption = 'Jelszó módosítás'
+    TabOrder = 0
+    OnClick = ModPswBtnClick
+  end
+  object ModEmailBtn: TButton
+    Left = 32
+    Height = 25
+    Top = 40
+    Width = 176
+    Caption = 'Email módosítás'
+    TabOrder = 1
+    OnClick = ModEmailBtnClick
+  end
+  object ModNameBtn: TButton
+    Left = 32
+    Height = 25
+    Top = 72
+    Width = 176
+    Caption = 'Felh.név módosítás'
+    TabOrder = 2
+    OnClick = ModNameBtnClick
+  end
+  object DelUserBtn: TButton
+    Left = 32
+    Height = 25
+    Top = 104
+    Width = 176
+    Caption = 'FELH. TÖRLÉSE'
+    TabOrder = 3
+    OnClick = DelUserBtnClick
+  end
+  object BitBtn1: TBitBtn
+    Left = 88
+    Height = 30
+    Top = 160
+    Width = 75
+    DefaultCaption = True
+    Kind = bkClose
+    ModalResult = 11
+    TabOrder = 4
+  end
+end
