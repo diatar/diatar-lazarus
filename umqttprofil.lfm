@@ -51,7 +51,7 @@ object MqttProfil: TMqttProfil
     Height = 30
     Top = 160
     Width = 75
-    DefaultCaption = True
+    Caption = 'Be&zár'
     Kind = bkClose
     ModalResult = 11
     TabOrder = 4

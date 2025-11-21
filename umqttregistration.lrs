@@ -2,33 +2,50 @@
 
 LazarusResources.Add('TMqttRegistration','FORMDATA',[
   'TPF0'#17'TMqttRegistration'#16'MqttRegistration'#4'Left'#3#0#1#6'Height'#3
-  +#205#0#3'Top'#3#145#0#5'Width'#3'@'#1#11'BorderStyle'#7#8'bsDialog'#7'Captio'
-  +'n'#6#23'Internet regisztr'#195#161'ci'#195#179#12'ClientHeight'#3#205#0#11
+  +#127#1#3'Top'#3#145#0#5'Width'#3'@'#1#11'BorderStyle'#7#8'bsDialog'#7'Captio'
+  +'n'#6#23'Internet regisztr'#195#161'ci'#195#179#12'ClientHeight'#3#127#1#11
   +'ClientWidth'#3'@'#1#9'OnDestroy'#7#11'FormDestroy'#8'Position'#7#17'poOwner'
   +'FormCenter'#10'LCLVersion'#6#7'3.6.0.0'#0#6'TLabel'#6'Label1'#4'Left'#2#12#6
   +'Height'#2#15#3'Top'#2#13#5'Width'#2'D'#9'Alignment'#7#14'taRightJustify'#8
   +'AutoSize'#8#7'Caption'#6#6'&N'#195#169'v:'#0#0#5'TEdit'#6'UserEd'#4'Left'#2
   +'W'#6'Height'#2#23#3'Top'#2#10#5'Width'#3#225#0#9'MaxLength'#2#30#8'TabOrder'
-  +#2#0#8'TextHint'#6#14'Kov'#195#161'cs J'#195#161'nos'#0#0#6'TLabel'#6'Label2'
-  +#4'Left'#2#12#6'Height'#2#15#3'Top'#2'+'#5'Width'#2'D'#9'Alignment'#7#14'taR'
-  +'ightJustify'#8'AutoSize'#8#7'Caption'#6#7'&Email:'#0#0#5'TEdit'#7'EmailEd'#4
-  +'Left'#2'W'#6'Height'#2#23#3'Top'#2'('#5'Width'#3#225#0#9'MaxLength'#2'2'#8
-  +'TabOrder'#2#1#8'TextHint'#6#18'jani123@nomail.com'#0#0#6'TLabel'#6'Label3'#4
-  +'Left'#2#12#6'Height'#2#15#3'Top'#2'G'#5'Width'#2'D'#9'Alignment'#7#14'taRig'
-  +'htJustify'#8'AutoSize'#8#7'Caption'#6#9'&Jelsz'#195#179':'#0#0#5'TEdit'#6'P'
-  +'sw1Ed'#4'Left'#2'W'#6'Height'#2#23#3'Top'#2'D'#5'Width'#3#225#0#8'EchoMode'
-  +#7#10'emPassword'#9'MaxLength'#2#30#12'PasswordChar'#6#1'*'#8'TabOrder'#2#2#0
-  +#0#6'TLabel'#6'Label4'#4'Left'#2#12#6'Height'#2#15#3'Top'#2'c'#5'Width'#2'D'
-  +#9'Alignment'#7#14'taRightJustify'#8'AutoSize'#8#7'Caption'#6#15'Jelsz'#195
-  +#179' &'#195#186'jra:'#0#0#5'TEdit'#6'Psw2Ed'#4'Left'#2'W'#6'Height'#2#23#3
-  +'Top'#2'`'#5'Width'#3#225#0#8'EchoMode'#7#10'emPassword'#9'MaxLength'#2#30#12
-  +'PasswordChar'#6#1'*'#8'TabOrder'#2#3#0#0#9'TCheckBox'#9'ShowPswCk'#4'Left'#2
-  +'X'#6'Height'#2#19#3'Top'#3#128#0#5'Width'#2'|'#7'Caption'#6#24'Jelsz'#195
-  +#179' &megjelen'#195#173't'#195#169'se'#8'TabOrder'#2#4#8'OnChange'#7#15'Sho'
-  +'wPswCkChange'#0#0#7'TBitBtn'#6'RegBtn'#4'Left'#2#16#6'Height'#2#30#3'Top'#3
-  +#160#0#5'Width'#2'x'#7'Caption'#6#15'&Regisztr'#195#161'ci'#195#179#7'Defaul'
-  +'t'#9#4'Kind'#7#4'bkOK'#7'OnClick'#7#11'RegBtnClick'#8'TabOrder'#2#5#0#0#7'T'
-  +'BitBtn'#9'CancelBtn'#4'Left'#3#154#0#6'Height'#2#30#3'Top'#3#160#0#5'Width'
-  +#2'x'#6'Cancel'#9#7'Caption'#6#8'M'#195#169'g&sem'#4'Kind'#7#8'bkCancel'#11
-  +'ModalResult'#2#2#8'TabOrder'#2#6#0#0#0
+  +#2#0#8'TextHint'#6#15'Buzsai_Kormenet'#0#0#6'TLabel'#6'Label2'#4'Left'#2#12#6
+  +'Height'#2#15#3'Top'#2'+'#5'Width'#2'D'#9'Alignment'#7#14'taRightJustify'#8
+  +'AutoSize'#8#7'Caption'#6#7'&Email:'#0#0#5'TEdit'#7'EmailEd'#4'Left'#2'W'#6
+  +'Height'#2#23#3'Top'#2'('#5'Width'#3#225#0#9'MaxLength'#2'2'#8'TabOrder'#2#1
+  +#8'TextHint'#6#18'jani123@nomail.com'#0#0#6'TLabel'#6'Label3'#4'Left'#2#12#6
+  +'Height'#2#15#3'Top'#2'G'#5'Width'#2'D'#9'Alignment'#7#14'taRightJustify'#8
+  +'AutoSize'#8#7'Caption'#6#9'&Jelsz'#195#179':'#0#0#5'TEdit'#6'Psw1Ed'#4'Left'
+  +#2'W'#6'Height'#2#23#3'Top'#2'D'#5'Width'#3#225#0#8'EchoMode'#7#10'emPasswor'
+  +'d'#9'MaxLength'#2#30#12'PasswordChar'#6#1'*'#8'TabOrder'#2#2#0#0#6'TLabel'#6
+  +'Label4'#4'Left'#2#12#6'Height'#2#15#3'Top'#2'c'#5'Width'#2'D'#9'Alignment'#7
+  +#14'taRightJustify'#8'AutoSize'#8#7'Caption'#6#15'Jelsz'#195#179' &'#195#186
+  +'jra:'#0#0#5'TEdit'#6'Psw2Ed'#4'Left'#2'W'#6'Height'#2#23#3'Top'#2'`'#5'Widt'
+  +'h'#3#225#0#8'EchoMode'#7#10'emPassword'#9'MaxLength'#2#30#12'PasswordChar'#6
+  +#1'*'#8'TabOrder'#2#3#0#0#9'TCheckBox'#9'ShowPswCk'#4'Left'#2'X'#6'Height'#2
+  +#19#3'Top'#3#128#0#5'Width'#2'|'#7'Caption'#6#24'Jelsz'#195#179' &megjelen'
+  +#195#173't'#195#169'se'#8'TabOrder'#2#4#8'OnChange'#7#15'ShowPswCkChange'#0#0
+  +#6'TPanel'#6'Panel1'#4'Left'#2#0#6'Height'#3#130#0#3'Top'#3#253#0#5'Width'#3
+  +'@'#1#5'Align'#7#8'alBottom'#10'BevelInner'#7#9'bvLowered'#10'BevelOuter'#7#6
+  +'bvNone'#10'BevelWidth'#2#2#12'ClientHeight'#3#130#0#11'ClientWidth'#3'@'#1#8
+  +'TabOrder'#2#5#0#6'TLabel'#6'Label5'#4'Left'#2#2#6'Height'#2'~'#3'Top'#2#2#5
+  +'Width'#3'<'#1#5'Align'#7#8'alClient'#8'AutoSize'#8#7'Caption'#6#255'- N'#195
+  +#169'v 4-30 karakter hossz'#195#186', csak angol bet'#197#177'k, sz'#195#161
+  +'mjegyek, pont, k'#195#182't'#197#145'jel '#195#169's al'#195#161'h'#195#186
+  +'z'#195#161's lehet benne.'#13#10'- Jelsz'#195#179': 6-30 karakter, legyen b'
+  +'enne kisbet'#197#177', nagybet'#197#177', sz'#195#161'm.'#13#10'- Email: cs'
+  +'ak a felhaszn'#195#161'l'#195#179' meger'#197#145's'#195#173't'#195#169's'
+  +#195#169're kell, nem k'#195#188'ld'#195#188'nk rekl'#195#161'mot.'#8'WordWr'
+  +'ap'#9#0#0#0#9'TCheckBox'#6'GdprCk'#4'Left'#2#24#6'Height'#2#19#3'Top'#3#160
+  +#0#5'Width'#3#225#0#7'Caption'#6'*Elfogadom az &Adatv'#195#169'delmi t'#195
+  +#161'j'#195#169'koztat'#195#179't'#8'TabOrder'#2#6#8'OnChange'#7#15'ShowPswC'
+  +'kChange'#0#0#6'TLabel'#8'GdprLink'#6'Cursor'#7#11'crHandPoint'#4'Left'#2'H'
+  +#6'Height'#2#15#3'Top'#3#184#0#5'Width'#3#155#0#7'Caption'#6#28'https://diat'
+  +'ar.eu/?page=gdpr'#10'Font.Color'#7#6'clBlue'#10'Font.Style'#11#11'fsUnderli'
+  +'ne'#0#10'ParentFont'#8#7'OnClick'#7#13'GdprLinkClick'#0#0#7'TBitBtn'#9'Canc'
+  +'elBtn'#4'Left'#3#154#0#6'Height'#2#30#3'Top'#3#216#0#5'Width'#2'x'#6'Cancel'
+  +#9#7'Caption'#6#8'M'#195#169'g&sem'#4'Kind'#7#8'bkCancel'#11'ModalResult'#2#2
+  +#8'TabOrder'#2#7#0#0#7'TBitBtn'#6'RegBtn'#4'Left'#2#16#6'Height'#2#30#3'Top'
+  +#3#216#0#5'Width'#2'x'#7'Caption'#6#15'&Regisztr'#195#161'ci'#195#179#7'Defa'
+  +'ult'#9#4'Kind'#7#4'bkOK'#7'OnClick'#7#11'RegBtnClick'#8'TabOrder'#2#8#0#0#0
 ]);

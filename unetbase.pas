@@ -816,7 +816,7 @@ procedure tNetIO.StartServerIP;
 begin
   if fIndex<>1 then exit;
   StartIP;
-  TCPComp.Listen(Globals.IPport[fIndex]);
+  TCPComp.Listen(Globals.RecIPport);
 end;
 
 //kapcsolat inditasa: TCP/IP, ez a kliens (VEZERLO)

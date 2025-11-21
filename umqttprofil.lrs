@@ -16,7 +16,7 @@ LazarusResources.Add('TMqttProfil','FORMDATA',[
   +#7'OnClick'#7#15'ModNameBtnClick'#0#0#7'TButton'#10'DelUserBtn'#4'Left'#2' '
   +#6'Height'#2#25#3'Top'#2'h'#5'Width'#3#176#0#7'Caption'#6#15'FELH. T'#195#150
   +'RL'#195#137'SE'#8'TabOrder'#2#3#7'OnClick'#7#15'DelUserBtnClick'#0#0#7'TBit'
-  +'Btn'#7'BitBtn1'#4'Left'#2'X'#6'Height'#2#30#3'Top'#3#160#0#5'Width'#2'K'#14
-  +'DefaultCaption'#9#4'Kind'#7#7'bkClose'#11'ModalResult'#2#11#8'TabOrder'#2#4
-  +#0#0#0
+  +'Btn'#7'BitBtn1'#4'Left'#2'X'#6'Height'#2#30#3'Top'#3#160#0#5'Width'#2'K'#7
+  +'Caption'#6#7'Be&z'#195#161'r'#4'Kind'#7#7'bkClose'#11'ModalResult'#2#11#8'T'
+  +'abOrder'#2#4#0#0#0
 ]);

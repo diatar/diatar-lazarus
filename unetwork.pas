@@ -41,11 +41,13 @@ type
     fScrHeight: integer;
     fIpNum : array[1..MAXIP] of string;
     fIpPort : array[1..MAXIP] of integer;
+    fRecIpPort : integer;
     fShowBlankPic: boolean;        //kell a hatterkep
     fEndProgram: tEndProgram;      //program leallitasa tavolrol
 
     fScrMode: tScrMode;        //a Globals.ScrMode masolata
     fNetOnIP: boolean;         //a Globals.NetOnIP masolata
+    fHasNet : boolean;         //a Globals.HasNet masolata
 
     fProjPic:    tPicture;        //akt. kep
     fBlankPic:   tPicture;        //hatterkep
@@ -351,10 +353,12 @@ var
     if s<>fBaseDir then exit;
     if fScrMode<>Globals.ScrMode then exit;
     if fNetOnIP<>Globals.NetOnIP then exit;
+    if fHasNet<>Globals.HasNet then exit;
     for i:=1 to MAXIP do begin
       if fIpNum[i]<>Globals.IPnum[i] then exit;
       if fIpPort[i]<>Globals.IPport[i] then exit;
     end;
+    if fRecIpPort<>Globals.RecIPport then exit;
     Result:=true;
   end;
 
@@ -364,17 +368,19 @@ begin
   for i:=1 to MAXIP do fNetIO[i].Stop;
   fScrMode    := Globals.ScrMode;
   fNetOnIP    := Globals.NetOnIP;
+  fHasNet     := Globals.HasNet;
   for i:=1 to MAXIP do begin
     fIpNum[i] := Globals.IPnum[i];
     fIpPort[i] := Globals.IPport[i];
   end;
+  fRecIpPort:=Globals.RecIPport;
   fBaseDir:=s;
-  if fScrMode=smControl then begin       //fajl, vezerlo
-    for i:=1 to MAXIP do fNetIO[i].StartClient;
-  end else if fScrMode=smProject then begin   //fajl, vetito
+  if not fHasNet then exit;
+  if fScrMode=smProject then begin // vetito mod
     for i:=1 to MAXIP do fNetIO[i].StartServer;
-  end else
-    exit;
+  end else begin
+    for i:=1 to MAXIP do fNetIO[i].StartClient;
+  end;
 end;
 
 {**** belso adatkuldo rutinok *************************}

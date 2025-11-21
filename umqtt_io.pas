@@ -66,6 +66,7 @@ type
     UserName : string;              //felhaszn.nev
     Email : string;                 //email cim
     Channels : array[1..10] of string;  //csatornak neve
+    Rolename : string;              //felhasznaloi role (csak ha SendersGroup=true)
     SentForDetails : boolean;       //Username elkuldve reszletek celjabol
     SendersGroup : boolean;         //normal kuldo felhasznalo
   end;
@@ -148,6 +149,8 @@ type
       procedure CmdNewPsw;
       procedure CmdNewEmail;
       function EncodeChannels(const rec : pMqttUserRec) : string;
+      function GetTopicBase(const username : string) : string;
+      function GetRolename(const username : string) : string;
 
       function ProcessJson(const jdata : tJSONData; iscont : boolean) : boolean;  //TRUE=folytatjuk
       function ProcessJsonMODIFYCLIENT(const jdata : tJSONData; iscont : boolean) : boolean;
@@ -174,6 +177,7 @@ type
       property Channel : string read fChannel write fChannel;
       property NewUserName : string read fNewUserName write fNewUserName;
       property IsOpen : boolean read fIsOpen;
+      property OpenMode  : tOpenMode read fOpenMode;
 
       property OnCmdFinished : tNotifyEvent read fOnCmdFinished write fOnCmdFinished;
       property CmdResult : string read fCmdResult;
@@ -220,7 +224,7 @@ const
   TMR_SENDPING           = 5000; //ha semmi mas forgalom, PINGet kuldunk
   TMR_RECPING            = 1000; //PINGet kuldtunk, varjuk a valaszt
   TMR_REOPEN             = 1000; //nincs kommunikacio, ujrakezdjuk
-  TMR_FINISHCMD          = 1000; //ennyi ido alatt egy parancsot le kell zarni
+  TMR_FINISHCMD          = 10000; //ennyi ido alatt egy parancsot le kell zarni
 
 {$I mqttpsw.inc}
 
@@ -232,13 +236,6 @@ constructor tMQTT_IO.Create;
 begin
   inherited;
   fIsOpen:=false; fIsClosed:=true;
-  fTCPComp:=tLTCPComponent.Create(nil);  //TCP-IP komponens
-  fTCPComp.Disconnect(true);
-  fTCPComp.OnAccept:=@TCPCompAccept;               //esemeny rutinok
-  fTCPComp.OnConnect:=@TCPCompConnect;
-  fTCPComp.OnDisconnect:=@TCPCompDisconnect;
-  fTCPComp.OnError:=@TCPCompError;
-  fTCPComp.OnReceive:=@TCPCompReceive;
 
   fMqttHost:='mqtt.diatar.eu';  //'mqtt.eclipseprojects.io';
   fMqttPort:=1883;
@@ -280,13 +277,49 @@ begin
     fTmrFinishCmd:=TMR_FINISHCMD;
 
   fChannel:='1';  //ideiglenesen
-  fTopicGroup:='Diatar/'+Username+'/'+Channel+'/';
+  fTopicGroup:=GetTopicBase(fUsername)+Channel+'/';
   fTopicMask:=fTopicGroup+'#';
   fTopicState:=fTopicGroup+'state';
   fTopicBlank:=fTopicGroup+'blank';
   fTopicDia:=fTopicGroup+'dia';
 
   MQTTOpen;
+end;
+
+function tMQTT_IO.GetTopicBase(const username : string) : string;
+begin
+  Result:='Diatar/'+username+'/';
+end;
+
+function tMQTT_IO.GetRolename(const username : string) : string;
+var
+  rname : string;
+  i,idx : integer;
+  ch : char;
+  ok : boolean;
+begin
+  rname:='s-';
+  for i:=1 to Length(username) do begin
+    ch:=username[i];
+    if ch in ['A'..'Z','a'..'z','0'..'9'] then
+      rname:=rname+ch
+    else
+      rname:=rname+IntToHex(Ord(ch));
+  end;
+  Result:=rname;
+  idx:=0;
+  while true do begin
+    ok:=true;
+    for i:=0 to Length(fUserList)-1 do begin
+      if Result=fUserList[i].Rolename then begin
+        ok:=false;
+        break;
+      end;
+    end;
+    if ok then exit;
+    inc(idx);
+    Result:=rname+IntToStr(idx);
+  end;
 end;
 
 //publikus lezaras
@@ -313,12 +346,16 @@ begin
 end;
 
 function tMQTT_IO.ChkUsername(const testname : string) : string;
+var
+  i : integer;
 begin
   Result:='';
   if Length(testname)<4 then exit('Legalább 4 betűből álljon.');
   if Length(testname)>30 then exit('Ne legyen hosszabb 30 betűnél.');
-  if Pos('"',testname)>0 then exit('Technikai okokból nem tartalmazhat idézőjelet.');
-  if Pos(':',testname)>0 then exit('Technikai okokból nem tartalmazhat kettőspontot.');
+  for i:=1 to Length(testname) do begin
+    if not (testname[i] in ['A'..'Z','a'..'z','0'..'9','.','_','-']) then
+      exit('Technikai okokból csak angol betűk, számok, kötőjel, pont, aláhúzás lehetnek a névben.');
+  end;
 end;
 
 function tMQTT_IO.ChkPsw(const testpsw : string) : string;
@@ -414,6 +451,7 @@ begin
     dec(fTmrFinishCmd,diff);
     if fTmrFinishCmd<=0 then begin
       Close;
+      fCmdResult:='Időtúllépés...';
       DoFinishCmd;
     end;
   end;
@@ -482,7 +520,7 @@ end;
 //kommunikacios hiba tortent
 procedure tMQTT_IO.TCPCompError(const msg: string; aSocket: TLSocket);
 begin
-  MainForm.ShowError('MQTT TcpError: '+msg);
+  if Assigned(MainForm) then MainForm.ShowError('MQTT TcpError: '+msg);
   DebugLn('MQTT: Tcp Error -> '+msg);
   if fTmrFinishCmd>0 then begin
     fCmdResult:='Tcp error: '+msg;
@@ -525,13 +563,24 @@ end;
 //MQTT szerverrel zarjuk a kapcsolatot
 procedure tMQTT_IO.MQTTClose;
 begin
-  //fIsOpen:=false;
-  if fTCPComp.Connected then fTCPComp.Disconnect() else fIsOpen:=false;
+  if Assigned(fTCPComp) and fTCPComp.Connected then
+    fTCPComp.Disconnect()
+  else
+    fIsOpen:=false;
 end;
 
 //MQTT szerverhez csatlakozzunk
 procedure tMQTT_IO.MQTTAttach;
 begin
+  fTCPComp.Free;
+  fTCPComp:=tLTCPComponent.Create(nil);  //TCP-IP komponens
+  fTCPComp.Disconnect(true);
+  fTCPComp.OnAccept:=@TCPCompAccept;               //esemeny rutinok
+  fTCPComp.OnConnect:=@TCPCompConnect;
+  fTCPComp.OnDisconnect:=@TCPCompDisconnect;
+  fTCPComp.OnError:=@TCPCompError;
+  fTCPComp.OnReceive:=@TCPCompReceive;
+
   fTCPComp.Connect(fMqttHost,fMqttPort);
 end;
 
@@ -546,7 +595,7 @@ var
   buf : tMQTT_Buffer;
   len : integer;
 begin
-  if not fTCPComp.Connected and not fSecondError then begin
+  if not Assigned(fTCPComp) or (not fTCPComp.Connected and not fSecondError) then begin
     fSecondError:=true;
     DebugLn('TCP reopen...');
     Reopen;
@@ -556,7 +605,7 @@ begin
   buf:=mqtt.Encode();
   len:=Length(buf);
   if len>0 then begin
-    fTCPComp.Send(buf[0],len);
+    if Assigned(fTCPComp) then fTCPComp.Send(buf[0],len);
     TmrResetSendPing;
   end;
 end;
@@ -585,7 +634,7 @@ begin
         merrLENGTH :    txt:='MQTT ERROR: hossz nem megfelelő a parancshoz';
         otherwise       txt:='MQTT ERROR: ??? '+IntToStr(Ord(merr));
       end;
-      MainForm.ShowError(txt);
+      if Assigned(MainForm) then MainForm.ShowError(txt);
       DebugLn('MQTT: Receive error: '+txt);
       exit;
     end;
@@ -628,7 +677,7 @@ begin
       if fOpenMode in OPENADMIN then
         DoFinishCmd
       else
-        MainForm.ShowError(fCmdResult);
+        if Assigned(MainForm) then MainForm.ShowError(fCmdResult);
       Close;
       exit;
     end;
@@ -800,7 +849,7 @@ begin
       jdata:=GetJSON(txt);
       jresp:=jdata.FindPath('responses');
       if not Assigned(jresp) or (jresp.JSONType<>jtArray) then begin
-        MainForm.ShowError('Hibás input');
+        if Assigned(MainForm) then MainForm.ShowError('Hibás input');
         Close;
         if fTmrFinishCmd>0 then begin
           fCmdResult:='Hibás szerver válasz!';
@@ -817,7 +866,7 @@ begin
         DoFinishCmd;
       end;
     except
-      MainForm.ShowError('Input nem dekódolható');
+      if Assigned(MainForm) then MainForm.ShowError('Input nem dekódolható');
       Close;
       fCmdResult:='Szerver válasz nem dekódolható!';
       DoFinishCmd;
@@ -878,13 +927,22 @@ end;
 procedure tMQTT_IO.CmdCreateUser;
 var
   cmd : AnsiString;
+  rolename : AnsiString;
 begin
-  cmd:='{"commands": [{"command": "createClient"'+
-    ', "username": "'+fUserName+'"'+
-    ', "password": "'+fPassword+'"'+
-    ', "textname": "'+fEmail+'"'+
-    ', "roles": [{"rolename": "senders"}] '+
-    '}]}';
+  rolename:=GetRolename(fUserName);
+  cmd:='{"commands": ['+
+    '{"command": "createRole"'+
+      ', "rolename": "'+rolename+'"'+
+      ', "acls": [{"acltype": "publishClientSend", "topic": "'+
+        GetTopicBase(fUserName)+'#"}] '+
+    '}, '+
+    '{"command": "createClient"'+
+      ', "username": "'+fUserName+'"'+
+      ', "password": "'+fPassword+'"'+
+      ', "textname": "'+fEmail+'"'+
+      ', "roles": [{"rolename": "'+rolename+'"}] '+
+    '}'+
+    ']}';
   CmdSend(cmd);
 end;
 
@@ -905,7 +963,7 @@ begin
     ', "password": "'+fPassword+'"'+
     ', "textname": "'+fEmail+'"'+
     ', "textdescription": "'+EncodeChannels(rec)+'"'+
-    ', "roles": [{"rolename": "senders"}] '+
+    ', "roles": [{"rolename": "'+rec^.Rolename+'"}] '+
     '}, {"command": "deleteClient"'+
     ', "username": "'+fUserName+'"'+
     '}]}';
@@ -998,11 +1056,14 @@ begin
     exit;
   end;
   cmd:=UpperCase(je.AsString);
-  if cmd='LISTCLIENTS' then
+  if cmd='LISTCLIENTS' then begin
     Result:=ProcessJsonLISTCLIENTS(jdata, iscont)
-  else if cmd='GETCLIENT' then
+  end else if cmd='GETCLIENT' then begin
     Result:=ProcessJsonGETCLIENT(jdata, iscont)
-  else if cmd='CREATECLIENT' then begin
+  end else if cmd='CREATEROLE' then begin
+    //Result:=ProcessJsonCREATEROLE(jdata, iscont)
+    Result:=false;
+  end else if cmd='CREATECLIENT' then begin
     Result:=ProcessJsonMODIFYCLIENT(jdata, iscont);
   end else if cmd='MODIFYCLIENT' then begin
     Result:=ProcessJsonMODIFYCLIENT(jdata, iscont);
@@ -1054,6 +1115,7 @@ begin
   fUserList[idx].Email:=fEmail;
   fUserList[idx].SendersGroup:=true;
   fUserList[idx].SentForDetails:=true;
+  fUserList[idx].Rolename:=GetRolename(fUserName);
   Result:=false;
 end;
 
@@ -1112,8 +1174,10 @@ begin
     ja:=(je as TJSONArray);
     for i:=0 to ja.Count-1 do begin
       je:=ja[i].FindPath('rolename');
-      if Assigned(je) and (je.JSONType=jtString) and (je.Value='senders') then
+      if Assigned(je) and (je.JSONType=jtString) and StartsWith(je.Value,'s-') then begin
         fUserList[idx].SendersGroup:=true;
+        fUserList[idx].Rolename:=je.Value;
+      end;
     end;
   end;
   if not iscont then begin

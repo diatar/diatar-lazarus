@@ -55,6 +55,9 @@ type
     procedure FormMouseEnter(Sender: TObject);
     procedure FormMouseLeave(Sender: TObject);
     procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure FormPaintboxClick(Sender: TObject);
+    procedure FormPaintboxMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormUTF8KeyPress(Sender: TObject; var UTF8Key: TUTF8Char);
@@ -180,6 +183,9 @@ type
     //fProjImage valtozott
     procedure RepaintProjImage;
 
+    //rakerdez, hogy ki akarunk-e lepni a programbol
+    procedure TryTerminate;
+
     //segedrutin egy kep atmeretezesehez
     procedure StretchDraw(Dest : tCanvas; Source : tPicture; const R : tRect; Mode : tStretchMode);
 
@@ -231,7 +237,7 @@ end;
 procedure tProjektedForm.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
-  if MainForm.Closing then begin CloseAction:=caFree; exit; end;
+  if not Assigned(MainForm) or MainForm.Closing then begin CloseAction:=caFree; exit; end;
   CloseAction:=caNone;
   MainForm.CloseMain;
 end;
@@ -240,7 +246,7 @@ procedure tProjektedForm.FormActivate(Sender: TObject);
 begin
   SendToBack;
   if not Assigned(MainForm) then exit;
-  if Globals.HideMain then
+  if Globals.HideMain or (Globals.ScrMode=smProject) then
     MainForm.HideEvent(true)
   else if not MainForm.ScrollState and (MainForm.WindowState<>wsMinimized) and not MainForm.InResizing then
     MainForm.BringToFront;
@@ -264,12 +270,14 @@ end;
 procedure tProjektedForm.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  MainForm.FormKeyDown(Sender,Key,Shift);
+  if Assigned(MainForm) then MainForm.FormKeyDown(Sender,Key,Shift);
+  if Key=VK_ESCAPE then TryTerminate;
 end;
 
 procedure tProjektedForm.FormMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
+  TryTerminate;
   if not Globals.HideMain or not MainForm.ScrollState then MainForm.BringToFront;
 end;
 
@@ -295,6 +303,17 @@ begin
   fMouseCnt:=10;
 end;
 
+procedure tProjektedForm.FormPaintboxClick(Sender: TObject);
+begin
+  TryTerminate;
+end;
+
+procedure tProjektedForm.FormPaintboxMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+  TryTerminate;
+end;
+
 procedure tProjektedForm.FormResize(Sender: TObject);
 begin
     DebugLn('ProjektedForm.OnResize');
@@ -308,7 +327,7 @@ end;
 
 procedure tProjektedForm.FormUTF8KeyPress(Sender: TObject; var UTF8Key: TUTF8Char);
 begin
-  MainForm.FormUTF8KeyPress(Sender,UTF8Key);
+  if Assigned(MainForm) then MainForm.FormUTF8KeyPress(Sender,UTF8Key);
 end;
 
 procedure tProjektedForm.AppRestore(Sender : tObject);
@@ -499,6 +518,13 @@ end;
 procedure tProjektedForm.AsyncActualPaint(Data: PtrInt);
 begin
   ActualPaint;
+end;
+
+procedure tProjektedForm.TryTerminate;
+begin
+  if Globals.ScrMode<>smProject then exit;
+  if QuestBox('Program vége?')<>idYes then exit;
+  MainForm.CloseMain;
 end;
 
 procedure tProjektedForm.DrawFilter;

@@ -214,7 +214,9 @@ type
     fGotoTarget : integer;        //ide ugrunk
     fErrorTmr : integer;          //error kikapcs ideje
     fShowOrderTmr : integer;      //idonkent rendezzuk, hogy a foablak elol legyen
-    fMQTT_IO : tMQTT_IO;
+
+    fMainThreadID : TThreadID;
+    fErrorToShow : string;
 
     function ReadDia(f : tIniFile; const sect : string; IsUTF8 : boolean) : tTxBase;
     function QuerySave(Index : integer = 0) : boolean;
@@ -264,6 +266,8 @@ type
 
     procedure SetDiasorFName(const NewName : string);
     procedure SetModified(NewValue : boolean);
+
+    procedure ShowErrorInMain;
 
   protected
     procedure Resizing(State: TWindowState); override;
@@ -379,6 +383,8 @@ var
   i : integer;
   r : tRect;
 begin
+  fMainThreadID:=GetCurrentThreadId;
+
   PrevTop:=VISIBLEMAIN;
   fReklamVan:=true;
 
@@ -476,15 +482,7 @@ begin
   if not Globals.SerialAskOn or (QuestBox('Bekapcsoljuk a projektort?')=idYes) then
     ProcessSerialOn;
 
-  if Globals.MqttId>0 then begin
-    MQTT_IO.ClientId:=Globals.MqttId;
-    MQTT_IO.UserName:=Globals.DecodePsw(Globals.MqttUser);
-    MQTT_IO.Password:=Globals.DecodePsw(Globals.MqttPsw);
-    MQTT_IO.Channel:=Globals.DecodePsw(Globals.MqttCh);
-    MqttOpen;
-  end else begin
-    ShowError('Internet elérési hiba!');
-  end;
+  //MqttOpen;
 end;
 
 procedure TMainForm.FormDeactivate(Sender: TObject);
@@ -504,6 +502,7 @@ var
   R : tRect;
   i : integer;
 begin
+  MainForm:=nil;
   DebugLn('MainForm.OnDestroy');
   DiaSound.OnEnd:=nil; DiaSound.OnError:=nil;
   Application.Terminate;
@@ -599,6 +598,9 @@ procedure TMainForm.FormKeyDown(Sender: TObject; var Key: Word;
 var
   dk : tDiaKey;
 begin
+  if not Assigned(MainForm) then exit;
+  if (Globals.ScrMode=smProject) and (Key=VK_ESCAPE) and Assigned(ProjektedForm) then
+    ProjektedForm.TryTerminate;
   fAltPressed:=((GetKeyState(VK_MENU) and not 1)<>0);
   if Key=VK_MENU then fAltPressed:=true;
   if DtxLst.Visible and DtxLst.DroppedDown then exit;
@@ -983,6 +985,8 @@ begin
   CommBtns.RepLen:=Globals.CommRep;
   CommBtns.Rep1Len:=Globals.CommRep1;
 
+  MqttOpen;
+
   if Globals.ScrMode=smProject then begin
 //    HideMain;
     Visible:=false;
@@ -1121,6 +1125,8 @@ begin
         if not Globals.HideMain then BringToFront;
       end;
       DtxLst.DtxTreeChanged;
+    end else begin
+      MqttOpen;
     end;
     ResizeProjektPanel;
   finally
@@ -1147,9 +1153,48 @@ begin
 end;
 
 procedure tMainForm.MqttOpen;
+var
+  usr,psw,chn : string;
 begin
+  if Globals.MqttId=0 then exit; // no internet
+
+  usr:=Globals.DecodePsw(Globals.MqttUser);
+  psw:=Globals.DecodePsw(Globals.MqttPsw);
+  chn:='1'; //Globals.DecodePsw(Globals.MqttCh);
+  if usr='' then begin
+    usr:=MQTT_IO.UserName;
+    psw:=MQTT_IO.Password;
+  end;
+  if (MQTT_IO.ClientId<>Globals.MqttId) or
+     (MQTT_IO.UserName<>usr) or
+     (MQTT_IO.Password<>psw) or
+     (MQTT_IO.Channel<>chn)
+  then begin
+    MQTT_IO.Close;
+    MQTT_IO.ClientId:=Globals.MqttId;
+    MQTT_IO.UserName:=usr;
+    MQTT_IO.Password:=psw;
+    MQTT_IO.Channel:=chn;
+  end;
+
+  if (Globals.ScrMode=smProject) and Globals.HasNet then exit; //helyi halo VETITO moddal
+
   if (MQTT_IO.UserName>'') and (MQTT_IO.Channel>'') then begin
-    if MQTT_IO.Password>'' then MQTT_IO.Open(omSENDER) else MQTT_IO.Open(omRECEIVER);
+    if MQTT_IO.Password>'' then begin
+      if Globals.ScrMode=smProject then begin //kuldes VETITO modban nem
+        MQTT_IO.Close;
+        exit;
+      end;
+      if not MQTT_IO.IsOpen or (MQTT_IO.OpenMode<>omSENDER) then
+        MQTT_IO.Open(omSENDER);
+    end else begin
+      if Globals.ScrMode<>smProject then begin //fogadas csak VETITOn lehet
+        MQTT_IO.Close;
+        exit;
+      end;
+      if not MQTT_IO.IsOpen or (MQTT_IO.OpenMode<>omRECEIVER) then
+        MQTT_IO.Open(omRECEIVER);
+    end;
   end;
 end;
 
@@ -1405,8 +1450,16 @@ end;
 
 procedure tMainForm.ShowError(const txt : string);
 begin
-  ErrorPanel.Caption:=txt;
-  ErrorPanel.Visible:=(txt>'');
+  fErrorToShow:=txt;
+  if fMainThreadID<>GetCurrentThreadId then begin
+    tThread.Queue(nil,@ShowErrorInMain);
+  end;
+end;
+
+procedure tMainForm.ShowErrorInMain;
+begin
+  ErrorPanel.Caption:=fErrorToShow;
+  ErrorPanel.Visible:=(fErrorToShow>'');
   fErrorTmr:=iif(ErrorPanel.Visible, 10000 div Tmr.Interval, 0);    // 10mp utan leolt
 end;
 
