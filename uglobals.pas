@@ -250,7 +250,9 @@ type
     fEndAsk: tEndAsk;                                 //rakerdezes vegere
     fIPnum: array[1..MAXIP] of string;                //IP szam
     fIPport: array[1..MAXIP] of integer;              //IP port
+    fRecIPport : integer;                             //veteli (szerver) IP port
     fNetOnIP: boolean;                                //IP-alapu atvitel
+    fHasNet : boolean;                                //van LAN kapcsolat?
     fScrCtrl: integer;                                //vezerlo kepernyo
     fScrProj: integer;                                //vetito kepernyo
     fScrFoto: integer;                                //foto kepernyo
@@ -383,7 +385,9 @@ type
     procedure SetIPnum(Index: integer; const NewValue: string);
     function GetIPport(Index: integer) : integer;
     procedure SetIPport(Index: integer; NewValue: integer);
+    procedure SetRecIPport(NewValue : integer);
     procedure SetNetOnIP(NewValue: boolean);
+    procedure SetHasNet(NewValue : boolean);
     function GetScrCtrl: integer;
     procedure SetScrCtrl(NewValue: integer);
     function GetScrProj: integer;
@@ -525,7 +529,9 @@ type
     property EndAsk: tEndAsk read fV.fEndAsk write SetEndAsk;
     property IPnum[Index: integer]: string read GetIPnum write SetIPnum;
     property IPport[Index: integer]: integer read GetIPport write SetIPport;
+    property RecIPport : integer read fV.fRecIPport write SetRecIPport;
     property NetOnIP: boolean read fV.fNetOnIP write SetNetOnIP;
+    property HasNet: boolean read fV.fHasNet write SetHasNet;
     property ScrCtrl: integer read GetScrCtrl write SetScrCtrl;
     property ScrProj: integer read GetScrProj write SetScrProj;
     property ScrFoto: integer read GetScrFoto write SetScrFoto;
@@ -1198,11 +1204,26 @@ begin
   GlobalVarModified;
 end;
 
+procedure tGlobals.SetRecIPport(NewValue: integer);
+begin
+  if NewValue=fV.fRecIPport then exit;
+  fV.fRecIPport:=NewValue;
+  GlobalVarModified;
+end;
+
 procedure tGlobals.SetNetOnIP(NewValue: boolean);
 begin
   if fV.fNetOnIP = NewValue then
     exit;
   fV.fNetOnIP := NewValue;
+  GlobalVarModified;
+end;
+
+procedure tGlobals.SetHasNet(NewValue: boolean);
+begin
+  if fV.fHasNet = NewValue then
+    exit;
+  fV.fHasNet := NewValue;
   GlobalVarModified;
 end;
 
@@ -1961,7 +1982,9 @@ begin
     fV.fIPnum[i]:='';
     fV.fIPport[i]:=1024;
   end;
+  fV.fRecIPport:=1024;
   fV.fNetOnIP := true;
+  fV.fHasNet:=false;
   fV.fScrCtrl := 0;
   fV.fScrProj := 0;
   fV.fScrFoto := 0;
@@ -2644,8 +2667,12 @@ var
       if Reg.GetDataType('IPport'+IntToStr(i)) = rdInteger then
         IPport[i]:=Reg.ReadInteger('IPport'+IntToStr(i));
     end;
+    if Reg.GetDataType('RecIPport')=rdInteger then
+      RecIPport:=Reg.ReadInteger('RecIPport');
     if Reg.ValueExists('NetOnIP') then
       NetOnIP := Reg.ReadBool('NetOnIP');
+    if Reg.ValueExists('HasNet') then
+      HasNet:=Reg.ReadBool('HasNet');
     if Reg.GetDataType('ScrCtrl') = rdInteger then
       fV.fScrCtrl := Reg.ReadInteger('ScrCtrl');
     //ha idolegesen nincs is meg a kepernyo!!!
@@ -3116,7 +3143,9 @@ begin
         SaveRegString('IPnum'+IntToStr(i), IPnum[i]);
         Reg.WriteInteger('IPport'+IntToStr(i), IPport[i]);
       end;
+      Reg.WriteInteger('RecIPport',RecIPport);
       Reg.WriteBool('NetOnIP', NetOnIP);
+      Reg.WriteBool('HasNet', HasNet);
       Reg.WriteInteger('ScrCtrl', fV.fScrCtrl);  //!!!! ha idolegesen nincs is meg
       Reg.WriteInteger('ScrProj', fV.fScrProj);  //!!!! az adott monitor...
       Reg.WriteInteger('ScrFoto', fV.fScrFoto);

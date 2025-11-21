@@ -6,15 +6,17 @@ interface
 
 uses
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Buttons;
+  Buttons, ExtCtrls;
 
 type
 
   { TMqttRegistration }
 
   tMqttRegistration = class(TForm)
-    RegBtn: TBitBtn;
     CancelBtn: TBitBtn;
+    Label5: TLabel;
+    GdprLink: TLabel;
+    Panel1: TPanel;
     Psw1Ed: TEdit;
     Psw2Ed: TEdit;
     Label1: TLabel;
@@ -22,9 +24,12 @@ type
     EmailEd: TEdit;
     Label3: TLabel;
     Label4: TLabel;
+    RegBtn: TBitBtn;
     ShowPswCk: TCheckBox;
+    GdprCk: TCheckBox;
     UserEd: TEdit;
     procedure FormDestroy(Sender: TObject);
+    procedure GdprLinkClick(Sender: TObject);
     procedure RegBtnClick(Sender: TObject);
     procedure ShowPswCkChange(Sender: TObject);
   private
@@ -39,7 +44,7 @@ var
 
 implementation
 
-uses uMQTT_IO, uRoutines;
+uses uMQTT_IO, uRoutines, LCLIntf;
 
 procedure tMqttRegistration.ShowPswCkChange(Sender: TObject);
 var
@@ -53,6 +58,11 @@ end;
 procedure tMqttRegistration.FormDestroy(Sender: TObject);
 begin
   MQTT_IO.OnCmdFinished:=nil;
+end;
+
+procedure tMqttRegistration.GdprLinkClick(Sender: TObject);
+begin
+  OpenURL(GdprLink.Caption);
 end;
 
 procedure tMqttRegistration.RegBtnClick(Sender: TObject);
@@ -106,6 +116,12 @@ begin
       ErrorBox('Ez az email-cím már létezik a rendszerben, adjon meg másikat!');
       exit;
     end;
+  end;
+
+  if not GdprCk.Checked then begin
+    GdprCk.SetFocus;
+    ErrorBox('Kérjük, fogadja el az Adatvédelmi tájékoztatót!');
+    exit;
   end;
 
   if not MQTT_IO.EmailCodeCheck(mtREGISTRATION, username, email) then exit;
