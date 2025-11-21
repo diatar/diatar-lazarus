@@ -52,6 +52,8 @@ type
     AutoSndFwdCk: TCheckBox;
     BackTransPercLst: TComboBox;
     BBorderEd: TSpinEdit;
+    Bevel1: TBevel;
+    Bevel2: TBevel;
     BgModeLst: TComboBox;
     BkColor: TPanel;
     BkPicBtn: TButton;
@@ -88,8 +90,6 @@ type
     FxLst: TListBox;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
-    GroupBox3: TGroupBox;
-    GroupBox4: TGroupBox;
     HCenterCk: TCheckBox;
     HiColor: TPanel;
     HideCursorCk: TCheckBox;
@@ -118,6 +118,7 @@ type
     IpPortEd4: TEdit;
     IpPortEd5: TEdit;
     IpPortEd6: TEdit;
+    IpRecPortEd: TEdit;
     KbAltLbl: TLabel;
     KbCtlLbl: TLabel;
     KbFuncLbl: TLabel;
@@ -180,6 +181,8 @@ type
     Label54: TLabel;
     Label55: TLabel;
     Label56: TLabel;
+    Label57: TLabel;
+    Label58: TLabel;
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
@@ -199,16 +202,21 @@ type
     MirrorCk: TCheckBox;
     ModeBtn: TRadioGroup;
     ModProfilBtn: TBitBtn;
+    MqttAlwaysCk: TCheckBox;
     MqttLoginBtn: TButton;
     MqttLogoutBtn: TButton;
     MqttLostPsw: TButton;
+    MqttNoCk: TRadioButton;
     MqttProfilBtn: TButton;
+    MqttRecCk: TRadioButton;
     MqttRegBtn: TButton;
     MqttSelSenderBtn: TButton;
+    MqttSendCk: TRadioButton;
     MqttState: TLabel;
     NDiaEd: TSpinEdit;
     NetDirBtn: TRadioButton;
     NetIpBtn: TRadioButton;
+    NetNoBtn: TRadioButton;
     NewProfilBtn: TBitBtn;
     NoQueryCk: TCheckBox;
     NoTxtTitleCk: TCheckBox;
@@ -253,9 +261,6 @@ type
     Label16: TLabel;
     ProjSyncCk: TCheckBox;
     ProjTestTxt: TPaintBox;
-    MqttNoCk: TRadioButton;
-    MqttSendCk: TRadioButton;
-    MqttRecCk: TRadioButton;
     RBorderEd: TSpinEdit;
     ResizeCk: TCheckBox;
     Rot0Ck: TRadioButton;
@@ -302,6 +307,7 @@ type
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
     TabSheet4: TTabSheet;
+    PgStart: TTabSheet;
     TavAkkordCk: TCheckBox;
     TavKottaCk: TCheckBox;
     TBorderEd: TSpinEdit;
@@ -335,6 +341,7 @@ type
     procedure MqttRegBtnClick(Sender: TObject);
     procedure MqttSelSenderBtnClick(Sender: TObject);
     procedure NDiaEdChange(Sender: TObject);
+    procedure NetNoBtnChange(Sender: TObject);
     procedure PunkosdPaint(Sender: TObject);
     procedure SerTestBtnClick(Sender: TObject);
     procedure UseBRectCkChange(Sender: TObject);
@@ -383,9 +390,11 @@ type
     DiatarLst : tDtxFlagsList;
     fBetoltes : boolean;
     fMqttUser,fMqttPsw,fMqttCh : string;  //eredeti Mqtt adatok
+    fMqttLoadStr : string;
     fMqttLoginState : (lsLOGOUT,lsLOGIN,lsSEND,lsRECEIVE);
     fMqttLoaded : boolean; //felhasznalolista betoltve
     fMqttWasOpen : boolean; //eredetileg volt kapcsolat
+    fMqttInSet : boolean; //epp beallitas kozben
 
     function GetScrRot : tScrRot;
     procedure ResizeScr(X,Y : integer);
@@ -414,6 +423,7 @@ type
     procedure SetMqttState;
     function MqttIsLoggedIn : boolean;
     procedure OnMqttFinished(Sender : tObject);
+    function CheckNetModes : boolean;
   public
     { public declarations }
     property HintStart : integer read GetHintStart write SetHintStart;
@@ -421,6 +431,7 @@ type
 
     procedure HintEnable(NewValue : boolean);
     procedure NetEnable;
+    function IsIpSet : boolean;  //true: van IPcím beállítva
 
     function Execute : boolean;
   end;
@@ -557,6 +568,8 @@ begin
   SerBaudLst.Items.Add('57600');
   SerBaudLst.Items.Add('115200');
   SerBaudLst.ItemIndex:=3; //9600 a legvaloszinubb
+
+  fMqttLoadStr:='Kapcsolatra várunk...';
 
 {$IFDEF windows}
   LinuxCmdLbl.Visible:=false; LinuxCmdEd.Visible:=false;
@@ -916,19 +929,28 @@ end;
 
 procedure tSetupForm.NetEnable;
 begin
-  DirEd.Enabled:=({(ModeBtn.ItemIndex>0) and} NetDirBtn.Checked);
-  DirSelBtn.Enabled:=({(ModeBtn.ItemIndex>0) and} NetDirBtn.Checked);
-  IpNumEd1.Enabled:=({(ModeBtn.ItemIndex=1) and} NetIpBtn.Checked);
-  IpPortEd1.Enabled:=({(ModeBtn.ItemIndex>0) and} NetIpBtn.Checked);
+  DirEd.Enabled:=NetDirBtn.Checked;
+  DirSelBtn.Enabled:=NetDirBtn.Checked;
+  IpNumEd1.Enabled:=NetIpBtn.Checked; IpPortEd1.Enabled:=NetIpBtn.Checked;
   IpNumEd2.Enabled:=NetIpBtn.Checked; IpPortEd2.Enabled:=NetIpBtn.Checked;
   IpNumEd3.Enabled:=NetIpBtn.Checked; IpPortEd3.Enabled:=NetIpBtn.Checked;
   IpNumEd4.Enabled:=NetIpBtn.Checked; IpPortEd4.Enabled:=NetIpBtn.Checked;
   IpNumEd5.Enabled:=NetIpBtn.Checked; IpPortEd5.Enabled:=NetIpBtn.Checked;
   IpNumEd6.Enabled:=NetIpBtn.Checked; IpPortEd6.Enabled:=NetIpBtn.Checked;
-//  EndProjCk.Enabled:=(ModeBtn.ItemIndex=1);
-//  ShutdownCk.Enabled:=(ModeBtn.ItemIndex=1);
-//  EpAsk1Ck.Enabled:=(ModeBtn.ItemIndex=1);
-//  EpAsk2Ck.Enabled:=(ModeBtn.ItemIndex=1);
+  IpRecPortEd.Enabled:=NetIpBtn.Checked;
+end;
+
+function tSetupForm.IsIpSet : boolean;
+begin
+  Result:=true;
+  if (ModeBtn.ItemIndex=2) and (IpRecPortEd.Text>'') then exit;
+  if IpNumEd1.Text>'' then exit;
+  if IpNumEd2.Text>'' then exit;
+  if IpNumEd3.Text>'' then exit;
+  if IpNumEd4.Text>'' then exit;
+  if IpNumEd5.Text>'' then exit;
+  if IpNumEd6.Text>'' then exit;
+  Result:=false;
 end;
 
 procedure tSetupForm.EnablePortBtn5678;
@@ -1318,6 +1340,7 @@ end;
 
 procedure tSetupForm.MqttCkClick(Sender: TObject);
 begin
+  if fMqttInSet then exit;
   if Sender=MqttNoCk then begin
     MQTT_IO.UserName:='';
     MQTT_IO.Password:='';
@@ -1375,6 +1398,11 @@ procedure tSetupForm.NDiaEdChange(Sender: TObject);
 begin
   while DiaLst.Count>NDiaEd.Value do DiaLst.Items.Delete(DiaLst.Count-1);
   while DiaLst.Count<NDiaEd.Value do DiaLst.Items.Add(IntToStr(DiaLst.Count+1)+'.');
+end;
+
+procedure tSetupForm.NetNoBtnChange(Sender: TObject);
+begin
+  NetEnable;
 end;
 
 procedure tSetupForm.AutoLoadDiaCkClick(Sender: TObject);
@@ -1665,6 +1693,8 @@ begin
       exit;
     end;
   end;
+
+  if not CheckNetModes() then exit;
 
   ModalResult:=mrOk;
 end;
@@ -2049,7 +2079,7 @@ begin
   end else if MQTT_IO.Password>'' then begin
     MQTT_IO.Channel:='1';
     if MQTT_IO.Channel>'' then begin
-      MqttState.Caption:=AnsiString('Küldő: ')+MQTT_IO.UserName; //+'/'+MQTT_IO.Channel;
+      MqttState.Caption:=AnsiString('Bejelentkezett küldő: ')+MQTT_IO.UserName; //+'/'+MQTT_IO.Channel;
       MqttState.Font.Color:=clTeal;
       fMqttLoginState:=lsSEND;
     end else begin
@@ -2063,7 +2093,7 @@ begin
     fMqttLoginState:=lsRECEIVE;
   end;
   if not fMqttLoaded then begin
-    MqttState.Caption:='Kapcsolatra várunk...';
+    MqttState.Caption:=fMqttLoadStr;
     MqttState.Font.Color:=clBlack;
   end;
 
@@ -2075,9 +2105,11 @@ begin
   MqttLogoutBtn.Enabled:=fMqttLoaded and isloggedin;
   MqttSelSenderBtn.Enabled:=fMqttLoaded;
 
+  fMqttInSet:=true;
   MqttNoCk.Checked:=(fMqttLoginState=lsLOGOUT);
   MqttSendCk.Checked:=isloggedin;
   MqttRecCk.Checked:=(fMqttLoginState=lsRECEIVE);
+  fMqttInSet:=false;
 end;
 
 function tSetupForm.MqttIsLoggedIn : boolean;
@@ -2085,10 +2117,59 @@ begin
   Result:=(fMqttLoginState in [lsLOGIN,lsSEND]);
 end;
 
+function tSetupForm.CheckNetModes : boolean;
+var
+  ret : integer;
+begin
+  Result:=false;
+  if NetIpBtn.Checked and not IsIpSet() then begin
+    PgFrm.ActivePage:=PgNet;
+    if WarningBox('Helyi hálózat TCP/IP nincs beállítva, nem fog működni!',
+      mbOC)<>idOk then exit;
+    NetNoBtn.Checked:=true;
+  end;
+
+  if ModeBtn.ItemIndex<>2 then begin  // vezérlő+egygépes módok
+    if fMqttLoginState=lsRECEIVE then begin
+      //PgFrm.ActivePage:=PgMode;
+      ret:=WarningBox('Internetes fogadás van beállítva, ez csak /VETITO módban működik!'#13+
+        'Átálljunk vetítési módra?',mbYNC);
+      if ret=idCancel then exit;
+      if ret=idYes then ModeBtn.ItemIndex:=2;
+    end;
+  end;
+
+  if ModeBtn.ItemIndex=2 then begin // /VETITO mod
+    if MqttIsLoggedIn then begin
+      //PgFrm.ActivePage:=PgMode;
+      ret:=WarningBox('/VETITO mód és internetes küldés van beállítva, a küldés nem fog működni!'#13+
+        'Kilépjünk a vetítési módból?',mbYNC);
+      if ret=idCancel then exit;
+      if ret=idYes then ModeBtn.ItemIndex:=0;
+    end else if (fMqttLoginState=lsRECEIVE) and not NetNoBtn.Checked then begin
+      //PgFrm.ActivePage:=PgMqtt;
+      ret:=WarningBox('Ha egyszerre van helyi hálózat és internetes fogadás beállítva, csak a helyi működik.'#13+
+         'Kikapcsoljuk a helyi hálót?',
+        mbYNC);
+      if ret=idCancel then exit;
+      if ret=idYes then NetNoBtn.Checked:=true;
+    end else if (fMqttLoginState=lsLOGOUT) and NetNoBtn.Checked then begin
+      //PgFrm.ActivePage:=PgMode;
+      ret:=WarningBox('/VETITO módban nincs se helyi hálózat, se internetes kapcsolat!'#13+
+        'Kilépjünk a vetítési módból?',mbYNC);
+      if ret=idCancel then exit;
+      if ret=idYes then ModeBtn.ItemIndex:=0;
+    end;
+  end;
+  Result:=true;
+end;
+
 procedure tSetupForm.OnMqttFinished(Sender : tObject);
 begin
   MQTT_IO.OnCmdFinished:=nil;
   if MQTT_IO.CmdResult>'' then begin
+    fMqttLoadStr:=MQTT_IO.CmdResult;
+    SetMqttState;
     ErrorBox('Internet probléma van!'#13+MQTT_IO.CmdResult);
     exit;
   end;
@@ -2132,6 +2213,7 @@ begin
   fMqttPsw:=MQTT_IO.Password;
   fMqttCh:=MQTT_IO.Channel;
   fMqttWasOpen:=MQTT_IO.IsOpen;
+  MqttAlwaysCk.Checked:=(fMqttUser>'') and (Globals.MqttUser>'');
   fMqttLoaded:=false;
   SetMqttState;
   MQTT_IO.OnCmdFinished:=@OnMqttFinished;
@@ -2207,13 +2289,19 @@ begin
   IpNumEd6.Text:=Globals.IPnum[6];
   IpPortEd6.Text:=IntToStr(Globals.IPport[6]);
   DirEd.Text:=Globals.NetDir;
+  IpRecPortEd.Text:=IntToStr(Globals.RecIPport);
   case Globals.ScrMode of
     smDual : ModeBtn.ItemIndex:=0;
     smControl : ModeBtn.ItemIndex:=1;
     smProject : ModeBtn.ItemIndex:=2;
   end;
   DualOnControlCk.Checked:=Globals.DualOnControl;
-  NetIpBtn.Checked:=Globals.NetOnIP;
+  if not Globals.HasNet then begin
+    NetNoBtn.Checked:=true;
+  end else begin
+    NetIpBtn.Checked:=Globals.NetOnIP;
+    if NetIpBtn.Checked and not IsIpSet then NetNoBtn.Checked:=true;
+  end;
   NetEnable;
   SerPortLst.ItemIndex:=Globals.SerialPort;
   SerBaudLst.ItemIndex:=Globals.SerialBaud-1;
@@ -2317,7 +2405,9 @@ begin
       Globals.IPnum[4]:=IpNumEd4.Text; try Globals.IPport[4]:=StrToInt(IpPortEd4.Text); except end;
       Globals.IPnum[5]:=IpNumEd5.Text; try Globals.IPport[5]:=StrToInt(IpPortEd5.Text); except end;
       Globals.IPnum[6]:=IpNumEd6.Text; try Globals.IPport[6]:=StrToInt(IpPortEd6.Text); except end;
+      try Globals.RecIPport:=StrToInt(IpRecPortEd.Text); except end;
       Globals.NetOnIP:=NetIpBtn.Checked;
+      Globals.HasNet:=not NetNoBtn.Checked;
       Globals.SerialPort:=SerPortLst.ItemIndex;
       Globals.SerialBaud:=SerBaudLst.ItemIndex+1;
       Globals.SerialOnTxt.FromMemo(SerOnEd);
@@ -2355,9 +2445,15 @@ begin
 
       if Globals.ScrMode<>smProject then Globals.SaveSetup;
 
-      Globals.MqttUser:=MQTT_IO.UserName;
-      Globals.MqttPsw:=MQTT_IO.Password;
-      Globals.MqttCh:=MQTT_IO.Channel;
+      if MqttAlwaysCk.Checked then begin
+        Globals.MqttUser:=Globals.EncodePsw(MQTT_IO.UserName);
+        Globals.MqttPsw:=Globals.EncodePsw(MQTT_IO.Password);
+        Globals.MqttCh:=Globals.EncodePsw(MQTT_IO.Channel);
+      end else begin
+        Globals.MqttUser:='';
+        Globals.MqttPsw:='';
+        Globals.MqttCh:='';
+      end;
 
     finally
       Globals.Unlock;
@@ -2370,6 +2466,10 @@ begin
     for j:=1 to MAXFXX do
       FreeTxObj(p.FxxObject[j] as tTxBase);
   end;
+
+//  if fMqttWasOpen and (MQTT_IO.UserName>'') then begin
+//    if MQTT_IO.Password>'' then MQTT_IO.Open(omSENDER) else MQTT_IO.Open(omRECEIVER);
+//  end;
 end;
 
 initialization

@@ -25,7 +25,7 @@ object ProjektedForm: TProjektedForm
   OnWindowStateChange = FormWindowStateChange
   Position = poDefault
   ShowInTaskBar = stNever
-  LCLVersion = '2.2.0.4'
+  LCLVersion = '3.6.0.0'
   Visible = True
   object FormPaintbox: TPaintBox
     Left = 0
@@ -33,6 +33,8 @@ object ProjektedForm: TProjektedForm
     Top = 0
     Width = 487
     Align = alClient
+    OnClick = FormPaintboxClick
+    OnMouseDown = FormPaintboxMouseDown
     OnPaint = FormPaint
   end
   object Menu25Img: TImage
