@@ -1125,9 +1125,8 @@ begin
         if not Globals.HideMain then BringToFront;
       end;
       DtxLst.DtxTreeChanged;
-    end else begin
-      MqttOpen;
     end;
+    MqttOpen;
     ResizeProjektPanel;
   finally
 //    FreeAndNil(SetupForm);
