@@ -161,7 +161,6 @@
         <TopLine Value="80"/>
         <CursorPos X="41" Y="98"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="utextbox.pas"/>
@@ -1795,84 +1794,6 @@
       <Position30>
         <Filename Value="umqtt_io.pas"/>
         <Caret Line="153" Column="16" TopLine="126"/>
-        <Filename Value="usetupform.pas"/>
-        <Caret Line="1037" Column="42" TopLine="1027"/>
-      </Position11>
-      <Position12>
-        <Filename Value="usetupform.pas"/>
-        <Caret Line="1036" Column="42" TopLine="1026"/>
-      </Position12>
-      <Position13>
-        <Filename Value="usetupform.pas"/>
-        <Caret Line="1052" Column="102" TopLine="1027"/>
-      </Position13>
-      <Position14>
-        <Filename Value="uprojektedform.pas"/>
-        <Caret Line="824" Column="31" TopLine="818"/>
-      </Position14>
-      <Position15>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2691" Column="63" TopLine="2680"/>
-      </Position15>
-      <Position16>
-        <Filename Value="umain.pas"/>
-        <Caret Line="69" TopLine="69"/>
-      </Position16>
-      <Position17>
-        <Filename Value="umain.pas"/>
-        <Caret Line="2667" TopLine="2658"/>
-      </Position17>
-      <Position18>
-        <Filename Value="umain.pas"/>
-        <Caret Line="3152" Column="10" TopLine="3139"/>
-      </Position18>
-      <Position19>
-        <Filename Value="umain.pas"/>
-        <Caret Line="324" Column="15" TopLine="309"/>
-      </Position19>
-      <Position20>
-        <Filename Value="umain.pas"/>
-        <Caret Line="3128" Column="56" TopLine="3114"/>
-      </Position20>
-      <Position21>
-        <Filename Value="umain.pas"/>
-        <Caret Line="153" TopLine="137"/>
-      </Position21>
-      <Position22>
-        <Filename Value="umain.pas"/>
-        <Caret Line="3127" Column="61" TopLine="3099"/>
-      </Position22>
-      <Position23>
-        <Filename Value="umain.pas"/>
-        <Caret Line="323" Column="15" TopLine="308"/>
-      </Position23>
-      <Position24>
-        <Filename Value="umain.pas"/>
-        <Caret Line="3127" Column="72" TopLine="3113"/>
-      </Position24>
-      <Position25>
-        <Filename Value="unetbase.pas"/>
-        <Caret Line="30" Column="29" TopLine="18"/>
-      </Position25>
-      <Position26>
-        <Filename Value="unetbase.pas"/>
-        <Caret Line="264" Column="25" TopLine="240"/>
-      </Position26>
-      <Position27>
-        <Filename Value="unetbase.pas"/>
-        <Caret Line="909" Column="19" TopLine="893"/>
-      </Position27>
-      <Position28>
-        <Filename Value="umain.pas"/>
-        <Caret Line="3128" Column="28" TopLine="3113"/>
-      </Position28>
-      <Position29>
-        <Filename Value="uappform.pas"/>
-        <Caret Line="141" Column="40" TopLine="132"/>
-      </Position29>
-      <Position30>
-        <Filename Value="unetbase.pas"/>
-        <Caret Line="909" TopLine="893"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>

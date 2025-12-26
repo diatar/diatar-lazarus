@@ -13,7 +13,8 @@ uses
   uNetBase, uSymbolForm, uSerialIO, uSearchForm, uSound, uhowtosaveform,
   ukottaeditor, ukottakepek, ukottazo, userialioform, uappform, uKeyInputForm,
   uSelectProfil, uLinuxRegistry, uDiatarIniLoader, uPropEdit, uSplash,
-  uMqttForm, uMQTT_IO, uMqttPsw;
+  uMqttForm, uMQTT_IO, uMqttPsw, uMQTT, uMqttLogin, uMqttProfil, uMqttReceiver,
+  uMqttRegistration;
 
 {$IFDEF WINDOWS}{$R project1.rc}{$ENDIF}
 
