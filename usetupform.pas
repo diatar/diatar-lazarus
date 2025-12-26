@@ -392,7 +392,7 @@ type
     fMqttUser,fMqttPsw,fMqttCh : string;  //eredeti Mqtt adatok
     fMqttLoadStr : string;
     fMqttLoginState : (lsLOGOUT,lsLOGIN,lsSEND,lsRECEIVE);
-    fMqttLoaded : boolean; //felhasznalolista betoltve
+    fMqttLoaded : integer; //<0 = felhasznalolista betoltve, >0 hibaszamlalo
     fMqttWasOpen : boolean; //eredetileg volt kapcsolat
     fMqttInSet : boolean; //epp beallitas kozben
 
@@ -2092,18 +2092,18 @@ begin
     MqttState.Font.Color:=clBlue;
     fMqttLoginState:=lsRECEIVE;
   end;
-  if not fMqttLoaded then begin
+  if fMqttLoaded>=0 then begin
     MqttState.Caption:=fMqttLoadStr;
     MqttState.Font.Color:=clBlack;
   end;
 
   isloggedin:=MqttIsLoggedIn;
-  MqttLoginBtn.Enabled:=fMqttLoaded and not isloggedin;
-  MqttRegBtn.Enabled:=fMqttLoaded and not isloggedin;
-  MqttProfilBtn.Enabled:=fMqttLoaded and isloggedin;
-  MqttLostPsw.Enabled:=fMqttLoaded and not isloggedin;
-  MqttLogoutBtn.Enabled:=fMqttLoaded and isloggedin;
-  MqttSelSenderBtn.Enabled:=fMqttLoaded;
+  MqttLoginBtn.Enabled:=(fMqttLoaded<0) and not isloggedin;
+  MqttRegBtn.Enabled:=(fMqttLoaded<0) and not isloggedin;
+  MqttProfilBtn.Enabled:=(fMqttLoaded<0) and isloggedin;
+  MqttLostPsw.Enabled:=(fMqttLoaded<0) and not isloggedin;
+  MqttLogoutBtn.Enabled:=(fMqttLoaded<0) and isloggedin;
+  MqttSelSenderBtn.Enabled:=(fMqttLoaded<0);
 
   fMqttInSet:=true;
   MqttNoCk.Checked:=(fMqttLoginState=lsLOGOUT);
@@ -2170,10 +2170,15 @@ begin
   if MQTT_IO.CmdResult>'' then begin
     fMqttLoadStr:=MQTT_IO.CmdResult;
     SetMqttState;
-    ErrorBox('Internet probléma van!'#13+MQTT_IO.CmdResult);
+    if fMqttLoaded<4 then begin
+      inc(fMqttLoaded);
+      MQTT_IO.Close;
+      MQTT_IO.Open(omUSERLIST);
+    end;
+    //ErrorBox('Internet probléma van!'#13+MQTT_IO.CmdResult);
     exit;
   end;
-  fMqttLoaded:=true;
+  fMqttLoaded:=-1;
   SetMqttState;
 end;
 
@@ -2213,8 +2218,9 @@ begin
   fMqttPsw:=MQTT_IO.Password;
   fMqttCh:=MQTT_IO.Channel;
   fMqttWasOpen:=MQTT_IO.IsOpen;
+  MQTT_IO.Close;
   MqttAlwaysCk.Checked:=(fMqttUser>'') and (Globals.MqttUser>'');
-  fMqttLoaded:=false;
+  fMqttLoaded:=0;
   SetMqttState;
   MQTT_IO.OnCmdFinished:=@OnMqttFinished;
   MQTT_IO.Open(omUSERLIST);

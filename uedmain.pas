@@ -68,7 +68,7 @@ uses
   PairSplitter, ComCtrls, types, LazFileUtils, LazUTF8;
 
 const
-  VERSION = 'v13.1 - ß3';
+  VERSION = 'v13.1';
   VERSIONDATE = '2005-25';
   EDITORFONT = 'Arial';
 
