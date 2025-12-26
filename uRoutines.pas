@@ -106,6 +106,9 @@ function MyFileExists(const FName : string) : boolean;
 {input: UTF8 text, output: ASCII-7 text (if NoCase=TRUE then uppercase) }
 function ComparableTxt(const Txt : string; NoCase : boolean = true) : string;
 
+function StartsWith(const Txt : string; const StartTxt : string) : boolean;
+function EndsWith(const Txt : string; const EndTxt : string) : boolean;
+
 procedure DebugOut(const Txt : string);
 
 const
@@ -902,6 +905,16 @@ begin
     if NoCase then ch:=UpCase(ch);
     Result[rl]:=ch; inc(rl);
   end;
+end;
+
+function StartsWith(const Txt : string; const StartTxt : string) : boolean;
+begin
+  Result:=(LeftStr(Txt,Length(StartTxt))=StartTxt);
+end;
+
+function EndsWith(const Txt : string; const EndTxt : string) : boolean;
+begin
+  Result:=(RightStr(Txt,Length(EndTxt))=EndTxt);
 end;
 
 end.

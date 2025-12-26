@@ -569,6 +569,7 @@ end;
 
 procedure tCommBtns.CommBtnEvent(BtnEvent : tBtnEvent; aBtnState : tBtnState);
 begin
+  if not Assigned(MainForm) then exit;
   case BtnEvent of
     beProjSwitch : begin     { ki/be kapcsolo }
         ProjOn:=aBtnState;

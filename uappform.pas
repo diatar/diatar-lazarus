@@ -86,7 +86,7 @@ v12.5   2021/03/28  kotta/akkord arany, atlatszo hatter, triola
 v12.6   2022/01/09  9+ autoload, net:egyediek+margok, dkKotta
 v12.7   2023/03/19  export, autosave, zenereldir, linux hintform javitas, athuzott
 v13.0   2024/04/13  zsolozsma, raspberry
-v13.1   2025/03/21  stretchmode, uos soundforward
+v13.1   2025/03/21  stretchmode, uos soundforward, internet vetites
 
 **************************************************************)
 
@@ -102,7 +102,7 @@ uses
   Forms, Controls, Graphics, Dialogs;
 
 const
-  VERSION = 'v13.1 - ß3';
+  VERSION = 'v13.1';
   VERSIONDATE = '2005-25';
 
 type
@@ -118,6 +118,7 @@ type
     { private declarations }
     procedure AppException(Sender : tObject; Err : Exception);
     procedure LoadGlobalsSetup;
+    procedure AcquireMqttId;
     procedure AppMinimize(Sender : tObject);
     procedure AppRestore(Sender : tObject);
   public
@@ -130,11 +131,15 @@ var
 
 implementation
 
+//ha kell a DebugLn() logger (console ablak):
+//  Project options / Compiler options / Config and Target / Target specific
+//    kivenni a "Win32 GUI" pipat
+
 uses
-  LazLogger,
+  LazLogger, fphttpclient,openssl,opensslsockets,
   uRoutines,
   uMain,uSerialIOForm,uSymbolForm,uMonitors,uProjektedForm,
-  uGlobals,uSelectProfil,uKottaKepek,uNetwork,uCommBtns,
+  uGlobals,uSelectProfil,uKottaKepek,uNetwork,uCommBtns,uMQTT_IO,
   uTxTar, uSplash
   ;
 
@@ -157,8 +162,20 @@ begin
     SplashForm.Show;
     SplashForm.SetProgress(0,'Betöltés...');
     FillKottaBmps;
+
     SplashForm.SetProgress(10,'Hálózat...');
+    if not InitSSLInterface then begin
+  {$IFNDEF windows}
+      //on linux we can simply change to openssl.3
+      DLLVersions[1]:='.3';
+  {$ENDIF}
+      if not InitSSLInterface then begin
+        ErrorBox('Internet SSL kapcsolat sikertelen!');
+      end;
+    end;
+
     Network:=tNetwork.Create;
+    MQTT_IO:=tMQTT_IO.Create;
     CommBtns:=tCommBtns.Create;
 
     SplashForm.SetProgress(20,'Kötetek...');
@@ -199,6 +216,7 @@ begin
   StopSymbolFiltering;
   FreeAndNil(ProjektedForm);
   Globals.DTXs.Free;
+  FreeAndNil(MQTT_IO);
   FreeAndNil(Network);
   FreeAndNil(CommBtns);
   FreeAndNil(SerialIOForm);
@@ -338,6 +356,41 @@ begin
     ix:=LoginToProfil(Globals.StartProfilIndex);
     if ix<0 then Application.Terminate;
     Globals.ProfilIndex:=ix;
+  end;
+  if Globals.MqttId=0 then AcquireMqttId;
+end;
+
+procedure tAppForm.AcquireMqttId;
+var
+  ss : tStringStream;
+  http : TFPHTTPClient;
+  id : integer;
+begin
+  if not InitSSLInterface then exit; //nem talalhato az OpenSLL
+  ss:=TStringStream.Create();
+  try
+    DebugLn('HTTP Client create');
+    http:=TFPHTTPClient.Create(Self);
+    try
+      try
+        http.ConnectTimeout:=3000;
+        http.IOTimeout:=15000;
+        http.AllowRedirect:=true;
+        http.AddHeader('User-Agent','Mozilla/5.0 (compatible; fpweb)');
+        DebugLn('HTTP Client GET');
+        http.Get('https://diatar.eu/mqtt/generate_id.php', ss);
+      except
+        exit;
+      end;
+    finally
+      http.Free;
+    end;
+    DebugLn('HTTP Client finished.');
+    id:=StrToInt(ss.DataString);
+    if (id<100000) or (id>999999) then exit;
+    Globals.MqttId:=id;
+  finally
+    ss.Free;
   end;
 end;
 

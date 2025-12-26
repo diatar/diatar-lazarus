@@ -31,7 +31,7 @@ uses Classes, Forms, Controls, SysUtils, Contnrs, Graphics,
   Dialogs, LCLType, LazFileUtils, LazUTF8;
 
 // uj valtozo felvetele:
-// 1. tProfil.XXX valtozo vagy tGlobals.fXXX valtozo definialas
+// 1. tProfil.XXX valtozo vagy tGlobalVars.fXXX valtozo definialas
 // 2. procedure SetXXX deklaracio
 // 3. property XXX
 // 4. SetXXX megirasa
@@ -250,7 +250,9 @@ type
     fEndAsk: tEndAsk;                                 //rakerdezes vegere
     fIPnum: array[1..MAXIP] of string;                //IP szam
     fIPport: array[1..MAXIP] of integer;              //IP port
+    fRecIPport : integer;                             //veteli (szerver) IP port
     fNetOnIP: boolean;                                //IP-alapu atvitel
+    fHasNet : boolean;                                //van LAN kapcsolat?
     fScrCtrl: integer;                                //vezerlo kepernyo
     fScrProj: integer;                                //vetito kepernyo
     fScrFoto: integer;                                //foto kepernyo
@@ -291,6 +293,8 @@ type
     fSaveCnt : integer;                               //0..5 (le=save, fel=overwr)
     fKottaCnt : integer;                 //b0..2=hatter, b3..5=kotta. b6..9=hang
     fShutdownCmd : string;                            //linux shutdown parancs
+    fMqttId : integer;                                //Diatar egyedi MQTT azonositoja
+    fMqttUser,fMqttPsw,fMqttCh : string;              //allando MQTT user+psw+csat
   end;
 
 //a tGlobals objektum osztaly:
@@ -381,7 +385,9 @@ type
     procedure SetIPnum(Index: integer; const NewValue: string);
     function GetIPport(Index: integer) : integer;
     procedure SetIPport(Index: integer; NewValue: integer);
+    procedure SetRecIPport(NewValue : integer);
     procedure SetNetOnIP(NewValue: boolean);
+    procedure SetHasNet(NewValue : boolean);
     function GetScrCtrl: integer;
     procedure SetScrCtrl(NewValue: integer);
     function GetScrProj: integer;
@@ -469,6 +475,10 @@ type
     procedure SetBlankTransPerc(NewValue : integer);
     procedure SetAutoSave(NewValue : boolean);
     procedure SetStretchMode(NewValue : tStretchMode);
+    procedure SetMqttId(NewValue : integer);
+    procedure SetMqttUser(const NewValue : string);
+    procedure SetMqttPsw(const NewValue : string);
+    procedure SetMqttCh(const NewValue : string);
   public
     property ProgDir : string read fProgDir;
     property DtxDir : string read fDtxDir;
@@ -519,7 +529,9 @@ type
     property EndAsk: tEndAsk read fV.fEndAsk write SetEndAsk;
     property IPnum[Index: integer]: string read GetIPnum write SetIPnum;
     property IPport[Index: integer]: integer read GetIPport write SetIPport;
+    property RecIPport : integer read fV.fRecIPport write SetRecIPport;
     property NetOnIP: boolean read fV.fNetOnIP write SetNetOnIP;
+    property HasNet: boolean read fV.fHasNet write SetHasNet;
     property ScrCtrl: integer read GetScrCtrl write SetScrCtrl;
     property ScrProj: integer read GetScrProj write SetScrProj;
     property ScrFoto: integer read GetScrFoto write SetScrFoto;
@@ -607,6 +619,10 @@ type
     property BlankTransPerc : integer read fActProfil.BlankTransPerc write SetBlankTransPerc;
     property AutoSave : boolean read fActProfil.AutoSave write SetAutoSave;
     property StretchMode : tStretchMode read fActProfil.StretchMode write SetStretchMode;
+    property MqttId : integer read fV.fMqttId write SetMqttId;
+    property MqttUser : string read fV.fMqttUser write SetMqttUser;
+    property MqttPsw : string read fV.fMqttPsw write SetMqttPsw;
+    property MqttCh : string read fV.fMqttCh write SetMqttCh;
 
     property DtxFlags[Index: integer]: tDtxFlags read GetDtxFlags write SetDtxFlags;
     property DtxVisible[Index: integer]: boolean
@@ -636,6 +652,9 @@ type
     function AdjustRect(Form: TForm; const Rect: tRect): tRect;
     function MoveRectVisible(const R: tRect; ScrIndex : integer = -1): tRect;
     function GetFxxTitle(Index : integer): string;
+
+    function DecodePsw(const secret : string) : string;
+    function EncodePsw(const public : string) : string;
   end;
 
 var
@@ -1185,11 +1204,26 @@ begin
   GlobalVarModified;
 end;
 
+procedure tGlobals.SetRecIPport(NewValue: integer);
+begin
+  if NewValue=fV.fRecIPport then exit;
+  fV.fRecIPport:=NewValue;
+  GlobalVarModified;
+end;
+
 procedure tGlobals.SetNetOnIP(NewValue: boolean);
 begin
   if fV.fNetOnIP = NewValue then
     exit;
   fV.fNetOnIP := NewValue;
+  GlobalVarModified;
+end;
+
+procedure tGlobals.SetHasNet(NewValue: boolean);
+begin
+  if fV.fHasNet = NewValue then
+    exit;
+  fV.fHasNet := NewValue;
   GlobalVarModified;
 end;
 
@@ -1870,6 +1904,34 @@ begin
   GlobalVarModified;
 end;
 
+procedure tGlobals.SetMqttId(NewValue : integer);
+begin
+  if NewValue=fV.fMqttId then exit;
+  fV.fMqttId:=NewValue;
+  GlobalVarModified;
+end;
+
+procedure tGlobals.SetMqttUser(const NewValue : string);
+begin
+  if NewValue=fV.fMqttUser then exit;
+  fV.fMqttUser:=NewValue;
+  GlobalVarModified;
+end;
+
+procedure tGlobals.SetMqttPsw(const NewValue : string);
+begin
+  if NewValue=fV.fMqttPsw then exit;
+  fV.fMqttPsw:=NewValue;
+  GlobalVarModified;
+end;
+
+procedure tGlobals.SetMqttCh(const NewValue : string);
+begin
+  if NewValue=fV.fMqttCh then exit;
+  fV.fMqttCh:=NewValue;
+  GlobalVarModified;
+end;
+
 {***** modify events ********************************}
 procedure tGlobals.ModEvent;
 begin
@@ -1920,7 +1982,9 @@ begin
     fV.fIPnum[i]:='';
     fV.fIPport[i]:=1024;
   end;
+  fV.fRecIPport:=1024;
   fV.fNetOnIP := true;
+  fV.fHasNet:=false;
   fV.fScrCtrl := 0;
   fV.fScrProj := 0;
   fV.fScrFoto := 0;
@@ -1958,6 +2022,10 @@ begin
   fV.fSaveCnt:=0;
   fV.fKottaCnt:=0;
   fV.fShutdownCmd:='shutdown -P now';
+  fV.fMqttId:=0;
+  fV.fMqttUser:='';
+  fV.fMqttPsw:='';
+  fV.fMqttCh:='';
 
   fProfilCount := 1;
   SetLength(fProfiles, 1);
@@ -2599,8 +2667,12 @@ var
       if Reg.GetDataType('IPport'+IntToStr(i)) = rdInteger then
         IPport[i]:=Reg.ReadInteger('IPport'+IntToStr(i));
     end;
+    if Reg.GetDataType('RecIPport')=rdInteger then
+      RecIPport:=Reg.ReadInteger('RecIPport');
     if Reg.ValueExists('NetOnIP') then
       NetOnIP := Reg.ReadBool('NetOnIP');
+    if Reg.ValueExists('HasNet') then
+      HasNet:=Reg.ReadBool('HasNet');
     if Reg.GetDataType('ScrCtrl') = rdInteger then
       fV.fScrCtrl := Reg.ReadInteger('ScrCtrl');
     //ha idolegesen nincs is meg a kepernyo!!!
@@ -2682,6 +2754,11 @@ var
     end;
     if Reg.ValueExists('ScholaMode') then ScholaMode := Reg.ReadBool('ScholaMode');
     if Reg.ValueExists('KorusMode') then KorusMode := Reg.ReadBool('KorusMode');
+    if Reg.GetDataType('MqttId')=rdInteger then
+      MqttId:=Reg.ReadInteger('MqttId');
+    if Reg.ValueExists('MqttU') then MqttUser:=LoadRegString('MqttU');
+    if Reg.ValueExists('MqttP') then MqttPsw:=LoadRegString('MqttP');
+    if Reg.ValueExists('MqttC') then MqttCh:=LoadRegString('MqttC');
 
     r := BorderRect;
     LoadRect(r, 'Border');
@@ -3066,7 +3143,9 @@ begin
         SaveRegString('IPnum'+IntToStr(i), IPnum[i]);
         Reg.WriteInteger('IPport'+IntToStr(i), IPport[i]);
       end;
+      Reg.WriteInteger('RecIPport',RecIPport);
       Reg.WriteBool('NetOnIP', NetOnIP);
+      Reg.WriteBool('HasNet', HasNet);
       Reg.WriteInteger('ScrCtrl', fV.fScrCtrl);  //!!!! ha idolegesen nincs is meg
       Reg.WriteInteger('ScrProj', fV.fScrProj);  //!!!! az adott monitor...
       Reg.WriteInteger('ScrFoto', fV.fScrFoto);
@@ -3135,6 +3214,10 @@ begin
         SaveRegString('SerialProj'+IntToStr(i), SerialProjTxt[i]);
       Reg.WriteBool('ScholaMode', ScholaMode);
       Reg.WriteBool('KorusMode', KorusMode);
+      Reg.WriteInteger('MqttId', MqttId);
+      SaveRegString('MqttU', MqttUser);
+      SaveRegString('MqttP', MqttPsw);
+      SaveRegString('MqttC', MqttCh);
 
       i := 0;
       while Reg.KeyExists('Profil' + IntToStr(i)) do
@@ -3240,6 +3323,41 @@ begin
       Result:=Result+' (fő énekrend)';
   end else begin
     if Assigned(o) then Result:=Result+o.FullTitle;
+  end;
+end;
+
+function tGlobals.DecodePsw(const secret : string) : string;
+var
+  i,len,v1,v2 : integer;
+  c1,c2 : char;
+begin
+  Result:='';
+  len:=Length(secret);
+  i:=0;
+  while i<len do begin
+    inc(i);
+    c1:=secret[i];
+    if c1 in ['A','a'] then continue;
+    inc(i);
+    if i>len then break;
+    c2:=secret[i];
+    v1:=iif(c1>='c',ord(c1)-ord('c'),ord(c1)-ord('B'));
+    v2:=iif(c2>='c',ord(c2)-ord('c')-4,ord(c2)-ord('B')-4);
+    Result:=Result+char((v1 and 15)+((v2 and 15) shl 4));
+  end;
+end;
+
+function tGlobals.EncodePsw(const public : string) : string;
+var
+  i : integer;
+  ch,cb : char;
+begin
+  Result:='';
+  for i:=1 to Length(public) do begin
+    ch:=public[i];
+    if ((i xor ord(ch)) and 7)=0 then Result:=Result+iif((i and 1)=0,'A','a');
+    cb:=iif(((i xor ord(ch)) and 1)=0,'B','c');
+    Result:=Result+char(ord(cb)+(ord(ch) and 15))+char(ord(cb)+4+(ord(ch) shr 4));
   end;
 end;
 

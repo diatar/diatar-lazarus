@@ -322,6 +322,13 @@ type
     procedure SendAskSize;
   end;
 
+// tMyMemStream = kulso memoriat hasznal puffernek, igy nem kell masolgatni
+type
+  tMyMemStream = class(tCustomMemoryStream)
+  public
+    procedure SetMem(Ptr : pointer; aSize : longint);
+  end;
+
 implementation
 
 uses uNetwork;
@@ -809,7 +816,7 @@ procedure tNetIO.StartServerIP;
 begin
   if fIndex<>1 then exit;
   StartIP;
-  TCPComp.Listen(Globals.IPport[fIndex]);
+  TCPComp.Listen(Globals.RecIPport);
 end;
 
 //kapcsolat inditasa: TCP/IP, ez a kliens (VEZERLO)
@@ -986,15 +993,6 @@ begin
   p:=@IpBuf[IpRecPos];
   fOnRecState(Self,p^.Rec);
 end;
-
-///////////////////////////////////
-// tMyMemStream = kulso memoriat hasznal puffernek, igy nem kell masolgatni
-///////////////////////////////////
-type
-  tMyMemStream = class(tCustomMemoryStream)
-  public
-    procedure SetMem(Ptr : pointer; aSize : longint);
-  end;
 
 procedure tMyMemStream.SetMem(Ptr : pointer; aSize : longint);
 begin

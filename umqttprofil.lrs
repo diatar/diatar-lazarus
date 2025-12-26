@@ -1,0 +1,22 @@
+{ This is an automatically generated lazarus resource file }
+
+LazarusResources.Add('TMqttProfil','FORMDATA',[
+  'TPF0'#11'TMqttProfil'#10'MqttProfil'#4'Left'#3#0#1#6'Height'#3#209#0#3'Top'#3
+  +#145#0#5'Width'#3#249#0#11'BorderStyle'#7#8'bsDialog'#7'Caption'#6#19'Profil'
+  +' m'#195#179'dos'#195#173't'#195#161's'#12'ClientHeight'#3#209#0#11'ClientWi'
+  +'dth'#3#249#0#9'OnDestroy'#7#11'FormDestroy'#8'Position'#7#17'poOwnerFormCen'
+  +'ter'#10'LCLVersion'#6#7'3.6.0.0'#0#7'TButton'#9'ModPswBtn'#4'Left'#2' '#6'H'
+  +'eight'#2#25#3'Top'#2#8#5'Width'#3#176#0#7'Caption'#6#20'Jelsz'#195#179' m'
+  +#195#179'dos'#195#173't'#195#161's'#8'TabOrder'#2#0#7'OnClick'#7#14'ModPswBt'
+  +'nClick'#0#0#7'TButton'#11'ModEmailBtn'#4'Left'#2' '#6'Height'#2#25#3'Top'#2
+  +'('#5'Width'#3#176#0#7'Caption'#6#18'Email m'#195#179'dos'#195#173't'#195#161
+  +'s'#8'TabOrder'#2#1#7'OnClick'#7#16'ModEmailBtnClick'#0#0#7'TButton'#10'ModN'
+  +'ameBtn'#4'Left'#2' '#6'Height'#2#25#3'Top'#2'H'#5'Width'#3#176#0#7'Caption'
+  +#6#22'Felh.n'#195#169'v m'#195#179'dos'#195#173't'#195#161's'#8'TabOrder'#2#2
+  +#7'OnClick'#7#15'ModNameBtnClick'#0#0#7'TButton'#10'DelUserBtn'#4'Left'#2' '
+  +#6'Height'#2#25#3'Top'#2'h'#5'Width'#3#176#0#7'Caption'#6#15'FELH. T'#195#150
+  +'RL'#195#137'SE'#8'TabOrder'#2#3#7'OnClick'#7#15'DelUserBtnClick'#0#0#7'TBit'
+  +'Btn'#7'BitBtn1'#4'Left'#2'X'#6'Height'#2#30#3'Top'#3#160#0#5'Width'#2'K'#7
+  +'Caption'#6#7'Be&z'#195#161'r'#4'Kind'#7#7'bkClose'#11'ModalResult'#2#11#8'T'
+  +'abOrder'#2#4#0#0#0
+]);

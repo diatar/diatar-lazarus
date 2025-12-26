@@ -13,7 +13,7 @@ object SetupForm: TSetupForm
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
-  LCLVersion = '2.2.0.4'
+  LCLVersion = '3.6.0.0'
   object Label1: TLabel
     Left = 212
     Height = 35
@@ -56,15 +56,17 @@ object SetupForm: TSetupForm
       FFFFFFFFFFFFFFFFFFFFFFFF00000000000000000010000000476F6D626F6B20
       C3A973206A656C656BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000
       00001000000042696C6C656E7479C5B16BC3B3646F6BFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFF04000000000000000114000000566574C3AD74C3A9736920C3BC
-      7A656D6DC3B364FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000000
-      0B0000004BC3A97065726E79C5916BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
-      00000000000000000F00000048C3A16CC3B37A617469206DC3B364FFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFFF0000000000000000001400000050726F6A656B746F
-      722076657AC3A9726CC3A973FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000
-      0000000000150000004D617267C3B36B20C3A97320666F72676174C3A173FFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000000000000800000050726F6669
-      6C6F6B
+      FFFFFFFFFFFF06000000000000000109000000566574C3AD74C3A973FFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFF0000000000000000000F00000048656C79692068
+      C3A16CC3B37A6174FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000000000
+      0014000000496E7465726E65746573206B617063736F6C6174FFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFF0000000000000000000B0000004BC3A97065726E79C591
+      6BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000000016000000496E
+      64756CC3A17320C3A973206C65C3A16C6CC3A173FFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFF0000000000000000001400000050726F6A656B746F722076657AC3A9
+      726CC3A973FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000000000001500
+      00004D617267C3B36B20C3A97320666F72676174C3A173FFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFF0000000000000000000800000050726F66696C6F6B
     }
   end
   object ProfilLst: TComboBox
@@ -74,9 +76,9 @@ object SetupForm: TSetupForm
     Width = 144
     ItemHeight = 15
     MaxLength = 65535
-    OnChange = ProfilLstChange
     Style = csDropDownList
     TabOrder = 1
+    OnChange = ProfilLstChange
   end
   object SwitchBtn: TBitBtn
     Left = 440
@@ -109,14 +111,51 @@ object SetupForm: TSetupForm
     ModalResult = 2
     TabOrder = 4
   end
+  object ProfilChangedGrp: TPanel
+    Left = 517
+    Height = 38
+    Top = 0
+    Width = 181
+    ClientHeight = 38
+    ClientWidth = 181
+    TabOrder = 5
+    Visible = False
+    object Image1: TImage
+      Left = 3
+      Height = 16
+      Top = 9
+      Width = 16
+      AutoSize = True
+      Picture.Data = {
+        07544269746D6170F6000000424DF60000000000000076000000280000001000
+        0000100000000100040000000000800000000000000000000000000000000000
+        0000000000000000800000800000008080008000000080008000808000008080
+        8000C0C0C0000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFF
+        FF00F00000000000000F7BBBBBBBBBBBBBB07BBBBBB00BBBBBB0F7BBBBB00BBB
+        BB0FF7BBBBBBBBBBBB0FFF7BBBB00BBBB0FFFF7BBBB00BBBB0FFFFF7BBB00BBB
+        0FFFFFF7BBB00BBB0FFFFFFF7BB00BB0FFFFFFFF7BB00BB0FFFFFFFFF7B00B0F
+        FFFFFFFFF7BBBB0FFFFFFFFFFF7BB0FFFFFFFFFFFF7BB0FFFFFFFFFFFFF00FFF
+        FFFF
+      }
+      Transparent = True
+    end
+    object ProfilChangedLbl: TLabel
+      Left = 24
+      Height = 33
+      Top = 3
+      Width = 158
+      AutoSize = False
+      WordWrap = True
+    end
+  end
   object PgFrm: TPageControl
     Left = 212
     Height = 460
     Top = 32
     Width = 481
-    ActivePage = PgProj
-    TabIndex = 1
-    TabOrder = 5
+    ActivePage = PgSer
+    TabIndex = 14
+    TabOrder = 6
     object PgShow: TTabSheet
       Caption = 'PgShow'
       ClientHeight = 432
@@ -165,14 +204,14 @@ object SetupForm: TSetupForm
         Top = 36
         Width = 24
         Caption = '...'
-        OnClick = DiaDirBtnClick
         TabOrder = 1
+        OnClick = DiaDirBtnClick
       end
       object NoQueryCk: TCheckBox
         Left = 82
         Height = 19
         Top = 128
-        Width = 232
+        Width = 230
         Caption = 'Ne figyelmeztessen énekrend mentésére'
         TabOrder = 5
       end
@@ -180,7 +219,7 @@ object SetupForm: TSetupForm
         Left = 82
         Height = 19
         Top = 184
-        Width = 190
+        Width = 188
         Caption = 'TXT fájlok nevét ne írja címsorba'
         TabOrder = 6
       end
@@ -188,16 +227,16 @@ object SetupForm: TSetupForm
         Left = 82
         Height = 19
         Top = 95
-        Width = 295
+        Width = 293
         Caption = 'Adott naphoz mentett énekrend betöltése indításkor'
-        OnClick = AutoLoadDiaCkClick
         TabOrder = 4
+        OnClick = AutoLoadDiaCkClick
       end
       object SongLstCk: TCheckBox
         Left = 82
         Height = 19
         Top = 213
-        Width = 230
+        Width = 228
         Caption = '"Énekrend" lista gomb (főablakban alul)'
         TabOrder = 7
       end
@@ -215,14 +254,14 @@ object SetupForm: TSetupForm
         Top = 64
         Width = 24
         Caption = '...'
-        OnClick = DiaDir2BtnClick
         TabOrder = 3
+        OnClick = DiaDir2BtnClick
       end
       object UseTxHibaCk: TCheckBox
         Left = 128
         Height = 19
         Top = 294
-        Width = 105
+        Width = 103
         Caption = 'listába szürkével'
         TabOrder = 8
       end
@@ -230,7 +269,7 @@ object SetupForm: TSetupForm
         Left = 288
         Height = 19
         Top = 294
-        Width = 78
+        Width = 76
         Caption = 'hibaüzenet'
         TabOrder = 9
       end
@@ -238,7 +277,7 @@ object SetupForm: TSetupForm
         Left = 82
         Height = 19
         Top = 240
-        Width = 156
+        Width = 154
         Caption = 'Feltűnő "VETÍTÉS" jelzések'
         TabOrder = 10
       end
@@ -246,7 +285,7 @@ object SetupForm: TSetupForm
         Left = 82
         Height = 19
         Top = 267
-        Width = 198
+        Width = 196
         Caption = 'Nagy gombok érintőképernyőhöz'
         TabOrder = 11
       end
@@ -254,7 +293,7 @@ object SetupForm: TSetupForm
         Left = 82
         Height = 19
         Top = 156
-        Width = 182
+        Width = 180
         Caption = 'Automatikus énekrend mentés'
         TabOrder = 12
       end
@@ -332,8 +371,8 @@ object SetupForm: TSetupForm
         Width = 248
         ItemHeight = 15
         MaxLength = 65535
-        OnChange = FontLstChange
         TabOrder = 1
+        OnChange = FontLstChange
       end
       object FontSize: TSpinEdit
         Left = 162
@@ -361,7 +400,7 @@ object SetupForm: TSetupForm
         Left = 26
         Height = 19
         Top = 156
-        Width = 145
+        Width = 143
         Caption = 'Automatikus kicsinyítés'
         TabOrder = 5
       end
@@ -369,7 +408,7 @@ object SetupForm: TSetupForm
         Left = 136
         Height = 19
         Top = 236
-        Width = 64
+        Width = 62
         Caption = 'Félkövér'
         TabOrder = 8
       end
@@ -418,8 +457,8 @@ object SetupForm: TSetupForm
         Top = 336
         Width = 24
         Caption = '...'
-        OnClick = BkPicBtnClick
         TabOrder = 14
+        OnClick = BkPicBtnClick
       end
       object ScrollBox1: TScrollBox
         Left = 232
@@ -444,7 +483,7 @@ object SetupForm: TSetupForm
         Left = 228
         Height = 19
         Top = 236
-        Width = 78
+        Width = 76
         Caption = 'Sorközépre'
         TabOrder = 9
       end
@@ -452,7 +491,7 @@ object SetupForm: TSetupForm
         Left = 328
         Height = 19
         Top = 236
-        Width = 80
+        Width = 78
         Caption = 'Lapközépre'
         TabOrder = 10
       end
@@ -595,7 +634,7 @@ object SetupForm: TSetupForm
         Left = 26
         Height = 19
         Top = 214
-        Width = 64
+        Width = 62
         Caption = 'Áttűnés:'
         TabOrder = 6
       end
@@ -622,7 +661,7 @@ object SetupForm: TSetupForm
         Left = 26
         Height = 19
         Top = 174
-        Width = 104
+        Width = 102
         Caption = 'Címsor elrejtése'
         TabOrder = 15
       end
@@ -630,7 +669,7 @@ object SetupForm: TSetupForm
         Left = 26
         Height = 19
         Top = 192
-        Width = 113
+        Width = 111
         Caption = 'Inverz kottaszínek'
         TabOrder = 16
       end
@@ -853,7 +892,7 @@ object SetupForm: TSetupForm
         Left = 4
         Height = 19
         Top = 87
-        Width = 127
+        Width = 125
         Caption = 'Ének-kereső funkció'
         TabOrder = 2
       end
@@ -861,10 +900,10 @@ object SetupForm: TSetupForm
         Left = 4
         Height = 19
         Top = 271
-        Width = 76
+        Width = 74
         Caption = 'Kis előkép:'
-        OnClick = HintCkClick
         TabOrder = 7
+        OnClick = HintCkClick
       end
       object ListName: TComboBox
         Left = 140
@@ -873,8 +912,8 @@ object SetupForm: TSetupForm
         Width = 248
         ItemHeight = 15
         MaxLength = 65535
-        OnChange = ListNameChange
         TabOrder = 0
+        OnChange = ListNameChange
       end
       object ScrollBox2: TScrollBox
         Left = 232
@@ -899,7 +938,7 @@ object SetupForm: TSetupForm
         Left = 4
         Height = 19
         Top = 110
-        Width = 200
+        Width = 198
         Caption = 'Bal behúzás az énekrend-listákban'
         TabOrder = 3
       end
@@ -907,7 +946,7 @@ object SetupForm: TSetupForm
         Left = 4
         Height = 19
         Top = 135
-        Width = 263
+        Width = 261
         Caption = 'Dupla diák lehetősége (két versszak egy képre)'
         TabOrder = 4
       end
@@ -915,7 +954,7 @@ object SetupForm: TSetupForm
         Left = 4
         Height = 19
         Top = 157
-        Width = 135
+        Width = 133
         Caption = 'Hang-fájlok lejátszása'
         TabOrder = 5
       end
@@ -923,7 +962,7 @@ object SetupForm: TSetupForm
         Left = 22
         Height = 19
         Top = 180
-        Width = 178
+        Width = 176
         Caption = 'Utána automatikus továbbítás'
         TabOrder = 6
       end
@@ -931,7 +970,7 @@ object SetupForm: TSetupForm
         Left = 4
         Height = 19
         Top = 203
-        Width = 285
+        Width = 283
         Caption = 'Lista görgetése középtájra (egyéni beállítás szerint)'
         TabOrder = 10
       end
@@ -939,7 +978,7 @@ object SetupForm: TSetupForm
         Left = 22
         Height = 19
         Top = 226
-        Width = 279
+        Width = 277
         Caption = 'Beállítás engedélyezése (nyilak a lista jobb szélén)'
         TabOrder = 11
       end
@@ -952,7 +991,7 @@ object SetupForm: TSetupForm
         Left = 4
         Height = 19
         Top = 14
-        Width = 172
+        Width = 170
         Caption = 'Funkcióbillentyűk használata'
         TabOrder = 0
       end
@@ -987,7 +1026,7 @@ object SetupForm: TSetupForm
         Left = 214
         Height = 19
         Top = 14
-        Width = 160
+        Width = 158
         Caption = 'Funkcióbillentyűk elrejtése'
         TabOrder = 4
       end
@@ -1070,7 +1109,7 @@ object SetupForm: TSetupForm
         Left = 200
         Height = 19
         Top = 53
-        Width = 147
+        Width = 145
         Caption = 'Mindig látszanak a fülek'
         TabOrder = 1
       end
@@ -1080,8 +1119,8 @@ object SetupForm: TSetupForm
         Top = 80
         Width = 304
         ItemHeight = 0
-        OnDblClick = DiaLstDblClick
         TabOrder = 2
+        OnDblClick = DiaLstDblClick
       end
       object DiaLstDelBtn: TButton
         Tag = 1
@@ -1090,8 +1129,8 @@ object SetupForm: TSetupForm
         Top = 120
         Width = 83
         Caption = 'Töröl'
-        OnClick = DiaLstDelBtnClick
         TabOrder = 3
+        OnClick = DiaLstDelBtnClick
       end
       object DiaLstSetBtn: TButton
         Tag = 1
@@ -1100,8 +1139,8 @@ object SetupForm: TSetupForm
         Top = 88
         Width = 83
         Caption = 'Tallóz...'
-        OnClick = DiaLstSetBtnClick
         TabOrder = 4
+        OnClick = DiaLstSetBtnClick
       end
     end
     object PgPort: TTabSheet
@@ -1434,7 +1473,7 @@ object SetupForm: TSetupForm
         Left = 114
         Height = 19
         Top = 210
-        Width = 155
+        Width = 153
         Caption = 'Lenyomás az aktív állapot'
         TabOrder = 8
       end
@@ -1525,8 +1564,8 @@ object SetupForm: TSetupForm
           Top = 4
           Width = 160
           Caption = 'Alapértelmezett vissza'
-          OnClick = KbResetBtnClick
           TabOrder = 0
+          OnClick = KbResetBtnClick
         end
         object KbNoModBtn: TButton
           Left = 180
@@ -1534,8 +1573,8 @@ object SetupForm: TSetupForm
           Top = 4
           Width = 160
           Caption = 'Módosítás előtti vissza'
-          OnClick = KbNoModBtnClick
           TabOrder = 1
+          OnClick = KbNoModBtnClick
         end
       end
       object KbScrollBox: TScrollBox
@@ -1558,9 +1597,9 @@ object SetupForm: TSetupForm
         Left = 8
         Height = 92
         Top = 6
-        Width = 240
+        Width = 224
         AutoFill = True
-        Caption = 'Üzemmód'
+        Caption = 'Ennek a gépnek a fő funkciója'
         ChildSizing.LeftRightSpacing = 6
         ChildSizing.TopBottomSpacing = 6
         ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
@@ -1570,11 +1609,11 @@ object SetupForm: TSetupForm
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
         ClientHeight = 72
-        ClientWidth = 236
+        ClientWidth = 220
         Items.Strings = (
-          'Egy gép, két képernyő'
-          'Hálózatos gép: /VEZERLO'
-          'Hálózatos gép: /VETITO'
+          'Egyben vezérlő és vetítő is'
+          'Hálózatban: /VEZERLO'
+          'Hálózatban: /VETITO'
         )
         OnClick = ModeBtnClick
         TabOrder = 0
@@ -1582,63 +1621,63 @@ object SetupForm: TSetupForm
       object DualOnControlCk: TCheckBox
         Left = 8
         Height = 19
-        Top = 110
-        Width = 296
+        Top = 136
+        Width = 294
         Caption = '/DUAL = a VEZERLO gépen is legyen vetítő képernyő'
         TabOrder = 1
       end
       object ScholaCk: TCheckBox
         Left = 8
         Height = 19
-        Top = 134
-        Width = 191
+        Top = 160
+        Width = 189
         Caption = '/SCHOLA = kar a helyi gép körül'
         TabOrder = 2
       end
       object KorusCk: TCheckBox
         Left = 8
         Height = 19
-        Top = 158
-        Width = 227
+        Top = 184
+        Width = 225
         Caption = '/KORUS = kar a távoli (vetítő) gép körül'
         TabOrder = 3
       end
       object AkkordCk: TCheckBox
         Left = 8
         Height = 19
-        Top = 182
-        Width = 255
+        Top = 208
+        Width = 253
         Caption = '/AKKORD = akkordok a helyi (vezérlő) gépen'
         TabOrder = 4
       end
       object TavAkkordCk: TCheckBox
         Left = 8
         Height = 19
-        Top = 206
-        Width = 187
+        Top = 232
+        Width = 185
         Caption = 'akkordok a távoli (vetítő) gépen'
         TabOrder = 5
       end
       object KottaCk: TCheckBox
         Left = 8
         Height = 19
-        Top = 230
-        Width = 223
+        Top = 256
+        Width = 221
         Caption = '/KOTTA = kotta a helyi (vezérlő) gépen'
         TabOrder = 6
       end
       object TavKottaCk: TCheckBox
         Left = 8
         Height = 19
-        Top = 254
-        Width = 165
+        Top = 280
+        Width = 163
         Caption = 'kotta a távoli (vetítő) gépen'
         TabOrder = 7
       end
       object Image3: TImage
-        Left = 252
+        Left = 240
         Height = 16
-        Top = 19
+        Top = 8
         Width = 16
         AutoSize = True
         Picture.Data = {
@@ -1654,12 +1693,12 @@ object SetupForm: TSetupForm
         }
       end
       object Label47: TLabel
-        Left = 272
-        Height = 89
-        Top = 17
-        Width = 195
+        Left = 264
+        Height = 104
+        Top = 6
+        Width = 208
         AutoSize = False
-        Caption = 'Az itt beállított üzemmód NEM kerül rögzítésre, a programot indítsa /VEZERLO illetve /VETITO parancssorral!'
+        Caption = 'Ez a funkció NEM kerül rögzítésre, a programot indítsa /VEZERLO ill. /VETITO parancssorral!'#13#10'Hálózati beállítások a következő oldalakon.'
         Font.CharSet = 4
         Font.Color = clBlue
         Font.Style = [fsBold]
@@ -1667,7 +1706,313 @@ object SetupForm: TSetupForm
         WordWrap = True
       end
     end
-    object TabSheet5: TTabSheet
+    object PgNet: TTabSheet
+      Caption = 'PgNet'
+      ClientHeight = 432
+      ClientWidth = 473
+      object NetNoBtn: TRadioButton
+        Left = 13
+        Height = 22
+        Top = 8
+        Width = 179
+        AutoSize = False
+        Caption = 'Nincs helyi hálón vetítés'
+        Checked = True
+        TabOrder = 0
+        TabStop = True
+        OnChange = NetNoBtnChange
+      end
+      object NetDirBtn: TRadioButton
+        Left = 13
+        Height = 22
+        Top = 33
+        Width = 179
+        AutoSize = False
+        Caption = 'Hálózati könyvtáras:'
+        TabOrder = 1
+        OnClick = NetDirBtnClick
+      end
+      object DirEd: TEdit
+        Left = 192
+        Height = 23
+        Top = 33
+        Width = 244
+        TabOrder = 2
+        Text = 'DirEd'
+      end
+      object DirSelBtn: TButton
+        Left = 437
+        Height = 25
+        Top = 32
+        Width = 26
+        Caption = '...'
+        TabOrder = 3
+        OnClick = DirSelBtnClick
+      end
+      object NetIpBtn: TRadioButton
+        Left = 13
+        Height = 19
+        Top = 64
+        Width = 101
+        Caption = 'Direkt TCP/IP-s:'
+        TabOrder = 4
+        OnClick = NetIpBtnClick
+      end
+      object IpNumEd1: TEdit
+        Left = 135
+        Height = 23
+        Top = 112
+        Width = 156
+        TabOrder = 5
+        Text = 'IpNumEd1'
+      end
+      object Label33: TLabel
+        Left = 345
+        Height = 15
+        Top = 88
+        Width = 38
+        Caption = 'Portok:'
+      end
+      object IpPortEd1: TEdit
+        Left = 345
+        Height = 23
+        Top = 112
+        Width = 60
+        NumbersOnly = True
+        TabOrder = 6
+        Text = 'IpPortEd1'
+      end
+      object IpNumEd2: TEdit
+        Left = 135
+        Height = 23
+        Top = 136
+        Width = 156
+        TabOrder = 7
+        Text = 'IpNumEd2'
+      end
+      object IpPortEd2: TEdit
+        Left = 345
+        Height = 23
+        Top = 136
+        Width = 60
+        NumbersOnly = True
+        TabOrder = 8
+        Text = 'IpPortEd2'
+      end
+      object IpNumEd3: TEdit
+        Left = 135
+        Height = 23
+        Top = 160
+        Width = 156
+        TabOrder = 9
+        Text = 'IpNumEd3'
+      end
+      object IpPortEd3: TEdit
+        Left = 345
+        Height = 23
+        Top = 160
+        Width = 60
+        NumbersOnly = True
+        TabOrder = 10
+        Text = 'IpPortEd3'
+      end
+      object IpNumEd4: TEdit
+        Left = 135
+        Height = 23
+        Top = 184
+        Width = 156
+        TabOrder = 11
+        Text = 'IpNumEd4'
+      end
+      object IpPortEd4: TEdit
+        Left = 345
+        Height = 23
+        Top = 184
+        Width = 60
+        NumbersOnly = True
+        TabOrder = 12
+        Text = 'IpPortEd4'
+      end
+      object IpNumEd5: TEdit
+        Left = 135
+        Height = 23
+        Top = 208
+        Width = 156
+        TabOrder = 13
+        Text = 'IpNumEd5'
+      end
+      object IpPortEd5: TEdit
+        Left = 345
+        Height = 23
+        Top = 208
+        Width = 60
+        NumbersOnly = True
+        TabOrder = 14
+        Text = 'IpPortEd5'
+      end
+      object IpNumEd6: TEdit
+        Left = 135
+        Height = 23
+        Top = 232
+        Width = 156
+        TabOrder = 15
+        Text = 'IpNumEd6'
+      end
+      object IpPortEd6: TEdit
+        Left = 345
+        Height = 23
+        Top = 232
+        Width = 60
+        NumbersOnly = True
+        TabOrder = 16
+        Text = 'IpPortEd6'
+      end
+      object Label57: TLabel
+        Left = 8
+        Height = 15
+        Top = 284
+        Width = 187
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'IP port vetítésnél:'
+      end
+      object IpRecPortEd: TEdit
+        Left = 199
+        Height = 23
+        Top = 280
+        Width = 60
+        NumbersOnly = True
+        TabOrder = 17
+        Text = 'IpRecPortEd'
+      end
+      object Label58: TLabel
+        Left = 135
+        Height = 15
+        Top = 88
+        Width = 144
+        Caption = 'Vetítők IP címei vezérlésnél:'
+      end
+    end
+    object PgMqtt: TTabSheet
+      Caption = 'PgMqtt'
+      ClientHeight = 432
+      ClientWidth = 473
+      object MqttState: TLabel
+        Left = 0
+        Height = 24
+        Top = 8
+        Width = 472
+        Alignment = taCenter
+        AutoSize = False
+        Font.CharSet = 4
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Bevel1: TBevel
+        Left = 8
+        Height = 2
+        Top = 64
+        Width = 458
+        Shape = bsTopLine
+      end
+      object MqttLoginBtn: TButton
+        Left = 112
+        Height = 25
+        Top = 80
+        Width = 219
+        Caption = 'Bejelentkezés'
+        TabOrder = 1
+        OnClick = MqttLoginBtnClick
+      end
+      object MqttRegBtn: TButton
+        Left = 112
+        Height = 25
+        Top = 112
+        Width = 219
+        Caption = 'Regisztráció'
+        TabOrder = 2
+        OnClick = MqttRegBtnClick
+      end
+      object MqttProfilBtn: TButton
+        Left = 112
+        Height = 25
+        Top = 144
+        Width = 219
+        Caption = 'Profil'
+        TabOrder = 3
+        OnClick = MqttProfilBtnClick
+      end
+      object MqttLostPsw: TButton
+        Left = 112
+        Height = 25
+        Top = 176
+        Width = 219
+        Caption = 'Elfelejtettem a jelszavam'
+        TabOrder = 4
+        OnClick = MqttLostPswClick
+      end
+      object MqttLogoutBtn: TButton
+        Left = 112
+        Height = 25
+        Top = 208
+        Width = 219
+        Caption = 'Kijelentkezés'
+        TabOrder = 5
+        OnClick = MqttLogoutBtnClick
+      end
+      object Bevel2: TBevel
+        Left = 8
+        Height = 2
+        Top = 248
+        Width = 458
+        Shape = bsTopLine
+      end
+      object MqttNoCk: TRadioButton
+        Left = 8
+        Height = 19
+        Top = 40
+        Width = 140
+        Caption = 'Nincs internetes vetítés'
+        TabOrder = 6
+        OnClick = MqttCkClick
+      end
+      object MqttSendCk: TRadioButton
+        Left = 8
+        Height = 19
+        Top = 80
+        Width = 62
+        Caption = 'Küldünk'
+        TabOrder = 0
+        OnClick = MqttCkClick
+      end
+      object MqttRecCk: TRadioButton
+        Left = 8
+        Height = 19
+        Top = 264
+        Width = 71
+        Caption = 'Fogadunk'
+        TabOrder = 7
+        OnClick = MqttCkClick
+      end
+      object MqttSelSenderBtn: TButton
+        Left = 112
+        Height = 25
+        Top = 264
+        Width = 219
+        Caption = 'Küldő választás'
+        TabOrder = 8
+        OnClick = MqttSelSenderBtnClick
+      end
+      object MqttAlwaysCk: TCheckBox
+        Left = 8
+        Height = 19
+        Top = 312
+        Width = 352
+        Caption = 'Minden programindulásnál ugyanígy (név+jelszó megjegyzése)'
+        TabOrder = 9
+      end
+    end
+    object PgScr: TTabSheet
       Caption = 'PgScr'
       ClientHeight = 432
       ClientWidth = 473
@@ -1706,9 +2051,9 @@ object SetupForm: TSetupForm
         Width = 329
         ItemHeight = 15
         MaxLength = 65535
-        OnChange = ScrChange
         Style = csDropDownList
         TabOrder = 1
+        OnChange = ScrChange
       end
       object Label44: TLabel
         Left = 2
@@ -1726,15 +2071,15 @@ object SetupForm: TSetupForm
         Width = 329
         ItemHeight = 15
         MaxLength = 65535
-        OnChange = ScrChange
         Style = csDropDownList
         TabOrder = 2
+        OnChange = ScrChange
       end
       object ScrollLockCk: TCheckBox
         Left = 8
         Height = 19
         Top = 142
-        Width = 171
+        Width = 169
         Caption = 'Scroll Lock elrejti a főablakot'
         TabOrder = 3
       end
@@ -1742,7 +2087,7 @@ object SetupForm: TSetupForm
         Left = 8
         Height = 19
         Top = 166
-        Width = 187
+        Width = 185
         Caption = 'Egér kizárása a vetítési területről'
         TabOrder = 4
       end
@@ -1750,7 +2095,7 @@ object SetupForm: TSetupForm
         Left = 8
         Height = 19
         Top = 190
-        Width = 190
+        Width = 188
         Caption = 'Projektor szinkronizáció segítése'
         TabOrder = 5
       end
@@ -1782,236 +2127,93 @@ object SetupForm: TSetupForm
         Left = 8
         Height = 19
         Top = 214
-        Width = 134
+        Width = 132
         Caption = 'Főablak helyett menü'
         TabOrder = 7
       end
     end
-    object PgNet: TTabSheet
-      Caption = 'PgNet'
+    object PgStart: TTabSheet
+      Caption = 'PgStart'
       ClientHeight = 432
       ClientWidth = 473
-      object Label33: TLabel
-        Left = 282
-        Height = 17
-        Top = 26
-        Width = 51
-        Alignment = taRightJustify
-        AutoSize = False
-        Caption = 'Port:'
-      end
-      object NetDirBtn: TRadioButton
-        Left = 13
-        Height = 22
-        Top = 0
-        Width = 179
-        AutoSize = False
-        Caption = 'Hálózati könyvtár:'
-        Checked = True
-        OnClick = NetDirBtnClick
-        TabOrder = 8
-        TabStop = True
-      end
-      object DirEd: TEdit
-        Left = 192
-        Height = 23
-        Top = 0
-        Width = 244
-        TabOrder = 0
-        Text = 'DirEd'
-      end
-      object DirSelBtn: TButton
-        Left = 437
-        Height = 25
-        Top = 0
-        Width = 26
-        Caption = '...'
-        OnClick = DirSelBtnClick
-        TabOrder = 1
-      end
-      object NetIpBtn: TRadioButton
-        Left = 16
-        Height = 19
-        Top = 24
-        Width = 90
-        Caption = 'Vetítő IP cím:'
-        OnClick = NetIpBtnClick
-        TabOrder = 9
-      end
-      object IpNumEd1: TEdit
-        Left = 128
-        Height = 23
-        Top = 24
-        Width = 156
-        TabOrder = 2
-        Text = 'IpNumEd1'
-      end
-      object IpPortEd1: TEdit
-        Left = 338
-        Height = 23
-        Top = 24
-        Width = 60
-        TabOrder = 3
-        Text = 'IpPortEd1'
-      end
       object EndProjCk: TCheckBox
-        Left = 13
+        Left = 8
         Height = 19
-        Top = 176
-        Width = 213
+        Top = 16
+        Width = 211
         Caption = 'Kilépéskor a vetítő program leállítása'
-        TabOrder = 4
+        TabOrder = 0
       end
       object EpAsk1Ck: TCheckBox
-        Left = 44
+        Left = 39
         Height = 19
-        Top = 199
-        Width = 67
+        Top = 39
+        Width = 65
         Caption = 'Rákérdez'
-        TabOrder = 5
+        TabOrder = 1
       end
       object ShutdownCk: TCheckBox
-        Left = 13
+        Left = 8
         Height = 19
-        Top = 224
-        Width = 228
+        Top = 64
+        Width = 226
         Caption = 'Kilépéskor a vetítő számítógép leállítása'
-        TabOrder = 6
+        TabOrder = 2
       end
       object EpAsk2Ck: TCheckBox
-        Left = 44
+        Left = 39
         Height = 19
-        Top = 248
-        Width = 67
+        Top = 88
+        Width = 65
         Caption = 'Rákérdez'
-        TabOrder = 7
-      end
-      object SerialOffProjCk: TCheckBox
-        Left = 13
-        Height = 19
-        Top = 272
-        Width = 337
-        Caption = 'Kilépéskor a vetítő projektor leállítása (ld. Projektor vezérlés!)'
-        TabOrder = 10
-      end
-      object SerialNetAskOffCk: TCheckBox
-        Left = 44
-        Height = 19
-        Top = 296
-        Width = 67
-        Caption = 'Rákérdez'
-        TabOrder = 11
-      end
-      object SerialOnProjCk: TCheckBox
-        Left = 13
-        Height = 19
-        Top = 320
-        Width = 343
-        Caption = 'Induláskor a vetítő projektor elindítása (ld. Projektor vezérlés!)'
-        TabOrder = 12
-      end
-      object SerialNetAskOnCk: TCheckBox
-        Left = 44
-        Height = 19
-        Top = 340
-        Width = 67
-        Caption = 'Rákérdez'
-        TabOrder = 13
+        TabOrder = 3
       end
       object LinuxCmdLbl: TLabel
-        Left = 144
+        Left = 139
         Height = 15
-        Top = 251
+        Top = 91
         Width = 44
         Caption = 'Parancs:'
       end
       object LinuxCmdEd: TEdit
-        Left = 206
+        Left = 201
         Height = 23
-        Top = 248
+        Top = 88
         Width = 264
-        TabOrder = 14
+        TabOrder = 4
         Text = 'LinuxCmdEd'
       end
-      object IpNumEd2: TEdit
-        Left = 128
-        Height = 23
-        Top = 48
-        Width = 156
-        TabOrder = 15
-        Text = 'IpNumEd2'
+      object SerialOffProjCk: TCheckBox
+        Left = 8
+        Height = 19
+        Top = 112
+        Width = 335
+        Caption = 'Kilépéskor a vetítő projektor leállítása (ld. Projektor vezérlés!)'
+        TabOrder = 5
       end
-      object IpPortEd2: TEdit
-        Left = 338
-        Height = 23
-        Top = 48
-        Width = 60
-        TabOrder = 16
-        Text = 'IpPortEd2'
+      object SerialNetAskOffCk: TCheckBox
+        Left = 39
+        Height = 19
+        Top = 136
+        Width = 65
+        Caption = 'Rákérdez'
+        TabOrder = 6
       end
-      object IpNumEd3: TEdit
-        Left = 128
-        Height = 23
-        Top = 72
-        Width = 156
-        TabOrder = 17
-        Text = 'IpNumEd3'
+      object SerialOnProjCk: TCheckBox
+        Left = 8
+        Height = 19
+        Top = 160
+        Width = 341
+        Caption = 'Induláskor a vetítő projektor elindítása (ld. Projektor vezérlés!)'
+        TabOrder = 7
       end
-      object IpPortEd3: TEdit
-        Left = 338
-        Height = 23
-        Top = 72
-        Width = 60
-        TabOrder = 18
-        Text = 'IpPortEd3'
-      end
-      object IpNumEd4: TEdit
-        Left = 128
-        Height = 23
-        Top = 96
-        Width = 156
-        TabOrder = 19
-        Text = 'IpNumEd4'
-      end
-      object IpPortEd4: TEdit
-        Left = 338
-        Height = 23
-        Top = 96
-        Width = 60
-        TabOrder = 20
-        Text = 'IpPortEd4'
-      end
-      object IpNumEd5: TEdit
-        Left = 128
-        Height = 23
-        Top = 120
-        Width = 156
-        TabOrder = 21
-        Text = 'IpNumEd5'
-      end
-      object IpPortEd5: TEdit
-        Left = 338
-        Height = 23
-        Top = 120
-        Width = 60
-        TabOrder = 22
-        Text = 'IpPortEd5'
-      end
-      object IpNumEd6: TEdit
-        Left = 128
-        Height = 23
-        Top = 144
-        Width = 156
-        TabOrder = 23
-        Text = 'IpNumEd6'
-      end
-      object IpPortEd6: TEdit
-        Left = 338
-        Height = 23
-        Top = 144
-        Width = 60
-        TabOrder = 24
-        Text = 'IpPortEd6'
+      object SerialNetAskOnCk: TCheckBox
+        Left = 39
+        Height = 19
+        Top = 180
+        Width = 65
+        Caption = 'Rákérdez'
+        TabOrder = 8
       end
     end
     object PgSer: TTabSheet
@@ -2042,7 +2244,6 @@ object SetupForm: TSetupForm
         Top = 4
         Width = 92
         ItemHeight = 0
-        ScrollWidth = 90
         TabOrder = 0
       end
       object SerBaudLst: TListBox
@@ -2051,7 +2252,6 @@ object SetupForm: TSetupForm
         Top = 5
         Width = 92
         ItemHeight = 0
-        ScrollWidth = 90
         TabOrder = 1
       end
       object Panel1: TPanel
@@ -2078,7 +2278,7 @@ object SetupForm: TSetupForm
         Left = 0
         Height = 19
         Top = 56
-        Width = 185
+        Width = 183
         Caption = 'Vezérlő vezetékek bekapcsolása'
         TabOrder = 3
       end
@@ -2098,7 +2298,7 @@ object SetupForm: TSetupForm
             Left = 4
             Height = 19
             Top = 2
-            Width = 67
+            Width = 65
             Caption = 'Rákérdez'
             TabOrder = 0
           end
@@ -2119,7 +2319,7 @@ object SetupForm: TSetupForm
             Left = 4
             Height = 19
             Top = 2
-            Width = 67
+            Width = 65
             Caption = 'Rákérdez'
             TabOrder = 0
           end
@@ -2165,8 +2365,8 @@ object SetupForm: TSetupForm
         Top = 27
         Width = 75
         Caption = '&Teszt'
-        OnClick = SerTestBtnClick
         TabOrder = 5
+        OnClick = SerTestBtnClick
       end
     end
     object PgRot: TTabSheet
@@ -2195,48 +2395,48 @@ object SetupForm: TSetupForm
         Left = 5
         Height = 19
         Top = 5
-        Width = 70
+        Width = 68
         Caption = 'Tükrözött'
-        OnChange = XBorderEdChange
         TabOrder = 0
+        OnChange = XBorderEdChange
       end
       object Rot0Ck: TRadioButton
         Left = 107
         Height = 19
         Top = 5
-        Width = 31
+        Width = 29
         Caption = '0°'
         Checked = True
-        OnChange = XBorderEdChange
         TabOrder = 1
         TabStop = True
+        OnChange = XBorderEdChange
       end
       object Rot90Ck: TRadioButton
         Left = 167
         Height = 19
         Top = 5
-        Width = 37
+        Width = 35
         Caption = '90°'
-        OnChange = XBorderEdChange
         TabOrder = 2
+        OnChange = XBorderEdChange
       end
       object Rot180Ck: TRadioButton
         Left = 235
         Height = 19
         Top = 6
-        Width = 43
+        Width = 41
         Caption = '180°'
-        OnChange = XBorderEdChange
         TabOrder = 3
+        OnChange = XBorderEdChange
       end
       object Rot270Ck: TRadioButton
         Left = 319
         Height = 19
         Top = 6
-        Width = 43
+        Width = 41
         Caption = '270°'
-        OnChange = XBorderEdChange
         TabOrder = 4
+        OnChange = XBorderEdChange
       end
       object GroupBox1: TGroupBox
         Left = 2
@@ -2323,10 +2523,10 @@ object SetupForm: TSetupForm
           Left = 2
           Height = 19
           Top = 104
-          Width = 102
+          Width = 100
           Caption = '/VEZERLO küldi'
-          OnChange = UseBRectCkChange
           TabOrder = 4
+          OnChange = UseBRectCkChange
         end
       end
       object HKeyEd: TSpinEdit
@@ -2384,7 +2584,7 @@ object SetupForm: TSetupForm
           Left = 16
           Height = 19
           Top = 10
-          Width = 117
+          Width = 115
           Caption = 'Rákérdez a profilra'
           Checked = True
           TabOrder = 0
@@ -2394,7 +2594,7 @@ object SetupForm: TSetupForm
           Left = 13
           Height = 19
           Top = 54
-          Width = 116
+          Width = 114
           Caption = 'Mindig ezzel indít:'
           TabOrder = 1
         end
@@ -2405,48 +2605,11 @@ object SetupForm: TSetupForm
           Width = 248
           ItemHeight = 15
           MaxLength = 65535
-          OnChange = ThisProfilLstChange
           Style = csDropDownList
           TabOrder = 2
+          OnChange = ThisProfilLstChange
         end
       end
-    end
-  end
-  object ProfilChangedGrp: TPanel
-    Left = 517
-    Height = 38
-    Top = 0
-    Width = 181
-    ClientHeight = 38
-    ClientWidth = 181
-    TabOrder = 6
-    Visible = False
-    object Image1: TImage
-      Left = 3
-      Height = 16
-      Top = 9
-      Width = 16
-      AutoSize = True
-      Picture.Data = {
-        07544269746D6170F6000000424DF60000000000000076000000280000001000
-        0000100000000100040000000000800000000000000000000000000000000000
-        0000000000000000800000800000008080008000000080008000808000008080
-        8000C0C0C0000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFF
-        FF00F00000000000000F7BBBBBBBBBBBBBB07BBBBBB00BBBBBB0F7BBBBB00BBB
-        BB0FF7BBBBBBBBBBBB0FFF7BBBB00BBBB0FFFF7BBBB00BBBB0FFFFF7BBB00BBB
-        0FFFFFF7BBB00BBB0FFFFFFF7BB00BB0FFFFFFFF7BB00BB0FFFFFFFFF7B00B0F
-        FFFFFFFFF7BBBB0FFFFFFFFFFF7BB0FFFFFFFFFFFF7BB0FFFFFFFFFFFFF00FFF
-        FFFF
-      }
-      Transparent = True
-    end
-    object ProfilChangedLbl: TLabel
-      Left = 24
-      Height = 33
-      Top = 3
-      Width = 158
-      AutoSize = False
-      WordWrap = True
     end
   end
   object ColorDlg: TColorDialog

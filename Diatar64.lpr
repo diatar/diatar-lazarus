@@ -14,8 +14,8 @@ uses
   uPropEdit, uSetupDtx, uDtxFlagsList, uAkkord, uNetBase, uSerialIO, uNetQueue,
   uNetOffDlg, uAkkordForm, uSearchForm, uSerialIOForm, uKottaEditor, uKottazo,
   uKottaKepek, uFotoForm, uMyFileDlgs, uMainMenu, uMain, uDiaLoadSave,
-  uSelGotoTarget, WinUser, uTxtAtom, uZsolozsmaForm, datetimectrls,
-  lnetbase, uSplash;
+  uSelGotoTarget, WinUser, uTxtAtom, uZsolozsmaForm, datetimectrls, lnetbase,
+  uSplash, uMqttPsw, uMqttLogin, uMqttRegistration, uMqttProfil, uMqttReceiver;
 
 //{$IFDEF WINDOWS}{$R Diatar.rc}{$ENDIF}
 

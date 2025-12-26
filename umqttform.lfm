@@ -1,0 +1,505 @@
+object MqttForm: TMqttForm
+  Left = 256
+  Height = 360
+  Top = 145
+  Width = 416
+  BorderStyle = bsDialog
+  Caption = 'Internetes vetítés'
+  ClientHeight = 360
+  ClientWidth = 416
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  ShowHint = True
+  LCLVersion = '3.2.0.0'
+  object LoggedState: TPanel
+    Left = 0
+    Height = 24
+    Top = 0
+    Width = 416
+    Align = alTop
+    BevelOuter = bvLowered
+    Caption = 'Kijelentkezve.'
+    Font.Style = [fsBold]
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+  end
+  object Pages: TPageControl
+    Left = 0
+    Height = 336
+    Top = 24
+    Width = 416
+    ActivePage = TSRec
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 1
+    object TSRec: TTabSheet
+      Caption = 'Fogadás'
+      ClientHeight = 308
+      ClientWidth = 408
+      object Label1: TLabel
+        Left = 8
+        Height = 40
+        Top = 8
+        Width = 392
+        Anchors = [akTop, akLeft, akRight]
+        AutoSize = False
+        Caption = 'Ha szeretne más vetítéséhez kapcsolódni, itt állítsa be vagy keresse meg a küldő és a csatorna nevét:'
+        WordWrap = True
+      end
+      object Label2: TLabel
+        Left = 8
+        Height = 15
+        Top = 56
+        Width = 72
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Küldő:'
+      end
+      object Label3: TLabel
+        Left = 8
+        Height = 15
+        Top = 178
+        Width = 72
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Csatorna:'
+      end
+      object RecChannelLst: TComboBox
+        Left = 88
+        Height = 23
+        Top = 176
+        Width = 316
+        ItemHeight = 15
+        TabOrder = 2
+      end
+      object RecOkBtn: TBitBtn
+        Left = 80
+        Height = 30
+        Top = 264
+        Width = 100
+        Caption = 'Fogadás'
+        Kind = bkOK
+        OnClick = RecOkBtnClick
+        TabOrder = 4
+      end
+      object RecCancelBtn: TBitBtn
+        Left = 224
+        Height = 30
+        Top = 264
+        Width = 100
+        Caption = 'Mégse'
+        Kind = bkCancel
+        ModalResult = 2
+        TabOrder = 5
+      end
+      object RecUserEd: TEdit
+        Left = 88
+        Height = 23
+        Top = 54
+        Width = 312
+        TabOrder = 0
+        OnChange = RecUserEdChange
+      end
+      object RecUserLst: TListBox
+        Left = 88
+        Height = 87
+        Top = 81
+        Width = 312
+        ItemHeight = 0
+        TabOrder = 1
+        OnClick = RecUserLstClick
+      end
+      object RecStayCb: TCheckBox
+        Left = 144
+        Height = 19
+        Top = 232
+        Width = 163
+        Caption = 'Csatlakozom legközelebb is'
+        TabOrder = 3
+      end
+    end
+    object TSSend: TTabSheet
+      Caption = 'Küldés'
+      ClientHeight = 308
+      ClientWidth = 408
+      object Label4: TLabel
+        Left = 8
+        Height = 40
+        Top = 8
+        Width = 392
+        Anchors = [akTop, akLeft, akRight]
+        AutoSize = False
+        Caption = 'Küldéshez jelentkezzen be (ha még nem tette, ehhez először regisztrálnia kell)'
+        WordWrap = True
+      end
+      object SendOkBtn: TBitBtn
+        Left = 80
+        Height = 30
+        Top = 264
+        Width = 100
+        Caption = 'Kezdjük!'
+        Enabled = False
+        Kind = bkOK
+        OnClick = SendOkBtnClick
+        TabOrder = 0
+      end
+      object SendCancelBtn: TBitBtn
+        Left = 224
+        Height = 30
+        Top = 264
+        Width = 100
+        Caption = 'Mégse'
+        Kind = bkCancel
+        ModalResult = 2
+        TabOrder = 1
+      end
+      object Label16: TLabel
+        Left = 20
+        Height = 15
+        Top = 73
+        Width = 95
+        Caption = 'Küldés csatornája:'
+      end
+      object SendChannelLst: TComboBox
+        Left = 120
+        Height = 23
+        Top = 70
+        Width = 280
+        ItemHeight = 15
+        ItemIndex = 0
+        Items.Strings = (
+          '(nincs küldés)'
+          '1.'
+          '2.'
+          '3.'
+          '4.'
+          '5.'
+          '6.'
+          '7.'
+          '8.'
+          '9.'
+          '10.'
+        )
+        Style = csDropDownList
+        TabOrder = 2
+        Text = '(nincs küldés)'
+        OnChange = SendChannelLstChange
+      end
+      object SendRenBtn: TButton
+        Left = 120
+        Height = 25
+        Top = 104
+        Width = 75
+        Caption = 'Elnevez'
+        Enabled = False
+        TabOrder = 3
+        OnClick = SendRenBtnClick
+      end
+      object SendDelBtn: TButton
+        Left = 208
+        Height = 25
+        Top = 104
+        Width = 75
+        Caption = 'Töröl'
+        Enabled = False
+        TabOrder = 4
+        OnClick = SendDelBtnClick
+      end
+      object SendStayCb: TCheckBox
+        Left = 144
+        Height = 19
+        Top = 232
+        Width = 130
+        Caption = 'Küldés legközelebb is'
+        TabOrder = 5
+      end
+    end
+    object TSReg: TTabSheet
+      Caption = 'Regisztráció'
+      ClientHeight = 308
+      ClientWidth = 408
+      object Label7: TLabel
+        Left = 5
+        Height = 15
+        Top = 51
+        Width = 139
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Felhasználónév:'
+      end
+      object RegUserEd: TEdit
+        Left = 152
+        Height = 23
+        Top = 48
+        Width = 248
+        MaxLength = 30
+        TabOrder = 0
+        TextHint = 'Kovács János'
+      end
+      object Label9: TLabel
+        Left = 5
+        Height = 15
+        Top = 74
+        Width = 139
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Email-cím:'
+      end
+      object RegEmailEd: TEdit
+        Left = 152
+        Height = 23
+        Top = 72
+        Width = 248
+        MaxLength = 50
+        TabOrder = 1
+        TextHint = 'jani123@gmail.com'
+      end
+      object Label10: TLabel
+        Left = 5
+        Height = 15
+        Top = 99
+        Width = 139
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Jelszó:'
+      end
+      object RegPsw1: TEdit
+        Left = 152
+        Height = 23
+        Top = 96
+        Width = 248
+        EchoMode = emPassword
+        MaxLength = 30
+        PasswordChar = '*'
+        TabOrder = 2
+      end
+      object Label11: TLabel
+        Left = 5
+        Height = 15
+        Top = 123
+        Width = 139
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Jelszó újra:'
+      end
+      object RegPsw2: TEdit
+        Left = 152
+        Height = 23
+        Top = 120
+        Width = 248
+        EchoMode = emPassword
+        MaxLength = 30
+        PasswordChar = '*'
+        TabOrder = 3
+      end
+      object RegShowPsw: TCheckBox
+        Left = 184
+        Height = 19
+        Top = 144
+        Width = 124
+        Caption = 'Jelszó megjelenítése'
+        TabOrder = 4
+        OnChange = RegShowPswChange
+      end
+      object RegOkBtn: TBitBtn
+        Left = 80
+        Height = 30
+        Top = 264
+        Width = 112
+        Caption = 'Regisztráció'
+        Kind = bkOK
+        OnClick = RegOkBtnClick
+        TabOrder = 5
+      end
+      object RegCancelBtn: TBitBtn
+        Left = 224
+        Height = 30
+        Top = 264
+        Width = 100
+        Caption = 'Mégse'
+        Kind = bkCancel
+        ModalResult = 2
+        TabOrder = 6
+      end
+      object Label14: TLabel
+        Left = 8
+        Height = 40
+        Top = 8
+        Width = 392
+        Anchors = [akTop, akLeft, akRight]
+        AutoSize = False
+        Caption = 'Az első küldés előtt regisztrálnia kell.'
+        WordWrap = True
+      end
+    end
+    object TSLogin: TTabSheet
+      Caption = 'Belépés'
+      ClientHeight = 308
+      ClientWidth = 408
+      object Label5: TLabel
+        Left = 5
+        Height = 15
+        Top = 51
+        Width = 139
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Felhasználónév:'
+      end
+      object LoginUserEd: TEdit
+        Left = 152
+        Height = 23
+        Top = 48
+        Width = 248
+        TabOrder = 0
+      end
+      object Label6: TLabel
+        Left = 5
+        Height = 15
+        Top = 91
+        Width = 139
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Jelszó:'
+      end
+      object LoginPswEd: TEdit
+        Left = 152
+        Height = 23
+        Top = 91
+        Width = 248
+        EchoMode = emPassword
+        PasswordChar = '*'
+        TabOrder = 1
+      end
+      object LoginShowPsw: TCheckBox
+        Left = 184
+        Height = 19
+        Top = 120
+        Width = 124
+        Caption = 'Jelszó megjelenítése'
+        TabOrder = 2
+        OnChange = LoginShowPswChange
+      end
+      object LoginStayCb: TCheckBox
+        Left = 144
+        Height = 19
+        Top = 232
+        Width = 136
+        Caption = 'Belépve legközelebb is'
+        TabOrder = 4
+      end
+      object LoginOkBtn: TBitBtn
+        Left = 80
+        Height = 30
+        Top = 264
+        Width = 100
+        Caption = 'Belépés'
+        Kind = bkOK
+        OnClick = LoginOkBtnClick
+        TabOrder = 5
+      end
+      object LoginCancelBtn: TBitBtn
+        Left = 224
+        Height = 30
+        Top = 264
+        Width = 100
+        Caption = 'Mégse'
+        Kind = bkCancel
+        ModalResult = 2
+        TabOrder = 6
+      end
+      object Label15: TLabel
+        Left = 8
+        Height = 40
+        Top = 8
+        Width = 392
+        Anchors = [akTop, akLeft, akRight]
+        AutoSize = False
+        Caption = 'Küldéshez jelentkezzen be (ha még nem tette, ehhez először regisztrálnia kell)'
+        WordWrap = True
+      end
+      object LostPswBtn: TButton
+        Left = 152
+        Height = 33
+        Top = 160
+        Width = 216
+        Caption = 'Elfelejtettem a jelszavam'
+        TabOrder = 3
+        OnClick = LostPswBtnClick
+      end
+    end
+    object TSProfil: TTabSheet
+      Caption = 'Profil'
+      ClientHeight = 308
+      ClientWidth = 408
+      object LogoutOkBtn: TBitBtn
+        Left = 80
+        Height = 30
+        Top = 264
+        Width = 112
+        Cancel = True
+        Caption = 'Kijelentkezés'
+        Kind = bkNo
+        OnClick = LogoutOkBtnClick
+        TabOrder = 4
+      end
+      object LogoutCancelBtn: TBitBtn
+        Left = 224
+        Height = 30
+        Top = 264
+        Width = 100
+        Caption = 'Mégse'
+        Kind = bkCancel
+        ModalResult = 2
+        TabOrder = 5
+      end
+      object Label13: TLabel
+        Left = 8
+        Height = 40
+        Top = 8
+        Width = 392
+        Anchors = [akTop, akLeft, akRight]
+        AutoSize = False
+        Caption = 'Küldéshez be kell jelentkeznie.'#13#10'Ha mások is hozzáférnek a géphez, küldés után jelentkezzen ki.'
+        WordWrap = True
+      end
+      object ModPswBtn: TButton
+        Left = 128
+        Height = 33
+        Top = 56
+        Width = 144
+        Caption = 'Jelszó módosítás'
+        TabOrder = 0
+        OnClick = ModPswBtnClick
+      end
+      object ModEmailBtn: TButton
+        Left = 128
+        Height = 33
+        Top = 96
+        Width = 144
+        Caption = 'Email módosítás'
+        TabOrder = 1
+        OnClick = ModEmailBtnClick
+      end
+      object ModNameBtn: TButton
+        Left = 128
+        Height = 33
+        Top = 136
+        Width = 144
+        Caption = 'Felh.név módosítás'
+        TabOrder = 2
+        OnClick = ModNameBtnClick
+      end
+      object DelName: TButton
+        Left = 128
+        Height = 33
+        Top = 176
+        Width = 144
+        Caption = 'FELH. TÖRLÉSE'
+        TabOrder = 3
+        OnClick = DelNameClick
+      end
+    end
+  end
+end
