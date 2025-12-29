@@ -42,10 +42,11 @@ LazarusResources.Add('TMqttRegistration','FORMDATA',[
   +'kChange'#0#0#6'TLabel'#8'GdprLink'#6'Cursor'#7#11'crHandPoint'#4'Left'#2'H'
   +#6'Height'#2#15#3'Top'#3#184#0#5'Width'#3#155#0#7'Caption'#6#28'https://diat'
   +'ar.eu/?page=gdpr'#10'Font.Color'#7#6'clBlue'#10'Font.Style'#11#11'fsUnderli'
-  +'ne'#0#10'ParentFont'#8#7'OnClick'#7#13'GdprLinkClick'#0#0#7'TBitBtn'#9'Canc'
-  +'elBtn'#4'Left'#3#154#0#6'Height'#2#30#3'Top'#3#216#0#5'Width'#2'x'#6'Cancel'
-  +#9#7'Caption'#6#8'M'#195#169'g&sem'#4'Kind'#7#8'bkCancel'#11'ModalResult'#2#2
-  +#8'TabOrder'#2#7#0#0#7'TBitBtn'#6'RegBtn'#4'Left'#2#16#6'Height'#2#30#3'Top'
-  +#3#216#0#5'Width'#2'x'#7'Caption'#6#15'&Regisztr'#195#161'ci'#195#179#7'Defa'
-  +'ult'#9#4'Kind'#7#4'bkOK'#7'OnClick'#7#11'RegBtnClick'#8'TabOrder'#2#8#0#0#0
+  +'ne'#0#10'ParentFont'#8#7'OnClick'#7#13'GdprLinkClick'#0#0#7'TBitBtn'#6'RegB'
+  +'tn'#4'Left'#2#16#6'Height'#2#30#3'Top'#3#216#0#5'Width'#2'x'#7'Caption'#6#15
+  +'&Regisztr'#195#161'ci'#195#179#7'Default'#9#4'Kind'#7#4'bkOK'#7'OnClick'#7
+  +#11'RegBtnClick'#8'TabOrder'#2#7#0#0#7'TBitBtn'#9'CancelBtn'#4'Left'#3#154#0
+  +#6'Height'#2#30#3'Top'#3#216#0#5'Width'#2'x'#6'Cancel'#9#7'Caption'#6#8'M'
+  +#195#169'g&sem'#4'Kind'#7#8'bkCancel'#11'ModalResult'#2#2#8'TabOrder'#2#8#0#0
+  +#0
 ]);
