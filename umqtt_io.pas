@@ -934,7 +934,7 @@ begin
     '{"command": "createRole"'+
       ', "rolename": "'+rolename+'"'+
       ', "acls": [{"acltype": "publishClientSend", "topic": "'+
-        GetTopicBase(fUserName)+'#"}] '+
+        GetTopicBase(fUserName)+'#", "allow": true}] '+
     '}, '+
     '{"command": "createClient"'+
       ', "username": "'+fUserName+'"'+
