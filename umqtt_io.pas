@@ -973,9 +973,19 @@ end;
 procedure tMQTT_IO.CmdDelUser;
 var
   cmd : AnsiString;
+  rec : pMqttUserRec;
 begin
+  rec:=FindUserRec(fUserName);
+  if not Assigned(rec) then begin
+    Close;
+    fCmdResult:='Felhasználó nem található.';
+    DoFinishCmd;
+    exit;
+  end;
   cmd:='{"commands": [{"command": "deleteClient"'+
     ', "username": "'+fUserName+'"'+
+    '},{"command": "deleteRole"'+
+    ', "rolename": "'+rec^.Rolename+'"'+
     '}]}';
   CmdSend(cmd);
 end;
