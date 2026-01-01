@@ -32,8 +32,8 @@
           </Target>
           <SearchPaths>
             <Libraries Value="f:\Lazarus\lnet\lib\"/>
-            <OtherUnitFiles Value="..\lib;..\lnet\lazaruspackage"/>
-            <UnitOutputDirectory Value="f:\Lazarus\out"/>
+            <OtherUnitFiles Value="..\lnet\lazaruspackage;..\abbrevia\source"/>
+            <UnitOutputDirectory Value="objWindows64"/>
           </SearchPaths>
           <Parsing>
             <SyntaxOptions>
@@ -75,7 +75,7 @@
           <SearchPaths>
             <Libraries Value="f:\Lazarus\lnet\lib\"/>
             <OtherUnitFiles Value="..\lib;..\lnet\lazaruspackage"/>
-            <UnitOutputDirectory Value="f:\Lazarus\out"/>
+            <UnitOutputDirectory Value="f:\Lazarus\Diatar\objWindows64"/>
           </SearchPaths>
           <Parsing>
             <SyntaxOptions>
@@ -141,7 +141,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="183">
+    <Units Count="190">
       <Unit0>
         <Filename Value="Diatar64.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -157,10 +157,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAppForm"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="80"/>
-        <CursorPos X="41" Y="98"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="158"/>
+        <CursorPos X="31" Y="183"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="utextbox.pas"/>
@@ -200,8 +201,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uGlobals"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="1924"/>
-        <CursorPos X="5" Y="1941"/>
+        <TopLine Value="794"/>
+        <CursorPos X="13" Y="808"/>
         <UsageCount Value="200"/>
       </Unit6>
       <Unit7>
@@ -292,10 +293,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uSetupForm"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="6"/>
-        <TopLine Value="2149"/>
-        <CursorPos X="48" Y="2161"/>
+        <TopLine Value="1360"/>
+        <CursorPos X="3" Y="1364"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -363,7 +363,7 @@
         <UnitName Value="uNetwork"/>
         <EditorIndex Value="1"/>
         <TopLine Value="211"/>
-        <CursorPos X="5" Y="227"/>
+        <CursorPos X="6" Y="217"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit22>
@@ -427,9 +427,8 @@
       <Unit30>
         <Filename Value="..\lnet\lib\lnet.pp"/>
         <UnitName Value="lNet"/>
-        <TopLine Value="1501"/>
-        <CursorPos X="3" Y="1503"/>
-        <UsageCount Value="3"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
       </Unit30>
       <Unit31>
         <Filename Value="C:\lazarus\lcl\include\customcheckbox.inc"/>
@@ -844,8 +843,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="1444"/>
-        <CursorPos X="6" Y="1460"/>
+        <TopLine Value="1097"/>
+        <CursorPos Y="1113"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -955,8 +954,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uDiatarIniLoader"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="104"/>
-        <CursorPos Y="133"/>
+        <TopLine Value="8"/>
+        <CursorPos X="45" Y="8"/>
         <UsageCount Value="202"/>
       </Unit97>
       <Unit98>
@@ -1111,10 +1110,11 @@
       <Unit118>
         <Filename Value="..\lnet\lib\lnetssl.pp"/>
         <UnitName Value="lNetSSL"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="324"/>
-        <CursorPos X="7" Y="340"/>
-        <UsageCount Value="3"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="468"/>
+        <CursorPos Y="494"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
       </Unit118>
       <Unit119>
         <Filename Value="..\lnet\lib\lcommon.pp"/>
@@ -1138,10 +1138,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uZsolozsmaForm"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="7"/>
-        <CursorPos X="40" Y="31"/>
+        <EditorIndex Value="9"/>
+        <TopLine Value="140"/>
+        <CursorPos Y="157"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit121>
       <Unit122>
         <Filename Value="uDecodeBreviar.pas"/>
@@ -1154,8 +1155,11 @@
       <Unit123>
         <Filename Value="uHtml.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
+        <EditorIndex Value="10"/>
+        <TopLine Value="156"/>
+        <CursorPos Y="174"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit123>
       <Unit124>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
@@ -1470,18 +1474,19 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uMQTT"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="191"/>
-        <CursorPos Y="127"/>
-        <UsageCount Value="195"/>
+        <TopLine Value="326"/>
+        <CursorPos Y="335"/>
+        <UsageCount Value="200"/>
       </Unit159>
       <Unit160>
         <Filename Value="umqtt_io.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uMQTT_IO"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="303"/>
-        <CursorPos X="5" Y="323"/>
-        <UsageCount Value="195"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="951"/>
+        <CursorPos X="33" Y="964"/>
+        <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit160>
       <Unit161>
@@ -1494,7 +1499,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="767"/>
         <CursorPos Y="798"/>
-        <UsageCount Value="195"/>
+        <UsageCount Value="200"/>
       </Unit161>
       <Unit162>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\fcl-json\src\jsonparser.pp"/>
@@ -1578,7 +1583,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="111"/>
         <CursorPos X="47" Y="135"/>
-        <UsageCount Value="97"/>
+        <UsageCount Value="104"/>
       </Unit172>
       <Unit173>
         <Filename Value="C:\lazarus64\lcl\buttons.pp"/>
@@ -1605,7 +1610,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="13"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="66"/>
       </Unit175>
       <Unit176>
         <Filename Value="umqttregistration.pas"/>
@@ -1614,10 +1619,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMqttRegistration"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="11"/>
         <TopLine Value="48"/>
-        <CursorPos X="34" Y="62"/>
-        <UsageCount Value="55"/>
+        <CursorPos Y="62"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit176>
@@ -1628,10 +1633,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMqttProfil"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="137"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="170"/>
         <CursorPos Y="168"/>
-        <UsageCount Value="52"/>
+        <UsageCount Value="59"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit177>
@@ -1645,7 +1650,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="73"/>
         <CursorPos Y="82"/>
-        <UsageCount Value="51"/>
+        <UsageCount Value="58"/>
       </Unit178>
       <Unit179>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\objpas\sysutils\sysstrh.inc"/>
@@ -1659,7 +1664,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="10"/>
-        <UsageCount Value="48"/>
+        <UsageCount Value="55"/>
       </Unit180>
       <Unit181>
         <Filename Value="C:\lazarus64\lcl\controls.pp"/>
@@ -1675,126 +1680,157 @@
         <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
       </Unit182>
+      <Unit183>
+        <Filename Value="..\lnet\lazaruspackage\lnetcomponents.pas"/>
+        <UnitName Value="lNetComponents"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="33"/>
+        <CursorPos X="29" Y="39"/>
+        <UsageCount Value="10"/>
+      </Unit183>
+      <Unit184>
+        <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\paszlib\src\zipper.pp"/>
+        <UnitName Value="Zipper"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="11"/>
+      </Unit184>
+      <Unit185>
+        <Filename Value="..\abbrevia\source\AbBrowse.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="170"/>
+        <CursorPos X="15" Y="185"/>
+        <UsageCount Value="10"/>
+      </Unit185>
+      <Unit186>
+        <Filename Value="..\abbrevia\source\AbUnzPrc.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="17"/>
+        <CursorPos X="11" Y="35"/>
+        <UsageCount Value="10"/>
+      </Unit186>
+      <Unit187>
+        <Filename Value="..\abbrevia\source\AbZipTyp.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="155"/>
+        <CursorPos X="43" Y="170"/>
+        <UsageCount Value="10"/>
+      </Unit187>
+      <Unit188>
+        <Filename Value="..\abbrevia\source\AbDefine.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="196"/>
+        <CursorPos X="3" Y="222"/>
+        <UsageCount Value="10"/>
+      </Unit188>
+      <Unit189>
+        <Filename Value="..\abbrevia\source\AbCrtl.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="111"/>
+        <CursorPos X="5" Y="127"/>
+        <UsageCount Value="10"/>
+      </Unit189>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="25" HistoryIndex="24">
       <Position1>
-        <Filename Value="usetupform.pas"/>
-        <Caret Line="2102" Column="31" TopLine="2077"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="331" TopLine="317"/>
       </Position1>
       <Position2>
-        <Filename Value="usetupform.pas"/>
-        <Caret Line="2103" Column="34" TopLine="2078"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="332" TopLine="317"/>
       </Position2>
       <Position3>
-        <Filename Value="usetupform.pas"/>
-        <Caret Line="2104" Column="32" TopLine="2079"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="358" Column="7" TopLine="342"/>
       </Position3>
       <Position4>
-        <Filename Value="usetupform.pas"/>
-        <Caret Line="2105" Column="34" TopLine="2080"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="31"/>
       </Position4>
       <Position5>
-        <Filename Value="usetupform.pas"/>
-        <Caret Line="2106" Column="37" TopLine="2081"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="375" Column="21" TopLine="365"/>
       </Position5>
       <Position6>
-        <Filename Value="umqtt_io.pas"/>
-        <Caret Line="450" Column="47" TopLine="434"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="380" TopLine="361"/>
       </Position6>
       <Position7>
-        <Filename Value="umqtt_io.pas"/>
-        <Caret Line="317" TopLine="286"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="375" Column="28" TopLine="361"/>
       </Position7>
       <Position8>
-        <Filename Value="umqtt_io.pas"/>
-        <Caret Line="437" TopLine="431"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="380" TopLine="361"/>
       </Position8>
       <Position9>
-        <Filename Value="umqtt_io.pas"/>
-        <Caret Line="691" TopLine="673"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="381" TopLine="361"/>
       </Position9>
       <Position10>
-        <Filename Value="umqtt_io.pas"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="380" TopLine="361"/>
       </Position10>
       <Position11>
-        <Filename Value="umqtt_io.pas"/>
-        <Caret Line="507" Column="46" TopLine="481"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="375" Column="24" TopLine="361"/>
       </Position11>
       <Position12>
-        <Filename Value="umain.pas"/>
-        <Caret Line="294" Column="15" TopLine="280"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="380" TopLine="361"/>
       </Position12>
       <Position13>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1447" Column="32" TopLine="1442"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="136" Column="31" TopLine="130"/>
       </Position13>
       <Position14>
-        <Filename Value="umain.pas"/>
-        <Caret Line="399" Column="36" TopLine="384"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="66" Column="16" TopLine="45"/>
       </Position14>
       <Position15>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1454" Column="24" TopLine="1434"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="156" TopLine="142"/>
       </Position15>
       <Position16>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1448" Column="22" TopLine="1437"/>
+        <Filename Value="uzsolozsmaform.pas"/>
+        <Caret Line="157" TopLine="140"/>
       </Position16>
       <Position17>
-        <Filename Value="umain.pas"/>
-        <Caret Line="297" Column="16" TopLine="278"/>
+        <Filename Value="uHtml.pas"/>
+        <Caret Line="334" TopLine="311"/>
       </Position17>
       <Position18>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1452" Column="16" TopLine="1447"/>
+        <Filename Value="uHtml.pas"/>
+        <Caret Line="335" TopLine="311"/>
       </Position18>
       <Position19>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1458" Column="35" TopLine="1435"/>
+        <Filename Value="uHtml.pas"/>
+        <Caret Line="336" TopLine="311"/>
       </Position19>
       <Position20>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1451" Column="30" TopLine="1442"/>
+        <Filename Value="uHtml.pas"/>
+        <Caret Line="337" TopLine="311"/>
       </Position20>
       <Position21>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1455" Column="18" TopLine="1442"/>
+        <Filename Value="uHtml.pas"/>
+        <Caret Line="338" TopLine="311"/>
       </Position21>
       <Position22>
-        <Filename Value="umain.pas"/>
+        <Filename Value="uHtml.pas"/>
+        <Caret Line="172" TopLine="156"/>
       </Position22>
       <Position23>
-        <Filename Value="umain.pas"/>
-        <Caret Line="270" Column="22" TopLine="246"/>
+        <Filename Value="usetupform.pas"/>
+        <Caret Line="2153" Column="45" TopLine="2135"/>
       </Position23>
       <Position24>
-        <Filename Value="umain.pas"/>
-        <Caret Line="298" Column="22" TopLine="274"/>
+        <Filename Value="usetupform.pas"/>
+        <Caret Line="2198" TopLine="2134"/>
       </Position24>
       <Position25>
-        <Filename Value="umain.pas"/>
-        <Caret Line="270" Column="30" TopLine="256"/>
+        <Filename Value="umqtt_io.pas"/>
+        <Caret Line="1134" Column="48" TopLine="1120"/>
       </Position25>
-      <Position26>
-        <Filename Value="umqtt_io.pas"/>
-        <Caret Line="490" Column="53" TopLine="481"/>
-      </Position26>
-      <Position27>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1455" Column="24" TopLine="1440"/>
-      </Position27>
-      <Position28>
-        <Filename Value="umain.pas"/>
-        <Caret Line="1458" TopLine="1442"/>
-      </Position28>
-      <Position29>
-        <Filename Value="umqtt_io.pas"/>
-        <Caret Line="459" TopLine="447"/>
-      </Position29>
-      <Position30>
-        <Filename Value="umqtt_io.pas"/>
-        <Caret Line="153" Column="16" TopLine="126"/>
-      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -1838,6 +1874,15 @@
     </Other>
   </CompilerOptions>
   <Debugging>
+    <BreakPoints Count="1">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="uzsolozsmaform.pas"/>
+        <Line Value="157"/>
+      </Item1>
+    </BreakPoints>
     <Watches Count="1">
       <Item1>
         <Expression Value="Line[se-1]"/>

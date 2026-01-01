@@ -27,7 +27,7 @@ unit uHtml;
 interface
 
 uses
-  Classes, SysUtils;
+  Classes, SysUtils, LazLoggerBase;
 
 type
   pHtmlProperty = ^tHtmlProperty;
@@ -120,6 +120,7 @@ begin
     idx:=Length(fHtmlProps);
     SetLength(fHtmlProps,idx+1);
     fHtmlProps[idx].NameStr:=copy(html,p0,p-p0);
+    DebugLn(fNameStr+' tag: '+fHtmlProps[idx].NameStr);
 
     //szokozok atlepese
     while (p<=Length(html)) and (html[p]=' ') do inc(p);
@@ -187,10 +188,17 @@ begin
   while (p2 <= Length(html)) and not (html[p2] in [' ','>']) do inc(p2);
   fNameStr:=copy(html,p+1,p2-p-1);
   p:=p2;
+  DebugLn('<'+fNameStr+'...');
   ParseProperties(html,p);
   if p>Length(html) then exit;
   if html[p]='/' then begin    // <xxxx/> tipusu tag
     inc(p,2);
+    DebugLn('    .../>');
+    exit;
+  end;
+  if fNameStr='meta' then begin   // hibas 2026-ban :(
+    inc(p);
+    DebugLn('    meta.../>');
     exit;
   end;
   inc(p);
@@ -229,6 +237,7 @@ begin
       if (p<Length(html)) and (html[p+1]='/') then begin
         if copy(html,p,Length(fNameStr)+3)='</'+fNameStr+'>' then begin
           inc(p,Length(fNameStr)+3);
+          DebugLn('    ....</'+fNameStr+'>');
           break;
         end;
         //nem passzolo zaro tag
@@ -335,6 +344,7 @@ begin
   p0:=Pos('<html', html);
   if p0<=0 then exit(nil);
   Result:=tHtmlTag.Create(nil);
+  DebugLn(#13'**********************************'#13#13'<html>');
   Result.ParseTag(html, p0);
 end;
 

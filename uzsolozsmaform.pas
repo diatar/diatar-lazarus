@@ -28,7 +28,7 @@ uses
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, Buttons, DateTimePicker, LCLType,
   uTxTar,
-  fphttpclient,openssl,opensslsockets, Zipper;
+  fphttpclient,openssl,opensslsockets, Zipper, Process;
 
 type
   { tZsolozsmaForm }
@@ -70,6 +70,7 @@ type
 
     function DownloadYear(year : integer) : string;   //uresstring ha nem sikerult
     procedure AsyncFirst(data : PtrInt);
+    function UpzipFile(const fname : string) : boolean; //true=siker
   public
     property Literals : tLiterals read fLiterals;
   end;
@@ -135,7 +136,6 @@ end;
 
 procedure tZsolozsmaForm.DownBtnClick(Sender: TObject);
 var
-  z : tUnZipper;
   fname : string;
   idx : integer;
   decoder : tBreviarDecoder;
@@ -151,22 +151,8 @@ begin
       fname:=fAllNames[i];
       break;
     end;
-  try
-    z:=tUnZipper.Create;
-    try
-      z.FileName:=fZipName;
-      z.OnCreateStream:=@DoCreateOutZipStream;
-      z.OnDoneStream:=@DoDoneOutZipStream;
-      z.Examine;
-      z.UnZipFile(fname);
-    finally
-      z.Free;
-    end;
-  except
-    ErrorBox('Nem olvasható a fájl: '+fname);
-    exit;
-  end;
 
+  if not UpzipFile(fname) then exit;
   TrimSpaces;
   tag0:=ParseHtml(fUnzippedTxt);
   fUnzippedTxt:='';
@@ -274,6 +260,61 @@ begin
   Result:=fname;
 end;
 
+//Mivel az UnZip nem tamogatja az LZMA formatumot, probaljuk 7z-vel kicsomagolni!
+
+function tZsolozsmaForm.UpzipFile(const fname : string) : boolean; //true=siker
+var
+  z : tUnZipper;
+  P : tProcess;
+  MS : tMemoryStream;
+begin
+  Result:=false;
+  try
+    z:=tUnZipper.Create;
+    try
+      z.FileName:=fZipName;
+      z.OnCreateStream:=@DoCreateOutZipStream;
+      z.OnDoneStream:=@DoDoneOutZipStream;
+      z.Examine;
+      z.UnZipFile(fname);
+      Result:=true;
+      exit; //ha siker, kilepunk
+    finally
+      z.Free;
+    end;
+  except
+    Result:=false;
+  end;
+
+  //LZMA tomorites nincs a tUnZipper-ben
+  try
+    P:=tProcess.Create(nil);
+    MS:=tMemoryStream.Create;
+    try
+      P.Executable:='7z.exe';
+      P.Parameters.Add('x');
+      P.Parameters.Add(fZipName);
+      P.Parameters.Add(fname);
+      P.Parameters.Add('-so');
+      P.Options:=[poUsePipes];
+      P.Execute;
+      MS.CopyFrom(P.Output,0);
+      P.WaitOnExit;
+      MS.Position:=0;
+      SetLength(fUnzippedTxt,MS.Size);
+      MS.ReadBuffer(pointer(fUnzippedTxt)^,MS.Size);
+      Result:=true;
+    finally
+      P.Free;
+      MS.Free;
+    end;
+  except
+    ErrorBox('Nem olvasható a fájl: '+fname);
+    exit;
+  end;
+  Result:=true;
+end;
+
 procedure tZsolozsmaForm.DoCreateOutZipStream(Sender : tObject; var AStream : TStream; AItem : TFullZipFileEntry);
 begin
   AStream:=tMemoryStream.Create;
@@ -349,7 +390,6 @@ end;
 
 procedure tZsolozsmaForm.ProcessDay(const fname : string);
 var
-  z : tUnZipper;
   tag0 : tHtmlTag;
   found : pTagAndTxt;
   href : pHtmlProperty;
@@ -359,22 +399,7 @@ begin
   ImaLst.Clear; fImaNames.Clear;
   DownBtn.Enabled:=false;
 
-  try
-    z:=tUnZipper.Create;
-    try
-      z.FileName:=fZipName;
-      z.OnCreateStream:=@DoCreateOutZipStream;
-      z.OnDoneStream:=@DoDoneOutZipStream;
-      z.Examine;
-      z.UnZipFile(fname);
-    finally
-      z.Free;
-    end;
-  except
-    ErrorBox('Nem olvasható a fájl: '+fname);
-    exit;
-  end;
-
+  if not UpzipFile(fname) then exit;
   TrimSpaces;
   tag0:=ParseHtml(fUnzippedTxt);
   fUnzippedTxt:='';

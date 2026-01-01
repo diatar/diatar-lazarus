@@ -8,7 +8,7 @@ object MqttReceiver: TMqttReceiver
   ClientHeight = 169
   ClientWidth = 338
   OnCreate = FormCreate
-  LCLVersion = '3.2.0.0'
+  LCLVersion = '3.6.0.0'
   object Label1: TLabel
     Left = 16
     Height = 15
@@ -25,6 +25,7 @@ object MqttReceiver: TMqttReceiver
     Width = 232
     TabOrder = 0
     OnChange = SenderEdChange
+    OnKeyDown = SenderEdKeyDown
   end
   object SenderLst: TListBox
     Left = 97

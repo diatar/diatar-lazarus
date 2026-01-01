@@ -153,8 +153,8 @@ object SetupForm: TSetupForm
     Height = 460
     Top = 32
     Width = 481
-    ActivePage = PgSer
-    TabIndex = 14
+    ActivePage = PgMqtt
+    TabIndex = 11
     TabOrder = 6
     object PgShow: TTabSheet
       Caption = 'PgShow'
