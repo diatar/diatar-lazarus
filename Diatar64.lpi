@@ -157,11 +157,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAppForm"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="158"/>
         <CursorPos X="31" Y="183"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="utextbox.pas"/>
@@ -293,7 +292,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uSetupForm"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="1360"/>
         <CursorPos X="3" Y="1364"/>
         <UsageCount Value="200"/>
@@ -362,8 +361,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uNetwork"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="211"/>
-        <CursorPos X="6" Y="217"/>
+        <TopLine Value="496"/>
+        <CursorPos X="15" Y="527"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit22>
@@ -842,7 +841,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="1097"/>
         <CursorPos Y="1113"/>
         <UsageCount Value="200"/>
@@ -1110,11 +1109,10 @@
       <Unit118>
         <Filename Value="..\lnet\lib\lnetssl.pp"/>
         <UnitName Value="lNetSSL"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="468"/>
         <CursorPos Y="494"/>
         <UsageCount Value="12"/>
-        <Loaded Value="True"/>
       </Unit118>
       <Unit119>
         <Filename Value="..\lnet\lib\lcommon.pp"/>
@@ -1138,9 +1136,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uZsolozsmaForm"/>
-        <EditorIndex Value="9"/>
-        <TopLine Value="140"/>
-        <CursorPos Y="157"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="278"/>
+        <CursorPos X="9" Y="298"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit121>
@@ -1155,11 +1154,10 @@
       <Unit123>
         <Filename Value="uHtml.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="156"/>
         <CursorPos Y="174"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit123>
       <Unit124>
         <Filename Value="C:\lazarus64\fpc\3.2.2\source\packages\openssl\src\openssl.pas"/>
@@ -1482,12 +1480,10 @@
         <Filename Value="umqtt_io.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uMQTT_IO"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="951"/>
         <CursorPos X="33" Y="964"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit160>
       <Unit161>
         <Filename Value="umqttform.pas"/>
@@ -1619,12 +1615,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMqttRegistration"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="48"/>
         <CursorPos Y="62"/>
         <UsageCount Value="62"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit176>
       <Unit177>
         <Filename Value="umqttprofil.pas"/>
@@ -1633,12 +1627,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMqttProfil"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="170"/>
         <CursorPos Y="168"/>
         <UsageCount Value="59"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit177>
       <Unit178>
         <Filename Value="umqttreceiver.pas"/>
@@ -1730,107 +1722,42 @@
         <UsageCount Value="10"/>
       </Unit189>
     </Units>
-    <JumpHistory Count="25" HistoryIndex="24">
+    <JumpHistory Count="9" HistoryIndex="8">
       <Position1>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="331" TopLine="317"/>
-      </Position1>
-      <Position2>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="332" TopLine="317"/>
-      </Position2>
-      <Position3>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="358" Column="7" TopLine="342"/>
-      </Position3>
-      <Position4>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="31"/>
-      </Position4>
-      <Position5>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="375" Column="21" TopLine="365"/>
-      </Position5>
-      <Position6>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="380" TopLine="361"/>
-      </Position6>
-      <Position7>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="375" Column="28" TopLine="361"/>
-      </Position7>
-      <Position8>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="380" TopLine="361"/>
-      </Position8>
-      <Position9>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="381" TopLine="361"/>
-      </Position9>
-      <Position10>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="380" TopLine="361"/>
-      </Position10>
-      <Position11>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="375" Column="24" TopLine="361"/>
-      </Position11>
-      <Position12>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="380" TopLine="361"/>
-      </Position12>
-      <Position13>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="136" Column="31" TopLine="130"/>
-      </Position13>
-      <Position14>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="66" Column="16" TopLine="45"/>
-      </Position14>
-      <Position15>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="156" TopLine="142"/>
-      </Position15>
-      <Position16>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="157" TopLine="140"/>
-      </Position16>
-      <Position17>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="334" TopLine="311"/>
-      </Position17>
-      <Position18>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="335" TopLine="311"/>
-      </Position18>
-      <Position19>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="336" TopLine="311"/>
-      </Position19>
-      <Position20>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="337" TopLine="311"/>
-      </Position20>
-      <Position21>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="338" TopLine="311"/>
-      </Position21>
-      <Position22>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="172" TopLine="156"/>
-      </Position22>
-      <Position23>
         <Filename Value="usetupform.pas"/>
         <Caret Line="2153" Column="45" TopLine="2135"/>
-      </Position23>
-      <Position24>
+      </Position1>
+      <Position2>
         <Filename Value="usetupform.pas"/>
         <Caret Line="2198" TopLine="2134"/>
-      </Position24>
-      <Position25>
-        <Filename Value="umqtt_io.pas"/>
-        <Caret Line="1134" Column="48" TopLine="1120"/>
-      </Position25>
+      </Position2>
+      <Position3>
+        <Filename Value="unetwork.pas"/>
+        <Caret Line="217" Column="6" TopLine="211"/>
+      </Position3>
+      <Position4>
+        <Filename Value="unetwork.pas"/>
+      </Position4>
+      <Position5>
+        <Filename Value="unetwork.pas"/>
+        <Caret Line="197" Column="25" TopLine="183"/>
+      </Position5>
+      <Position6>
+        <Filename Value="unetwork.pas"/>
+        <Caret Line="468" Column="24" TopLine="442"/>
+      </Position6>
+      <Position7>
+        <Filename Value="unetwork.pas"/>
+        <Caret Line="481" Column="24" TopLine="455"/>
+      </Position7>
+      <Position8>
+        <Filename Value="unetwork.pas"/>
+        <Caret Line="490" Column="15" TopLine="464"/>
+      </Position8>
+      <Position9>
+        <Filename Value="unetwork.pas"/>
+        <Caret Line="504" Column="15" TopLine="478"/>
+      </Position9>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -1874,15 +1801,6 @@
     </Other>
   </CompilerOptions>
   <Debugging>
-    <BreakPoints Count="1">
-      <Item1>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="uzsolozsmaform.pas"/>
-        <Line Value="157"/>
-      </Item1>
-    </BreakPoints>
     <Watches Count="1">
       <Item1>
         <Expression Value="Line[se-1]"/>

@@ -194,7 +194,7 @@ end;
 //csatlakozas megtortent
 procedure tNetwork.NetIOConnected(Sender: TObject);
 begin
-  if fScrMode = smControl then begin
+  if fScrMode<>smProject then begin
 //    NetIO.SendAskSize;          //lekerjuk a kepernyo meretet
     if Assigned(ProjektedForm) then ProjektedForm.RepaintProjImage;
     if Globals.SerialOnProj and
@@ -465,7 +465,7 @@ procedure tNetwork.EndProgram(EndMode: tEndProgram);
 var
   t: dword;
 begin
-  if fScrMode <> smControl then exit;
+  if fScrMode=smProject then exit;
   fEndProgram := EndMode;
   WriteState;
   t := GetTickCount() + 1000;   //hogy meg biztosan elmenjen
@@ -478,7 +478,7 @@ procedure tNetwork.NewPic(const fname: string);
 var
   i: integer;
 begin
-  if fScrMode <> smControl then exit;
+  if fScrMode=smProject then exit;
   for i:=1 to MAXIP do fNetIO[i].SendPic(fname);
 end;
 
@@ -487,7 +487,7 @@ procedure tNetwork.NewText(Txt: tLiteralBase; const ScholaLine: string);
 var
   i: integer;
 begin
-  if fScrMode <> smControl then exit;
+  if fScrMode=smProject then exit;
   for i:=1 to MAXIP do fNetIO[i].SendText(Txt, ScholaLine);
 end;
 
@@ -501,14 +501,14 @@ end;
 //statusz valtozott
 procedure tNetwork.StateChanged;
 begin
-  if fScrMode <> smControl then exit;
+  if fScrMode=smProject then exit;
   WriteState;
 end;
 
 //hatterkep valtozott
 procedure tNetwork.BlankChanged;
 begin
-  if fScrMode <> smControl then exit;
+  if fScrMode=smProject then exit;
   WriteBlank;
 end;
 

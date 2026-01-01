@@ -156,7 +156,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAppForm"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="68"/>
         <CursorPos X="21" Y="105"/>
         <UsageCount Value="200"/>
@@ -189,10 +189,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uProjektedForm"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="179"/>
-        <CursorPos X="41" Y="201"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="345"/>
+        <CursorPos X="13" Y="360"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="utxtar.pas"/>
@@ -325,7 +327,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uSetupForm"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="2183"/>
         <CursorPos Y="2199"/>
         <UsageCount Value="200"/>
@@ -945,8 +947,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="17"/>
-        <CursorPos Y="17"/>
+        <TopLine Value="2497"/>
+        <CursorPos X="24" Y="2513"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -1421,7 +1423,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uZsolozsmaForm"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="291"/>
         <CursorPos X="41" Y="312"/>
         <UsageCount Value="104"/>
@@ -1453,7 +1455,7 @@
       <Unit167>
         <Filename Value="uHtml.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="320"/>
         <CursorPos X="56" Y="347"/>
         <UsageCount Value="104"/>
@@ -1780,8 +1782,7 @@
         <Filename Value="umqtt_io.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uMQTT_IO"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="7"/>
         <TopLine Value="1261"/>
         <CursorPos Y="1276"/>
         <UsageCount Value="21"/>
@@ -1841,124 +1842,123 @@
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="254" TopLine="236"/>
-      </Position1>
-      <Position2>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="255" TopLine="236"/>
-      </Position2>
-      <Position3>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="256" TopLine="236"/>
-      </Position3>
-      <Position4>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="196" Column="55" TopLine="185"/>
-      </Position4>
-      <Position5>
-        <Filename Value="uzsolozsmaform.pas"/>
-        <Caret Line="157" TopLine="147"/>
-      </Position5>
-      <Position6>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="338" TopLine="315"/>
-      </Position6>
-      <Position7>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="339" TopLine="315"/>
-      </Position7>
-      <Position8>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="340" TopLine="315"/>
-      </Position8>
-      <Position9>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="341" TopLine="315"/>
-      </Position9>
-      <Position10>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="342" TopLine="315"/>
-      </Position10>
-      <Position11>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="172" TopLine="156"/>
-      </Position11>
-      <Position12>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="174" TopLine="156"/>
-      </Position12>
-      <Position13>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="186" TopLine="160"/>
-      </Position13>
-      <Position14>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="187" TopLine="161"/>
-      </Position14>
-      <Position15>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="188" TopLine="162"/>
-      </Position15>
-      <Position16>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="189" TopLine="163"/>
-      </Position16>
-      <Position17>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="190" TopLine="164"/>
-      </Position17>
-      <Position18>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="191" TopLine="178"/>
-      </Position18>
-      <Position19>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="192" TopLine="178"/>
-      </Position19>
-      <Position20>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="196" TopLine="178"/>
-      </Position20>
-      <Position21>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="200" TopLine="190"/>
-      </Position21>
-      <Position22>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="203" TopLine="190"/>
-      </Position22>
-      <Position23>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="196" TopLine="190"/>
-      </Position23>
-      <Position24>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="197" TopLine="190"/>
-      </Position24>
-      <Position25>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="198" TopLine="190"/>
-      </Position25>
-      <Position26>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="201" Column="44" TopLine="190"/>
-      </Position26>
-      <Position27>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="294" Column="46" TopLine="263"/>
-      </Position27>
-      <Position28>
-        <Filename Value="uHtml.pas"/>
-        <Caret Line="280" Column="43" TopLine="264"/>
-      </Position28>
-      <Position29>
         <Filename Value="umqtt_io.pas"/>
         <Caret Line="500" Column="11" TopLine="487"/>
-      </Position29>
-      <Position30>
+      </Position1>
+      <Position2>
         <Filename Value="umqtt_io.pas"/>
         <Caret Line="1082" Column="42" TopLine="1073"/>
+      </Position2>
+      <Position3>
+        <Filename Value="umain.pas"/>
+        <Caret Line="310" Column="22" TopLine="301"/>
+      </Position3>
+      <Position4>
+        <Filename Value="umain.pas"/>
+        <Caret Line="1052" Column="28" TopLine="1048"/>
+      </Position4>
+      <Position5>
+        <Filename Value="umain.pas"/>
+        <Caret Line="231" Column="15" TopLine="217"/>
+      </Position5>
+      <Position6>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2231" Column="4" TopLine="2207"/>
+      </Position6>
+      <Position7>
+        <Filename Value="umain.pas"/>
+        <Caret Line="298" Column="15" TopLine="284"/>
+      </Position7>
+      <Position8>
+        <Filename Value="umain.pas"/>
+        <Caret Line="2513" Column="24" TopLine="2497"/>
+      </Position8>
+      <Position9>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="196" Column="18" TopLine="175"/>
+      </Position9>
+      <Position10>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="956" Column="58" TopLine="947"/>
+      </Position10>
+      <Position11>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="988" Column="32" TopLine="988"/>
+      </Position11>
+      <Position12>
+        <Filename Value="uprojektedform.pas"/>
+      </Position12>
+      <Position13>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="359" Column="32" TopLine="334"/>
+      </Position13>
+      <Position14>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="360" Column="13" TopLine="334"/>
+      </Position14>
+      <Position15>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="361" Column="13" TopLine="335"/>
+      </Position15>
+      <Position16>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="614" Column="28" TopLine="589"/>
+      </Position16>
+      <Position17>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="615" Column="75" TopLine="589"/>
+      </Position17>
+      <Position18>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="633" Column="33" TopLine="615"/>
+      </Position18>
+      <Position19>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="641" Column="17" TopLine="615"/>
+      </Position19>
+      <Position20>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="642" Column="17" TopLine="616"/>
+      </Position20>
+      <Position21>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="652" Column="17" TopLine="636"/>
+      </Position21>
+      <Position22>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="654" Column="17" TopLine="636"/>
+      </Position22>
+      <Position23>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="665" Column="17" TopLine="640"/>
+      </Position23>
+      <Position24>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="666" Column="17" TopLine="641"/>
+      </Position24>
+      <Position25>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="671" Column="64" TopLine="646"/>
+      </Position25>
+      <Position26>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="672" Column="39" TopLine="647"/>
+      </Position26>
+      <Position27>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="971" Column="41" TopLine="945"/>
+      </Position27>
+      <Position28>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="1013" Column="46" TopLine="987"/>
+      </Position28>
+      <Position29>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="1022" Column="46" TopLine="996"/>
+      </Position29>
+      <Position30>
+        <Filename Value="uprojektedform.pas"/>
+        <Caret Line="1050" Column="48" TopLine="1024"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>

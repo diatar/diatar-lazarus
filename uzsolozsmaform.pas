@@ -291,7 +291,11 @@ begin
     P:=tProcess.Create(nil);
     MS:=tMemoryStream.Create;
     try
+{$IFDEF Windows}
       P.Executable:='7z.exe';
+{$ELSE}
+      P.Executable:='7z';
+{$ENDIF}
       P.Parameters.Add('x');
       P.Parameters.Add(fZipName);
       P.Parameters.Add(fname);
