@@ -304,7 +304,7 @@ begin
     if ch in ['A'..'Z','a'..'z','0'..'9'] then
       rname:=rname+ch
     else
-      rname:=rname+IntToHex(Ord(ch));
+      rname:=rname+IntToHex(Ord(ch),2);
   end;
   Result:=rname;
   idx:=0;
@@ -961,9 +961,15 @@ begin
   cmd:='{"commands": [{"command": "createClient"'+
     ', "username": "'+fNewUserName+'"'+
     ', "password": "'+fPassword+'"'+
-    ', "textname": "'+fEmail+'"'+
+    ', "textname": "'+rec^.Email+'"'+
     ', "textdescription": "'+EncodeChannels(rec)+'"'+
     ', "roles": [{"rolename": "'+rec^.Rolename+'"}] '+
+
+    '}, {"command": "modifyRole"'+
+    ', "rolename": "'+rec^.Rolename+'"'+
+    ', "acls": [{"acltype": "publishClientSend", "topic": "'+
+      GetTopicBase(fNewUserName)+'#", "allow": true}] '+
+
     '}, {"command": "deleteClient"'+
     ', "username": "'+fUserName+'"'+
     '}]}';
@@ -1073,6 +1079,10 @@ begin
   end else if cmd='CREATEROLE' then begin
     //Result:=ProcessJsonCREATEROLE(jdata, iscont)
     Result:=false;
+  end else if cmd='MODIFYROLE' then begin
+    Result:=false;
+  end else if cmd='DELETEROLE' then begin
+    Result:=false;
   end else if cmd='CREATECLIENT' then begin
     Result:=ProcessJsonMODIFYCLIENT(jdata, iscont);
   end else if cmd='MODIFYCLIENT' then begin
@@ -1115,7 +1125,10 @@ begin
       fCmdResult:='A felhasználó nem található!';
       exit(false);
     end;
-    if fOpenMode=omMODUSER then rec^.UserName:=fNewUserName;
+    if fOpenMode=omMODUSER then begin
+      rec^.UserName:=fNewUserName;
+      fUserName:=fNewUserName;
+    end;
     if fOpenMode=omNEWEMAIL then rec^.Email:=fEmail;
     exit(false);
   end;
@@ -1265,7 +1278,7 @@ begin
         '&type='+IntToStr(mailtype)+
         '&name='+HTTPEncode(ausername));
       if ret<>'SENT' then begin
-        ErrorBox(UTF8Encode('Email küldési hiba! '#13+UTF8Decode(ret)));
+        ErrorBox(AnsiString('Email küldési hiba! '#13)+ret);
         exit;
       end;
     except
