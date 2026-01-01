@@ -204,6 +204,7 @@ type
       procedure SendText(Txt: tLiteralBase; const ScholaLine: string);
       procedure StateChanged;
       procedure BlankChanged;
+      procedure SendCleanup; //kilepes elott csatorna uritese
   end;
 
 var
@@ -325,6 +326,7 @@ end;
 //publikus lezaras
 procedure tMQTT_IO.Close;
 begin
+  SendCleanup;
   fIsClosed:=true;
   MQTTClose;
 end;
@@ -1381,6 +1383,7 @@ var
   mqtt : tMQTT_Message;
   msg : tMQTT_Buffer;
 begin
+  if not Assigned(@fname) or (fname='') then exit;
   if (fOpenMode<>omSENDER) or not fIsOpen then exit;
   DebugLn('MQTT: SendPic');
 
@@ -1492,6 +1495,30 @@ begin
   if (fOpenMode<>omSENDER) or not fIsOpen then exit;
   DebugLn('MQTT: BlankChanged');
   SendPic(Globals.BlankPicFile,True);
+end;
+
+procedure tMQTT_IO.SendCleanup; //kilepes elott csatorna uritese
+var
+  mqtt : tMQTT_Message;
+begin
+  if (fOpenMode<>omSENDER) or not fIsOpen then exit;
+  DebugLn('MQTT: SendCleanup');
+  mqtt:=tMQTT_Message.Create;
+  try
+    mqtt.MessageType:=mqttPUBLISH;
+    mqtt.DUP:=false; mqtt.QoS:=0; mqtt.RETAIN:=true;
+    mqtt.TopicName:=fTopicState;
+    mqtt.CalcRemLen();
+    MQTTSend(mqtt);
+    mqtt.TopicName:=fTopicBlank;
+    mqtt.CalcRemLen();
+    MQTTSend(mqtt);
+    mqtt.TopicName:=fTopicDia;
+    mqtt.CalcRemLen();
+    MQTTSend(mqtt);
+  finally
+    mqtt.Free;
+  end;
 end;
 
 end.

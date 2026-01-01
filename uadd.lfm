@@ -22,7 +22,7 @@ object AddForm: TAddForm
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.0.4'
+  LCLVersion = '3.6.0.0'
   object PropEdBtn: TSpeedButton
     Left = 298
     Height = 25
@@ -210,7 +210,7 @@ object AddForm: TAddForm
     Top = 2
     Width = 74
     Anchors = [akTop, akRight]
-    Caption = '+ &Elválasztó'
+    Caption = '+&Elválasztó'
     OnClick = SeparBtnClick
     TabOrder = 9
   end
@@ -268,7 +268,7 @@ object AddForm: TAddForm
     Top = 2
     Width = 67
     Anchors = [akTop, akRight]
-    Caption = '+ U&grás'
+    Caption = '+U&grás'
     OnClick = GotoBtnClick
     TabOrder = 12
   end

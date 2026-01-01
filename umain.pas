@@ -502,6 +502,7 @@ var
   R : tRect;
   i : integer;
 begin
+  MQTT_IO.Close;
   MainForm:=nil;
   DebugLn('MainForm.OnDestroy');
   DiaSound.OnEnd:=nil; DiaSound.OnError:=nil;

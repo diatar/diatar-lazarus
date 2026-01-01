@@ -263,6 +263,9 @@ begin
     if cls='center rubric' then begin      {240101_0i}
       //kozepre irt szoveg (pl. "Vagy:")
     end else
+    if cls='section-title' then begin      {260101_0c}
+      //pl. 'HIMNUSZ' cim
+    end else
 
     //barmi egyeb
     begin

@@ -789,7 +789,8 @@ begin
   fRemainingLength:=0;
   repeat
     inc(bufpos);
-    if bufpos>=len then exit(merrSHORT);
+    if bufpos>=len then
+      exit(merrSHORT);
     if shift>21 then exit(merrREMLEN);
     inc(fRemainingLength,(buf[bufpos] and $7F) shl shift);
     inc(shift,7);
@@ -797,7 +798,8 @@ begin
   inc(bufpos);
   //ervenytelen a hossz?
   fBufLen:=bufpos+fRemainingLength;
-  if fRemainingLength>len-bufpos then exit(merrSHORT);
+  if fRemainingLength>len-bufpos then
+    exit(merrSHORT);
   //hossz ellenorzese
   case fMessageType of
     //mqttCONNECT         //ezek valtozo hosszuak

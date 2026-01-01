@@ -24,6 +24,7 @@ type
     procedure SenderEdKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
       );
     procedure SenderLstClick(Sender: TObject);
+    procedure SenderLstDblClick(Sender: TObject);
   private
 
   public
@@ -104,6 +105,11 @@ end;
 procedure tMqttReceiver.SenderLstClick(Sender: TObject);
 begin
   OkBtn.Enabled:=(SenderLst.ItemIndex>=0);
+end;
+
+procedure tMqttReceiver.SenderLstDblClick(Sender: TObject);
+begin
+  OkBtn.Click;
 end;
 
 initialization

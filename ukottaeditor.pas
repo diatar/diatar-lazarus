@@ -2151,7 +2151,7 @@ var
   prevp,nextp : pKottaEdRec;
 begin
   len:=Length(Line); if len<=0 then exit;
-  i:=poz-1; prevp:=@Line[i];
+  i:=poz-1; if i>=0 then prevp:=@Line[i];
   while (i>=0) do begin
     if prevp^.IsHang then break;
     dec(i); dec(prevp);
@@ -2184,7 +2184,7 @@ var
   prevp,nextp : pKottaEdRec;
 begin
   len:=Length(Line); if len<=0 then exit;
-  i:=poz-1; prevp:=@Line[i];
+  i:=poz-1; if i>=0 then prevp:=@Line[i];
   while (i>=0) do begin
     if prevp^.IsHang then break;
     dec(i); dec(prevp);
@@ -2215,7 +2215,7 @@ var
   prevp,nextp : pKottaEdRec;
 begin
   len:=Length(Line); if len<=0 then exit;
-  i:=poz-1; prevp:=@Line[i];
+  i:=poz-1; if i>=0 then prevp:=@Line[i];
   while (i>=0) do begin
     if prevp^.IsHang then break;
     dec(i); dec(prevp);
