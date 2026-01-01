@@ -356,7 +356,7 @@ begin
   ResizeImages;
   RepaintProjImage;
   PostRedraw;
-  if Globals.ScrMode=smControl then begin
+  if Globals.ScrMode<>smProject then begin
     Network.StateChanged;
     Network.BlankChanged;
   end;
@@ -630,7 +630,7 @@ procedure tProjektedForm.RepaintProjImage;
 var
   b : boolean;
 begin
-  b:=(Globals.ScrMode=smControl);
+  b:=(Globals.ScrMode<>smProject);
   fProjImage.Canvas.Brush.Color:=CurrentProperties^.BkColor;
   fProjImage.Canvas.FillRect(Rect(0,0,fProjImage.Width,fProjImage.Height));
   FreeAndNil(fCurrLiteral);
@@ -1010,7 +1010,7 @@ begin
 //    AlphaBlendValue:=255
 //  else
     AlphaBlendValue:=255-((255*iif(fReallyProjekting,Globals.BackTransPerc,Globals.BlankTransPerc)) div 100);
-  if Globals.ScrMode=smControl then Network.StateChanged;
+  if Globals.ScrMode<>smProject then Network.StateChanged;
   MQTT_IO.StateChanged;
   PostRedraw;
 end;
@@ -1019,7 +1019,7 @@ procedure tProjektedForm.SetUseBlankPic(NewValue: boolean);
 begin
   fUseBlankPic:=NewValue;
   if not fReallyProjekting then PostRedraw;
-  if Globals.ScrMode=smControl then Network.StateChanged;
+  if Globals.ScrMode<>smProject then Network.StateChanged;
   MQTT_IO.StateChanged;
 end;
 
@@ -1047,7 +1047,7 @@ begin
     fUseLastDrawTxt:=true;
     if oldvalue=fTxtPainter.WordHighlightPos then exit; //nem valtozott
     if fReallyProjekting then PostRedraw;
-    if Globals.ScrMode=smControl then Network.StateChanged;
+    if Globals.ScrMode<>smProject then Network.StateChanged;
     MQTT_IO.StateChanged;
   end;
 end;

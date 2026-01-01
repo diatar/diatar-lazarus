@@ -24,7 +24,7 @@ szovegsoron beluli specialis elemek:
   \-      felteteles kotojel
   \_      nemtorheto kotojel
   \.      sortores javaslat
-  \Gaaa;  gitarakkord, az "aaa" az akkord leiroja (ld. akkord.txt)
+  \Gaaa;  gitarakkord, az "aaa" az akkord leiroja (ld. gitar.txt)
   \Kaaaa; kotta, az "aaaa" mindig paros szamu karakter, a kottakep leiroja (ld. kotta.txt)
   \?G..; vagy \?K..; gitarakkord vagy kotta uj (mint a fenti ketto, de ez altalanosabb)
 

@@ -11,10 +11,10 @@ LazarusResources.Add('TMqttReceiver','FORMDATA',[
   +'Width'#3#232#0#8'TabOrder'#2#0#8'OnChange'#7#14'SenderEdChange'#9'OnKeyDown'
   +#7#15'SenderEdKeyDown'#0#0#8'TListBox'#9'SenderLst'#4'Left'#2'a'#6'Height'#2
   +'P'#3'Top'#2' '#5'Width'#3#231#0#10'ItemHeight'#2#0#8'TabOrder'#2#1#7'OnClic'
-  +'k'#7#14'SenderLstClick'#0#0#7'TBitBtn'#5'OkBtn'#4'Left'#2'+'#6'Height'#2#30
-  +#3'Top'#3#128#0#5'Width'#2'e'#7'Caption'#6#9'&Fogad'#195#161's'#7'Default'#9
-  +#7'Enabled'#8#4'Kind'#7#4'bkOK'#7'OnClick'#7#10'OkBtnClick'#8'TabOrder'#2#2#0
-  +#0#7'TBitBtn'#9'CancelBtn'#4'Left'#3#184#0#6'Height'#2#30#3'Top'#3#128#0#5'W'
-  +'idth'#2'h'#6'Cancel'#9#14'DefaultCaption'#9#4'Kind'#7#8'bkCancel'#11'ModalR'
-  +'esult'#2#2#8'TabOrder'#2#3#0#0#0
+  +'k'#7#14'SenderLstClick'#10'OnDblClick'#7#17'SenderLstDblClick'#0#0#7'TBitBt'
+  +'n'#5'OkBtn'#4'Left'#2'+'#6'Height'#2#30#3'Top'#3#128#0#5'Width'#2'e'#7'Capt'
+  +'ion'#6#9'&Fogad'#195#161's'#7'Default'#9#7'Enabled'#8#4'Kind'#7#4'bkOK'#7'O'
+  +'nClick'#7#10'OkBtnClick'#8'TabOrder'#2#2#0#0#7'TBitBtn'#9'CancelBtn'#4'Left'
+  +#3#184#0#6'Height'#2#30#3'Top'#3#128#0#5'Width'#2'h'#6'Cancel'#9#14'DefaultC'
+  +'aption'#9#4'Kind'#7#8'bkCancel'#11'ModalResult'#2#2#8'TabOrder'#2#3#0#0#0
 ]);

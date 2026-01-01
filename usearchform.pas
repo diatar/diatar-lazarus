@@ -328,6 +328,8 @@ begin
   PercentLbl.Caption:='';
   ActiveControl:=Search1Ed;
   DiaLst.Clear;
+  DiaLst.Font.Name:=Globals.ListName;
+  DiaLst.Font.Size:=Globals.ListSize;
   if Assigned(FindLst) then begin
     for i:=0 to FindLst.Count-1 do
       DiaLst.Objects.Add(FindLst[i] as tTxBase);

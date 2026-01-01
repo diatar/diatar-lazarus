@@ -87,6 +87,7 @@ v12.6   2022/01/09  9+ autoload, net:egyediek+margok, dkKotta
 v12.7   2023/03/19  export, autosave, zenereldir, linux hintform javitas, athuzott
 v13.0   2024/04/13  zsolozsma, raspberry
 v13.1   2025/03/21  stretchmode, uos soundforward, internet vetites
+v13.2   2026/03/25  retain torles
 
 **************************************************************)
 
@@ -102,8 +103,8 @@ uses
   Forms, Controls, Graphics, Dialogs;
 
 const
-  VERSION = 'v13.1';
-  VERSIONDATE = '2005-25';
+  VERSION = 'v13.2 ß1';
+  VERSIONDATE = '2005-26';
 
 type
 

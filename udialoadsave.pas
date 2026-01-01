@@ -40,7 +40,7 @@ procedure StreamWriteLn(ST : tStream; const Line : string);
 var
   le : string;
 begin
-  ST.Write(Line[1],Length(Line));
+  if Length(Line)>0 then ST.Write(Line[1],Length(Line));
   le:=LineEnding;
   ST.Write(le[1],Length(le));
 end;

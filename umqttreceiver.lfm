@@ -35,6 +35,7 @@ object MqttReceiver: TMqttReceiver
     ItemHeight = 0
     TabOrder = 1
     OnClick = SenderLstClick
+    OnDblClick = SenderLstDblClick
   end
   object OkBtn: TBitBtn
     Left = 43

@@ -22,7 +22,7 @@ object MainForm: TMainForm
   OnResize = FormResize
   OnUTF8KeyPress = FormUTF8KeyPress
   OnWindowStateChange = FormWindowStateChange
-  LCLVersion = '3.4.0.0'
+  LCLVersion = '3.6.0.0'
   object FxxPanel: TPanel
     Left = 0
     Height = 82
