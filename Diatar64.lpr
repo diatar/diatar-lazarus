@@ -24,7 +24,7 @@ uses
 {$R *.res}
 
 begin
-  Application.Title:='Diatár';
+  Application.Title:='Diatár64';
   Application.Initialize;
   Application.CreateForm(TAppForm, AppForm);
   Application.CreateForm(TAddForm, AddForm);

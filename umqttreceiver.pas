@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Buttons;
+  Buttons, LCLType;
 
 type
 
@@ -21,6 +21,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure OkBtnClick(Sender: TObject);
     procedure SenderEdChange(Sender: TObject);
+    procedure SenderEdKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
+      );
     procedure SenderLstClick(Sender: TObject);
   private
 
@@ -71,6 +73,12 @@ begin
       end;
     end;
   end;
+end;
+
+procedure tMqttReceiver.SenderEdKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if (Key=VK_DOWN) and (Shift=[]) then SenderLst.SetFocus;
 end;
 
 procedure tMqttReceiver.OkBtnClick(Sender: TObject);
