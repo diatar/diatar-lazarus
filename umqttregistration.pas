@@ -44,7 +44,7 @@ var
 
 implementation
 
-uses uMQTT_IO, uRoutines, LCLIntf;
+uses uMQTT_IO, uRoutines, LCLIntf, uMqttAdminApi;
 
 procedure tMqttRegistration.ShowPswCkChange(Sender: TObject);
 var
@@ -70,6 +70,8 @@ var
   username,email,upname,upemail,ret : string;
   psw1,psw2 : string;
   i : integer;
+  api : TDiatarMqttAdminApi;
+  res : TDiatarMqttAdminApiResult;
 
 begin
   username:=Trim(UserEd.Text);
@@ -124,14 +126,22 @@ begin
     exit;
   end;
 
-  if not MQTT_IO.EmailCodeCheck(mtREGISTRATION, username, email) then exit;
-
   EnableAll(false);
-  MQTT_IO.UserName:=username;
-  MQTT_IO.Password:=psw1;
-  MQTT_IO.Email:=email;
-  MQTT_IO.OnCmdFinished:=@OnCmdFinished;
-  MQTT_IO.Open(omCREATEUSER);
+  api:=TDiatarMqttAdminApi.Create(DefaultMqttAdminApiBaseUrl);
+  try
+    res:=api.CreateUser(username,psw1,email);
+    if not res.Success then begin
+      ErrorBox('Regisztráció nem sikerült!'#13+res.MessageText);
+      exit;
+    end;
+  finally
+    api.Free;
+    EnableAll(true);
+  end;
+
+  InfoBox('Regisztrációs kérés elküldve.'#13+
+    'Kérjük, erősítse meg az emailben kapott hivatkozással.');
+  ModalResult:=mrOK;
 end;
 
 procedure tMqttRegistration.EnableAll(newval : boolean);

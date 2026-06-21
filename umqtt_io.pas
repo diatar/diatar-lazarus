@@ -89,6 +89,7 @@ type
       fChannel : string;
       fEmail : string;
       fNewUserName : string;
+      fCurrBuf : tMQTT_Buffer;
 
       fOnCmdFinished : tNotifyEvent;
       fCmdResult : string;            //ures string ha hibatlan volt
@@ -500,6 +501,7 @@ procedure tMQTT_IO.TCPCompConnect(aSocket: TLSocket);
 begin
   fIsOpen:=true;
   DebugLn('MQTT: Tcp Connected');
+  SetLength(fCurrBuf,0);
 
   if fOpenMode in OPENADMIN then
     fTmrFinishCmd:=TMR_FINISHCMD;
@@ -534,7 +536,7 @@ end;
 procedure tMQTT_IO.TCPCompReceive(aSocket: TLSocket);
 var
   buf : tMQTT_Buffer;
-  bufsize,len : integer;
+  bufsize,len,bpos,blen : integer;
 
 begin
   //addig olvasunk, mig van mit
@@ -547,7 +549,24 @@ begin
   until len<=0;
   if bufsize>0 then TmrResetSendPing;
 
-  MQTTReceived(buf);
+  bpos:=Length(fCurrBuf);
+  len:=Length(buf);
+  SetLength(fCurrBuf,bpos+len);
+  Move(buf[0], fCurrBuf[bpos], len);
+  blen:=tMQTT_Message.RemLenOfBuf(fCurrBuf,bpos);
+  if blen=-2 then exit; //meg nincs eleg bajt
+  if blen=-1 then begin //hibas
+    SetLength(fCurrBuf,0);
+    exit;
+  end;
+  inc(blen,bpos);
+  if (blen>Length(fCurrBuf)) then exit;
+
+  MQTTReceived(copy(fCurrBuf,0,blen));
+//  if blen<Length(fCurrBuf) then
+//    fCurrBuf:=copy(fCurrBuf,blen,99999999)
+//  else
+    SetLength(fCurrBuf,0);
 end;
 
 ///////////////////////////////////////////////////

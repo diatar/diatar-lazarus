@@ -39,7 +39,7 @@ var
 implementation
 
 uses
-  uRoutines, uMQTT_IO;
+  uRoutines, uMQTT_IO, uMqttAdminApi;
 
 { tMqttPsw }
 
@@ -77,6 +77,8 @@ end;
 procedure tMqttPsw.OkBtnClick(Sender: TObject);
 var
   ret,pold,pnew1,pnew2 : string;
+  api : TDiatarMqttAdminApi;
+  res : TDiatarMqttAdminApiResult;
 begin
   pold:=PswOldEd.Text;
   pnew1:=PswNew1Ed.Text;
@@ -102,10 +104,26 @@ begin
     exit;
   end;
 
-  MQTT_IO.Password:=pnew1;
   EnableAll(false);
-  MQTT_IO.OnCmdFinished:=@OnCmdFinished;
-  MQTT_IO.Open(omNEWPSW);
+  api:=TDiatarMqttAdminApi.Create(DefaultMqttAdminApiBaseUrl);
+  try
+    if fChkOldPsw then
+      res:=api.ChangePassword(MQTT_IO.UserName,pold,pnew1)
+    else
+      res:=api.ChangePassword(MQTT_IO.UserName,MQTT_IO.Password,pnew1);
+
+    if not res.Success then begin
+      ErrorBox('Jelszóváltás nem sikerült!'#13+res.MessageText);
+      exit;
+    end;
+  finally
+    api.Free;
+    EnableAll(true);
+  end;
+
+  MQTT_IO.Password:=pnew1;
+  InfoBox('Jelszó sikeresen megváltoztatva.');
+  ModalResult:=mrOK;
 end;
 
 procedure tMqttPsw.FormDestroy(Sender: TObject);

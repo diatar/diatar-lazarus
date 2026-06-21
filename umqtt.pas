@@ -191,6 +191,7 @@ type
     procedure CalcRemLen();  //fRemainingLength kiszamitasa a tobbi mezo alapjan
     function ConvertStrToBuf(const str : AnsiString) : tMQTT_Buffer;
     function ConvertBufToStr(const buf : tMQTT_Buffer) : AnsiString;
+    class function RemLenOfBuf(const buf : tMQTT_Buffer; out bufpos : integer) : integer;
   end;
 
 implementation
@@ -776,26 +777,36 @@ begin
   Result[0]:=%11100000;
 end;
 
+// -2 ha nem teljes a hossz, -1 ha hibas
+class function tMQTT_Message.RemLenOfBuf(const buf : tMQTT_Buffer; out bufpos : integer) : integer;
+var
+  len,shift : integer;
+begin
+  len:=Length(buf);
+  bufpos:=0; shift:=0;
+  Result:=0;
+  repeat
+    inc(bufpos);
+    if bufpos>=len then exit(-2);
+    if shift>21 then exit(-1);
+    inc(Result,(buf[bufpos] and $7F) shl shift);
+    inc(shift,7);
+  until (buf[bufpos] and $80)=0;
+  inc(bufpos);
+end;
+
 //fRemainingLength feltoltese a pufferbol, beallitja az fBufLen mezot is
 function tMQTT_Message.RemLen_FromBuf(const buf : tMQTT_Buffer; var bufpos : integer) : tMQTT_Error;
 var
-  len,shift : integer;
+  len : integer;
 begin
   Result:=merrOK;
 
   //kigyujtes
   len:=Length(buf);
-  bufpos:=0; shift:=0;
-  fRemainingLength:=0;
-  repeat
-    inc(bufpos);
-    if bufpos>=len then
-      exit(merrSHORT);
-    if shift>21 then exit(merrREMLEN);
-    inc(fRemainingLength,(buf[bufpos] and $7F) shl shift);
-    inc(shift,7);
-  until (buf[bufpos] and $80)=0;
-  inc(bufpos);
+  fRemainingLength:=RemLenOfBuf(buf,bufpos);
+  if fRemainingLength=-2 then exit(merrSHORT);
+  if fRemainingLength=-1 then exit(merrREMLEN);
   //ervenytelen a hossz?
   fBufLen:=bufpos+fRemainingLength;
   if fRemainingLength>len-bufpos then

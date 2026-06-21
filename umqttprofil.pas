@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Buttons;
+  Buttons, LCLType;
 
 type
 
@@ -39,7 +39,7 @@ var
 implementation
 
 uses
-  uMQTT_IO, uRoutines, uMqttPsw;
+  uMQTT_IO, uRoutines, uMqttPsw, uMqttAdminApi;
 
 { tMqttProfil }
 
@@ -54,6 +54,8 @@ var
   rec : pMqttUserRec;
   err,email,psw : string;
   i : integer;
+  api : TDiatarMqttAdminApi;
+  res : TDiatarMqttAdminApiResult;
 begin
   if not ChkLogin() then exit;
   rec:=MQTT_IO.FindUserRec(MQTT_IO.UserName);
@@ -83,18 +85,28 @@ begin
     end;
   end;
 
-  if not MQTT_IO.EmailCodeCheck(mtNEWEMAIL, rec^.Username, email) then exit;
-
   EnableAll(false);
-  MQTT_IO.Email:=email;
-  MQTT_IO.OnCmdFinished:=@OnEmailCompleted;
-  MQTT_IO.Open(omNEWEMAIL);
+  api:=TDiatarMqttAdminApi.Create(DefaultMqttAdminApiBaseUrl);
+  try
+    res:=api.ChangeEmail(rec^.Username, psw, email);
+    if not res.Success then begin
+      ErrorBox('Email módosítás sikertelen!'#13+res.MessageText);
+      exit;
+    end;
+  finally
+    api.Free;
+    EnableAll(true);
+  end;
+  InfoBox('Email sikeresen megváltoztatva.'#13+
+    'Az új cím megerősítéséhez ellenőrizze a postafiókját.');
 end;
 
 procedure tMqttProfil.ModNameBtnClick(Sender: TObject);
 var
-  err,newname : string;
+  psw,err,newname : string;
   rec : pMqttUserRec;
+  api : TDiatarMqttAdminApi;
+  res : TDiatarMqttAdminApiResult;
 begin
   if not ChkLogin() then exit;
   rec:=MQTT_IO.FindUserRec(MQTT_IO.UserName);
@@ -108,6 +120,12 @@ begin
     MQTT_IO.UserName));
   if (newname='') or (newname=MQTT_IO.UserName) then exit;
 
+  psw:=PasswordBox('Bejelentkezési jelszó','Biztonsági okból adja meg a jelszavát:');
+  if psw<>MQTT_IO.Password then begin
+    if psw>'' then ErrorBox('Hibás jelszó!');
+    exit;
+  end;
+
   err:=MQTT_IO.ChkUsername(newname);
   if err>'' then begin
     ErrorBox('Névhiba: '+err);
@@ -119,12 +137,21 @@ begin
     exit;
   end;
 
-  if not MQTT_IO.EmailCodeCheck(mtRENUSER, newname, rec^.Email) then exit;
-
   EnableAll(false);
-  MQTT_IO.NewUserName:=newname;
-  MQTT_IO.OnCmdFinished:=@OnNameCompleted;
-  MQTT_IO.Open(omMODUSER);
+  api:=TDiatarMqttAdminApi.Create(DefaultMqttAdminApiBaseUrl);
+  try
+    res:=api.ChangeUsername(rec^.Username, psw, newname, psw);
+    if not res.Success then begin
+      ErrorBox('Név módosítás sikertelen!'#13+res.MessageText);
+      exit;
+    end;
+  finally
+    api.Free;
+    EnableAll(true);
+  end;
+
+  MQTT_IO.UserName:=newname;
+  InfoBox('Név sikeresen megváltoztatva.');
 end;
 
 procedure tMqttProfil.FormDestroy(Sender: TObject);
@@ -135,6 +162,9 @@ end;
 procedure tMqttProfil.DelUserBtnClick(Sender: TObject);
 var
   rec : pMqttUserRec;
+  api : TDiatarMqttAdminApi;
+  res : TDiatarMqttAdminApiResult;
+  psw : string;
 begin
   if not ChkLogin() then exit;
   rec:=MQTT_IO.FindUserRec(MQTT_IO.UserName);
@@ -143,11 +173,32 @@ begin
     exit;
   end;
 
-  if not MQTT_IO.EmailCodeCheck(mtDELUSER, rec^.Username, rec^.Email) then exit;
+  if ChkBox('Biztosan törli a felhasználót? Ez a művelet nem visszavonható!',mbYN2)<>idYes then exit;
+
+  psw:=PasswordBox('Bejelentkezési jelszó','Biztonsági okból adja meg a jelszavát:');
+  if psw<>MQTT_IO.Password then begin
+    if psw>'' then ErrorBox('Hibás jelszó!');
+    exit;
+  end;
 
   EnableAll(false);
-  MQTT_IO.OnCmdFinished:=@OnDelCompleted;
-  MQTT_IO.Open(omDELUSER);
+  api:=TDiatarMqttAdminApi.Create(DefaultMqttAdminApiBaseUrl);
+  try
+    res:=api.DeleteUser(rec^.Username, psw);
+    if not res.Success then begin
+      ErrorBox('Felhasználó törlés sikertelen!'#13+res.MessageText);
+      exit;
+    end;
+  finally
+    api.Free;
+    EnableAll(true);
+  end;
+
+  MQTT_IO.UserName:='';
+  MQTT_IO.Password:='';
+  MQTT_IO.Channel:='';
+  InfoBox('Felhasználó törölve.');
+  ModalResult:=mrClose;
 end;
 
 function tMqttProfil.ChkLogin : boolean;

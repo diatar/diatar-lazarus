@@ -443,7 +443,7 @@ implementation
 
 uses uMonitors,uRotateBmp,uSerialIOForm,uMain,
   uMQTT_IO, uMqttLogin, uMqttPsw,
-  uMqttRegistration, uMqttProfil, uMqttReceiver;
+  uMqttRegistration, uMqttProfil, uMqttReceiver, uMqttAdminApi;
 
 var
   CategIndex : integer = 0;
@@ -1315,27 +1315,39 @@ end;
 
 procedure tSetupForm.MqttLostPswClick(Sender: TObject);
 var
-  username : string;
-  rec : pMqttUserRec;
+  username,email,err : string;
+  api : TDiatarMqttAdminApi;
+  res : TDiatarMqttAdminApiResult;
 begin
-  if MqttIsLoggedIn() then begin
-    MqttLogoutBtn.SetFocus;
-    InfoBox('Elveszett jelszó kereséséhez először jelentkezzen ki!');
-    exit;
-  end;
   username:=InputBox('Elfelejtett jelszó','Felhasználónév:','');
   if username='' then exit;
-  rec:=MQTT_IO.FindUserRec(username);
-  if not Assigned(rec) then begin
-    ErrorBox('A felhasználónév "'+username+'" nem található!');
+
+  err:=MQTT_IO.ChkUsername(username);
+  if err>'' then begin
+    ErrorBox('Felhasználónév hiba: '+err);
     exit;
   end;
 
-  if not MQTT_IO.EmailCodeCheck(mtLOSTPSW, rec^.Username, rec^.Email) then exit;
+  email:=Trim(InputBox('Elfelejtett jelszó','Email-cím:',''));
+  if email='' then exit;
+  err:=MQTT_IO.ChkEmail(email);
+  if err>'' then begin
+    ErrorBox('Email hiba: '+err);
+    exit;
+  end;
 
-  MQTT_IO.UserName:=rec^.Username;
-  if tMqttPsw.Execute(Self,false)='' then MQTT_IO.UserName:='' else fMqttWasOpen:=true;
-  SetMqttState;
+  api:=TDiatarMqttAdminApi.Create(DefaultMqttAdminApiBaseUrl);
+  try
+    res:=api.RequestPasswordReset(username,email);
+    if not res.Success then begin
+      ErrorBox('Elfelejtett jelszó kérés sikertelen!'#13+res.MessageText);
+      exit;
+    end;
+    InfoBox('A jelszó-visszaállítási email kérését elküldtük.'#13+
+      'Kérjük, ellenőrizze a postafiókját.');
+  finally
+    api.Free;
+  end;
 end;
 
 procedure tSetupForm.MqttCkClick(Sender: TObject);
@@ -1375,10 +1387,12 @@ var
   dlg : tMqttRegistration;
 begin
   dlg:=tMqttRegistration.Create(Self);
-  if dlg.ShowModal=mrOK then begin
-    fMqttWasOpen:=true;
+  try
+    dlg.ShowModal;
+    SetMqttState;
+  finally
+    dlg.Free;
   end;
-  SetMqttState;
 end;
 
 procedure tSetupForm.MqttSelSenderBtnClick(Sender: TObject);
