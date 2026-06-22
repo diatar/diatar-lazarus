@@ -2181,17 +2181,6 @@ end;
 procedure tSetupForm.OnMqttFinished(Sender : tObject);
 begin
   MQTT_IO.OnCmdFinished:=nil;
-  if MQTT_IO.CmdResult>'' then begin
-    fMqttLoadStr:=MQTT_IO.CmdResult;
-    SetMqttState;
-    if fMqttLoaded<4 then begin
-      inc(fMqttLoaded);
-      MQTT_IO.Close;
-      MQTT_IO.Open(omUSERLIST);
-    end;
-    //ErrorBox('Internet probléma van!'#13+MQTT_IO.CmdResult);
-    exit;
-  end;
   fMqttLoaded:=-1;
   SetMqttState;
 end;
@@ -2234,10 +2223,9 @@ begin
   fMqttWasOpen:=MQTT_IO.IsOpen;
   MQTT_IO.Close;
   MqttAlwaysCk.Checked:=(fMqttUser>'') and (Globals.MqttUser>'');
-  fMqttLoaded:=0;
+  fMqttLoaded:=-1;
   SetMqttState;
-  MQTT_IO.OnCmdFinished:=@OnMqttFinished;
-  MQTT_IO.Open(omUSERLIST);
+  MQTT_IO.OnCmdFinished:=nil;
 
   MainForm.ShowPercent(85);
   SetFormCaption;

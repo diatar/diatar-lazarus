@@ -29,8 +29,10 @@ type
     function NormalizeBaseUrl(const AValue: string): string;
     function NormalizeLanguageCode(const AValue: string): string;
     function ConfigureClient: Boolean;
+    function ExecuteGet(const APath: string): TDiatarMqttAdminApiResult;
     function ExecutePost(const APath, AJsonBody: string): TDiatarMqttAdminApiResult;
     function ParseResponse(const AStatusCode: Integer; const ABody: string): TDiatarMqttAdminApiResult;
+    function TryReadUserListFromBody(const ABody: string; const AUsers: TStrings): Boolean;
     function ExtractMessage(const AData: TJSONData): string;
     function ExtractValidationErrors(const AData: TJSONData): string;
     function BuildJson(const ANames, AValues: array of string): string;
@@ -54,6 +56,7 @@ type
     function ChangeEmail(const AUsername, APassword, ANewEmail: string): TDiatarMqttAdminApiResult;
     function ChangeUsername(const AUsername, APassword, ANewUsername: string;
       const ANewPassword: string = ''): TDiatarMqttAdminApiResult;
+    function ListUsers(const AUsers: TStrings): TDiatarMqttAdminApiResult;
   end;
 
 implementation
@@ -216,13 +219,32 @@ begin
   ));
 end;
 
-function TDiatarMqttAdminApi.ExecutePost(const APath,
-  AJsonBody: string): TDiatarMqttAdminApiResult;
+function TDiatarMqttAdminApi.ListUsers(const AUsers: TStrings): TDiatarMqttAdminApiResult;
+begin
+  if Assigned(AUsers) then
+    AUsers.Clear;
+
+  Result := ExecuteGet('/api/v1/users/list');
+  if Result.Success and Assigned(AUsers) then
+  begin
+    if not TryReadUserListFromBody(Result.RawBody, AUsers) then
+    begin
+      Result.Success := False;
+      if Result.MessageText = '' then
+        Result.MessageText := 'A felhasználólista válasza érvénytelen.';
+    end;
+  end;
+end;
+
+function TDiatarMqttAdminApi.ExecuteGet(const APath: string): TDiatarMqttAdminApiResult;
 var
-  RequestStream: TStringStream;
   Url: string;
+  ResponseStream: TStringStream;
   StatusCode: Integer;
   Body: string;
+const
+  AllowedCodes: array[0..14] of Integer =
+    (200, 201, 202, 204, 400, 401, 403, 404, 409, 422, 429, 500, 502, 503, 504);
 begin
   Result := MakeResult(False, 0, 'Ismeretlen hiba.', '');
 
@@ -233,18 +255,19 @@ begin
   end;
 
   Url := FBaseUrl + APath;
-  RequestStream := TStringStream.Create(AJsonBody);
+  FClient.RequestBody := nil;
+  ResponseStream := TStringStream.Create('');
   try
     try
-      FClient.RequestBody := RequestStream;
-      Body := FClient.Post(Url);
+      FClient.HTTPMethod('GET', Url, ResponseStream, AllowedCodes);
+      Body := ResponseStream.DataString;
       StatusCode := FClient.ResponseStatusCode;
       Result := ParseResponse(StatusCode, Body);
     except
       on E: EHTTPClient do
       begin
         StatusCode := FClient.ResponseStatusCode;
-        Body := '';
+        Body := ResponseStream.DataString;
         Result := ParseResponse(StatusCode, Body);
         if Result.MessageText = '' then
           Result.MessageText := MapExceptionMessage(E, StatusCode, FClient.ResponseStatusText);
@@ -256,7 +279,7 @@ begin
       on E: Exception do
       begin
         StatusCode := FClient.ResponseStatusCode;
-        Body := '';
+        Body := ResponseStream.DataString;
         Result := ParseResponse(StatusCode, Body);
         if Result.MessageText = '' then
           Result.MessageText := MapExceptionMessage(E, StatusCode, FClient.ResponseStatusText);
@@ -267,6 +290,70 @@ begin
       end;
     end;
   finally
+    FClient.RequestBody := nil;
+    ResponseStream.Free;
+  end;
+end;
+
+function TDiatarMqttAdminApi.ExecutePost(const APath,
+  AJsonBody: string): TDiatarMqttAdminApiResult;
+var
+  RequestStream: TStringStream;
+  ResponseStream: TStringStream;
+  Url: string;
+  StatusCode: Integer;
+  Body: string;
+const
+  AllowedCodes: array[0..14] of Integer =
+    (200, 201, 202, 204, 400, 401, 403, 404, 409, 422, 429, 500, 502, 503, 504);
+begin
+  Result := MakeResult(False, 0, 'Ismeretlen hiba.', '');
+
+  if not ConfigureClient then
+  begin
+    Result.MessageText := 'HTTP kliens nem érhető el.';
+    Exit;
+  end;
+
+  Url := FBaseUrl + APath;
+  RequestStream := TStringStream.Create(AJsonBody);
+  ResponseStream := TStringStream.Create('');
+  try
+    try
+      FClient.RequestBody := RequestStream;
+      FClient.HTTPMethod('POST', Url, ResponseStream, AllowedCodes);
+      Body := ResponseStream.DataString;
+      StatusCode := FClient.ResponseStatusCode;
+      Result := ParseResponse(StatusCode, Body);
+    except
+      on E: EHTTPClient do
+      begin
+        StatusCode := FClient.ResponseStatusCode;
+        Body := ResponseStream.DataString;
+        Result := ParseResponse(StatusCode, Body);
+        if Result.MessageText = '' then
+          Result.MessageText := MapExceptionMessage(E, StatusCode, FClient.ResponseStatusText);
+        if Result.StatusCode = 0 then
+          Result.StatusCode := StatusCode;
+        Result.Success := False;
+        Result.RawBody := Body;
+      end;
+      on E: Exception do
+      begin
+        StatusCode := FClient.ResponseStatusCode;
+        Body := ResponseStream.DataString;
+        Result := ParseResponse(StatusCode, Body);
+        if Result.MessageText = '' then
+          Result.MessageText := MapExceptionMessage(E, StatusCode, FClient.ResponseStatusText);
+        if Result.StatusCode = 0 then
+          Result.StatusCode := StatusCode;
+        Result.Success := False;
+        Result.RawBody := Body;
+      end;
+    end;
+  finally
+    FClient.RequestBody := nil;
+    ResponseStream.Free;
     RequestStream.Free;
   end;
 end;
@@ -358,6 +445,56 @@ begin
   FieldValue := JsonObject.Find('detail');
   if Assigned(FieldValue) and (Trim(FieldValue.AsString) <> '') then
     Exit(Trim(FieldValue.AsString));
+end;
+
+function TDiatarMqttAdminApi.TryReadUserListFromBody(const ABody: string;
+  const AUsers: TStrings): Boolean;
+var
+  JsonData: TJSONData;
+  JsonObject: TJSONObject;
+  DataNode: TJSONData;
+  Arr: TJSONArray;
+  I: Integer;
+  NameText: string;
+begin
+  Result := False;
+  if not Assigned(AUsers) then
+    Exit;
+
+  AUsers.BeginUpdate;
+  try
+    AUsers.Clear;
+    try
+      JsonData := GetJSON(ABody);
+    except
+      Exit;
+    end;
+
+    try
+      if JsonData.JSONType <> jtObject then
+        Exit;
+
+      JsonObject := TJSONObject(JsonData);
+      DataNode := JsonObject.Find('data');
+      if (DataNode = nil) or (DataNode.JSONType <> jtArray) then
+        Exit;
+
+      Arr := TJSONArray(DataNode);
+      for I := 0 to Arr.Count - 1 do
+      begin
+        NameText := Trim(Arr.Items[I].AsString);
+        if NameText = '' then
+          Continue;
+        if AUsers.IndexOf(NameText) < 0 then
+          AUsers.Add(NameText);
+      end;
+      Result := True;
+    finally
+      JsonData.Free;
+    end;
+  finally
+    AUsers.EndUpdate;
+  end;
 end;
 
 function TDiatarMqttAdminApi.ExtractValidationErrors(const AData: TJSONData): string;

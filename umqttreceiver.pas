@@ -26,8 +26,11 @@ type
     procedure SenderLstClick(Sender: TObject);
     procedure SenderLstDblClick(Sender: TObject);
   private
+    fUsers : TStringList;
+    function LoadUsers : boolean;
 
   public
+    destructor Destroy; override;
 
   end;
 
@@ -36,9 +39,41 @@ var
 
 implementation
 
-uses uMQTT_IO, uRoutines;
+uses uMQTT_IO, uRoutines, uMqttAdminApi;
 
 { tMqttReceiver }
+
+destructor tMqttReceiver.Destroy;
+begin
+  FreeAndNil(fUsers);
+  inherited Destroy;
+end;
+
+function tMqttReceiver.LoadUsers : boolean;
+var
+  api : TDiatarMqttAdminApi;
+  res : TDiatarMqttAdminApiResult;
+begin
+  Result:=false;
+  if not Assigned(fUsers) then
+    fUsers:=TStringList.Create;
+
+  fUsers.Clear;
+  fUsers.Duplicates:=dupIgnore;
+
+  api:=TDiatarMqttAdminApi.Create(DefaultMqttAdminApiBaseUrl);
+  try
+    res:=api.ListUsers(fUsers);
+  finally
+    api.Free;
+  end;
+  if not res.Success then begin
+    ErrorBox('Felhasználólista lekérés sikertelen:'#13+res.MessageText);
+    fUsers.Clear;
+    exit;
+  end;
+  Result:=true;
+end;
 
 procedure tMqttReceiver.SenderEdChange(Sender: TObject);
 var
@@ -58,9 +93,8 @@ begin
   txt1:=UpperCase(RemoveAccents(UTF8Decode(Trim(SenderEd.Text))));
   SenderLst.Clear;
   OkBtn.Enabled:=false;
-  for i:=0 to Length(MQTT_IO.UserList)-1 do begin
-    if not MQTT_IO.UserList[i].SendersGroup then continue;
-    s:=MQTT_IO.UserList[i].Username;
+  for i:=0 to fUsers.Count-1 do begin
+    s:=fUsers[i];
     txt2:=UpperCase(RemoveAccents(UTF8Decode(Trim(s))));
     if Length(txt1)>1 then
       p:=Pos(txt1,txt2)
@@ -96,6 +130,11 @@ end;
 
 procedure tMqttReceiver.FormCreate(Sender: TObject);
 begin
+  if not LoadUsers then begin
+    ModalResult:=mrCancel;
+    Close;
+    exit;
+  end;
   if (MQTT_IO.UserName>'') and (MQTT_IO.Password='') then begin
     SenderEd.Text:=MQTT_IO.UserName;
     SenderEdChange(Sender);

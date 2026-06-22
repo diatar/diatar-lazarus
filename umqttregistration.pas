@@ -67,9 +67,8 @@ end;
 
 procedure tMqttRegistration.RegBtnClick(Sender: TObject);
 var
-  username,email,upname,upemail,ret : string;
+  username,email,ret : string;
   psw1,psw2 : string;
-  i : integer;
   api : TDiatarMqttAdminApi;
   res : TDiatarMqttAdminApiResult;
 
@@ -103,21 +102,6 @@ begin
     Psw2Ed.SetFocus;
     ErrorBox('A két jelszó nem egyezik!');
     exit;
-  end;
-
-  upname:=UpperCase(username);
-  upemail:=UpperCase(email);
-  for i:=0 to Length(MQTT_IO.UserList)-1 do begin
-    if upname=UpperCase(MQTT_IO.UserList[i].Username) then begin
-      UserEd.SetFocus;
-      ErrorBox('Ez a felhasználónév már létezik a rendszerben, adjon meg másikat!');
-      exit;
-    end;
-    if upemail=UpperCase(MQTT_IO.UserList[i].Email) then begin
-      EmailEd.SetFocus;
-      ErrorBox('Ez az email-cím már létezik a rendszerben, adjon meg másikat!');
-      exit;
-    end;
   end;
 
   if not GdprCk.Checked then begin
